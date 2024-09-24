@@ -1,9 +1,11 @@
 <template>
     <div id="map"></div>
+    <SaveMapMarkerCategoryButtonList />
 </template>
 
 <script setup>
 import { onMounted } from "vue";
+import SaveMapMarkerCategoryButtonList from "@/components/SaveMapMarkerCategoryButtonList.vue";
 
 const { VITE_KAKAO_JAVASCRIPT_KEY } = import.meta.env;
 

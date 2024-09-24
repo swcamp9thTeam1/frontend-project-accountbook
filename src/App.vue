@@ -18,8 +18,8 @@
 
   <div v-else-if="username === '현진'">
     <!-- 현진 컴포넌트 -->
-    <!-- <SaveMap /> -->
-    <SearchAddress />
+    <SaveMap />
+    <!-- <SearchAddress /> -->
   </div>
 
   <div v-else-if="username === '호정'">
