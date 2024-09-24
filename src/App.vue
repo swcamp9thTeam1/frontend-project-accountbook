@@ -19,6 +19,7 @@
   <div v-else-if="username === '현진'">
     <!-- 현진 컴포넌트 -->
     <SaveMap />
+    <SearchBar />
   </div>
 
   <div v-else-if="username === '호정'">
@@ -37,6 +38,7 @@
 <script setup>
 import { ref } from 'vue';
 import SaveMap from '@/components/SaveMap.vue';
+import SearchBar from '@/components/SearchBar.vue';
 
 const username = ref("");
 </script>
