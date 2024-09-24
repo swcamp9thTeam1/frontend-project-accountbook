@@ -1,7 +1,7 @@
 <template>
     <div class="search-bar">
         <img :src="SearchIcon" alt="">
-        <input type="text" class="search-bar-input">
+        <input type="text" class="search-bar-input" placeholder="장소를 검색해보세요.">
     </div>
 </template>
 
