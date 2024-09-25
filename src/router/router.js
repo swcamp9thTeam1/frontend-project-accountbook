@@ -13,7 +13,13 @@ const router = createRouter({
         { path: "/", component: WelcomePage },
         { path: "/account-book", component: AccountBookPage, children: [] },
         { path: "/save-map", component: SaveMapPage },
-        { path: "/group", component: GroupPage },
+        { path: "/group", component: GroupPage, 
+            children: [
+                {
+                    path: "nested",
+                    component: () => import("@/views/NestedPage.vue")
+                }
+            ] },
         { path: "/community", component: CommunityPage },
         { path: "/my", component: MyPage },
 
