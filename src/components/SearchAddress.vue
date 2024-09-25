@@ -38,7 +38,7 @@ const searchAddress = async (keyword) => {
     position: absolute;
     top: 10px;
     left: 16px;
-    right: 16px;
+    right: 200px;
     z-index: 2;
 }
 </style>

@@ -6,6 +6,9 @@
 
         <!-- 장소 검색 뷰 -->
         <SearchAddress />
+
+        <!-- 마커 카테고리 선택 버튼 -->
+        <SaveMapMarkerCategoryList />
     </div>
 </template>
 
@@ -13,6 +16,7 @@
 import { onMounted } from "vue";
 
 import SearchAddress from "@/components/SearchAddress.vue";
+import SaveMapMarkerCategoryList from "@/components/SaveMapMarkerCategoryList.vue";
 
 const { VITE_KAKAO_JAVASCRIPT_KEY } = import.meta.env;
 
@@ -46,12 +50,10 @@ const initMap = () => {
 
 
 const addControls = (mapInstance) => {
-    const mapTypeControl = new kakao.maps.MapTypeControl();   // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤
     const zoomControl = new kakao.maps.ZoomControl();         // 줌 컨트롤
 
     // 지도에 추가해야 지도에 표시된다.
-    mapInstance.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-    mapInstance.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    mapInstance.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMLEFT);
 }
 </script>
 
