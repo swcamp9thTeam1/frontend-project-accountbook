@@ -78,7 +78,20 @@ const changeMarker = (targetMarkerId) => {
 }
 
 /* 지도에 올라갈 마커 1개 생성하는 함수 */
-const createMarker = (position, image) => new kakao.maps.Marker({ position, image });
+const createMarker = (position, image) => {
+    const marker = new kakao.maps.Marker({ 
+        position,
+        image,
+        clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+    });
+
+    // 마커에 클릭이벤트를 등록합니다
+    kakao.maps.event.addListener(marker, 'click', function() {
+        console.log("마커 클릭!!");
+    });
+
+    return marker;
+}
 
 const createPriceOverlay = (position, price) => {
     const content = `<div style="
