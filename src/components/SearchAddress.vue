@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <SearchBar @onEnterKeyDown="searchAddress" />
-        <SearchAddressResult :addressResults="addressResults" />
+    <div class="container-search-address">
+        <SearchBar @searchAddress="searchAddress" />
+        <SearchAddressResult v-show="addressResults.length > 0" :addressResults="addressResults" />
     </div>
 </template>
 
@@ -14,11 +14,9 @@ const { VITE_KAKAO_REST_API_KEY } = import.meta.env;
 
 const addressResults = ref([]);
 
-async function searchAddress(keyword) {
-    console.log(keyword);
-
-    if (!keyword) {
-        window.alert("검색 키워드를 입력해주세요!");
+const searchAddress = async (keyword) => {
+    if (!keyword) {         // 검색결과 지우기
+        addressResults.value = [];
         return;
     }
 
@@ -36,5 +34,11 @@ async function searchAddress(keyword) {
 </script>
 
 <style scoped>
-
+.container-search-address {
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    right: 16px;
+    z-index: 2;
+}
 </style>

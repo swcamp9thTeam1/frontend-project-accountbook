@@ -1,11 +1,18 @@
 <template>
     <div class="save-map-root">
+
+        <!-- 지도 뷰 -->
         <div id="map"></div>
+
+        <!-- 장소 검색 뷰 -->
+        <SearchAddress />
     </div>
 </template>
 
 <script setup>
 import { onMounted } from "vue";
+
+import SearchAddress from "@/components/SearchAddress.vue";
 
 const { VITE_KAKAO_JAVASCRIPT_KEY } = import.meta.env;
 
@@ -52,6 +59,7 @@ const addControls = (mapInstance) => {
 .save-map-root {
     width: 100vw;
     height: 700px;
+    position: relative;
 
     #map {
         width: 100%;

@@ -2,21 +2,24 @@
     <div class="search-bar">
         <img :src="SearchIcon" alt="">
         <input 
-            type="text" 
-            class="search-bar-input" 
-            placeholder="장소를 검색해보세요." 
-            @keydown.enter="emit('onEnterKeyDown', keyword)" 
-            v-model="keyword" >
+            type="text"
+            class="search-bar-input"
+            placeholder="장소를 검색해보세요."
+            :value="keyword"
+            @input="event => keyword = event.target.value"> <!-- 한글 입력 시 v-model이 잘 작동하지 않아서 @input으로 수정 -->
     </div>
 </template>
 
 <script setup>
-import { defineEmits, defineProps, ref } from 'vue';
+import { defineEmits, ref, watchEffect } from 'vue';
 import SearchIcon from "@/assets/icons/search.svg";
 
-const emit = defineEmits(['onEnterKeyDown']);
-
+const emit = defineEmits(["searchAddress"]);
 const keyword = ref("");
+
+watchEffect(() => {
+    emit("searchAddress", keyword.value);
+})
 
 </script>
 
