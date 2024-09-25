@@ -8,7 +8,7 @@
         <SearchAddress />
 
         <!-- 마커 카테고리 선택 버튼 -->
-        <SaveMapMarkerCategoryList />
+        <SaveMapMarkerCategoryList @changeMarker="changeMarker" />
     </div>
 </template>
 
@@ -19,6 +19,9 @@ import SearchAddress from "@/components/SearchAddress.vue";
 import SaveMapMarkerCategoryList from "@/components/SaveMapMarkerCategoryList.vue";
 
 const { VITE_KAKAO_JAVASCRIPT_KEY } = import.meta.env;
+
+let mapInstance = null;
+let goodStoreMarkers = [];        // 착한가격업소 마커 배열
 
 onMounted(() => {
     if (window.kakao && window.kakao.maps) {
@@ -42,18 +45,72 @@ const initMap = () => {
 	    level: 3                        // 지도의 레벨(확대, 축소 정도)
     };
 
-    const mapInstance = new kakao.maps.Map(container, options);       // 지도 생성 및 객체 리턴
+    mapInstance = new kakao.maps.Map(container, options);       // 지도 생성 및 객체 리턴
 
-    /* 지도에 컨트롤 추가 */
-    addControls(mapInstance);
+    addControls();
 }
 
-
-const addControls = (mapInstance) => {
+/* 지도에 컨트롤 추가 */
+const addControls = () => {
     const zoomControl = new kakao.maps.ZoomControl();         // 줌 컨트롤
 
     // 지도에 추가해야 지도에 표시된다.
     mapInstance.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMLEFT);
+}
+
+/**
+ * 새로운 마커 카테고리가 선택되었을 때 동작할 함수
+ * @param targetMarkerId 클릭한 마커 카테고리 id
+ */
+const changeMarker = (targetMarkerId) => {
+    if (targetMarkerId === "goodStore") {
+        displayGoodStoreMarker();
+    } else if (targetMarkerId === "visited") {
+
+    } else if (targetMarkerId === "costAvg") {
+
+    } else {
+
+        // 하나도 선택되지 않은 상태 => 지도에 있는 마커를 모두 제거
+        clearMarkers();
+    }
+}
+
+/* 지도에 올라갈 마커 1개 생성하는 함수 */
+const createMarker = (position, image) => new kakao.maps.Marker({ position, image });
+
+const displayGoodStoreMarker = async () => {
+
+    // 1. 착한가격업소 리스트를 fetch
+    const response = await fetch("http://localhost:8080/good-stores");
+    const data = await response.json();
+
+    // 2. 가져온 데이터로 포지션 리스트 생성
+    const positions = data.map(item => new kakao.maps.LatLng(item.latitude, item.longitude));
+
+    // 3. 포지션 리스트로 마커 생성
+    positions.forEach(position => {
+
+        // 마커에 들어갈 이미지 생성
+        const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+        const imageSize = new kakao.maps.Size(24, 35); 
+        const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+        // 마커 1개 생성
+        const marker = createMarker(position, markerImage);
+
+        // 지도에 추가
+        marker.setMap(mapInstance);
+
+        // 마커 배열에서도 관리되도록 추가
+        goodStoreMarkers.push(marker);
+    })
+}
+
+/* 마커 모두 제거 */
+const clearMarkers = () => {
+    goodStoreMarkers.forEach(marker => marker.setMap(null));
+    goodStoreMarkers = [];
 }
 </script>
 

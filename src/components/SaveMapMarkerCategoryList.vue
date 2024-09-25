@@ -1,7 +1,7 @@
 <template>
     <ul class="container-save-map-marker-category">
         <li v-for="markerCategory in markerCategories" :key="markerCategory.id" 
-        @click="changeMarkerCategory(markerCategory.id)"
+        @click="handleClickMarkerCategory(markerCategory.id)"
         :class="{selected: selectedCategoryId === markerCategory.id}">
             {{ markerCategory.name }}
         </li>
@@ -9,7 +9,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watchEffect, defineEmits } from 'vue';
+
+const emit = defineEmits(["changeMarker"]);
 
 const markerCategories = ref([
     {id: "goodStore", name: "착한가격업소"},
@@ -18,9 +20,13 @@ const markerCategories = ref([
 ]);
 const selectedCategoryId = ref("");       // 선택된 마커 카테고리의 id 관리
 
-function changeMarkerCategory(categoryId) {
-    selectedCategoryId.value = categoryId;
+function handleClickMarkerCategory(categoryId) {
+    selectedCategoryId.value = selectedCategoryId.value === categoryId ? "" : categoryId;
 }
+
+watchEffect(() => {
+    emit("changeMarker", selectedCategoryId.value);
+})
 </script>
 
 <style scoped>
