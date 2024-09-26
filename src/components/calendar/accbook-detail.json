@@ -1,0 +1,17 @@
+{
+  "statusText": "OK",
+  "message": null,
+  "result": {
+    "accbookCode": 154,
+    "createdAt": "2024-09-22 15:00:00",
+    "amount": 15000,
+    "isRegular": "N",
+    "title": "기타소득",
+    "accCategoryName": "용돈",
+    "storeName": null,
+    "assetName": "비상금",
+    "financeType": "I",
+    "inAssetName": null,
+    "accCommentDTOList": []
+  }
+}
