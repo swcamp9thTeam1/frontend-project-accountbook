@@ -19,7 +19,7 @@
         </div>
         <div class="monthly-budget">
             <div class="classification">월 예산</div>
-            <div class="select-budget">{{ Number(myBudget).toLocaleString() }}</div>
+            <div class="select-budget">{{ Number(myBudget).toLocaleString() }} 원</div>
         </div>
         <div class="endline"></div>
         <RouterLink to="/my/edit-info" active-class="active">
