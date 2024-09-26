@@ -80,5 +80,43 @@
                 }
             ]
         }
+    ],
+    "store-reviews": [
+        {
+            "id": "1",
+            "priceAvg": 10500,
+            "reviews": [
+                {
+                    "reviewCode": 1,
+                    "nickname": "짜장면이최고야",
+                    "peopleNum": 2,
+                    "totalPrice": 35000,
+                    "content": "짬뽕이랑 탕수육은 무조건 드세요!!",
+                    "images": []
+                },
+                {
+                    "reviewCode": 2,
+                    "nickname": "짜장면덕후",
+                    "peopleNum": 1,
+                    "totalPrice": 7000,
+                    "content": "맛있어요.. 재방문 의사 100%",
+                    "images": [
+                        "https://i.namu.wiki/i/j2AxLP9AtrcJebh4DVfGxowfXwI3a95dG_YZb_Ktczc6Ca7ACyd_NJL3YHQMw8SABGTQiJDwSpySOSSBLZVEZw.webp"
+                    ]
+                },
+                {
+                    "reviewCode": 3,
+                    "nickname": "짜장보단짬뽕",
+                    "peopleNum": 1,
+                    "totalPrice": 8000,
+                    "content": "짬뽕 정말 맛있네요",
+                    "images": [
+                        "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp",
+                        "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp",
+                        "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp"
+                    ]
+                }
+            ]
+        }
     ]
 }
