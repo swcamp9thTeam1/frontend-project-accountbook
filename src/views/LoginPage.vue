@@ -55,11 +55,29 @@
     const password = ref('');  
     const autoLogin = ref(false); 
 
-    const login = () => {
+//     const login = () => {
 
-        console.log("Username:", username.value);
-        console.log("Password:", password.value);
-        console.log("Auto Login:", autoLogin.value);
+//         console.log("Username:", username.value);
+//         console.log("Password:", password.value);
+//         console.log("Auto Login:", autoLogin.value);
+// };
+
+const login = async () => {
+    const loginData = {
+        username: username.value,
+        password: password.value
+    };
+
+    // 서버로 로그인 요청을 보내고 응답을 처리합니다.
+    const isValidUser = await validateLogin(loginData);
+    if (isValidUser) {
+        console.log("Login successful");
+        // Redirect to the main page after login
+        router.push('/');
+    } else {
+        console.log("Invalid login credentials");
+        // Display error message to the user
+    }
 };
 </script>
 
