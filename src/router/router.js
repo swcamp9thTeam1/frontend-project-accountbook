@@ -11,7 +11,24 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: "/", component: WelcomePage },
-        { path: "/account-book", component: AccountBookPage, children: [] },
+        { path: "/account-book", component: AccountBookPage, children: [
+            {
+                path: "add",
+                component: () => import("@/views/accountbook/AccbookAddView.vue")
+            },
+            {
+                path: "all",
+                component: () => import("@/views/accountbook/AccbookAllListView.vue")
+            },
+            {
+                path: "daily",
+                component: () => import("@/views/accountbook/AccbookDailyListView.vue")
+            },
+            {
+                path: "detail",
+                component: () => import("@/views/accountbook/AccbookDetailView.vue")
+            },
+        ] },
         { path: "/save-map", component: SaveMapPage },
         { path: "/group", component: GroupPage, 
             children: [

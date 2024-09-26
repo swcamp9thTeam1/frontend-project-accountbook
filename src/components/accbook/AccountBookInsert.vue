@@ -7,7 +7,7 @@
         <input type="number" class="accbook-amount" name="amount" placeholder="금액을 입력해주세요."
         minlength="1" maxlength="19" required>
 
-        <img src="../assets/icons/가계부_작성란_line.svg" class="line">
+        <img src="../../assets/icons/가계부_작성란_line.svg" class="line">
 
         <div class="finance-type">
             <div class="classification">분류</div>
@@ -71,7 +71,7 @@
             <div class="classification">가게 정보</div>
             <input type="text" class="find-store" name="store-name" placeholder="방문한 가게명을 입력해주세요.">
             <div class="find-icon">
-                <img src="../assets/icons/가계부_가게입력_돋보기_이미지.svg">
+                <img src="../../assets/icons/가계부_가게입력_돋보기_이미지.svg">
             </div>
         </div>
 
