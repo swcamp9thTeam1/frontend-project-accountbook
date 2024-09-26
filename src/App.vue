@@ -1,6 +1,5 @@
 <template>
-  <AppHeader />
-
+    <AppHeader v-if="!$route.meta.hideHeader" />
   <main>
     <RouterView />
   </main>

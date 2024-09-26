@@ -9,8 +9,20 @@
             <div class="banner">
                 <RouterLink to="/account-book" class="banner-link" active-class="active">내 가계부</RouterLink>
                 <RouterLink to="/save-map" class="banner-link" active-class="active">절약지도</RouterLink>
-                <RouterLink to="/community" class="banner-link" active-class="active">커뮤니티</RouterLink>
-                <RouterLink to="/group" class="banner-link" active-class="active">그룹</RouterLink>
+                <RouterLink 
+                    to="/community" 
+                    class="banner-link" 
+                    :class="{ active: selectedBanner === 'community' }"
+                    @click="selectBanner('community')">
+                    커뮤니티
+                </RouterLink>
+                <RouterLink 
+                    to="/group" 
+                    class="banner-link" 
+                    :class="{ active: selectedBanner === 'group' }"
+                    @click="selectBanner('group')">
+                    그룹
+                </RouterLink>
             </div>
         </nav>        
 
@@ -23,11 +35,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { RouterLink } from 'vue-router';
+import SideMenu from './SideMenu.vue'; 
 
 const user = ref("");   // 이거로 유저 있는지 없는지 컨트롤
+const selectedBanner = ref(''); 
 
+const selectBanner = (banner) => {
+  selectedBanner.value = banner;
+};
+
+
+const isAccountBook = computed(() => route.path.startsWith('/account-book/*'));
+const isSaveMap = computed(() => route.path.startsWith('/save-map/*'));
+const isCommunity = computed(() => route.path.startsWith('/community/*'));
+const isGroup = computed(() => route.path.startsWith('/group/*'));
 </script>
 
 <style scoped>
