@@ -18,9 +18,9 @@
 <script setup>
 import { onMounted, ref } from "vue";
 
-import SearchAddress from "@/components/SearchAddress.vue";
-import SaveMapMarkerCategoryList from "@/components/SaveMapMarkerCategoryList.vue";
-import StoreDetailModal from "@/components/StoreDetailModal.vue";
+import SearchAddress from "@/components/savemap/SearchAddress.vue";
+import SaveMapMarkerCategoryList from "@/components/savemap/SaveMapMarkerCategoryList.vue";
+import StoreDetailModal from "@/components/savemap/StoreDetailModal.vue";
 
 const { VITE_KAKAO_JAVASCRIPT_KEY } = import.meta.env;
 

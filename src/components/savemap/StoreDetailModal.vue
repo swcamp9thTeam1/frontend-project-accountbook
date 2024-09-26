@@ -21,7 +21,7 @@
 
 <script setup>
 import { defineProps, defineEmits, ref, watchEffect } from 'vue';
-import GoodStoreBox from './GoodStoreBox.vue';
+import GoodStoreBox from './savemap/GoodStoreBox.vue';
 
 const props = defineProps({
     storeDetailId: Number

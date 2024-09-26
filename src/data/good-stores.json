@@ -52,7 +52,25 @@
             "good": {
                 "menu": "짜장면",
                 "price": 6500
-            }
+            },
+            "accountBooks": [
+                {
+                    "accbookCode": 1,
+                    "title": "학원점심(짜장면)",
+                    "category": "식비",
+                    "asset": "신한체크카드",
+                    "createdAt": "2024-09-01",
+                    "amount": -7000
+                },
+                {
+                    "accbookCode": 2,
+                    "title": "동화장 짬뽕밥",
+                    "category": "식비",
+                    "asset": "신한체크카드",
+                    "createdAt": "2024-09-11",
+                    "amount": -8000
+                }
+            ]
         }
     ]
 }
