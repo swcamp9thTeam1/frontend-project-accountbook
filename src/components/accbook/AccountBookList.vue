@@ -1,19 +1,3 @@
-<!--<template>-->
-<!--  <div class="button-container">-->
-<!--    <button-->
-<!--        v-for="(item, index) in items"-->
-<!--        :key="index"-->
-<!--        class="button-accbook"-->
-<!--        v-if="item && item.title" >-->
-<!--      <div class="flex-container">-->
-<!--        <div class="accbook-name">{{ title }}</div>-->
-<!--        <div class="accbook-price">{{ formattedAmount(item) }}</div>-->
-<!--      </div>-->
-<!--      <div class="category-asset-date">{{ formatCategoryAssetDate(item) }}</div>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</template>-->
-
 <template>
   <div class="button-container">
     <button
@@ -28,7 +12,6 @@
   </div>
 </template>
 
-
 <script setup>
 import { defineProps } from 'vue';
 
@@ -38,13 +21,6 @@ const props = defineProps({
     required: true
   }
 });
-// 배열 전체 출력
-console.log("AccbountBookList(Component): ", props.items);
-
-// 각 항목의 값 출력
-// props.items.forEach((item, index) => {
-//   console.log(`the *** Item ${index}:`, item.title, item.createdAt);
-// });
 
 // amount에 '+' 또는 '-' 붙이기
 const formattedAmount = (item) => {

@@ -2,8 +2,8 @@
   <div class="day-stats">
     <div class="day">{{ date }}</div>
     <div class="stats-container">
-      <div class="stats-in">+200,000원</div>
-      <div class="stats-out">-20,000원</div>
+      <div class="stats-in">+{{ totalIn }}원</div>
+      <div class="stats-out">-{{ totalOut }}원</div>
     </div>
   </div>
 </template>
@@ -14,6 +14,14 @@ import { defineProps } from "vue";
 const props = defineProps({
   date: {
     type: String,
+    required: true
+  },
+  totalIn: {
+    type: Number,
+    required: true
+  },
+  totalOut: {
+    type: Number,
     required: true
   }
 });
