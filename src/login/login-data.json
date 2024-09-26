@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "id": "12c4",
+      "username": "1111",
+      "password": "1111",
+      "passwordConfirm": "1111",
+      "nickname": "1234",
+      "email": "1234@naver.com",
+      "idConfirm": true,
+      "autoLogin": true,
+      "auth": "1234"
+    }
+  ]
+}
