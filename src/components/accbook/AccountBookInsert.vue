@@ -1,8 +1,6 @@
 <template>
-    <div class="page-title">가계부 작성</div>
-
-    <div class="add-accbook">
-        <input type="text" class="accbook-title" name="title" placeholder="제목을 입력해주세요."
+  <div class="add-accbook">
+      <input type="text" class="accbook-title" name="title" placeholder="제목을 입력해주세요."
         minlength="4" maxlength="20" required>
         <input type="number" class="accbook-amount" name="amount" placeholder="금액을 입력해주세요."
         minlength="1" maxlength="19" required>
@@ -86,24 +84,6 @@
 </script>
 
 <style scoped>
-    /* 작성 부분 상단의 "가계부 작성" 텍스트 */
-    .page-title {
-        position: relative;
-        //left: 797px;
-        //left: 797px;
-        //top: 212px;
-        //width: 90px;
-        //height: 20px;
-
-        font-family: 'Noto Sans KR';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        color: #000000;
-        margin-left: 50px;
-    }
-
     /* 가계부 작성 부분 틀 */
     .add-accbook {
         position: relative;
