@@ -1,18 +1,17 @@
 <template>
 	<div class="cv-header">
-		<div  class="cv-header-nav">
+		<div class="cv-header-nav">
 			<button
 				:disabled="!headerProps.previousPeriod"
 				class="previousPeriod"
 				aria-label="Previous Period"
 				@click.prevent="onInput(headerProps.previousPeriod!)">
-				<
 			</button>
 		</div>
 		<div class="periodLabel">
 			<slot name="label">{{ headerProps.periodLabel }}</slot>
 		</div>
-		<div>
+		<div class="cv-header-nav">
 			<button 
 				:disabled="!headerProps.nextPeriod" 
 				class="nextPeriod" 
@@ -22,6 +21,9 @@
 			</button>
 		</div>
 	</div>
+  <div class="triangle-button">
+
+  </div>
 </template>
 <script setup lang="ts">
 import { IHeaderProps } from "vue-simple-calendar/dist/src/IHeaderProps";
@@ -94,25 +96,8 @@ const onInput = (d: Date): void => emit("input", d)
 }
 
 .theme-default .cv-header, .theme-default .cv-header-day {
-	background-color: #F9F9FF;
+  background-color: #F9F9FF;
 }
 
-/* Figma CSS 추가 */
-.triangle-button {
-	background-color: #B1B1D2;
-	color: transparent; /* 글자 색을 투명하게 설정 */
-	width: 0; /* 너비를 0으로 설정 */
-	height: 0; /* 높이를 0으로 설정 */
-	border-left: 12px solid transparent; /* 왼쪽 삼각형 */
-	border-right: 12px solid transparent; /* 오른쪽 삼각형 */
-	border-bottom: 20px solid #B1B1D2; /* 아래쪽 삼각형 */
-	transform: rotate(-90deg); /* 회전 */
-}
 
-.triangle-button span {
-	position: absolute; /* span의 위치를 절대적으로 설정 */
-	left: 50%;
-	transform: translateX(-50%); /* span을 가운데로 이동 */
-	top: 100%; /* span을 삼각형 아래에 위치 */
-}
 </style>

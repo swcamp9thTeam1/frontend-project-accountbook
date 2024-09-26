@@ -30,7 +30,6 @@ import 'vue-simple-calendar/dist/css/default.css';
 import 'vue-simple-calendar/dist/css/holidays-us.css';
 import { ref, computed, reactive, onMounted } from 'vue';
 import CustomCalendarViewHeader from '@/components/calendar/CustomCalendarViewHeader.vue';
-// import './custom-calendar.css'
 
 const showDate = ref(new Date());
 const setShowDate = (d) => {
@@ -128,19 +127,7 @@ const onClickItem = (item) => {
 <!-- <style scoped> -->
 <style>
 
-
 .cv-wrapper {
-	/* display: flex; */
-	/* flex-direction: column; */
-	/* flex-grow: 1; */
-	/* height: 100%; */
-	/* min-height: 100%; */
-	/* max-height: 100%; */
-	/* overflow-x: hidden; */
-	/* overflow-y: hidden; */
-
-	/* Figma css 설정 */
-	/* position: absolute; */
 	width: 607px;
 	height: 496px;
 	left: 88px;
@@ -148,7 +135,6 @@ const onClickItem = (item) => {
 	background: #F9F9FF;
 	border-radius: 30px;
 }
-
 
 
 /* item margin용 css */
@@ -164,7 +150,6 @@ const onClickItem = (item) => {
     color: #FF6D6D;
 }
 
-/* Figma css 설정으로 변경 */
 .cv-header-days,
 .cv-header-day,
 .cv-weeks,
@@ -181,7 +166,6 @@ const onClickItem = (item) => {
     background-color: #F9F9FF;
 }
 
-/* Figma CSS 추가 */
 .cv-day.good {
     margin-top: 0.25rem;
     background-color: #1a73e8;
@@ -241,22 +225,6 @@ const onClickItem = (item) => {
 	/* Restore user's direction setting (overridden for week) */
 	direction: initial;
 	
-}
-
-.cv-weekdays {
-	display: flex;
-
-	/* Shorthand flex: 1 1 0 not supported by IE11 */
-	flex-grow: 1;
-	flex-shrink: 0;
-	flex-basis: 0;
-	flex-flow: row nowrap;
-
-	/* Days of the week go left to right even if user's language is RTL (#138) */
-	direction: ltr;
-	position: relative;
-	overflow-y: auto;
-	scrollbar-width: none;
 }
 
 .cv-day-number {
