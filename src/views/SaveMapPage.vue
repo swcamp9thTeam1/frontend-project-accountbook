@@ -11,7 +11,7 @@
         <SaveMapMarkerCategoryList @changeMarker="changeMarker" />
 
         <!-- 가게 상세보기 Modal -->
-        <StoreDetailModal v-show="storeDetailId" :storeDetailId="storeDetailId" @closeModal="closeModal" />
+        <StoreDetailModal v-if="storeDetailId" :storeDetailId="storeDetailId" @closeModal="closeModal" />
     </div>
 </template>
 
@@ -28,7 +28,7 @@ let mapInstance = null;
 let goodStoreMarkers = [];        // 착한가격업소 마커 배열
 let goodStoreOverlays = [];       // 착한가격업소 오버레이 배열
 
-const storeDetailId = ref();      // 가게 상세보기 할 가게의 id
+const storeDetailId = ref("");      // 가게 상세보기 할 가게의 id
 
 onMounted(() => {
     if (window.kakao && window.kakao.maps) {
@@ -93,7 +93,7 @@ const createMarker = (position, image) => {
 
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
-        storeDetailId.value = 1;
+        storeDetailId.value = "1";
     });
 
     return marker;
@@ -161,7 +161,7 @@ const clearGoodStoreMarker = () => {
 }
 
 const closeModal = () => {
-    storeDetailId.value = null;
+    storeDetailId.value = "";
 }
 </script>
 

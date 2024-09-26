@@ -69,6 +69,14 @@
                     "asset": "신한체크카드",
                     "createdAt": "2024-09-11",
                     "amount": -8000
+                },
+                {
+                    "accbookCode": 3,
+                    "title": "잡채밥",
+                    "category": "식비",
+                    "asset": "신한체크카드",
+                    "createdAt": "2024-09-12",
+                    "amount": -9000
                 }
             ]
         }
