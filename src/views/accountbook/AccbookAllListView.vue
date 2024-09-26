@@ -14,7 +14,9 @@
         />
 
         <!-- 새로운 날짜가 아닌 경우 내역 리스트 랜더링 -->
-        <AccountBookList v-if="!item.isNewDay" :item="item.data" />
+        <AccountBookList
+            v-if="!item.isNewDay"
+            :item="item.data"/>
       </div>
     </div>
   </div>
@@ -56,6 +58,7 @@ onMounted(async () => {
 const groupedAccbookList = computed(() => {
   const grouped = [];
   const totals = {}; // 날짜별로 수입 및 지출 총계 저장
+  let lastDate = '';
 
   accbookListData.value.forEach(item => {
     const currentDate = new Date(item.createdAt).toISOString().split('T')[0]; // YYYY-MM-DD 형식
@@ -75,22 +78,23 @@ const groupedAccbookList = computed(() => {
       totals[currentDate].totalOut += item.amount;
     }
 
-    // 현재 날짜가 마지막 날짜와 다를 경우 새로운 날짜 추가
-    if (grouped.length === 0 || grouped[grouped.length - 1].date !== currentDate) {
-      grouped.push({ isNewDay: true, date: currentDate, totalIn: totals[currentDate].totalIn, totalOut: totals[currentDate].totalOut });
-    } else {
-      grouped[grouped.length - 1].totalIn = totals[currentDate].totalIn;
-      grouped[grouped.length - 1].totalOut = totals[currentDate].totalOut;
+    // 새로운 날짜일 경우 그룹에 추가
+    if (currentDate !== lastDate) {
+      grouped.push({
+        isNewDay: true,
+        date: currentDate,
+        totalIn: totals[currentDate].totalIn,
+        totalOut: totals[currentDate].totalOut
+      });
+      lastDate = currentDate; // 업데이트
     }
 
     // 기존 데이터 추가
-    grouped.push({ isNewDay: false, data: item });
-
+    grouped.push({isNewDay: false, data: item});
   });
+
   return grouped;
 });
-
-
 
 </script>
 
