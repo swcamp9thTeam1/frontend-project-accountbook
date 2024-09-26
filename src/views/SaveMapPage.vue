@@ -9,20 +9,26 @@
 
         <!-- 마커 카테고리 선택 버튼 -->
         <SaveMapMarkerCategoryList @changeMarker="changeMarker" />
+
+        <!-- 가게 상세보기 Modal -->
+        <StoreDetailModal v-show="storeDetailId" :storeDetailId="storeDetailId" @closeModal="closeModal" />
     </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 import SearchAddress from "@/components/SearchAddress.vue";
 import SaveMapMarkerCategoryList from "@/components/SaveMapMarkerCategoryList.vue";
+import StoreDetailModal from "@/components/StoreDetailModal.vue";
 
 const { VITE_KAKAO_JAVASCRIPT_KEY } = import.meta.env;
 
 let mapInstance = null;
 let goodStoreMarkers = [];        // 착한가격업소 마커 배열
 let goodStoreOverlays = [];       // 착한가격업소 오버레이 배열
+
+const storeDetailId = ref();      // 가게 상세보기 할 가게의 id
 
 onMounted(() => {
     if (window.kakao && window.kakao.maps) {
@@ -87,7 +93,7 @@ const createMarker = (position, image) => {
 
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
-        console.log("마커 클릭!!");
+        storeDetailId.value = 1;
     });
 
     return marker;
@@ -152,6 +158,10 @@ const clearGoodStoreMarker = () => {
     goodStoreMarkers = [];
     goodStoreOverlays.forEach(overlay => overlay.setMap(null));
     goodStoreOverlays = [];
+}
+
+const closeModal = () => {
+    storeDetailId.value = null;
 }
 </script>
 
