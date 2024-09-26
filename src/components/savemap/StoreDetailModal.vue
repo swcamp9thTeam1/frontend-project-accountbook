@@ -21,7 +21,7 @@
                     <div v-if="accountBooks.length > 0" class="store-accounts-box">
                         <div class="store-accounts-title-box">
                             <div class="store-accounts-title">내 가계부</div>
-                            <ReadMoreButton v-if="store.accountBooks.length > 2" @clickMore="clickMoreAccountBooks" />
+                            <ReadMoreButton v-if="store.accountBooks.length > 2" @clickMore="showRightView('ACCBOOKS')" />
                         </div>
 
                         <!-- 최대 2개만 표시 -->
@@ -35,21 +35,33 @@
                             <div class="price-avg">1인당 평균 {{ storeReview.priceAvg.toLocaleString() }}원을 지출했어요!</div>
                         </div>
                         <div class="review-more-btn-wrapper">
-                            <ReadMoreButton v-if="allReviews.length > 2" @clickMore="clickMoreReviews" />
+                            <ReadMoreButton v-if="allReviews.length > 2" @clickMore="showRightView('REVIEWS')" />
                         </div>
 
                         <StoreReviewBox v-for="review in reviews" :review="review" />
                     </div>
 
                     <!-- 리뷰 작성 버튼 -->
-                    <button type="button" class="btn-write-review" @click="goWriteReview">
+                    <button type="button" class="btn-write-review" @click="showRightView('WRITE_REVIEW')">
                         리뷰 작성하러 가기
                     </button>
                 </div>
             </div>
 
+            <!-- Modal 오른쪽 부분 -->
             <div class="modal-position-right" v-show="openRight">
-                오른 쪽 열 렸 다 !!
+
+                <!-- 오른쪽 + 윗부분 -->
+                <div class="right-top-area">
+                    <button type="button" class="btn-back" @click="back">
+                        <img src="/src/assets/icons/button-back.svg" alt="돌아가기">
+                    </button>
+                </div>
+
+                <!-- 오른쪽+ 메인 content -->
+                <div class="right-main-area">
+                    <WriteReviewView v-if="rightView === 'WRITE_REVIEW'" />
+                </div>
             </div>
         </template>
     </dialog>
@@ -58,9 +70,10 @@
 <script setup>
 import { defineProps, defineEmits, ref, watchEffect } from 'vue';
 import GoodStoreBox from '@/components/savemap/GoodStoreBox.vue';
-import ReadMoreButton from '@/components/ReadMoreButton.vue';
+import ReadMoreButton from '@/components/buttons/ReadMoreButton.vue';
 import AccountBookItem from "@/components/accbook/AccountBookList.vue"
 import StoreReviewBox from './StoreReviewBox.vue';
+import WriteReviewView from './WriteReviewView.vue';
 
 const props = defineProps({
     storeDetailId: String
@@ -71,8 +84,9 @@ const store = ref({});
 const accountBooks = ref([]);    // 최대 2개만 표시하기 위해 따로 저장
 const storeReview = ref({});     // 가게 리뷰
 const allReviews = ref([]);      // 가게 전체 리뷰 목록
-const reviews = ref([]);    // 리뷰 2개만 표시
+const reviews = ref([]);         // 리뷰 2개만 표시
 const openRight = ref(false);
+const rightView = ref("");       // 오른쪽에 표시될 화면("WRITE_REVIEW", "REVIEWS", "ACCBOOKS")
 
 const getStoreDetail = async (storeId) => {
     const response = await fetch(`http://localhost:8080/stores/${storeId}`);
@@ -106,20 +120,13 @@ watchEffect(() => {
     getStoreReviews(props.storeDetailId);
 });
 
-const clickMoreAccountBooks = () => {
-
-    /* 가계부 더보기 */
-    console.log("가계부 더보기");
-}
-
-const clickMoreReviews = () => {
-
-    /* 리뷰 더보기 */
-    console.log("리뷰 더보기");
-}
-
-const goWriteReview = () => {
+const showRightView = (viewName) => {
     openRight.value = true;
+    rightView.value = viewName;
+}
+
+const back = () => {
+    openRight.value = false;
 }
 </script>
 
@@ -144,6 +151,7 @@ dialog.modal {
     .modal-position-main {
         display: flex;
         flex-direction: column;
+        flex: 1;
     }
 
     &::backdrop {
@@ -257,6 +265,35 @@ dialog.modal {
 
     .modal-position-right {
         border-left: 1px solid #ACACAC;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .right-top-area {
+            padding: 20px;  /* 왼쪽 close 버튼과 동일한 top 위치 */
+
+            .btn-back {
+                width: 24px;
+                height: 24px;
+                border: none;
+                background-color: transparent;
+                padding: 0;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .right-main-area {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
     }
 }
 
