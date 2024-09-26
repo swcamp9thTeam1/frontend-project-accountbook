@@ -6,6 +6,9 @@ import SaveMapPage from "@/views/SaveMapPage.vue";
 import GroupPage from "@/views/GroupPage.vue";
 import CommunityPage from "@/views/CommunityPage.vue";
 import MyPage from "@/views/MyPage.vue";
+import LoginPage from "@/views/LoginPage.vue";
+import SignupPage from "@/views/SignupPage.vue";
+import FindIdPwPage from "@/views/FindIdPwPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -29,17 +32,60 @@ const router = createRouter({
                 component: () => import("@/views/accountbook/AccbookDetailView.vue")
             },
         ] },
-        { path: "/save-map", component: SaveMapPage },
-        { path: "/group", component: GroupPage, 
+        // { path: "/save-map", component: SaveMapPage },
+        // { path: "/group", component: GroupPage, 
+
+        { path: "/", component: WelcomePage,meta: {hideMenu: true}},
+        { path: "/account-book", component: AccountBookPage, children: [], meta: {hideMenu: true} },
+        { path: "/save-map", component: SaveMapPage, meta: {hideMenu: true} },
+        { path: "/group", component: GroupPage, redirect: "/group/my",
             children: [
                 {
-                    path: "nested",
-                    component: () => import("@/views/NestedPage.vue")
+                    path: "my",
+                    component: () => import("@/views/group/GroupMyView.vue")
+                },
+
+                {
+                    path: "join",
+                    component: () => import("@/views/group/GroupJoinView.vue")
+                },
+
+                {
+                    path: "pending",
+                    component: () => import("@/views/group/GroupPendingView.vue")
+
+                },
+
+                {
+                    path: "create",
+                    component: () => import("@/views/group/GroupCreateView.vue")
                 }
             ] },
-        { path: "/community", component: CommunityPage },
-        { path: "/my", component: MyPage },
 
+        { path: "/my", component: MyPage },
+        { path: "/community", component: CommunityPage, redirect: "/community/free-board",
+            children: [
+                {
+                    path: "free-board",
+                    component: () => import("@/views/community/CommunityFreeBoardView.vue")
+                },
+
+                {
+                    path: "my",
+                    component: () => import("@/views/community/CommunityMyView.vue")
+                },
+
+                {
+                    path: "scrap",
+                    component: () => import("@/views/community/CommunityScrapView.vue")
+
+                }
+            ]
+},
+
+        { path: "/login", component: LoginPage, meta: {hideHeader:true, hideMenu:true} },
+        { path: "/signup", component: SignupPage, meta: {hideHeader:true, hideMenu:true}},
+        { path: "/find", component: FindIdPwPage, meta: {hideHeader:true, hideMenu:true}}
     ],
 })
 

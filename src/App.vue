@@ -1,6 +1,6 @@
 <template>
-  <AppHeader />
-
+    <AppHeader v-if="!$route.meta.hideHeader" />
+    <SideMenu v-if="!$route.meta.hideMenu" />
   <main>
     <RouterView />
   </main>

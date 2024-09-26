@@ -11,13 +11,18 @@
             <p>Save Pig</p>
         </div>
         <div class="buttons">
-            <button class="login-btn">login</button>
-            <button class="signup-btn">sign up</button>
+            <RouterLink to="/login">
+                <button class="login-btn">login</button>
+            </RouterLink>
+            <RouterLink to="/signup">
+                <button class="signup-btn">sign up</button>
+            </RouterLink>
         </div>
     </div>
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router';
 
 </script>
 
