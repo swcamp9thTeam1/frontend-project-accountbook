@@ -77,6 +77,53 @@
                         내가 스크랩한 글
                     </RouterLink>
                 </li>
+
+                <!-- 마이페이지 관련 메뉴 -->
+                <li v-if="selectedBanner === 'my'">
+                    <RouterLink 
+                        to="/my/asset" 
+                        class="menu-item" 
+                        :class="{ 'active-menu': isActive('/my/asset') }"
+                        @click="selectMenu('나의 자산')">
+                        나의 자산 
+                    </RouterLink>
+                </li>
+                <li v-if="selectedBanner === 'my'">
+                    <RouterLink 
+                        to="/my/expend" 
+                        class="menu-item" 
+                        :class="{ 'active-menu': isActive('/my/expend') }"
+                        @click="selectMenu('나의 정기지출')">
+                        나의 정기지출
+                    </RouterLink>
+                </li>
+                <li v-if="selectedBanner === 'my'">
+                    <RouterLink 
+                        to="/my/review" 
+                        class="menu-item" 
+                        :class="{ 'active-menu': isActive('/my/review') }"
+                        @click="selectMenu('내가 다녀간 가게와 리뷰')">
+                        내가 다녀간 가게와 리뷰
+                    </RouterLink>
+                </li>
+                <li v-if="selectedBanner === 'my'">
+                    <RouterLink 
+                        to="/my/scrap" 
+                        class="menu-item" 
+                        :class="{ 'active-menu': isActive('/my/scrap') }"
+                        @click="selectMenu('나의 스크랩')">
+                        나의 스크랩
+                    </RouterLink>
+                </li>
+                <li v-if="selectedBanner === 'my'">
+                    <RouterLink 
+                        to="/my/write" 
+                        class="menu-item" 
+                        :class="{ 'active-menu': isActive('/my/write') }"
+                        @click="selectMenu('나의 글')">
+                        나의 글
+                    </RouterLink>
+                </li>
             </ul>
         </div>
         <div class="group-tab">
@@ -109,7 +156,10 @@ if (props.selectedBanner === 'group') {
     activeMenu.value = '내 그룹';
 } else if (props.selectedBanner === 'community') {
     activeMenu.value = '자유 게시판';
+}   else if (props.selectedBanner === 'my') {
+    activeMenu.value = '회원 정보';
 }
+
 </script>
 
 <style scoped>

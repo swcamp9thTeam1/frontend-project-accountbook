@@ -9,6 +9,7 @@ import MyPage from "@/views/MyPage.vue";
 import LoginPage from "@/views/LoginPage.vue";
 import SignupPage from "@/views/SignupPage.vue";
 import FindIdPwPage from "@/views/FindIdPwPage.vue";
+import Confirm from '@/components/Confirm.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -62,7 +63,35 @@ const router = createRouter({
                 }
             ] },
 
-        { path: "/my", component: MyPage },
+        { path: "/my", component: MyPage, children: [
+            {
+                path: "asset",
+                component: () => import("@/views/my/MyAssetView.vue")
+            },
+
+            {
+                path: "expend",
+                component: () => import("@/views/my/MyExpendView.vue")
+            },
+
+            {
+                path: "review",
+                component: () => import("@/views/my/MyReviewView.vue")
+            },
+
+            {
+                path: "scrap",
+                component: () => import("@/views/my/MyScrapView.vue")
+            },
+
+            {
+                path: "write",
+                component: () => import("@/views/my/MyWriteView.vue")
+            },
+
+
+
+        ]},
         { path: "/community", component: CommunityPage, redirect: "/community/free-board",
             children: [
                 {
@@ -85,7 +114,8 @@ const router = createRouter({
 
         { path: "/login", component: LoginPage, meta: {hideHeader:true, hideMenu:true} },
         { path: "/signup", component: SignupPage, meta: {hideHeader:true, hideMenu:true}},
-        { path: "/find", component: FindIdPwPage, meta: {hideHeader:true, hideMenu:true}}
+        { path: "/find", component: FindIdPwPage, meta: {hideHeader:true, hideMenu:true}},
+        { path: '/confirm', component: Confirm,  meta: {hideHeader:true, hideMenu:true}}
     ],
 })
 
