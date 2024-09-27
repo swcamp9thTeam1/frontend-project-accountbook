@@ -31,7 +31,7 @@ const formattedAmount = (item) => {
 const formatCategoryAssetDate = (item) => {
   const date = new Date(item.createdAt).toISOString().split('T')[0]; // YYYY-MM-DD 형식
   // const date = new Date(item.createdAt);
-  return `${item.accCategoryCode} | ${item.assetCode} | ${date}`;
+  return `${item.accCategoryName} | ${item.assetName} | ${date}`;
 };
 </script>
 
