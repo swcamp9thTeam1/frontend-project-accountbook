@@ -1,8 +1,10 @@
 <template>
     <div>
         <MyPageSideMenu/>
+        <SideMenu :selectedBanner="'my'" :activeMenu="activeMenu" />
+
     </div>
-    <div class="info">회원정보</div>
+    <!-- <div class="info">회원정보</div> -->
     <div class="member-info" id="app">
         <div class="startline"></div>
         <div class="user-id">
@@ -32,6 +34,8 @@
     import { RouterLink } from 'vue-router';
     import { ref } from 'vue';
     import MyPageSideMenu from '@/components/MyPageSideMenu.vue';
+    import SideMenu from '@/components/SideMenu.vue'; 
+
 
     const myId = ref('iamhong01');
     const myNickname = ref('동에번쩍서에번쩍');
