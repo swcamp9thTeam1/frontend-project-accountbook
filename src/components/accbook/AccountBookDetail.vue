@@ -76,25 +76,21 @@
 </template>
 
 <script setup>
-import {useRoute} from "vue-router";
-import {onMounted, watch, ref} from "vue";
-const route = useRoute()
-
-// 값의 변경을 component에서 모니터링
-watch(
-    () => route.params.id,
-    (newParam, oldParam) => {
-      // console.log('watch: ', oldParam, '=>', newParam)
-    },
-    {immediate: true}
-)
+import {onMounted, ref, defineProps} from "vue";
 
 const accbookDetail = ref([]);
 const InOutTranferType = ref(null); // 선택된 버튼 상태 관리
 const regularType = ref(null); // 고정지출 버튼 상태 관리
 
+const props = defineProps({
+  item: {
+    type: Object,
+    required: true
+  }
+});
+
 onMounted(async () => {
-  const response = await fetch(`http://localhost:8080/monthly/${route.params.id}`);
+  const response = await fetch(`http://localhost:8080/monthly/${props.item.id}`);
   const data = await response.json();
   accbookDetail.value = data;
 
@@ -129,8 +125,6 @@ const formatDateString = (dateString) => {
 
   return `${year}년 ${month}월 ${day}일 | ${ampm} ${hour}:${minute}`;
 };
-
-
 
 </script>
 

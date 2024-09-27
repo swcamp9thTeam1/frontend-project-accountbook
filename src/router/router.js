@@ -21,7 +21,7 @@ const router = createRouter({
                 component: () => import("@/views/accountbook/AccbookAddView.vue")
             },
             {
-                path: "all",
+                path: "",
                 component: () => import("@/views/accountbook/AccbookAllListView.vue")
             },
             {
