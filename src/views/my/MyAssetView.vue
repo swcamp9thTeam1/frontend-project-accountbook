@@ -18,7 +18,6 @@ import { RouterLink } from 'vue-router';
 
         totalAsset.value = assets.value.reduce((sum, asset) => sum + asset.balance, 0);
     })
-    
 </script>
 
 <template>
@@ -41,8 +40,6 @@ import { RouterLink } from 'vue-router';
     .container {
         display: flex;
         flex-direction: column;
-        margin-left: 370px;
-        
     }
 
     .total {
@@ -63,9 +60,9 @@ import { RouterLink } from 'vue-router';
 
     .insert {
         position: absolute;
-        width: 130px;
+        width: 120px;
         height: 38px;
-        margin-left: 760px;
+        margin-left: 126px;
 
         background: #F3F3FF;
         border-radius: 25.5px;
@@ -82,7 +79,6 @@ import { RouterLink } from 'vue-router';
     .list {
         display: flex;
         flex-direction: column;
-        margin-left: 345px;
-        margin-top: 6px;
+        margin-top: 170px;
     }
 </style>
