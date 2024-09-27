@@ -1,5 +1,5 @@
 <template>
-    <dialog open class="modal">
+    <dialog class="modal-store-detail">
         <template v-if="store">
 
             <div class="modal-position-main">
@@ -81,7 +81,7 @@ import StoreReviewListView from '@/components/savemap/StoreReviewListView.vue';
 import CostAvgChip from '@/components/savemap/CostAvgChip.vue';
 
 const props = defineProps({
-    storeDetailId: String
+    storeDetailId: String,
 });
 const emit = defineEmits(["closeModal"]);
 
@@ -150,7 +150,7 @@ const closeRightView = () => {
 </script>
 
 <style scoped>
-dialog.modal {
+dialog.modal-store-detail {
     background-color: white;
     min-width: 500px;
     max-width: 1500px;
@@ -161,11 +161,7 @@ dialog.modal {
     padding: 0;
 
     position: fixed;
-    top: 50%;                       /* 모달을 화면의 중앙에 배치 */
-    transform:translateY(-50%);     /* 모달을 화면의 중앙에 배치 */
     z-index: 4;
-
-    display: flex;
 
     .modal-position-main {
         display: flex;
@@ -174,14 +170,13 @@ dialog.modal {
     }
 
     &::backdrop {
-        width: 100vw;
-        height: 100vh;
         background-color: rgba(0, 0, 0, .2);
     }
 
     &[open] {
         animation: show 0.5s ease normal;
         -webkit-animation: show 0.5s ease normal;
+        display: flex;
     }
 
     &[open]::backdrop {

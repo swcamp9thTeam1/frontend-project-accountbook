@@ -11,7 +11,7 @@
         <SaveMapMarkerCategoryList @changeMarker="changeMarker" />
 
         <!-- 가게 상세보기 Modal -->
-        <StoreDetailModal v-if="storeDetailId" :storeDetailId="storeDetailId" @closeModal="closeModal" />
+        <StoreDetailModal :storeDetailId="storeDetailId" @closeModal="closeModal" />
     </div>
 </template>
 
@@ -106,6 +106,10 @@ const createMarker = (position, image) => {
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
         storeDetailId.value = "1";
+
+        // 모달 열기
+        const modalEl = getModalElement();
+        modalEl.showModal();
     });
 
     return marker;
@@ -236,8 +240,14 @@ const clearCostAvgMarker = () => {
     costAvgOverlays = [];
 }
 
+const getModalElement = () => document.querySelector("dialog.modal-store-detail");
+
 const closeModal = () => {
     storeDetailId.value = "";
+
+    // 모달 닫기
+    const modalEl = getModalElement();
+    modalEl.close();
 }
 </script>
 
