@@ -9,6 +9,7 @@ export const useAuth = () => {
 
   const logout = () => {
     isLoggedIn.value = false;
+    localStorage.clear();
   };
 
   return {

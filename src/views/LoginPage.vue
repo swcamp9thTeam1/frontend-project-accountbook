@@ -69,6 +69,7 @@
 
     if (users.length > 0) {
       login();  // 로그인 시 user 상태를 true로 변경
+      localStorage.setItem('nickname', users[0].nickname);
       router.push('/account-book');  // 로그인 후 이동할 페이지
     } else {
       alert("아이디 또는 비밀번호가 일치하지 않습니다.");

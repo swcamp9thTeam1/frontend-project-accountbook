@@ -8,6 +8,7 @@
 <script setup>
     import SideMenu from '@/components/SideMenu.vue';
 
+
     import { RouterView, RouterLink } from 'vue-router';
     import { ref } from 'vue';
 </script>
