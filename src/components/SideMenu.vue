@@ -9,7 +9,7 @@
 
     <div class="sidebar-container">
         <div class="sidebar">
-            <p>{{ userName }}님</p>
+            <p>{{ nickname }} 님</p>
             <ul>
                 <!-- 그룹 관련 메뉴 -->
                 <li v-if="selectedBanner === 'group'">
@@ -61,9 +61,9 @@
                 </li>
                 <li v-if="selectedBanner === 'community'">
                     <RouterLink 
-                        to="/community/my" 
+                        to="/community/my/" 
                         class="menu-item" 
-                        :class="{ 'active-menu': isActive('/community/my') }"
+                        :class="{ 'active-menu': isActive('/community/my') || route.path.startsWith('/community/my/') }"
                         @click="selectMenu('나의 글')">
                         나의 글
                     </RouterLink>
@@ -133,7 +133,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, watchEffect, onMounted } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 
 const route = useRoute();
@@ -152,13 +152,45 @@ const isActive = (path) => {
     return route.path === path;
 };
 
-if (props.selectedBanner === 'group') {
-    activeMenu.value = '내 그룹';
-} else if (props.selectedBanner === 'community') {
-    activeMenu.value = '자유 게시판';
-}   else if (props.selectedBanner === 'my') {
-    activeMenu.value = '회원 정보';
-}
+const nickname = ref(''); // 닉네임을 저장할 ref 변수
+
+// 로컬 스토리지에서 닉네임 가져오기
+onMounted(() => {
+    const storedNickname = localStorage.getItem('nickname');
+    if (storedNickname) {
+        nickname.value = storedNickname;
+    }
+});
+
+// if (props.selectedBanner === 'group') {
+//     activeMenu.value = '내 그룹';
+// } else if (props.selectedBanner === 'community') {
+//     activeMenu.value = '자유 게시판';
+// }   else if (props.selectedBanner === 'my') {
+//     activeMenu.value = '회원 정보';
+// }
+
+
+watchEffect(() => {
+    if (props.selectedBanner === 'group') {
+        if (isActive('/group/my')) activeMenu.value = '내 그룹';
+        else if (isActive('/group/join')) activeMenu.value = '그룹 가입';
+        else if (isActive('/group/pending')) activeMenu.value = '승인 대기';
+        else if (isActive('/group/create')) activeMenu.value = '그룹 생성';
+    } else if (props.selectedBanner === 'community') {
+        if (isActive('/community/free-board')) activeMenu.value = '자유 게시판';
+        else if (isActive('/community/my')) activeMenu.value = '나의 글';
+        else if (isActive('/community/scrap')) activeMenu.value = '내가 스크랩한 글';
+    } else if (props.selectedBanner === 'my') {
+        if (isActive('/my')) activeMenu.value = '회원 정보';
+        else if (isActive('/my/asset')) activeMenu.value = '나의 자산';
+        else if (isActive('/my/expend')) activeMenu.value = '나의 정기지출';
+        else if (isActive('/my/review')) activeMenu.value = '내가 다녀간 가게와 리뷰';
+        else if (isActive('/my/scrap')) activeMenu.value = '나의 스크랩';
+        else if (isActive('/my/write')) activeMenu.value = '나의 글';
+        
+    }
+});
 
 </script>
 
@@ -170,7 +202,7 @@ if (props.selectedBanner === 'group') {
 }
 
 .sidebar {
-    width: 20%;
+    width: 300px;
     background-color: #F9F9FF;
     height: 100vh;
     text-align: center;

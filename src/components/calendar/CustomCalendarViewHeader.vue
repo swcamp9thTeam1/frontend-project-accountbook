@@ -6,18 +6,19 @@
 				class="previousPeriod"
 				aria-label="Previous Period"
 				@click.prevent="onInput(headerProps.previousPeriod!)">
+        <img src="@/assets/icons/calendar-previous-month.svg" alt="Previous Month"/>
 			</button>
 		</div>
 		<div class="periodLabel">
 			<slot name="label">{{ headerProps.periodLabel }}</slot>
 		</div>
 		<div class="cv-header-nav">
-			<button 
-				:disabled="!headerProps.nextPeriod" 
-				class="nextPeriod" 
-				aria-label="Next Period" 
+			<button
+				:disabled="!headerProps.nextPeriod"
+				class="nextPeriod"
+				aria-label="Next Period"
 				@click.prevent="onInput(headerProps.nextPeriod!)">
-                >
+        <img src="@/assets/icons/calendar-next-month.svg" alt="Next Month"/>
 			</button>
 		</div>
 	</div>
@@ -48,14 +49,16 @@ const onInput = (d: Date): void => emit("input", d)
 <style>
 
 .cv-header {
-	display: flex;
+	display: ruby;
 	flex: 0 1 auto;
 	flex-flow: row nowrap;
 	align-items: center;
 	justify-content: space-between;
+  gap: 5em;
 	min-height: 2.5em;
 	border-width: 1px 1px 0 1px;
 	text-align: center;
+  font-family: 'Noto Sans KR';
 }
 
 .cv-header .periodLabel {
@@ -64,17 +67,15 @@ const onInput = (d: Date): void => emit("input", d)
 	flex-flow: row nowrap;
 	min-height: 1.5em;
 	line-height: 1;
-	font-size: 1.5em;
-	align-items: center; /* 수직 정렬 */
-	text-align: center; /* 텍스트를 가운데 정렬 */
-	justify-content: center; /* 수평 정렬 */
-
+	align-items: center;
+	text-align: center;
+	justify-content: center;
 }
 
 .cv-header,
 .cv-header button {
 	border-style: solid;
-	border-color: #ddd;
+	border-color: transparent;
 }
 
 .cv-header-nav,
@@ -99,5 +100,12 @@ const onInput = (d: Date): void => emit("input", d)
   background-color: #F9F9FF;
 }
 
+.theme-default .cv-header, .theme-default .cv-header-day {
+  font-size: 16px;
+  padding: 10px;
+}
 
+.cv-wrapper .cv-header-days div {
+  padding-bottom: 10px;
+}
 </style>

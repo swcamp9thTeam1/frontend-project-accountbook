@@ -7,8 +7,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import SearchBar from '@/components/SearchBar.vue';
-import SearchAddressResult from '@/components/SearchAddressResult.vue';
+import SearchBar from '@/components/savemap/SearchBar.vue';
+import SearchAddressResult from '@/components/savemap/SearchAddressResult.vue';
 
 const { VITE_KAKAO_REST_API_KEY } = import.meta.env;
 

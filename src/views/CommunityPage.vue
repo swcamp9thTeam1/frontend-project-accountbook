@@ -18,6 +18,7 @@
     import CommunityMyView from '@/views/community/CommunityMyView.vue';
     import CommunityFreeBoardView from './community/CommunityFreeBoardView.vue';
 
+
     import { RouterView, RouterLink } from 'vue-router';
     import { ref } from 'vue';
 </script>

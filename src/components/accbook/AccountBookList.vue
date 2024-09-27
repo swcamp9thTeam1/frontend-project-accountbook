@@ -2,7 +2,8 @@
   <div class="button-container">
     <button
         class="button-accbook"
-        v-if="item && item.title">
+        v-if="item && item.title"
+        @click="handleClick(item.id)">
       <div class="flex-container">
         <div class="accbook-name">{{ item.title }}</div>
         <div class="accbook-price">{{ formattedAmount(item) }}</div>
@@ -13,7 +14,8 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import {defineEmits, defineProps} from 'vue';
+import router from "@/router/router.js";
 
 const props = defineProps({
   item: {
@@ -21,6 +23,12 @@ const props = defineProps({
     required: true
   }
 });
+
+const emit = defineEmits(["itemClicked"]);
+
+const handleClick = (id) => {
+  emit('itemClicked', id);
+};
 
 // amount에 '+' 또는 '-' 붙이기
 const formattedAmount = (item) => {
@@ -31,8 +39,9 @@ const formattedAmount = (item) => {
 const formatCategoryAssetDate = (item) => {
   const date = new Date(item.createdAt).toISOString().split('T')[0]; // YYYY-MM-DD 형식
   // const date = new Date(item.createdAt);
-  return `${item.accCategoryCode} | ${item.assetCode} | ${date}`;
+  return `${item.accCategoryName} | ${item.assetName} | ${date}`;
 };
+
 </script>
 
 <style scoped>

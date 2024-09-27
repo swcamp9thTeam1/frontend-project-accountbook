@@ -34,7 +34,6 @@ const props = defineProps({
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
 
     .good-store-title {
         font-size: 20px;
