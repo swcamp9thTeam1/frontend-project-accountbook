@@ -43,23 +43,27 @@ const router = createRouter({
             children: [
                 {
                     path: "my",
-                    component: () => import("@/views/group/GroupMyView.vue")
+                    component: () => import("@/views/group/MyGroups.vue")
                 },
 
                 {
                     path: "join",
-                    component: () => import("@/views/group/GroupJoinView.vue")
+                    component: () => import("@/views/group/GroupSignUp.vue")
                 },
 
                 {
                     path: "pending",
-                    component: () => import("@/views/group/GroupPendingView.vue")
+                    component: () => import("@/views/group/GroupSignUpStatus.vue")
 
                 },
 
                 {
                     path: "create",
-                    component: () => import("@/views/group/GroupCreateView.vue")
+                    component: () => import("@/views/group/GroupCreate.vue")
+                },
+                {
+                    path: "intro",
+                    component: () => import("@/views/group/GroupIntro.vue")
                 }
             ] },
 
