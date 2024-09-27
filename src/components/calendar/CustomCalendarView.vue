@@ -134,6 +134,7 @@ const onClickItem = (item) => {
 	top: 308px;
 	background: #F9F9FF;
 	border-radius: 30px;
+  font-family: 'Noto Sans KR';
 }
 
 

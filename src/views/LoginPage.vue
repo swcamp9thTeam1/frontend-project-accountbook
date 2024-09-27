@@ -15,7 +15,7 @@
             </RouterLink>
             <p>Login</p>
         </div>
-        <form @submit.prevent="login"> <!-- 폼 제출 시 login 메서드 호출 -->
+        <form @submit.prevent="handleLogin"> <!-- 폼 제출 시 login 메서드 호출 -->
         <!-- <form> -->
             <label for="username">아이디</label>
             <input type="text" id="username" name="username" v-model="username">
@@ -48,12 +48,35 @@
 
 <script setup>
     import { ref } from 'vue';
-    import { RouterLink } from 'vue-router';
+    import { RouterLink, useRouter } from 'vue-router';
+    import { useAuth } from '@/components/useAuth';
 
-
+    const { login } = useAuth();
     const username = ref('');  
     const password = ref('');  
+    const router = useRouter();
+
     const autoLogin = ref(false); 
+
+    const handleLogin = async () => {
+        const loginData = {
+            username: username.value,
+            password: password.value 
+        };
+        try {
+    const response = await fetch(`http://localhost:8080/users?username=${loginData.username}&password=${loginData.password}`);
+    const users = await response.json();
+
+    if (users.length > 0) {
+      login();  // 로그인 시 user 상태를 true로 변경
+      router.push('/account-book');  // 로그인 후 이동할 페이지
+    } else {
+      alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+    }
+  } catch (error) {
+    console.error('로그인 중 오류 발생:', error);
+  }
+};
 
 //     const login = () => {
 
@@ -62,23 +85,6 @@
 //         console.log("Auto Login:", autoLogin.value);
 // };
 
-const login = async () => {
-    const loginData = {
-        username: username.value,
-        password: password.value
-    };
-
-    // 서버로 로그인 요청을 보내고 응답을 처리합니다.
-    const isValidUser = await validateLogin(loginData);
-    if (isValidUser) {
-        console.log("Login successful");
-        // Redirect to the main page after login
-        router.push('/');
-    } else {
-        console.log("Invalid login credentials");
-        // Display error message to the user
-    }
-};
 </script>
 
 <style scoped>
