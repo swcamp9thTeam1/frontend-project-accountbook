@@ -6,7 +6,7 @@
                 <!-- 상단 가게명, 가게주소 -->
                 <div class="modal-top-area">
                     <button type="button" class="btn-close" @click="emit('closeModal')">
-                        <img src="/src/assets/icons/button-close.svg" alt="Close Button">
+                        <img src="@/assets/icons/button-close.svg" alt="Close Button">
                     </button>
                     <b class="store-name">{{ store.name }}</b>
                     <div class="store-category">{{ store.category }}</div>
@@ -56,13 +56,13 @@
                 <!-- 오른쪽 + 윗부분 -->
                 <div class="right-top-area">
                     <button type="button" class="btn-back" @click="back">
-                        <img src="/src/assets/icons/button-back.svg" alt="돌아가기">
+                        <img src="@/assets/icons/button-back.svg" alt="돌아가기">
                     </button>
                 </div>
 
                 <!-- 오른쪽+ 메인 content -->
                 <div class="right-main-area">
-                    <WriteReviewView v-if="rightView === 'WRITE_REVIEW'" />
+                    <WriteReviewView v-if="rightView === 'WRITE_REVIEW'" @closeRightView="closeRightView" />
                 </div>
             </div>
         </template>
@@ -139,13 +139,18 @@ const showRightView = (viewName) => {
 const back = () => {
     openRight.value = false;
 }
+
+const closeRightView = () => {
+    rightView.value = "";
+    openRight.value = false;
+}
 </script>
 
 <style scoped>
 dialog.modal {
     background-color: white;
     min-width: 500px;
-    max-width: 1000px;
+    max-width: 1500px;
     max-height: 80vh;
     border: none;
     border-radius: 21px;
