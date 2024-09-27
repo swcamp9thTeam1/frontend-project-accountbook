@@ -26,6 +26,7 @@
 
 <script setup>
     import { RouterLink } from 'vue-router';
+    import { ref } from 'vue';
 
     const member = ref({});
     onMounted(async () => {
@@ -33,9 +34,9 @@
         member.value = await response.json();
     })
 
-    function changeInfo() {
+    // function changeInfo() {
 
-    }
+    // }
 </script>
 
 <style scoped>

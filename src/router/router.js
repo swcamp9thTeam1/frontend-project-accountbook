@@ -101,7 +101,7 @@ const router = createRouter({
             {
                 path: "edit-info",
                 component: () => import("@/views/my/MyInfoEditView.vue")
-            },
+            }
 
 
 
