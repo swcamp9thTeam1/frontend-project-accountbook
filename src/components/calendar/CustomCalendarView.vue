@@ -105,7 +105,7 @@ const accbookdata = ref([]);
 onMounted(async () => {
     try {
         // fetch로 json 데이터 가져오기
-        const response = await fetch('http://localhost:8080/result');
+        const response = await fetch('http://localhost:8080/monthly-eval');
         const data = await response.json(); 
 
         // accbookdata에 가져온 데이터 저장

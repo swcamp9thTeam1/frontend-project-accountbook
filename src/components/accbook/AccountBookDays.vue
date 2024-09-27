@@ -1,15 +1,30 @@
 <template>
   <div class="day-stats">
-    <div class="day">00일</div>
+    <div class="day">{{ date }}</div>
     <div class="stats-container">
-      <div class="stats-in">+200,000원</div>
-      <div class="stats-out">-20,000원</div>
+      <div class="stats-in">+{{ totalIn }}원</div>
+      <div class="stats-out">-{{ totalOut }}원</div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { defineProps } from "vue";
 
+const props = defineProps({
+  date: {
+    type: String,
+    required: true
+  },
+  totalIn: {
+    type: Number,
+    required: true
+  },
+  totalOut: {
+    type: Number,
+    required: true
+  }
+});
 </script>
 
 <style scoped>
@@ -26,13 +41,14 @@
   align-items: center;
   width: 100%;
   max-width: 600px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .day {
   //position: absolute;
   margin-left: 8px;
-  margin-top: 6px;
+  margin-top: 10px;
 
   font-family: 'Noto Sans KR';
   font-style: normal;

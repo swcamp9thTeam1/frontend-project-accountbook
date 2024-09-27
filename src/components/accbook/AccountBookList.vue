@@ -1,15 +1,38 @@
 <template>
-  <button class="button-accbook">
-    <div class="flex-container">
-      <div class="accbook-name">내역명</div>
-      <div class="accbook-price">000,000원</div>
-    </div>
-    <div class="category-asset-date">가계부카테고리 | 사용자산 | 0000-00-00</div>
-  </button>
+  <div class="button-container">
+    <button
+        class="button-accbook"
+        v-if="item && item.title">
+      <div class="flex-container">
+        <div class="accbook-name">{{ item.title }}</div>
+        <div class="accbook-price">{{ formattedAmount(item) }}</div>
+      </div>
+      <div class="category-asset-date">{{ formatCategoryAssetDate(item) }}</div>
+    </button>
+  </div>
 </template>
 
 <script setup>
+import { defineProps } from 'vue';
 
+const props = defineProps({
+  item: {
+    type: Object,
+    required: true
+  }
+});
+
+// amount에 '+' 또는 '-' 붙이기
+const formattedAmount = (item) => {
+  return (item.financeType === "I" ? '+' : '-') + item.amount;
+};
+
+// 카테고리, 자산, 날짜 형식 지정
+const formatCategoryAssetDate = (item) => {
+  const date = new Date(item.createdAt).toISOString().split('T')[0]; // YYYY-MM-DD 형식
+  // const date = new Date(item.createdAt);
+  return `${item.accCategoryCode} | ${item.assetCode} | ${date}`;
+};
 </script>
 
 <style scoped>
@@ -27,6 +50,7 @@
         border: none;
         border-radius: 20px;
         cursor: pointer;
+        margin: 10px;
     }
 
     .flex-container {
