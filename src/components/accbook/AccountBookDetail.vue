@@ -1,9 +1,7 @@
 <template>
   <div class="detail-accbook">
-    <input type="text" class="accbook-title" name="title" placeholder="제목"
-           minlength="4" maxlength="20" required>
-    <input type="number" class="accbook-amount" name="amount" placeholder="금액"
-           minlength="1" maxlength="19" required>
+    <div class="accbook-title">제목</div>
+    <div class="accbook-amount">금액</div>
 
     <img src="../../assets/icons/가계부_작성란_line.svg" class="line">
 
@@ -18,7 +16,7 @@
 
     <div class="select-category">
       <div class="classification">카테고리</div>
-      <div class="acc-category" >취미/도서</div>
+      <div class="acc-category" >취미>도서</div>
     </div>
 
     <div class="occur-date">
@@ -256,6 +254,7 @@ select {
   display: flex;
   flex-direction: row;
   margin-left: 130px;
+  font-size: 17px;
   font-family: 'Noto Sans KR';
 }
 
