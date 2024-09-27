@@ -65,6 +65,11 @@ const router = createRouter({
 
         { path: "/my", component: MyPage, children: [
             {
+                path: "",
+                component: () => import("@/views/my/MyInfoPage.vue")
+            },
+
+            {
                 path: "asset",
                 component: () => import("@/views/my/MyAssetView.vue")
             },
@@ -87,6 +92,11 @@ const router = createRouter({
             {
                 path: "write",
                 component: () => import("@/views/my/MyWriteView.vue")
+            },
+
+            {
+                path: "edit-info",
+                component: () => import("@/views/my/MyInfoEditView.vue")
             },
 
 
