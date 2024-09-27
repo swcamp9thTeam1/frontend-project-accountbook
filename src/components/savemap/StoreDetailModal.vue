@@ -72,7 +72,7 @@
                         v-else-if="rightView === 'ACCBOOKS'" 
                         :accBooks="allAccountBooks"
                         @showDetailAccBook="clickAccBook" />
-                    <AccountBookDetail v-else-if="rightView === 'ACCBOOK_DETAIL'"/>
+                    <AccountBookDetail v-else-if="rightView === 'ACCBOOK_DETAIL' && currentAccBookId.id" :item="currentAccBookId" />
                 </div>
             </div>
         </template>
@@ -80,7 +80,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, watchEffect } from 'vue';
+import { defineProps, defineEmits, ref, watchEffect, watch } from 'vue';
 import GoodStoreBox from '@/components/savemap/GoodStoreBox.vue';
 import ReadMoreButton from '@/components/buttons/ReadMoreButton.vue';
 import AccountBookItem from "@/components/accbook/AccountBookList.vue"
@@ -98,9 +98,9 @@ const emit = defineEmits(["closeModal"]);
 
 const store = ref({});
 
-const allAccountBooks = ref([]);    // 가게와 연동된 가계부 전체 목록
-const limitAccountBooks = ref([]);  // 최대 2개만 표시하기 위해 따로 저장
-const currentAccBookId = ref(null); // 선택된 가계부 ID
+const allAccountBooks = ref([]);            // 가게와 연동된 가계부 전체 목록
+const limitAccountBooks = ref([]);          // 최대 2개만 표시하기 위해 따로 저장
+const currentAccBookId = ref({ id: null }); // 선택된 가계부 ID
 
 const storeReview = ref({});        // 가게 리뷰
 const allReviews = ref([]);         // 가게 전체 리뷰 목록
@@ -152,6 +152,11 @@ const showRightView = (viewName) => {
 }
 
 const back = () => {
+    if (rightView.value === "ACCBOOK_DETAIL") {     // 가계부 상세보기인 경우에는 뒤로가기 클릭 시 가계부 목록 표시
+        rightView.value = "ACCBOOKS";
+        return;
+    }
+    
     openRight.value = false;
 }
 
@@ -165,7 +170,7 @@ const clickAccBook = (accBookId) => {
     // 오른쪽에 가계부 자세히보기
     rightView.value = "ACCBOOK_DETAIL"
     openRight.value = true;
-    currentAccBookId.value = accBookId;
+    currentAccBookId.value = { id: accBookId };
 }
 </script>
 

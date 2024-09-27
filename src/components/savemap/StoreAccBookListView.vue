@@ -13,7 +13,6 @@
 <script setup>
 import { defineProps, ref, watch, defineEmits } from 'vue';
 import AccountBookItem from '@/components/accbook/AccountBookList.vue';
-import AccountBookDetail from '@/components/accbook/AccountBookDetail.vue';
 
 const props = defineProps({
     accBooks: {
