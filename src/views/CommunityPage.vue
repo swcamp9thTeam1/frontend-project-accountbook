@@ -2,9 +2,13 @@
 <!-- 부모 페이지 -->
 
 <template>
-    <div style="display: flex; width: 300px;">
-        <SideMenu :selectedBanner="'community'" :activeMenu="activeMenu" />
-        <RouterView />
+    <div style="display: flex;">
+        <div>
+            <SideMenu :selectedBanner="'community'" :activeMenu="activeMenu" />
+        </div>
+        <div>
+            <RouterView />
+        </div>
     </div>
 </template>
 
