@@ -1,20 +1,18 @@
 <template>
 
 
-    <div style="display: flex;">
-
 
         <!-- 글 작성 버튼 -->
-        <button class="regist-post-btn" style="width: 140px; height: 48px; background-color: #F3F3FF; border: none; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 23px; padding: 17px; position: absolute; top: 118px; right: 100px;">
+        <button class="regist-post-btn" style="width: 140px; height: 48px; background-color: #F3F3FF; border: none; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 23px; padding: 17px; margin-left: 843px;margin-bottom: 20px;">
             <img src="/src/assets/icons/Community/PlusIcon.svg" alt="">
             <span>글 작성</span>
         </button>
 
 
-        <div>
+        <div style="width: 1000px;">
                 <!-- 게시글 목록 박스 -->
-            <div style="display: flex; flex-direction: column; gap: 10px; position: absolute; top: 187px; left: 340px; width: 100%;">
-                <div v-for="(post) in currentPagePosts" :key="post.id" style="width: 70%; height: auto;">
+            <div style="display: flex; flex-direction: column; gap: 10px;width: 100%;">
+                <div v-for="(post) in currentPagePosts" :key="post.id" style="width: 90%; height: auto;">
                     <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
                         <div style="display: flex;">
                             <span style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px; font-weight: bold;">{{ post.id }}</span>
@@ -37,8 +35,7 @@
             </div>
 
             <!-- 페이지네이션 -->
-            <div class="pagination" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;
-                position: absolute; bottom: -58px; right: 38%">
+            <div class="pagination" style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
                 <span class="page-btn" @click="changePage(currentPage - 1)" v-show="currentPage > 1">
                     &lt;
                 </span>
@@ -63,7 +60,6 @@
         </div>
 
         
-    </div>
 </template>
 
 <script setup>
