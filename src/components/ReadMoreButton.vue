@@ -1,14 +1,12 @@
 <template>
-    <button type="button" class="btn-more" @click="emit('clickMore')">
+    <button type="button" class="btn-more">
         <span>더보기</span>
-        <img src="@/assets/icons/button-read-more.svg" alt="더보기">
+        <img src="/src/assets/icons/button-read-more.svg" alt="더보기">
     </button>
 </template>
 
 <script setup>
-import { defineEmits } from 'vue';
 
-const emit = defineEmits(["clickMore"]);
 </script>
 
 <style scoped>
