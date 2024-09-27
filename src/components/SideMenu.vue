@@ -9,7 +9,7 @@
 
     <div class="sidebar-container">
         <div class="sidebar">
-            <p>{{ userName }}님</p>
+            <p>{{ nickname }} 님</p>
             <ul>
                 <!-- 그룹 관련 메뉴 -->
                 <li v-if="selectedBanner === 'group'">
@@ -61,9 +61,9 @@
                 </li>
                 <li v-if="selectedBanner === 'community'">
                     <RouterLink 
-                        to="/community/my" 
+                        to="/community/my/" 
                         class="menu-item" 
-                        :class="{ 'active-menu': isActive('/community/my') }"
+                        :class="{ 'active-menu': isActive('/community/my') || route.path.startsWith('/community/my/') }"
                         @click="selectMenu('나의 글')">
                         나의 글
                     </RouterLink>
@@ -133,7 +133,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, watchEffect } from 'vue';
+import { defineProps, ref, watchEffect, onMounted } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 
 const route = useRoute();
@@ -151,6 +151,16 @@ const selectMenu = (menu) => {
 const isActive = (path) => {
     return route.path === path;
 };
+
+const nickname = ref(''); // 닉네임을 저장할 ref 변수
+
+// 로컬 스토리지에서 닉네임 가져오기
+onMounted(() => {
+    const storedNickname = localStorage.getItem('nickname');
+    if (storedNickname) {
+        nickname.value = storedNickname;
+    }
+});
 
 // if (props.selectedBanner === 'group') {
 //     activeMenu.value = '내 그룹';
@@ -178,6 +188,7 @@ watchEffect(() => {
         else if (isActive('/my/review')) activeMenu.value = '내가 다녀간 가게와 리뷰';
         else if (isActive('/my/scrap')) activeMenu.value = '나의 스크랩';
         else if (isActive('/my/write')) activeMenu.value = '나의 글';
+        
     }
 });
 
@@ -191,7 +202,7 @@ watchEffect(() => {
 }
 
 .sidebar {
-    width: 20%;
+    width: 300px;
     background-color: #F9F9FF;
     height: 100vh;
     text-align: center;

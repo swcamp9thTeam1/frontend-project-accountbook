@@ -370,13 +370,12 @@ const validate = () => {
         passwordError.value = '';
     }
 
-    // 닉네임 중복 확인 (예시: nicknameConfirm이 false면 중복된 것으로 처리)
-    if (!nicknameConfirm.value) {
-        nicknameError.value = '닉네임이 중복되었습니다.';
-        valid = false;
-    } else {
-        nicknameError.value = '';
-    }
+    // if (!nicknameConfirm.value) {
+    //     nicknameError.value = '닉네임이 중복되었습니다.';
+    //     valid = false;
+    // } else {
+    //     nicknameError.value = '';
+    // }
 
     return valid;
 };

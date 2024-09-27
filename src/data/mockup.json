@@ -1,908 +1,1059 @@
 {
-    "good-stores": [
-        {
-            "id": 1,
-            "latitude": "37.499590490909185",
-            "longitude": "127.0263723554437",
-            "price": 8500
-        },
-        {
-            "id": 2,
-            "latitude": "37.499427948430814",
-            "longitude": "127.02794423197847",
-            "price": 8300
-        },
-        {
-            "id": 3,
-            "latitude": "37.498553760499505",
-            "longitude": "127.02882598822454",
-            "price": 9500
-        },
-        {
-            "id": 4,
-            "latitude": "37.497625593121384",
-            "longitude": "127.02935713582038",
-            "price": 7500
-        },
-        {
-            "id": 5,
-            "latitude": "37.49646391248451",
-            "longitude": "127.02675574250912",
-            "price": 6500
-        },
-        {
-            "id": 6,
-            "latitude": "37.49646391248451",
-            "longitude": "127.02587362608637",
-            "price": 3500
-        },
-        {
-            "id": 7,
-            "latitude": "37.49754540521486",
-            "longitude": "127.02546694890695",
-            "price": 7900
-        }
-    ],
-
-    "stores": [
-        {
-            "id": 1,
-            "name": "동화장",
-            "category": "중식당",
-            "address": "서울 동작구 여의대방로 24길 137",
-            "good": {
-                "menu": "짜장면",
-                "price": 6500
-            }
-        }
-    ],
-
-    "member": [
-        {
-            "id": 1,
-            "memberId": "iamhong01",
-            "nickname": "동에번쩍서에번쩍",
-            "email": "honggildonng@gmail.com",
-            "budget": 500000
-        }
-    ],
-
-    "asset": [
-        {
-            "id": 1,
-            "category": "신용카드",
-            "name": "삼성카드",
-            "balance": -300000,
-            "paymentDate": 14
-        },
-        {
-            "id": 2,
-            "category": "은행계좌",
-            "name": "신한은행",
-            "balance": 5000000,
-            "paymentDate": null
-        }
-    ],
-
-    "community-post": [
-        {
-            "id": 1,
-            "nickname": "budgetMaster",
-            "title": "9월 고정지출 공유합니다",
-            "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?",
-            "created_at": "2024-09-25 08:30",
-            "comment_count": 5
-        },
-        {
-            "id": 2,
-            "nickname": "savingsPro",
-            "title": "저축 비율 50% 유지하기 어렵네요",
-            "content": "매달 저축을 50% 하려고 하는데 생각보다 생활비가 많이 들어서 힘들어요. 팁 있으면 공유 부탁드립니다!",
-            "created_at": "2024-09-25 09:10",
-            "comment_count": 3
-        },
-        {
-            "id": 3,
-            "nickname": "smartSaver",
-            "title": "가계부 앱 추천해요",
-            "content": "최근에 사용해본 가계부 앱 중에 가장 좋은 건 'MoneyPro'였어요. 자동으로 수입, 지출을 정리해줘서 편하더라구요.",
-            "created_at": "2024-09-25 10:45",
-            "comment_count": 4
-        },
-        {
-            "id": 4,
-            "nickname": "familyFinances",
-            "title": "아이 학원비 어떻게 관리하세요?",
-            "content": "아이 학원비가 매달 50만원인데, 다른 고정비와 합치면 부담되네요. 학원비 관리하는 방법이 있을까요?",
-            "created_at": "2024-09-25 11:20",
-            "comment_count": 6
-        },
-        {
-            "id": 5,
-            "nickname": "frugalLife",
-            "title": "한 달 식비 줄이는 꿀팁",
-            "content": "외식을 줄이고 집밥 위주로 하니 한 달 식비를 30% 줄였어요. 여러분은 식비 절약 어떻게 하시나요?",
-            "created_at": "2024-09-25 12:00",
-            "comment_count": 2
-        },
-        {
-            "id": 6,
-            "nickname": "expenseTracker",
-            "title": "자동차 유지비 절약법",
-            "content": "차 유지비가 너무 많이 들어요. 보험료, 주유비 등 절약할 수 있는 방법 공유해주세요!",
-            "created_at": "2024-09-25 12:45",
-            "comment_count": 3
-        },
-        {
-            "id": 7,
-            "nickname": "investGuru",
-            "title": "투자 포트폴리오 공개",
-            "content": "저는 주식과 ETF로 포트폴리오를 구성했어요. 고정지출 외 투자에 어느 정도 배분하고 계신가요?",
-            "created_at": "2024-09-25 13:30",
-            "comment_count": 7
-        },
-        {
-            "id": 8,
-            "nickname": "rentSaver",
-            "title": "전세와 월세 고민 중이에요",
-            "content": "지금 월세를 살고 있는데 전세로 갈아탈까 고민 중입니다. 여러분은 어떤 선택을 하셨나요?",
-            "created_at": "2024-09-25 14:00",
-            "comment_count": 4
-        },
-        {
-            "id": 9,
-            "nickname": "groceryQueen",
-            "title": "장보기에서 절약하는 방법",
-            "content": "주말마다 마트에서 장을 보는데, 쿠폰과 세일을 잘 활용하니까 10만원 절약했어요. 장볼 때 여러분은 어떻게 절약하세요?",
-            "created_at": "2024-09-25 14:30",
-            "comment_count": 5
-        },
-        {
-            "id": 10,
-            "nickname": "studentLife",
-            "title": "학생 예산 관리 꿀팁",
-            "content": "대학생인데, 생활비 예산 관리가 너무 어렵네요. 저만의 관리법이 있으면 공유해요!",
-            "created_at": "2024-09-25 15:00",
-            "comment_count": 1
-        },
-        {
-            "id": 11,
-            "nickname": "smartInvestor",
-            "title": "매달 수입의 20%는 투자 중",
-            "content": "월급의 20%는 매달 주식이나 펀드에 투자하고 있어요. 수익률 관리가 잘 안될 때는 어떻게 대처하시나요?",
-            "created_at": "2024-09-25 15:30",
-            "comment_count": 3
-        },
-        {
-            "id": 12,
-            "nickname": "frugalStudent",
-            "title": "알바비로 생활비 절약 중입니다",
-            "content": "학생이라 알바비로 생활하는데, 정말 절약하지 않으면 힘드네요. 학생분들 어떻게 생활비 관리하세요?",
-            "created_at": "2024-09-25 16:00",
-            "comment_count": 4
-        },
-        {
-            "id": 13,
-            "nickname": "babyBudgeter",
-            "title": "아기 용품 비용 줄이기",
-            "content": "아기 용품비가 많이 나가네요. 나름 중고로 사기도 하는데, 다른 절약 방법 있으면 알려주세요!",
-            "created_at": "2024-09-25 16:30",
-            "comment_count": 2
-        },
-        {
-            "id": 14,
-            "nickname": "earlyRetiree",
-            "title": "조기 은퇴 준비 중입니다",
-            "content": "조기 은퇴를 목표로 가계부를 철저하게 관리 중인데, 여러분은 은퇴 후 생활비는 어떻게 관리하실 계획이신가요?",
-            "created_at": "2024-09-25 17:00",
-            "comment_count": 6
-        },
-        {
-            "id": 15,
-            "nickname": "petLover",
-            "title": "반려동물 비용 관리",
-            "content": "반려동물 관련 지출이 생각보다 많이 들어서 가계부에 큰 영향을 주네요. 반려동물 비용 절약하는 팁 있나요?",
-            "created_at": "2024-09-25 17:30",
-            "comment_count": 5
-        },
-        {
-            "id": 16,
-            "nickname": "luxurySaver",
-            "title": "명품 소비와 가계부",
-            "content": "명품을 좋아하지만, 가계부에 큰 영향을 주지 않게 소비를 조절하려고 해요. 다들 명품 소비 어떻게 하시나요?",
-            "created_at": "2024-09-25 18:00",
-            "comment_count": 7
-        },
-        {
-            "id": 17,
-            "nickname": "foodieSaver",
-            "title": "외식 비용 절감 방법",
-            "content": "외식 비용이 꽤 많이 나가서 요즘은 배달이나 외식을 줄이고 있어요. 여러분은 어떻게 외식비를 절약하시나요?",
-            "created_at": "2024-09-25 18:30",
-            "comment_count": 3
-        },
-        {
-            "id": 18,
-            "nickname": "partTimeWorker",
-            "title": "부업으로 수입 늘리기",
-            "content": "부업으로 수입을 늘리고 가계부에 도움이 되게끔 하고 있어요. 부업 추천하실 만한 게 있나요?",
-            "created_at": "2024-09-25 19:00",
-            "comment_count": 4
-        },
-        {
-            "id": 19,
-            "nickname": "minimalist",
-            "title": "미니멀리즘 생활비 절약",
-            "content": "미니멀리즘 생활을 통해 지출을 많이 줄였어요. 여러분은 어떻게 불필요한 소비를 줄이시나요?",
-            "created_at": "2024-09-25 19:30",
-            "comment_count": 2
-        },
-        {
-            "id": 20,
-            "nickname": "investSmart",
-            "title": "월급의 30% 투자 중입니다",
-            "content": "매달 월급의 30%를 주식과 부동산에 투자 중입니다. 여러분은 월급의 몇 퍼센트를 투자하고 계신가요?",
-            "created_at": "2024-09-25 20:00",
-            "comment_count": 6
-        },
-        {
-            "id": 21,
-            "nickname": "carFan",
-            "title": "차 유지비 어떻게 줄일 수 있을까요?",
-            "content": "자동차 유지비가 부담돼서 고민입니다. 보험료와 주유비를 어떻게 줄이시는지 궁금합니다.",
-            "created_at": "2024-09-25 20:30",
-            "comment_count": 3
-        },
-        {
-            "id": 22,
-            "nickname": "shopSmart",
-            "title": "온라인 쇼핑 비용 관리",
-            "content": "요즘 온라인 쇼핑이 잦아지다 보니 지출이 많이 늘었어요. 쇼핑비 절약 팁 있나요?",
-            "created_at": "2024-09-25 21:00",
-            "comment_count": 5
-        },
-        {
-            "id": 23,
-            "nickname": "healthSaver",
-            "title": "헬스장 비용 아끼는 법",
-            "content": "헬스장 비용이 부담돼서 집에서 운동하려고 합니다. 홈트용 장비는 어떻게 예산을 잡아야 할까요?",
-            "created_at": "2024-09-25 21:30",
-            "comment_count": 2
-        },
-        {
-            "id": 24,
-            "nickname": "studentBudget",
-            "title": "대학생 가계부 관리 팁",
-            "content": "대학생이라 예산이 빠듯한데, 어떻게 가계부를 쓰면 절약할 수 있을까요?",
-            "created_at": "2024-09-25 22:00",
-            "comment_count": 4
-        },
-        {
-            "id": 25,
-            "nickname": "newlywedSaver",
-            "title": "신혼부부 생활비 관리 팁",
-            "content": "신혼부부로서 생활비가 많이 드는데, 어떤 항목에서 절약을 할 수 있을까요?",
-            "created_at": "2024-09-25 22:30",
-            "comment_count": 3
-        },
-        {
-            "id": 26,
-            "nickname": "hobbyist",
-            "title": "취미 생활비 관리 방법",
-            "content": "취미 생활이 많아서 지출이 많이 나가네요. 취미 활동비는 어떻게 관리하시나요?",
-            "created_at": "2024-09-25 23:00",
-            "comment_count": 6
-        },
-        {
-            "id": 27,
-            "nickname": "homeChef",
-            "title": "집에서 요리하면 얼마나 절약할까요?",
-            "content": "외식 대신 집에서 요리하려고 하는데, 식비가 얼마나 줄어들지 궁금하네요. 여러분은 어떻게 요리비를 절약하시나요?",
-            "created_at": "2024-09-25 23:30",
-            "comment_count": 2
-        },
-        {
-            "id": 28,
-            "nickname": "loanPlanner",
-            "title": "대출 이자 관리 팁",
-            "content": "대출 이자가 매달 부담스러운데, 혹시 이자 절약할 수 있는 방법 있나요?",
-            "created_at": "2024-09-26 00:00",
-            "comment_count": 5
-        },
-        {
-            "id": 29,
-            "nickname": "travelLover",
-            "title": "여행 경비 절약하는 방법",
-            "content": "여행을 좋아하지만 경비가 많이 들어요. 여행할 때 경비 절약하는 팁 있으신가요?",
-            "created_at": "2024-09-26 00:30",
-            "comment_count": 4
-        },
-        {
-            "id": 30,
-            "nickname": "techSaver",
-            "title": "전자기기 구매 비용 관리",
-            "content": "전자기기 구입비가 많이 들어서 걱정입니다. 최신 기기를 저렴하게 구매하는 팁 있으신가요?",
-            "created_at": "2024-09-26 01:00",
-            "comment_count": 3
-        }
-    ],
-
-    "users": [
-        {
-            "id": "12c4",
-            "username": "1111",
-            "password": "1111",
-            "passwordConfirm": "1111",
-            "nickname": "1234",
-            "email": "1234@naver.com",
-            "idConfirm": true,
-            "autoLogin": true,
-            "auth": "1234"
-        }
-    ],
-
-    "detail": [
-        {
-            "accbookCode": 154,
-            "createdAt": "2024-09-22 15:00:00",
-            "amount": 15000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "accCategoryName": "용돈",
-            "storeName": null,
-            "assetName": "비상금",
-            "financeType": "I",
-            "inAssetName": null,
-            "accCommentDTOList": []
-        }
-    ],
-    "monthly": [
-        {
-            "accbookCode": 154,
-            "createdAt": "2024-09-22T15:00:00",
-            "amount": 15000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 153,
-            "createdAt": "2024-09-21T08:30:00",
-            "amount": 2000,
-            "isRegular": "Y",
-            "title": "영화관",
-            "memberCode": 1,
-            "accCategoryCode": 1,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 152,
-            "createdAt": "2024-09-20T11:45:00",
-            "amount": 300000,
-            "isRegular": "N",
-            "title": "알바비",
-            "memberCode": 1,
-            "accCategoryCode": 10,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 151,
-            "createdAt": "2024-09-19T10:00:00",
-            "amount": 25000,
-            "isRegular": "Y",
-            "title": "교보문고",
-            "memberCode": 1,
-            "accCategoryCode": 11,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 150,
-            "createdAt": "2024-09-18T14:15:00",
-            "amount": 9000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 149,
-            "createdAt": "2024-09-17T12:30:00",
-            "amount": 15000,
-            "isRegular": "Y",
-            "title": "카페",
-            "memberCode": 1,
-            "accCategoryCode": 1,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 148,
-            "createdAt": "2024-09-16T09:00:00",
-            "amount": 12000,
-            "isRegular": "N",
-            "title": "카페",
-            "memberCode": 1,
-            "accCategoryCode": 11,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 147,
-            "createdAt": "2024-09-16T09:00:00",
-            "amount": 12000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 11,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 146,
-            "createdAt": "2024-09-15T16:00:00",
-            "amount": 8000,
-            "isRegular": "Y",
-            "title": "편의점",
-            "memberCode": 1,
-            "accCategoryCode": 10,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 145,
-            "createdAt": "2024-09-14T13:45:00",
-            "amount": 10000,
-            "isRegular": "N",
-            "title": "카카오뱅크",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 144,
-            "createdAt": "2024-09-13T15:30:00",
-            "amount": 30000,
-            "isRegular": "Y",
-            "title": "스타벅스",
-            "memberCode": 1,
-            "accCategoryCode": 1,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 143,
-            "createdAt": "2024-09-12T11:00:00",
-            "amount": 100000,
-            "isRegular": "N",
-            "title": "배당수익",
-            "memberCode": 1,
-            "accCategoryCode": 11,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 142,
-            "createdAt": "2024-09-11T14:00:00",
-            "amount": 25000,
-            "isRegular": "Y",
-            "title": "교보문고",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 141,
-            "createdAt": "2024-09-10T10:30:00",
-            "amount": 15000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 1,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 140,
-            "createdAt": "2024-09-09T08:00:00",
-            "amount": 70000,
-            "isRegular": "Y",
-            "title": "쇼핑",
-            "memberCode": 1,
-            "accCategoryCode": 11,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 139,
-            "createdAt": "2024-09-09T08:00:00",
-            "amount": 7000,
-            "isRegular": "Y",
-            "title": "카페",
-            "memberCode": 1,
-            "accCategoryCode": 11,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 138,
-            "createdAt": "2024-09-08T12:15:00",
-            "amount": 52000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 137,
-            "createdAt": "2024-09-08T12:15:00",
-            "amount": 12000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 136,
-            "createdAt": "2024-09-07T17:30:00",
-            "amount": 100000,
-            "isRegular": "Y",
-            "title": "이자",
-            "memberCode": 1,
-            "accCategoryCode": 10,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 135,
-            "createdAt": "2024-09-07T17:30:00",
-            "amount": 100000,
-            "isRegular": "Y",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 134,
-            "createdAt": "2024-09-06T13:30:00",
-            "amount": 25000,
-            "isRegular": "Y",
-            "title": "중고거래",
-            "memberCode": 1,
-            "accCategoryCode": 10,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 133,
-            "createdAt": "2024-09-06T11:00:00",
-            "amount": 5000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 132,
-            "createdAt": "2024-09-05T15:00:00",
-            "amount": 50000,
-            "isRegular": "Y",
-            "title": "봉투",
-            "memberCode": 1,
-            "accCategoryCode": 1,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 131,
-            "createdAt": "2024-09-04T14:30:00",
-            "amount": 15000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 130,
-            "createdAt": "2024-09-03T13:15:00",
-            "amount": 35000,
-            "isRegular": "Y",
-            "title": "쇼핑",
-            "memberCode": 1,
-            "accCategoryCode": 1,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 129,
-            "createdAt": "2024-09-02T12:00:00",
-            "amount": 8000,
-            "isRegular": "N",
-            "title": "기타소득",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 129,
-            "createdAt": "2024-09-01T15:00:00",
-            "amount": 20000,
-            "isRegular": "N",
-            "title": "부업",
-            "memberCode": 1,
-            "accCategoryCode": 4,
-            "storeCode": null,
-            "assetCode": 10,
-            "financeType": "I",
-            "inAssetCode": null
-        },
-        {
-            "accbookCode": 128,
-            "createdAt": "2024-09-01T10:00:00",
-            "amount": 15000,
-            "isRegular": "N",
-            "title": "스타벅스",
-            "memberCode": 1,
-            "accCategoryCode": 1,
-            "storeCode": null,
-            "assetCode": 1,
-            "financeType": "O",
-            "inAssetCode": null
-        }
-    ],
-
-    "monthly-eval": [
-        {
-            "dailyDate": "2024-09-01",
-            "totalOAmount": 15000,
-            "totalIAmount": 20000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-02",
-            "totalOAmount": 30000,
-            "totalIAmount": 0,
-            "evaluation": "Bad"
-        },
-        {
-            "dailyDate": "2024-09-03",
-            "totalOAmount": 0,
-            "totalIAmount": 500000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-04",
-            "totalOAmount": 25000,
-            "totalIAmount": 0,
-            "evaluation": "Bad"
-        },
-        {
-            "dailyDate": "2024-09-05",
-            "totalOAmount": 0,
-            "totalIAmount": 15000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-06",
-            "totalOAmount": 2000,
-            "totalIAmount": 0,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-07",
-            "totalOAmount": 18000,
-            "totalIAmount": 100000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-08",
-            "totalOAmount": 0,
-            "totalIAmount": 64000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-09",
-            "totalOAmount": 77000,
-            "totalIAmount": 0,
-            "evaluation": "Bad"
-        },
-        {
-            "dailyDate": "2024-09-10",
-            "totalOAmount": 0,
-            "totalIAmount": 15000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-11",
-            "totalOAmount": 25000,
-            "totalIAmount": 0,
-            "evaluation": "Bad"
-        },
-        {
-            "dailyDate": "2024-09-12",
-            "totalOAmount": 0,
-            "totalIAmount": 100000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-13",
-            "totalOAmount": 30000,
-            "totalIAmount": 0,
-            "evaluation": "Bad"
-        },
-        {
-            "dailyDate": "2024-09-14",
-            "totalOAmount": 0,
-            "totalIAmount": 10000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-15",
-            "totalOAmount": 8000,
-            "totalIAmount": 0,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-16",
-            "totalOAmount": 12000,
-            "totalIAmount": 12000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-17",
-            "totalOAmount": 15000,
-            "totalIAmount": 0,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-18",
-            "totalOAmount": 0,
-            "totalIAmount": 9000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-19",
-            "totalOAmount": 25000,
-            "totalIAmount": 0,
-            "evaluation": "Bad"
-        },
-        {
-            "dailyDate": "2024-09-20",
-            "totalOAmount": 0,
-            "totalIAmount": 300000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-21",
-            "totalOAmount": 2000,
-            "totalIAmount": 0,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-22",
-            "totalOAmount": 0,
-            "totalIAmount": 15000,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-23",
-            "totalOAmount": 1000,
-            "totalIAmount": 0,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-24",
-            "totalOAmount": 10000,
-            "totalIAmount": 0,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-25",
-            "totalOAmount": 10000,
-            "totalIAmount": 0,
-            "evaluation": "Good"
-        },
-        {
-            "dailyDate": "2024-09-26",
-            "totalOAmount": 25000,
-            "totalIAmount": 0,
-            "evaluation": "Bad"
-        },
-        {
-            "dailyDate": "2024-09-27",
-            "totalOAmount": 0,
-            "totalIAmount": 0,
-            "evaluation": null
-        },
-        {
-            "dailyDate": "2024-09-28",
-            "totalOAmount": 0,
-            "totalIAmount": 0,
-            "evaluation": null
-        },
-        {
-            "dailyDate": "2024-09-29",
-            "totalOAmount": 0,
-            "totalIAmount": 0,
-            "evaluation": null
-        },
-        {
-            "dailyDate": "2024-09-30",
-            "totalOAmount": 0,
-            "totalIAmount": 0,
-            "evaluation": null
-        }
-    ]
+  "good-stores": [
+    {
+      "id": "1",
+      "latitude": "37.499590490909185",
+      "longitude": "127.0263723554437",
+      "price": 8500
+    },
+    {
+      "id": "2",
+      "latitude": "37.499427948430814",
+      "longitude": "127.02794423197847",
+      "price": 8300
+    },
+    {
+      "id": "3",
+      "latitude": "37.498553760499505",
+      "longitude": "127.02882598822454",
+      "price": 9500
+    },
+    {
+      "id": "4",
+      "latitude": "37.497625593121384",
+      "longitude": "127.02935713582038",
+      "price": 7500
+    },
+    {
+      "id": "5",
+      "latitude": "37.49646391248451",
+      "longitude": "127.02675574250912",
+      "price": 6500
+    },
+    {
+      "id": "6",
+      "latitude": "37.49646391248451",
+      "longitude": "127.02587362608637",
+      "price": 3500
+    },
+    {
+      "id": "7",
+      "latitude": "37.49754540521486",
+      "longitude": "127.02546694890695",
+      "price": 7900
+    }
+  ],
+  "stores": [
+    {
+      "id": "1",
+      "name": "동화장",
+      "category": "중식당",
+      "address": "서울 동작구 여의대방로 24길 137",
+      "good": {
+        "menu": "짜장면",
+        "price": 6500
+      }
+    }
+  ],
+  "member": [
+    {
+      "id": "1",
+      "memberId": "iamhong01",
+      "nickname": "동에번쩍서에번쩍",
+      "email": "honggildonng@gmail.com",
+      "budget": 500000
+    }
+  ],
+  "asset": [
+    {
+      "id": "1",
+      "category": "신용카드",
+      "name": "삼성카드",
+      "balance": -300000,
+      "paymentDate": 14
+    },
+    {
+      "id": "2",
+      "category": "은행계좌",
+      "name": "신한은행",
+      "balance": 5000000,
+      "paymentDate": null
+    }
+  ],
+  "community-post": [
+    {
+      "id": "1",
+      "nickname": "budgetMaster",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?",
+      "created_at": "2024-09-25 08:30",
+      "comment_count": 5
+    },
+    {
+      "id": "2",
+      "nickname": "savingsPro",
+      "title": "저축 비율 50% 유지하기 어렵네요",
+      "content": "매달 저축을 50% 하려고 하는데 생각보다 생활비가 많이 들어서 힘들어요. 팁 있으면 공유 부탁드립니다!",
+      "created_at": "2024-09-25 09:10",
+      "comment_count": 3
+    },
+    {
+      "id": "3",
+      "nickname": "smartSaver",
+      "title": "가계부 앱 추천해요",
+      "content": "최근에 사용해본 가계부 앱 중에 가장 좋은 건 'MoneyPro'였어요. 자동으로 수입, 지출을 정리해줘서 편하더라구요.",
+      "created_at": "2024-09-25 10:45",
+      "comment_count": 4
+    },
+    {
+      "id": "4",
+      "nickname": "familyFinances",
+      "title": "아이 학원비 어떻게 관리하세요?",
+      "content": "아이 학원비가 매달 50만원인데, 다른 고정비와 합치면 부담되네요. 학원비 관리하는 방법이 있을까요?",
+      "created_at": "2024-09-25 11:20",
+      "comment_count": 6
+    },
+    {
+      "id": "5",
+      "nickname": "frugalLife",
+      "title": "한 달 식비 줄이는 꿀팁",
+      "content": "외식을 줄이고 집밥 위주로 하니 한 달 식비를 30% 줄였어요. 여러분은 식비 절약 어떻게 하시나요?",
+      "created_at": "2024-09-25 12:00",
+      "comment_count": 2
+    },
+    {
+      "id": "6",
+      "nickname": "expenseTracker",
+      "title": "자동차 유지비 절약법",
+      "content": "차 유지비가 너무 많이 들어요. 보험료, 주유비 등 절약할 수 있는 방법 공유해주세요!",
+      "created_at": "2024-09-25 12:45",
+      "comment_count": 3
+    },
+    {
+      "id": "7",
+      "nickname": "investGuru",
+      "title": "투자 포트폴리오 공개",
+      "content": "저는 주식과 ETF로 포트폴리오를 구성했어요. 고정지출 외 투자에 어느 정도 배분하고 계신가요?",
+      "created_at": "2024-09-25 13:30",
+      "comment_count": 7
+    },
+    {
+      "id": "8",
+      "nickname": "rentSaver",
+      "title": "전세와 월세 고민 중이에요",
+      "content": "지금 월세를 살고 있는데 전세로 갈아탈까 고민 중입니다. 여러분은 어떤 선택을 하셨나요?",
+      "created_at": "2024-09-25 14:00",
+      "comment_count": 4
+    },
+    {
+      "id": "9",
+      "nickname": "groceryQueen",
+      "title": "장보기에서 절약하는 방법",
+      "content": "주말마다 마트에서 장을 보는데, 쿠폰과 세일을 잘 활용하니까 10만원 절약했어요. 장볼 때 여러분은 어떻게 절약하세요?",
+      "created_at": "2024-09-25 14:30",
+      "comment_count": 5
+    },
+    {
+      "id": "10",
+      "nickname": "studentLife",
+      "title": "학생 예산 관리 꿀팁",
+      "content": "대학생인데, 생활비 예산 관리가 너무 어렵네요. 저만의 관리법이 있으면 공유해요!",
+      "created_at": "2024-09-25 15:00",
+      "comment_count": 1
+    },
+    {
+      "id": "11",
+      "nickname": "smartInvestor",
+      "title": "매달 수입의 20%는 투자 중",
+      "content": "월급의 20%는 매달 주식이나 펀드에 투자하고 있어요. 수익률 관리가 잘 안될 때는 어떻게 대처하시나요?",
+      "created_at": "2024-09-25 15:30",
+      "comment_count": 3
+    },
+    {
+      "id": "12",
+      "nickname": "frugalStudent",
+      "title": "알바비로 생활비 절약 중입니다",
+      "content": "학생이라 알바비로 생활하는데, 정말 절약하지 않으면 힘드네요. 학생분들 어떻게 생활비 관리하세요?",
+      "created_at": "2024-09-25 16:00",
+      "comment_count": 4
+    },
+    {
+      "id": "13",
+      "nickname": "babyBudgeter",
+      "title": "아기 용품 비용 줄이기",
+      "content": "아기 용품비가 많이 나가네요. 나름 중고로 사기도 하는데, 다른 절약 방법 있으면 알려주세요!",
+      "created_at": "2024-09-25 16:30",
+      "comment_count": 2
+    },
+    {
+      "id": "14",
+      "nickname": "earlyRetiree",
+      "title": "조기 은퇴 준비 중입니다",
+      "content": "조기 은퇴를 목표로 가계부를 철저하게 관리 중인데, 여러분은 은퇴 후 생활비는 어떻게 관리하실 계획이신가요?",
+      "created_at": "2024-09-25 17:00",
+      "comment_count": 6
+    },
+    {
+      "id": "15",
+      "nickname": "petLover",
+      "title": "반려동물 비용 관리",
+      "content": "반려동물 관련 지출이 생각보다 많이 들어서 가계부에 큰 영향을 주네요. 반려동물 비용 절약하는 팁 있나요?",
+      "created_at": "2024-09-25 17:30",
+      "comment_count": 5
+    },
+    {
+      "id": "16",
+      "nickname": "luxurySaver",
+      "title": "명품 소비와 가계부",
+      "content": "명품을 좋아하지만, 가계부에 큰 영향을 주지 않게 소비를 조절하려고 해요. 다들 명품 소비 어떻게 하시나요?",
+      "created_at": "2024-09-25 18:00",
+      "comment_count": 7
+    },
+    {
+      "id": "17",
+      "nickname": "foodieSaver",
+      "title": "외식 비용 절감 방법",
+      "content": "외식 비용이 꽤 많이 나가서 요즘은 배달이나 외식을 줄이고 있어요. 여러분은 어떻게 외식비를 절약하시나요?",
+      "created_at": "2024-09-25 18:30",
+      "comment_count": 3
+    },
+    {
+      "id": "18",
+      "nickname": "partTimeWorker",
+      "title": "부업으로 수입 늘리기",
+      "content": "부업으로 수입을 늘리고 가계부에 도움이 되게끔 하고 있어요. 부업 추천하실 만한 게 있나요?",
+      "created_at": "2024-09-25 19:00",
+      "comment_count": 4
+    },
+    {
+      "id": "19",
+      "nickname": "minimalist",
+      "title": "미니멀리즘 생활비 절약",
+      "content": "미니멀리즘 생활을 통해 지출을 많이 줄였어요. 여러분은 어떻게 불필요한 소비를 줄이시나요?",
+      "created_at": "2024-09-25 19:30",
+      "comment_count": 2
+    },
+    {
+      "id": "20",
+      "nickname": "investSmart",
+      "title": "월급의 30% 투자 중입니다",
+      "content": "매달 월급의 30%를 주식과 부동산에 투자 중입니다. 여러분은 월급의 몇 퍼센트를 투자하고 계신가요?",
+      "created_at": "2024-09-25 20:00",
+      "comment_count": 6
+    },
+    {
+      "id": "21",
+      "nickname": "carFan",
+      "title": "차 유지비 어떻게 줄일 수 있을까요?",
+      "content": "자동차 유지비가 부담돼서 고민입니다. 보험료와 주유비를 어떻게 줄이시는지 궁금합니다.",
+      "created_at": "2024-09-25 20:30",
+      "comment_count": 3
+    },
+    {
+      "id": "22",
+      "nickname": "shopSmart",
+      "title": "온라인 쇼핑 비용 관리",
+      "content": "요즘 온라인 쇼핑이 잦아지다 보니 지출이 많이 늘었어요. 쇼핑비 절약 팁 있나요?",
+      "created_at": "2024-09-25 21:00",
+      "comment_count": 5
+    },
+    {
+      "id": "23",
+      "nickname": "healthSaver",
+      "title": "헬스장 비용 아끼는 법",
+      "content": "헬스장 비용이 부담돼서 집에서 운동하려고 합니다. 홈트용 장비는 어떻게 예산을 잡아야 할까요?",
+      "created_at": "2024-09-25 21:30",
+      "comment_count": 2
+    },
+    {
+      "id": "24",
+      "nickname": "studentBudget",
+      "title": "대학생 가계부 관리 팁",
+      "content": "대학생이라 예산이 빠듯한데, 어떻게 가계부를 쓰면 절약할 수 있을까요?",
+      "created_at": "2024-09-25 22:00",
+      "comment_count": 4
+    },
+    {
+      "id": "25",
+      "nickname": "newlywedSaver",
+      "title": "신혼부부 생활비 관리 팁",
+      "content": "신혼부부로서 생활비가 많이 드는데, 어떤 항목에서 절약을 할 수 있을까요?",
+      "created_at": "2024-09-25 22:30",
+      "comment_count": 3
+    },
+    {
+      "id": "26",
+      "nickname": "hobbyist",
+      "title": "취미 생활비 관리 방법",
+      "content": "취미 생활이 많아서 지출이 많이 나가네요. 취미 활동비는 어떻게 관리하시나요?",
+      "created_at": "2024-09-25 23:00",
+      "comment_count": 6
+    },
+    {
+      "id": "27",
+      "nickname": "homeChef",
+      "title": "집에서 요리하면 얼마나 절약할까요?",
+      "content": "외식 대신 집에서 요리하려고 하는데, 식비가 얼마나 줄어들지 궁금하네요. 여러분은 어떻게 요리비를 절약하시나요?",
+      "created_at": "2024-09-25 23:30",
+      "comment_count": 2
+    },
+    {
+      "id": "28",
+      "nickname": "loanPlanner",
+      "title": "대출 이자 관리 팁",
+      "content": "대출 이자가 매달 부담스러운데, 혹시 이자 절약할 수 있는 방법 있나요?",
+      "created_at": "2024-09-26 00:00",
+      "comment_count": 5
+    },
+    {
+      "id": "29",
+      "nickname": "travelLover",
+      "title": "여행 경비 절약하는 방법",
+      "content": "여행을 좋아하지만 경비가 많이 들어요. 여행할 때 경비 절약하는 팁 있으신가요?",
+      "created_at": "2024-09-26 00:30",
+      "comment_count": 4
+    },
+    {
+      "id": "30",
+      "nickname": "techSaver",
+      "title": "전자기기 구매 비용 관리",
+      "content": "전자기기 구입비가 많이 들어서 걱정입니다. 최신 기기를 저렴하게 구매하는 팁 있으신가요?",
+      "created_at": "2024-09-26 01:00",
+      "comment_count": 3
+    },
+    {
+      "id": "31",
+      "nickname": "budgetMaster",
+      "title": "자취생 절약방법",
+      "content": "자취생인데 생활비 절약방법 있을까요?",
+      "created_at": "2024-09-27 08:30",
+      "comment_count": 2
+    },
+    {
+      "id": "32",
+      "nickname": "budgetMaster",
+      "title": "고정지출과 변동지출 관리법",
+      "content": "고정지출과 변동지출을 효과적으로 관리하기 위해 엑셀을 사용하고 있습니다. 다른 관리 방법이 있으면 알려주세요!",
+      "created_at": "2024-09-27 09:00",
+      "comment_count": 4
+    },
+    {
+      "id": "33",
+      "nickname": "budgetMaster",
+      "title": "아이들 교육비 절약 팁",
+      "content": "아이들 교육비를 절약하려고 노력 중인데, 효과적인 방법을 찾기가 어렵네요. 팁이 있다면 알려주세요!",
+      "created_at": "2024-09-27 09:30",
+      "comment_count": 3
+    },
+    {
+      "id": "34",
+      "nickname": "budgetMaster",
+      "title": "장기적인 재무 목표 설정 방법",
+      "content": "장기적인 재무 목표를 설정하고 달성하기 위한 팁이 있나요? 저는 매년 목표를 재설정하는데, 여러분은 어떻게 하시나요?",
+      "created_at": "2024-09-27 10:00",
+      "comment_count": 5
+    },
+    {
+      "id": "35",
+      "nickname": "budgetMaster",
+      "title": "은퇴 자금 모으기 꿀팁",
+      "content": "은퇴 자금을 모으기 위해 매달 저축하고 있는데, 더 효과적인 방법이 있을까요? 여러분의 팁을 공유해주세요.",
+      "created_at": "2024-09-27 10:30",
+      "comment_count": 6
+    },
+    {
+      "id": "36",
+      "nickname": "budgetMaster",
+      "title": "해외여행 경비 줄이기",
+      "content": "해외여행 경비를 줄이기 위해 항공권과 숙박비를 어떻게 절약하시나요? 좋은 팁이 있으면 알려주세요.",
+      "created_at": "2024-09-27 11:00",
+      "comment_count": 2
+    },
+    {
+      "id": "37",
+      "nickname": "budgetMaster",
+      "title": "가족여행 비용 절약법",
+      "content": "가족여행 비용을 줄이기 위해 노력 중입니다. 저렴하면서도 가족 모두가 만족할 수 있는 여행지를 추천해주세요.",
+      "created_at": "2024-09-27 11:30",
+      "comment_count": 4
+    },
+    {
+      "id": "38",
+      "nickname": "budgetMaster",
+      "title": "전자기기 할인 정보 공유",
+      "content": "최근에 구매한 전자기기를 할인받아 구매했어요. 여러분도 좋은 할인 정보를 공유해주세요!",
+      "created_at": "2024-09-27 12:00",
+      "comment_count": 3
+    },
+    {
+      "id": "39",
+      "nickname": "budgetMaster",
+      "title": "가정용품 절약 방법",
+      "content": "가정용품 구매 시 비용을 절약하는 방법이 있나요? 특히 청소용품이나 생필품에 대한 절약 팁을 공유해주세요.",
+      "created_at": "2024-09-27 12:30",
+      "comment_count": 5
+    },
+    {
+      "id": "40",
+      "nickname": "budgetMaster",
+      "title": "식재료 비용 절약 팁",
+      "content": "식재료 비용을 절약하기 위해 대량 구매나 할인을 적극 활용하고 있습니다. 다른 방법이 있다면 알려주세요!",
+      "created_at": "2024-09-27 13:00",
+      "comment_count": 4
+    },
+    {
+      "id": "41",
+      "nickname": "budgetMaster",
+      "title": "부채 상환 전략",
+      "content": "부채 상환을 효과적으로 관리하기 위해 어떤 전략을 사용하시나요? 저는 이자율이 높은 것부터 갚고 있어요.",
+      "created_at": "2024-09-27 13:30",
+      "comment_count": 6
+    }
+  ],
+  "users": [
+    {
+      "id": "12c4",
+      "username": "1111",
+      "password": "1111",
+      "passwordConfirm": "1111",
+      "nickname": "1234",
+      "email": "1234@naver.com",
+      "idConfirm": true,
+      "autoLogin": true,
+      "auth": "1234"
+    },
+    {
+      "id": "419e",
+      "username": "user01",
+      "password": "1234",
+      "passwordConfirm": "1234",
+      "nickname": "budgetMaster",
+      "email": "user01@naver.com",
+      "idConfirm": true,
+      "autoLogin": true,
+      "auth": "1111"
+    }
+  ],
+  "detail": [
+    {
+      "accbookCode": 154,
+      "createdAt": "2024-09-22 15:00:00",
+      "amount": 15000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "accCategoryName": "용돈",
+      "storeName": null,
+      "assetName": "비상금",
+      "financeType": "I",
+      "inAssetName": null,
+      "accCommentDTOList": [],
+      "id": "32de"
+    }
+  ],
+  "monthly": [
+    {
+      "accbookCode": 154,
+      "createdAt": "2024-09-22T15:00:00",
+      "amount": 15000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "a1c8"
+    },
+    {
+      "accbookCode": 153,
+      "createdAt": "2024-09-21T08:30:00",
+      "amount": 2000,
+      "isRegular": "Y",
+      "title": "영화관",
+      "memberCode": 1,
+      "accCategoryCode": 1,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "1c51"
+    },
+    {
+      "accbookCode": 152,
+      "createdAt": "2024-09-20T11:45:00",
+      "amount": 300000,
+      "isRegular": "N",
+      "title": "알바비",
+      "memberCode": 1,
+      "accCategoryCode": 10,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "50f7"
+    },
+    {
+      "accbookCode": 151,
+      "createdAt": "2024-09-19T10:00:00",
+      "amount": 25000,
+      "isRegular": "Y",
+      "title": "교보문고",
+      "memberCode": 1,
+      "accCategoryCode": 11,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "70dd"
+    },
+    {
+      "accbookCode": 150,
+      "createdAt": "2024-09-18T14:15:00",
+      "amount": 9000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "f338"
+    },
+    {
+      "accbookCode": 149,
+      "createdAt": "2024-09-17T12:30:00",
+      "amount": 15000,
+      "isRegular": "Y",
+      "title": "카페",
+      "memberCode": 1,
+      "accCategoryCode": 1,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "5bc0"
+    },
+    {
+      "accbookCode": 148,
+      "createdAt": "2024-09-16T09:00:00",
+      "amount": 12000,
+      "isRegular": "N",
+      "title": "카페",
+      "memberCode": 1,
+      "accCategoryCode": 11,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "cf12"
+    },
+    {
+      "accbookCode": 147,
+      "createdAt": "2024-09-16T09:00:00",
+      "amount": 12000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 11,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "f195"
+    },
+    {
+      "accbookCode": 146,
+      "createdAt": "2024-09-15T16:00:00",
+      "amount": 8000,
+      "isRegular": "Y",
+      "title": "편의점",
+      "memberCode": 1,
+      "accCategoryCode": 10,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "fe11"
+    },
+    {
+      "accbookCode": 145,
+      "createdAt": "2024-09-14T13:45:00",
+      "amount": 10000,
+      "isRegular": "N",
+      "title": "카카오뱅크",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "ff59"
+    },
+    {
+      "accbookCode": 144,
+      "createdAt": "2024-09-13T15:30:00",
+      "amount": 30000,
+      "isRegular": "Y",
+      "title": "스타벅스",
+      "memberCode": 1,
+      "accCategoryCode": 1,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "96b2"
+    },
+    {
+      "accbookCode": 143,
+      "createdAt": "2024-09-12T11:00:00",
+      "amount": 100000,
+      "isRegular": "N",
+      "title": "배당수익",
+      "memberCode": 1,
+      "accCategoryCode": 11,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "2751"
+    },
+    {
+      "accbookCode": 142,
+      "createdAt": "2024-09-11T14:00:00",
+      "amount": 25000,
+      "isRegular": "Y",
+      "title": "교보문고",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "6cfd"
+    },
+    {
+      "accbookCode": 141,
+      "createdAt": "2024-09-10T10:30:00",
+      "amount": 15000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 1,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "6879"
+    },
+    {
+      "accbookCode": 140,
+      "createdAt": "2024-09-09T08:00:00",
+      "amount": 70000,
+      "isRegular": "Y",
+      "title": "쇼핑",
+      "memberCode": 1,
+      "accCategoryCode": 11,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "9846"
+    },
+    {
+      "accbookCode": 139,
+      "createdAt": "2024-09-09T08:00:00",
+      "amount": 7000,
+      "isRegular": "Y",
+      "title": "카페",
+      "memberCode": 1,
+      "accCategoryCode": 11,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "20e5"
+    },
+    {
+      "accbookCode": 138,
+      "createdAt": "2024-09-08T12:15:00",
+      "amount": 52000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "dcfb"
+    },
+    {
+      "accbookCode": 137,
+      "createdAt": "2024-09-08T12:15:00",
+      "amount": 12000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "c12e"
+    },
+    {
+      "accbookCode": 136,
+      "createdAt": "2024-09-07T17:30:00",
+      "amount": 100000,
+      "isRegular": "Y",
+      "title": "이자",
+      "memberCode": 1,
+      "accCategoryCode": 10,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "3d4d"
+    },
+    {
+      "accbookCode": 135,
+      "createdAt": "2024-09-07T17:30:00",
+      "amount": 100000,
+      "isRegular": "Y",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "b9be"
+    },
+    {
+      "accbookCode": 134,
+      "createdAt": "2024-09-06T13:30:00",
+      "amount": 25000,
+      "isRegular": "Y",
+      "title": "중고거래",
+      "memberCode": 1,
+      "accCategoryCode": 10,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "f5e3"
+    },
+    {
+      "accbookCode": 133,
+      "createdAt": "2024-09-06T11:00:00",
+      "amount": 5000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "9c47"
+    },
+    {
+      "accbookCode": 132,
+      "createdAt": "2024-09-05T15:00:00",
+      "amount": 50000,
+      "isRegular": "Y",
+      "title": "봉투",
+      "memberCode": 1,
+      "accCategoryCode": 1,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "0a69"
+    },
+    {
+      "accbookCode": 131,
+      "createdAt": "2024-09-04T14:30:00",
+      "amount": 15000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "85be"
+    },
+    {
+      "accbookCode": 130,
+      "createdAt": "2024-09-03T13:15:00",
+      "amount": 35000,
+      "isRegular": "Y",
+      "title": "쇼핑",
+      "memberCode": 1,
+      "accCategoryCode": 1,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "ec37"
+    },
+    {
+      "accbookCode": 129,
+      "createdAt": "2024-09-02T12:00:00",
+      "amount": 8000,
+      "isRegular": "N",
+      "title": "기타소득",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "9999"
+    },
+    {
+      "accbookCode": 129,
+      "createdAt": "2024-09-01T15:00:00",
+      "amount": 20000,
+      "isRegular": "N",
+      "title": "부업",
+      "memberCode": 1,
+      "accCategoryCode": 4,
+      "storeCode": null,
+      "assetCode": 10,
+      "financeType": "I",
+      "inAssetCode": null,
+      "id": "f24a"
+    },
+    {
+      "accbookCode": 128,
+      "createdAt": "2024-09-01T10:00:00",
+      "amount": 15000,
+      "isRegular": "N",
+      "title": "스타벅스",
+      "memberCode": 1,
+      "accCategoryCode": 1,
+      "storeCode": null,
+      "assetCode": 1,
+      "financeType": "O",
+      "inAssetCode": null,
+      "id": "2c65"
+    }
+  ],
+  "monthly-eval": [
+    {
+      "dailyDate": "2024-09-01",
+      "totalOAmount": 15000,
+      "totalIAmount": 20000,
+      "evaluation": "Good",
+      "id": "0e50"
+    },
+    {
+      "dailyDate": "2024-09-02",
+      "totalOAmount": 30000,
+      "totalIAmount": 0,
+      "evaluation": "Bad",
+      "id": "fe4a"
+    },
+    {
+      "dailyDate": "2024-09-03",
+      "totalOAmount": 0,
+      "totalIAmount": 500000,
+      "evaluation": "Good",
+      "id": "57ae"
+    },
+    {
+      "dailyDate": "2024-09-04",
+      "totalOAmount": 25000,
+      "totalIAmount": 0,
+      "evaluation": "Bad",
+      "id": "4680"
+    },
+    {
+      "dailyDate": "2024-09-05",
+      "totalOAmount": 0,
+      "totalIAmount": 15000,
+      "evaluation": "Good",
+      "id": "68db"
+    },
+    {
+      "dailyDate": "2024-09-06",
+      "totalOAmount": 2000,
+      "totalIAmount": 0,
+      "evaluation": "Good",
+      "id": "d22d"
+    },
+    {
+      "dailyDate": "2024-09-07",
+      "totalOAmount": 18000,
+      "totalIAmount": 100000,
+      "evaluation": "Good",
+      "id": "3ac3"
+    },
+    {
+      "dailyDate": "2024-09-08",
+      "totalOAmount": 0,
+      "totalIAmount": 64000,
+      "evaluation": "Good",
+      "id": "221e"
+    },
+    {
+      "dailyDate": "2024-09-09",
+      "totalOAmount": 77000,
+      "totalIAmount": 0,
+      "evaluation": "Bad",
+      "id": "b570"
+    },
+    {
+      "dailyDate": "2024-09-10",
+      "totalOAmount": 0,
+      "totalIAmount": 15000,
+      "evaluation": "Good",
+      "id": "b1c5"
+    },
+    {
+      "dailyDate": "2024-09-11",
+      "totalOAmount": 25000,
+      "totalIAmount": 0,
+      "evaluation": "Bad",
+      "id": "e8dc"
+    },
+    {
+      "dailyDate": "2024-09-12",
+      "totalOAmount": 0,
+      "totalIAmount": 100000,
+      "evaluation": "Good",
+      "id": "2a29"
+    },
+    {
+      "dailyDate": "2024-09-13",
+      "totalOAmount": 30000,
+      "totalIAmount": 0,
+      "evaluation": "Bad",
+      "id": "c30a"
+    },
+    {
+      "dailyDate": "2024-09-14",
+      "totalOAmount": 0,
+      "totalIAmount": 10000,
+      "evaluation": "Good",
+      "id": "e75c"
+    },
+    {
+      "dailyDate": "2024-09-15",
+      "totalOAmount": 8000,
+      "totalIAmount": 0,
+      "evaluation": "Good",
+      "id": "e109"
+    },
+    {
+      "dailyDate": "2024-09-16",
+      "totalOAmount": 12000,
+      "totalIAmount": 12000,
+      "evaluation": "Good",
+      "id": "f710"
+    },
+    {
+      "dailyDate": "2024-09-17",
+      "totalOAmount": 15000,
+      "totalIAmount": 0,
+      "evaluation": "Good",
+      "id": "a180"
+    },
+    {
+      "dailyDate": "2024-09-18",
+      "totalOAmount": 0,
+      "totalIAmount": 9000,
+      "evaluation": "Good",
+      "id": "0c45"
+    },
+    {
+      "dailyDate": "2024-09-19",
+      "totalOAmount": 25000,
+      "totalIAmount": 0,
+      "evaluation": "Bad",
+      "id": "c877"
+    },
+    {
+      "dailyDate": "2024-09-20",
+      "totalOAmount": 0,
+      "totalIAmount": 300000,
+      "evaluation": "Good",
+      "id": "eba3"
+    },
+    {
+      "dailyDate": "2024-09-21",
+      "totalOAmount": 2000,
+      "totalIAmount": 0,
+      "evaluation": "Good",
+      "id": "7b81"
+    },
+    {
+      "dailyDate": "2024-09-22",
+      "totalOAmount": 0,
+      "totalIAmount": 15000,
+      "evaluation": "Good",
+      "id": "2835"
+    },
+    {
+      "dailyDate": "2024-09-23",
+      "totalOAmount": 1000,
+      "totalIAmount": 0,
+      "evaluation": "Good",
+      "id": "6317"
+    },
+    {
+      "dailyDate": "2024-09-24",
+      "totalOAmount": 10000,
+      "totalIAmount": 0,
+      "evaluation": "Good",
+      "id": "ee9d"
+    },
+    {
+      "dailyDate": "2024-09-25",
+      "totalOAmount": 10000,
+      "totalIAmount": 0,
+      "evaluation": "Good",
+      "id": "e0ae"
+    },
+    {
+      "dailyDate": "2024-09-26",
+      "totalOAmount": 25000,
+      "totalIAmount": 0,
+      "evaluation": "Bad",
+      "id": "2bb7"
+    },
+    {
+      "dailyDate": "2024-09-27",
+      "totalOAmount": 0,
+      "totalIAmount": 0,
+      "evaluation": null,
+      "id": "1564"
+    },
+    {
+      "dailyDate": "2024-09-28",
+      "totalOAmount": 0,
+      "totalIAmount": 0,
+      "evaluation": null,
+      "id": "ac34"
+    },
+    {
+      "dailyDate": "2024-09-29",
+      "totalOAmount": 0,
+      "totalIAmount": 0,
+      "evaluation": null,
+      "id": "cef4"
+    },
+    {
+      "dailyDate": "2024-09-30",
+      "totalOAmount": 0,
+      "totalIAmount": 0,
+      "evaluation": null,
+      "id": "b759"
+    }
+  ]
 }
