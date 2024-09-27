@@ -34,13 +34,13 @@
                     <div v-if="storeReview && limitReviews.length > 0" class="modal-content-item">
                         <div class="store-review-title-box">
                             <div class="title">리뷰 ({{ allReviews.length }}개)</div>
-                            <div class="price-avg">1인당 평균 {{ storeReview.priceAvg.toLocaleString() }}원을 지출했어요!</div>
+                            <CostAvgChip :costAvg="storeReview.priceAvg" />
                         </div>
                         <div class="review-more-btn-wrapper">
                             <ReadMoreButton v-if="allReviews.length > 2" @clickMore="showRightView('REVIEWS')" />
                         </div>
 
-                        <StoreReviewBox v-for="review in limitReviews" :review="review" />
+                        <StoreReviewBox v-for="review in limitReviews" :review="review" :key="review.id" />
 
                         <!-- 리뷰 작성 버튼 -->
                         <button type="button" class="btn-write-review" @click="showRightView('WRITE_REVIEW')">
@@ -63,6 +63,7 @@
                 <!-- 오른쪽+ 메인 content -->
                 <div class="right-main-area">
                     <WriteReviewView v-if="rightView === 'WRITE_REVIEW'" @closeRightView="closeRightView" />
+                    <StoreReviewListView v-else-if="rightView === 'REVIEWS'" :allReviews="allReviews" :avg="storeReview.priceAvg"/>
                 </div>
             </div>
         </template>
@@ -74,8 +75,10 @@ import { defineProps, defineEmits, ref, watchEffect } from 'vue';
 import GoodStoreBox from '@/components/savemap/GoodStoreBox.vue';
 import ReadMoreButton from '@/components/buttons/ReadMoreButton.vue';
 import AccountBookItem from "@/components/accbook/AccountBookList.vue"
-import StoreReviewBox from './StoreReviewBox.vue';
-import WriteReviewView from './WriteReviewView.vue';
+import StoreReviewBox from '@/components/savemap/StoreReviewBox.vue';
+import WriteReviewView from '@/components/savemap/WriteReviewView.vue';
+import StoreReviewListView from '@/components/savemap/StoreReviewListView.vue';
+import CostAvgChip from '@/components/savemap/CostAvgChip.vue';
 
 const props = defineProps({
     storeDetailId: String
@@ -242,16 +245,6 @@ dialog.modal {
                 font-size: 20px;
                 font-weight: bold;
                 margin-right: 20px;
-            }
-
-            .price-avg {
-                background-color: rgba(198, 198, 235);
-                height: 30px;
-                padding: 0 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: white;
             }
         }
 

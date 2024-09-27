@@ -15,7 +15,7 @@
             </div>
 
             <div class="images">
-                <div class="image-item" v-for="preview in previews">
+                <div class="image-item" v-for="preview in previews" :key="preview">
                     <img :src="preview" alt="리뷰 이미지">
                     <button type="button" class="btn-remove" @click="removeImage(preview)">
                         <img src="@/assets/icons/button-close.svg" alt="이미지 삭제">

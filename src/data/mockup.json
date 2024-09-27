@@ -63,7 +63,7 @@
             "priceAvg": 10500,
             "reviews": [
                 {
-                    "reviewCode": 1,
+                    "id": 1,
                     "nickname": "짜장면이최고야",
                     "peopleNum": 2,
                     "totalPrice": 35000,
@@ -71,7 +71,7 @@
                     "images": []
                 },
                 {
-                    "reviewCode": 2,
+                    "id": 2,
                     "nickname": "짜장면덕후",
                     "peopleNum": 1,
                     "totalPrice": 7000,
@@ -81,14 +81,14 @@
                     ]
                 },
                 {
-                    "reviewCode": 3,
+                    "id": 3,
                     "nickname": "짜장보단짬뽕",
                     "peopleNum": 1,
                     "totalPrice": 8000,
                     "content": "짬뽕 정말 맛있네요",
                     "images": [
                         "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp",
-                        "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp",
+                        "https://cdn.pixabay.com/photo/2021/02/11/01/58/jambong-6004032_1280.jpg",
                         "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp"
                     ]
                 }
