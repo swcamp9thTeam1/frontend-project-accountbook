@@ -1,8 +1,6 @@
 <template>
-    <div class="page-title">가계부 작성</div>
-
-    <div class="add-accbook">
-        <input type="text" class="accbook-title" name="title" placeholder="제목을 입력해주세요."
+  <div class="add-accbook">
+      <input type="text" class="accbook-title" name="title" placeholder="제목을 입력해주세요."
         minlength="4" maxlength="20" required>
         <input type="number" class="accbook-amount" name="amount" placeholder="금액을 입력해주세요."
         minlength="1" maxlength="19" required>
@@ -35,7 +33,7 @@
         <div class="occur-date">
             <div class="classification">일시</div>
             <div class="datetime-container">
-                <input type="text" class="year" name="year" placeholder="2000" pattern="\d*" maxlength="4" required>
+                <input type="text" class="year" name="year" placeholder="2024" pattern="\d*" maxlength="4" required>
                 <div class="datetime-class">년</div>
                 <input type="text" class="month" name="month" placeholder="01" pattern="\d*" maxlength="2" required>
                 <div class="datetime-class">월</div>
@@ -69,10 +67,12 @@
 
         <div class="store-info">
             <div class="classification">가게 정보</div>
+          <div class="input-container">
             <input type="text" class="find-store" name="store-name" placeholder="방문한 가게명을 입력해주세요.">
             <div class="find-icon">
-                <img src="../../assets/icons/가계부_가게입력_돋보기_이미지.svg">
+              <img src="../../assets/icons/가계부_가게입력_돋보기_이미지.svg">
             </div>
+          </div>
         </div>
 
         <button class="add-button">등록하기</button>
@@ -84,40 +84,26 @@
 </script>
 
 <style scoped>
-    /* 작성 부분 상단의 "가계부 작성" 텍스트 */
-    .page-title {
-        position: absolute;
-        left: 797px;
-        top: 212px;
-        width: 90px;
-        height: 20px;
-
-        font-family: 'Noto Sans KR';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        color: #000000;
-    }
-
     /* 가계부 작성 부분 틀 */
     .add-accbook {
-        position: absolute;
-        width: 606px;
-        height: 463px;
-        left: 776px;
-        top: 251px;
+        position: relative;
+        //width: 606px;
+        //height: 463px;
+        //left: 776px;
+        //top: 251px;
 
         box-shadow: 0px 0px 7px 1px #DFDFF5;
         border-radius: 30px;
 
         display: flex;
         flex-direction: column;
+        margin: 20px;
+        padding-right: 20px;
     }
 
     /* 가계부 제목 입력 부분 */
     .accbook-title {
-        position: absolute;
+        position: relative;
         margin-left: 40px;
         margin-top: 30px;
 
@@ -139,9 +125,10 @@
 
     /* 가계부 금액 입력 부분 */
     .accbook-amount {
-        position: absolute;
+        position: relative;
         margin-left: 40px;
-        margin-top: 58px;
+        margin-top: 20px;
+        margin-bottom: 10px;
 
         font-family: 'Noto Sans KR';
         font-style: normal;
@@ -154,21 +141,25 @@
     }
 
     .line {
-        position: absolute;
-        left: 6.6%;
-        right: 5.94%;
-        top: 20%;
+        position: relative;
+        //left: 6.6%;
+        //right: 5.94%;
+        top: 0%;
         bottom: 80%;
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
     /* 분류(수입/지출/이체) 선택 부분 */
     .finance-type {
         margin-left: 40px;
-        margin-top: 112px;
+        //margin-top: 112px;
         align-items: center;
 
         display: flex;
         flex-direction: row;
+        margin-top: 20px;
     }
 
     .classification {
@@ -183,8 +174,8 @@
     }
 
     .finance-type-buttons {
-        position: absolute;
-        margin-left: 160px;
+        position: relative;
+        margin-left: 130px;
 
         display: flex;
         flex-direction: row;
@@ -257,7 +248,7 @@
     }
 
     .category-container {
-        position: absolute;
+        position: relative;
 
         display: flex;
         flex-direction: row;
@@ -273,7 +264,7 @@
     }
 
     .acc-category {
-        margin-left: 160px;
+        margin-left: 95px;
         width: 183px;
         height: 40px;
 
@@ -397,7 +388,7 @@
     }
 
     .asset-category {
-        margin-left: 97px;
+        margin-left: 95px;
         width: 136px;
         height: 40px;
 
@@ -437,8 +428,8 @@
     }
 
     .regular-buttons {
-        position: absolute;
-        margin-left: 160px;
+        position: relative;
+        margin-left: 60px;
 
         display: flex;
         flex-direction: row;
@@ -491,9 +482,17 @@
         align-items: center;
     }
 
-    .find-store {
+    .input-container {
+        position: relative;
         margin-left: 92px;
-        width: 327px;
+        width: 370px;
+        display: flex;
+    }
+
+    .find-store {
+        //margin-left: 92px;
+        //width: 327px;
+        width: 100%;
         height: 40px;
 
         font-family: 'Noto Sans KR';
@@ -506,19 +505,28 @@
 
         border: 1px solid #B1B1D2;
         border-radius: 5px;
-        padding-left: 8px;
+        padding-left: 20px;
         padding-right: 30px;
+        box-sizing: border-box;
     }
 
     .find-icon {
-        position: absolute;
-        margin-left: 82.5%;
+      position: absolute; /* 절대 위치로 설정하여 입력창 안에 배치 */
+      right: 10px; /* 아이콘의 위치 설정 */
+      top: 50%; /* 수직 중앙 정렬 */
+      transform: translateY(-50%); /* 수직 중앙 정렬 보정 */
+    }
+
+    .find-icon img {
+      width: 20px; /* 아이콘 크기 조정 */
+      height: auto; /* 비율 유지 */
     }
 
     /* 가계부 등록 버튼 */
     .add-button {
-        margin-left: 488px;
-        margin-top: 36px;
+        margin-left: 480px;
+        margin-top: 30px;
+      margin-bottom: 20px;
         width: 89px;
         height: 32px;
 
