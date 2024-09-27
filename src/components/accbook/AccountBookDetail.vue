@@ -32,7 +32,7 @@
 
     <div class="occur-date">
       <div class="classification">일시</div>
-      <div class="datetime-container">{{ accbookDetail.createdAt }}</div>
+      <div class="datetime-container">{{ formatDateString(accbookDetail.createdAt) }}</div>
     </div>
 
     <div class="select-asset">
@@ -112,6 +112,24 @@ onMounted(async () => {
     regularType.value = 'regular'
   }
 })
+
+const formatDateString = (dateString) => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1; // 월은 0부터 시작하므로 +1
+  const day = date.getDate();
+  let hour = date.getHours();
+  const minute = date.getMinutes().toString().padStart(2, '0');
+
+  // 오후/오전 처리
+  const ampm = hour >= 12 ? '오후' : '오전';
+
+  // 12시간 형식으로 변경
+  hour = hour % 12 || 12;
+
+  return `${year}년 ${month}월 ${day}일 | ${ampm} ${hour}:${minute}`;
+};
+
 
 
 </script>
