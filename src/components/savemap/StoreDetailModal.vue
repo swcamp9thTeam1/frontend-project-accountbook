@@ -27,7 +27,11 @@
                         </div>
 
                         <!-- 최대 2개만 표시 -->
-                        <AccountBookItem v-for="accbook in limitAccountBooks" :key="accbook.accBookCode" :item="accbook" />
+                        <AccountBookItem 
+                            v-for="accbook in limitAccountBooks" 
+                            :key="accbook.id" 
+                            :item="accbook"
+                            @itemClicked="clickAccBook" />
                     </div>
 
                     <!-- 가게 리뷰 -->
@@ -64,6 +68,10 @@
                 <div class="right-main-area">
                     <WriteReviewView v-if="rightView === 'WRITE_REVIEW'" @closeRightView="closeRightView" />
                     <StoreReviewListView v-else-if="rightView === 'REVIEWS'" :allReviews="allReviews" :avg="storeReview.priceAvg"/>
+                    <StoreAccBookListView 
+                        v-else-if="rightView === 'ACCBOOKS'" 
+                        :accBooks="allAccountBooks"
+                        :currentAccBookId="currentAccBookId" />
                 </div>
             </div>
         </template>
@@ -79,6 +87,7 @@ import StoreReviewBox from '@/components/savemap/StoreReviewBox.vue';
 import WriteReviewView from '@/components/savemap/WriteReviewView.vue';
 import StoreReviewListView from '@/components/savemap/StoreReviewListView.vue';
 import CostAvgChip from '@/components/savemap/CostAvgChip.vue';
+import StoreAccBookListView from '@/components/savemap/StoreAccBookListView.vue';
 
 const props = defineProps({
     storeDetailId: String,
@@ -89,13 +98,14 @@ const store = ref({});
 
 const allAccountBooks = ref([]);    // 가게와 연동된 가계부 전체 목록
 const limitAccountBooks = ref([]);  // 최대 2개만 표시하기 위해 따로 저장
+const currentAccBookId = ref(null); // 선택된 가계부 ID
 
-const storeReview = ref({});     // 가게 리뷰
-const allReviews = ref([]);      // 가게 전체 리뷰 목록
-const limitReviews = ref([]);         // 리뷰 2개만 표시
+const storeReview = ref({});        // 가게 리뷰
+const allReviews = ref([]);         // 가게 전체 리뷰 목록
+const limitReviews = ref([]);       // 리뷰 2개만 표시
 
 const openRight = ref(false);
-const rightView = ref("");       // 오른쪽에 표시될 화면("WRITE_REVIEW", "REVIEWS", "ACCBOOKS")
+const rightView = ref("");          // 오른쪽에 표시될 화면("WRITE_REVIEW", "REVIEWS", "ACCBOOKS")
 
 const getStoreDetail = async (storeId) => {
     const response = await fetch(`http://localhost:8080/stores/${storeId}`);
@@ -146,6 +156,14 @@ const back = () => {
 const closeRightView = () => {
     rightView.value = "";
     openRight.value = false;
+}
+
+const clickAccBook = (accBookId) => {
+    
+    // 오른쪽에 가계부 자세히보기
+    rightView.value = "ACCBOOKS"
+    openRight.value = true;
+    currentAccBookId.value = accBookId;
 }
 </script>
 
