@@ -2,21 +2,9 @@
     import { RouterLink } from 'vue-router';
     import { ref, defineProps } from 'vue';
 
-    const assets = ref([]);
-    const categoryTotals = ref({});
-
-    onMounted(async () => {
-        const response = await fetch('http://localhost:8080/asset');
-        assets.value = await response.json();
-
-        categoryTotals.value = assets.value.reduce((total, asset) => {
-            if(!total[asset.category]) {
-                total[asset.category] = 0;
-            }
-            total[asset.category] += asset.balance;
-            return total;
-        }, {});
-    })      // 아직 구현중
+    const props = defineProps({
+        asset:Object
+    })
 
     function confirmDelete(id) {
         const isConfirmed = confirm('정말 삭제하시겠습니까?');
@@ -24,10 +12,11 @@
             this.deleteAsset(id);
         }
     }       // 아직 구현중
+            // categoryTotal 구현 필요
 </script>
 
 <template>
-    <div v-for="categoryTotal in categoryTotals" :key="category" class="asset-classification">
+    <div class="asset-classification">
         <div class="asset-category">{{ asset.category }}</div>
         <div class="category-total">총 {{ categoryTotal }}원</div>
     </div>

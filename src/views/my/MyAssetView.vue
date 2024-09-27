@@ -1,7 +1,7 @@
 <script setup>
     import MyAssetList from '@/components/myPage/MyAssetList.vue';
     import { computed, onMounted, ref } from 'vue';
-import { RouterLink } from 'vue-router';
+    import { RouterLink } from 'vue-router';
 
     const assets = ref([]);
     const member = ref({});

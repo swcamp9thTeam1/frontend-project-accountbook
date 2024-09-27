@@ -30,7 +30,7 @@
         </div>
         <div class="endline"></div>
         <RouterLink to="/my/edit-info" active-class="active">
-            <button type="button" class="modify">수정하기</button>
+            <button class="modify">수정하기</button>
         </RouterLink>
     </div>
 </template>
