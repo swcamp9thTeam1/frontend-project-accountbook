@@ -15,21 +15,23 @@
 
                 <div class="modal-content">
                     <!-- 착한가격 업소면 표시 -->
-                    <GoodStoreBox v-if="store.good" :good="store.good" />
+                    <div class="modal-content-item">
+                        <GoodStoreBox v-if="store.good" :good="store.good" />
+                    </div>
 
                     <!-- 이 가게와 연동된 가계부가 있다면 표시 -->
-                    <div v-if="accountBooks.length > 0" class="store-accounts-box">
+                    <div v-if="limitAccountBooks.length > 0" class="store-accounts-box modal-content-item">
                         <div class="store-accounts-title-box">
                             <div class="store-accounts-title">내 가계부</div>
-                            <ReadMoreButton v-if="store.accountBooks.length > 2" @clickMore="showRightView('ACCBOOKS')" />
+                            <ReadMoreButton v-if="allAccountBooks.length > 2" @clickMore="showRightView('ACCBOOKS')" />
                         </div>
 
                         <!-- 최대 2개만 표시 -->
-                        <AccountBookItem v-for="accbook in accountBooks" :key="accbook.accBookCode" />
+                        <AccountBookItem v-for="accbook in limitAccountBooks" :key="accbook.accBookCode" :item="accbook" />
                     </div>
 
                     <!-- 가게 리뷰 -->
-                    <div v-if="storeReview && reviews.length > 0">
+                    <div v-if="storeReview && limitReviews.length > 0" class="modal-content-item">
                         <div class="store-review-title-box">
                             <div class="title">리뷰 ({{ allReviews.length }}개)</div>
                             <div class="price-avg">1인당 평균 {{ storeReview.priceAvg.toLocaleString() }}원을 지출했어요!</div>
@@ -38,13 +40,13 @@
                             <ReadMoreButton v-if="allReviews.length > 2" @clickMore="showRightView('REVIEWS')" />
                         </div>
 
-                        <StoreReviewBox v-for="review in reviews" :review="review" />
-                    </div>
+                        <StoreReviewBox v-for="review in limitReviews" :review="review" />
 
-                    <!-- 리뷰 작성 버튼 -->
-                    <button type="button" class="btn-write-review" @click="showRightView('WRITE_REVIEW')">
-                        리뷰 작성하러 가기
-                    </button>
+                        <!-- 리뷰 작성 버튼 -->
+                        <button type="button" class="btn-write-review" @click="showRightView('WRITE_REVIEW')">
+                            리뷰 작성하러 가기
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -81,10 +83,14 @@ const props = defineProps({
 const emit = defineEmits(["closeModal"]);
 
 const store = ref({});
-const accountBooks = ref([]);    // 최대 2개만 표시하기 위해 따로 저장
+
+const allAccountBooks = ref([]);    // 가게와 연동된 가계부 전체 목록
+const limitAccountBooks = ref([]);  // 최대 2개만 표시하기 위해 따로 저장
+
 const storeReview = ref({});     // 가게 리뷰
 const allReviews = ref([]);      // 가게 전체 리뷰 목록
-const reviews = ref([]);         // 리뷰 2개만 표시
+const limitReviews = ref([]);         // 리뷰 2개만 표시
+
 const openRight = ref(false);
 const rightView = ref("");       // 오른쪽에 표시될 화면("WRITE_REVIEW", "REVIEWS", "ACCBOOKS")
 
@@ -92,12 +98,16 @@ const getStoreDetail = async (storeId) => {
     const response = await fetch(`http://localhost:8080/stores/${storeId}`);
     const data = await response.json();
     store.value = data;
-    
+}
+
+const getStoreAccBooks = async (storeId) => {
+    const response = await fetch(`http://localhost:8080/monthly?financeType=O`);        // 일단 지출 가계부 목록 모두 가져오기
+    const data = await response.json();
+    allAccountBooks.value = data;
+
     // 가계부는 최대 2개까지만 표시
     // (나머지는 더보기 버튼 사용하여 표시)
-    if (data.accountBooks) {
-        accountBooks.value = data.accountBooks.slice(0, 2);
-    }
+    limitAccountBooks.value = data.slice(0, 2);
 }
 
 const getStoreReviews = async (storeId) => {
@@ -110,13 +120,14 @@ const getStoreReviews = async (storeId) => {
 
     // 리뷰 2개만 표시
     // (나머지는 더보기 버튼 사용하여 표시)
-    reviews.value = data.reviews.slice(0, 2);
+    limitReviews.value = data.reviews.slice(0, 2);
 }
 
 watchEffect(() => {
     if (!props.storeDetailId) return;
 
     getStoreDetail(props.storeDetailId);
+    getStoreAccBooks(props.storeDetailId);
     getStoreReviews(props.storeDetailId);
 });
 
@@ -204,9 +215,6 @@ dialog.modal {
         padding: 20px;
 
         .store-accounts-box {
-            margin-top: 30px;
-            margin-bottom: 30px;
-
             .store-accounts-title-box {
                 display: flex;
                 justify-content: space-between;
@@ -260,6 +268,10 @@ dialog.modal {
             display: block;
 
             font-size: 16px;
+        }
+
+        .modal-content-item + .modal-content-item {
+            margin-top: 30px;
         }
     }
 
