@@ -1,46 +1,125 @@
 {
-    "good-stores": [
+    "map-stores": [
         {
-            "id": "1",
+            "id": 1,
             "latitude": "37.499590490909185",
             "longitude": "127.0263723554437",
-            "price": 8500
+            "isGood": true,
+            "goodPrice": 8500,
+            "visited": false,
+            "visitCnt": null,
+            "isExistAvg": false,
+            "onePersonCostAvg": null
         },
         {
-            "id": "2",
+            "id": 2,
             "latitude": "37.499427948430814",
             "longitude": "127.02794423197847",
-            "price": 8300
+            "isGood": true,
+            "goodPrice": 8300,
+            "visited": false,
+            "visitCnt": null,
+            "isExistAvg": true,
+            "onePersonCostAvg": 20000
         },
         {
-            "id": "3",
+            "id": 3,
             "latitude": "37.498553760499505",
             "longitude": "127.02882598822454",
-            "price": 9500
+            "isGood": true,
+            "goodPrice": 9500,
+            "visited": false,
+            "visitCnt": null,
+            "isExistAvg": true,
+            "onePersonCostAvg": 10000
         },
         {
-            "id": "4",
+            "id": 4,
             "latitude": "37.497625593121384",
             "longitude": "127.02935713582038",
-            "price": 7500
+            "isGood": true,
+            "goodPrice": 7500,
+            "visited": false,
+            "visitCnt": null,
+            "isExistAvg": true,
+            "onePersonCostAvg": 3400
         },
         {
-            "id": "5",
+            "id": 5,
             "latitude": "37.49646391248451",
             "longitude": "127.02675574250912",
-            "price": 6500
+            "isGood": true,
+            "goodPrice": 6500,
+            "visited": false,
+            "visitCnt": null,
+            "isExistAvg": false,
+            "onePersonCostAvg": null
         },
         {
-            "id": "6",
+            "id": 6,
             "latitude": "37.49646391248451",
             "longitude": "127.02587362608637",
-            "price": 3500
+            "isGood": true,
+            "goodPrice": 3500,
+            "visited": false,
+            "visitCnt": null,
+            "isExistAvg": true,
+            "onePersonCostAvg": 17000
         },
         {
-            "id": "7",
+            "id": 7,
             "latitude": "37.49754540521486",
             "longitude": "127.02546694890695",
-            "price": 7900
+            "isGood": true,
+            "goodPrice": 7900,
+            "visited": false,
+            "visitCnt": null,
+            "isExistAvg": true,
+            "onePersonCostAvg": 13400
+        },
+        {
+            "id": 8,
+            "latitude": "37.497535461505684",
+            "longitude": "127.02948149502778",
+            "isGood": false,
+            "goodPrice": null,
+            "visited": true,
+            "visitCnt": 1,
+            "isExistAvg": false,
+            "onePersonCostAvg": null
+        },
+        {
+            "id": 9,
+            "latitude": "37.49671536281186",
+            "longitude": "127.03020491448352",
+            "isGood": false,
+            "goodPrice": null,
+            "visited": true,
+            "visitCnt": 2,
+            "isExistAvg": false,
+            "onePersonCostAvg": null
+        },
+        {
+            "id": 10,
+            "latitude": "37.496201943633714",
+            "longitude": "127.02959405469642",
+            "isGood": false,
+            "goodPrice": null,
+            "visited": true,
+            "visitCnt": 3,
+            "isExistAvg": true,
+            "onePersonCostAvg": 35000
+        },
+        {
+            "id": 11,
+            "latitude": "37.49640072567703",
+            "longitude": "127.02726459882308",
+            "isGood": false,
+            "goodPrice": null,
+            "visited": true,
+            "visitCnt": 1,
+            "isExistAvg": false,
+            "onePersonCostAvg": null
         }
     ],
 
@@ -54,6 +133,45 @@
                 "menu": "짜장면",
                 "price": 6500
             }
+        }
+    ],
+
+    "store-reviews": [
+        {
+            "id": "1",
+            "priceAvg": 10500,
+            "reviews": [
+                {
+                    "id": 1,
+                    "nickname": "짜장면이최고야",
+                    "peopleNum": 2,
+                    "totalPrice": 35000,
+                    "content": "짬뽕이랑 탕수육은 무조건 드세요!!",
+                    "images": []
+                },
+                {
+                    "id": 2,
+                    "nickname": "짜장면덕후",
+                    "peopleNum": 1,
+                    "totalPrice": 7000,
+                    "content": "맛있어요.. 재방문 의사 100%",
+                    "images": [
+                        "https://i.namu.wiki/i/j2AxLP9AtrcJebh4DVfGxowfXwI3a95dG_YZb_Ktczc6Ca7ACyd_NJL3YHQMw8SABGTQiJDwSpySOSSBLZVEZw.webp"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "nickname": "짜장보단짬뽕",
+                    "peopleNum": 1,
+                    "totalPrice": 8000,
+                    "content": "짬뽕 정말 맛있네요",
+                    "images": [
+                        "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp",
+                        "https://cdn.pixabay.com/photo/2021/02/11/01/58/jambong-6004032_1280.jpg",
+                        "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp"
+                    ]
+                }
+            ]
         }
     ],
 
@@ -322,7 +440,95 @@
             "content": "전자기기 구입비가 많이 들어서 걱정입니다. 최신 기기를 저렴하게 구매하는 팁 있으신가요?",
             "created_at": "2024-09-26 01:00",
             "comment_count": 3
-        }
+        },
+      {
+      "id": "31",
+      "nickname": "budgetMaster",
+      "title": "자취생 절약방법",
+      "content": "자취생인데 생활비 절약방법 있을까요?",
+      "created_at": "2024-09-27 08:30",
+      "comment_count": 2
+    },
+    {
+      "id": "32",
+      "nickname": "budgetMaster",
+      "title": "고정지출과 변동지출 관리법",
+      "content": "고정지출과 변동지출을 효과적으로 관리하기 위해 엑셀을 사용하고 있습니다. 다른 관리 방법이 있으면 알려주세요!",
+      "created_at": "2024-09-27 09:00",
+      "comment_count": 4
+    },
+    {
+      "id": "33",
+      "nickname": "budgetMaster",
+      "title": "아이들 교육비 절약 팁",
+      "content": "아이들 교육비를 절약하려고 노력 중인데, 효과적인 방법을 찾기가 어렵네요. 팁이 있다면 알려주세요!",
+      "created_at": "2024-09-27 09:30",
+      "comment_count": 3
+    },
+    {
+      "id": "34",
+      "nickname": "budgetMaster",
+      "title": "장기적인 재무 목표 설정 방법",
+      "content": "장기적인 재무 목표를 설정하고 달성하기 위한 팁이 있나요? 저는 매년 목표를 재설정하는데, 여러분은 어떻게 하시나요?",
+      "created_at": "2024-09-27 10:00",
+      "comment_count": 5
+    },
+    {
+      "id": "35",
+      "nickname": "budgetMaster",
+      "title": "은퇴 자금 모으기 꿀팁",
+      "content": "은퇴 자금을 모으기 위해 매달 저축하고 있는데, 더 효과적인 방법이 있을까요? 여러분의 팁을 공유해주세요.",
+      "created_at": "2024-09-27 10:30",
+      "comment_count": 6
+    },
+    {
+      "id": "36",
+      "nickname": "budgetMaster",
+      "title": "해외여행 경비 줄이기",
+      "content": "해외여행 경비를 줄이기 위해 항공권과 숙박비를 어떻게 절약하시나요? 좋은 팁이 있으면 알려주세요.",
+      "created_at": "2024-09-27 11:00",
+      "comment_count": 2
+    },
+    {
+      "id": "37",
+      "nickname": "budgetMaster",
+      "title": "가족여행 비용 절약법",
+      "content": "가족여행 비용을 줄이기 위해 노력 중입니다. 저렴하면서도 가족 모두가 만족할 수 있는 여행지를 추천해주세요.",
+      "created_at": "2024-09-27 11:30",
+      "comment_count": 4
+    },
+    {
+      "id": "38",
+      "nickname": "budgetMaster",
+      "title": "전자기기 할인 정보 공유",
+      "content": "최근에 구매한 전자기기를 할인받아 구매했어요. 여러분도 좋은 할인 정보를 공유해주세요!",
+      "created_at": "2024-09-27 12:00",
+      "comment_count": 3
+    },
+    {
+      "id": "39",
+      "nickname": "budgetMaster",
+      "title": "가정용품 절약 방법",
+      "content": "가정용품 구매 시 비용을 절약하는 방법이 있나요? 특히 청소용품이나 생필품에 대한 절약 팁을 공유해주세요.",
+      "created_at": "2024-09-27 12:30",
+      "comment_count": 5
+    },
+    {
+      "id": "40",
+      "nickname": "budgetMaster",
+      "title": "식재료 비용 절약 팁",
+      "content": "식재료 비용을 절약하기 위해 대량 구매나 할인을 적극 활용하고 있습니다. 다른 방법이 있다면 알려주세요!",
+      "created_at": "2024-09-27 13:00",
+      "comment_count": 4
+    },
+    {
+      "id": "41",
+      "nickname": "budgetMaster",
+      "title": "부채 상환 전략",
+      "content": "부채 상환을 효과적으로 관리하기 위해 어떤 전략을 사용하시나요? 저는 이자율이 높은 것부터 갚고 있어요.",
+      "created_at": "2024-09-27 13:30",
+      "comment_count": 6
+    }
     ],
 
     "users": [

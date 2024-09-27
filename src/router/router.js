@@ -21,7 +21,7 @@ const router = createRouter({
                 component: () => import("@/views/accountbook/AccbookAddView.vue")
             },
             {
-                path: "all",
+                path: "",
                 component: () => import("@/views/accountbook/AccbookAllListView.vue")
             },
             {
@@ -43,23 +43,27 @@ const router = createRouter({
             children: [
                 {
                     path: "my",
-                    component: () => import("@/views/group/GroupMyView.vue")
+                    component: () => import("@/views/group/MyGroups.vue")
                 },
 
                 {
                     path: "join",
-                    component: () => import("@/views/group/GroupJoinView.vue")
+                    component: () => import("@/views/group/GroupSignUp.vue")
                 },
 
                 {
                     path: "pending",
-                    component: () => import("@/views/group/GroupPendingView.vue")
+                    component: () => import("@/views/group/GroupSignUpStatus.vue")
 
                 },
 
                 {
                     path: "create",
-                    component: () => import("@/views/group/GroupCreateView.vue")
+                    component: () => import("@/views/group/GroupCreate.vue")
+                },
+                {
+                    path: "intro",
+                    component: () => import("@/views/group/GroupIntro.vue")
                 }
             ] },
 
@@ -111,7 +115,12 @@ const router = createRouter({
 
                 {
                     path: "my",
-                    component: () => import("@/views/community/CommunityMyView.vue")
+                    component: () => import("@/views/community/CommunityMyView.vue"),
+                },
+
+                {
+                    path: "my/:id", // 하위 페이지 설정, :id는 글의 ID를 의미
+                    component: () => import("@/views/community/CommunityPostDetailView.vue") // 세부 내용을 표시할 컴포넌트
                 },
 
                 {

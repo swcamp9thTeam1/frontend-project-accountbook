@@ -1,12 +1,15 @@
 <template>
   <div class="parent-container">
-    <div class="page-title">가계부 조회(임시)</div>
-    <AccountBookDetail/>
+    <div class="page-title">가계부 조회</div>
+    <AccountBookDetail :item="{ id: route.params.id }"/>
   </div>
 </template>
 
 <script setup>
 import AccountBookDetail from "@/components/accbook/AccountBookDetail.vue";
+import {useRoute} from "vue-router";
+
+const route = useRoute()
 
 </script>
 

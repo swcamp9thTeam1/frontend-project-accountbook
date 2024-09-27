@@ -3,7 +3,7 @@
     <button
         class="button-accbook"
         v-if="item && item.title"
-        @click="goDetailView(item.id)">
+        @click="handleClick(item.id)">
       <div class="flex-container">
         <div class="accbook-name">{{ item.title }}</div>
         <div class="accbook-price">{{ formattedAmount(item) }}</div>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import {defineEmits, defineProps} from 'vue';
 import router from "@/router/router.js";
 
 const props = defineProps({
@@ -23,6 +23,12 @@ const props = defineProps({
     required: true
   }
 });
+
+const emit = defineEmits(["itemClicked"]);
+
+const handleClick = (id) => {
+  emit('itemClicked', id);
+};
 
 // amount에 '+' 또는 '-' 붙이기
 const formattedAmount = (item) => {
@@ -36,7 +42,6 @@ const formatCategoryAssetDate = (item) => {
   return `${item.accCategoryName} | ${item.assetName} | ${date}`;
 };
 
-const goDetailView = (id) => router.push(`/account-book/detail/${id}`);
 </script>
 
 <style scoped>
