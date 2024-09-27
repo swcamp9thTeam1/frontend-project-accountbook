@@ -1,3 +1,6 @@
+
+<!-- 자식 테이블 2 - 나의 글 -->
+
 <template>
     <div style="display: flex;">
 

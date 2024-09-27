@@ -1,3 +1,6 @@
+
+<!-- 자식 테이블 3 - 나의 스크랩 -->
+
 <template>
     <div>
         <SideMenu :selectedBanner="'community'" :activeMenu="activeMenu" />

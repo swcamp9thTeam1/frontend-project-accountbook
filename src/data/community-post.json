@@ -1,0 +1,245 @@
+{
+    "community-post": [
+
+    {
+      "id": 1,
+      "nickname": "budgetMaster",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?",
+      "created_at": "2024-09-25 08:30",
+      "comment_count": 5
+    },
+    {
+      "id": 2,
+      "nickname": "savingsPro",
+      "title": "저축 비율 50% 유지하기 어렵네요",
+      "content": "매달 저축을 50% 하려고 하는데 생각보다 생활비가 많이 들어서 힘들어요. 팁 있으면 공유 부탁드립니다!",
+      "created_at": "2024-09-25 09:10",
+      "comment_count": 3
+    },
+    {
+      "id": 3,
+      "nickname": "smartSaver",
+      "title": "가계부 앱 추천해요",
+      "content": "최근에 사용해본 가계부 앱 중에 가장 좋은 건 'MoneyPro'였어요. 자동으로 수입, 지출을 정리해줘서 편하더라구요.",
+      "created_at": "2024-09-25 10:45",
+      "comment_count": 4
+    },
+    {
+      "id": 4,
+      "nickname": "familyFinances",
+      "title": "아이 학원비 어떻게 관리하세요?",
+      "content": "아이 학원비가 매달 50만원인데, 다른 고정비와 합치면 부담되네요. 학원비 관리하는 방법이 있을까요?",
+      "created_at": "2024-09-25 11:20",
+      "comment_count": 6
+    },
+    {
+      "id": 5,
+      "nickname": "frugalLife",
+      "title": "한 달 식비 줄이는 꿀팁",
+      "content": "외식을 줄이고 집밥 위주로 하니 한 달 식비를 30% 줄였어요. 여러분은 식비 절약 어떻게 하시나요?",
+      "created_at": "2024-09-25 12:00",
+      "comment_count": 2
+    },
+    {
+      "id": 6,
+      "nickname": "expenseTracker",
+      "title": "자동차 유지비 절약법",
+      "content": "차 유지비가 너무 많이 들어요. 보험료, 주유비 등 절약할 수 있는 방법 공유해주세요!",
+      "created_at": "2024-09-25 12:45",
+      "comment_count": 3
+    },
+    {
+      "id": 7,
+      "nickname": "investGuru",
+      "title": "투자 포트폴리오 공개",
+      "content": "저는 주식과 ETF로 포트폴리오를 구성했어요. 고정지출 외 투자에 어느 정도 배분하고 계신가요?",
+      "created_at": "2024-09-25 13:30",
+      "comment_count": 7
+    },
+    {
+      "id": 8,
+      "nickname": "rentSaver",
+      "title": "전세와 월세 고민 중이에요",
+      "content": "지금 월세를 살고 있는데 전세로 갈아탈까 고민 중입니다. 여러분은 어떤 선택을 하셨나요?",
+      "created_at": "2024-09-25 14:00",
+      "comment_count": 4
+    },
+    {
+      "id": 9,
+      "nickname": "groceryQueen",
+      "title": "장보기에서 절약하는 방법",
+      "content": "주말마다 마트에서 장을 보는데, 쿠폰과 세일을 잘 활용하니까 10만원 절약했어요. 장볼 때 여러분은 어떻게 절약하세요?",
+      "created_at": "2024-09-25 14:30",
+      "comment_count": 5
+    },
+    {
+      "id": 10,
+      "nickname": "studentLife",
+      "title": "학생 예산 관리 꿀팁",
+      "content": "대학생인데, 생활비 예산 관리가 너무 어렵네요. 저만의 관리법이 있으면 공유해요!",
+      "created_at": "2024-09-25 15:00",
+      "comment_count": 1
+    },
+    {
+      "id": 11,
+      "nickname": "smartInvestor",
+      "title": "매달 수입의 20%는 투자 중",
+      "content": "월급의 20%는 매달 주식이나 펀드에 투자하고 있어요. 수익률 관리가 잘 안될 때는 어떻게 대처하시나요?",
+      "created_at": "2024-09-25 15:30",
+      "comment_count": 3
+    },
+    {
+      "id": 12,
+      "nickname": "frugalStudent",
+      "title": "알바비로 생활비 절약 중입니다",
+      "content": "학생이라 알바비로 생활하는데, 정말 절약하지 않으면 힘드네요. 학생분들 어떻게 생활비 관리하세요?",
+      "created_at": "2024-09-25 16:00",
+      "comment_count": 4
+    },
+    {
+      "id": 13,
+      "nickname": "babyBudgeter",
+      "title": "아기 용품 비용 줄이기",
+      "content": "아기 용품비가 많이 나가네요. 나름 중고로 사기도 하는데, 다른 절약 방법 있으면 알려주세요!",
+      "created_at": "2024-09-25 16:30",
+      "comment_count": 2
+    },
+    {
+      "id": 14,
+      "nickname": "earlyRetiree",
+      "title": "조기 은퇴 준비 중입니다",
+      "content": "조기 은퇴를 목표로 가계부를 철저하게 관리 중인데, 여러분은 은퇴 후 생활비는 어떻게 관리하실 계획이신가요?",
+      "created_at": "2024-09-25 17:00",
+      "comment_count": 6
+    },
+    {
+      "id": 15,
+      "nickname": "petLover",
+      "title": "반려동물 비용 관리",
+      "content": "반려동물 관련 지출이 생각보다 많이 들어서 가계부에 큰 영향을 주네요. 반려동물 비용 절약하는 팁 있나요?",
+      "created_at": "2024-09-25 17:30",
+      "comment_count": 5
+    },
+    {
+      "id": 16,
+      "nickname": "luxurySaver",
+      "title": "명품 소비와 가계부",
+      "content": "명품을 좋아하지만, 가계부에 큰 영향을 주지 않게 소비를 조절하려고 해요. 다들 명품 소비 어떻게 하시나요?",
+      "created_at": "2024-09-25 18:00",
+      "comment_count": 7
+    },
+    {
+      "id": 17,
+      "nickname": "foodieSaver",
+      "title": "외식 비용 절감 방법",
+      "content": "외식 비용이 꽤 많이 나가서 요즘은 배달이나 외식을 줄이고 있어요. 여러분은 어떻게 외식비를 절약하시나요?",
+      "created_at": "2024-09-25 18:30",
+      "comment_count": 3
+    },
+    {
+      "id": 18,
+      "nickname": "partTimeWorker",
+      "title": "부업으로 수입 늘리기",
+      "content": "부업으로 수입을 늘리고 가계부에 도움이 되게끔 하고 있어요. 부업 추천하실 만한 게 있나요?",
+      "created_at": "2024-09-25 19:00",
+      "comment_count": 4
+    },
+    {
+      "id": 19,
+      "nickname": "minimalist",
+      "title": "미니멀리즘 생활비 절약",
+      "content": "미니멀리즘 생활을 통해 지출을 많이 줄였어요. 여러분은 어떻게 불필요한 소비를 줄이시나요?",
+      "created_at": "2024-09-25 19:30",
+      "comment_count": 2
+    },
+    {
+      "id": 20,
+      "nickname": "investSmart",
+      "title": "월급의 30% 투자 중입니다",
+      "content": "매달 월급의 30%를 주식과 부동산에 투자 중입니다. 여러분은 월급의 몇 퍼센트를 투자하고 계신가요?",
+      "created_at": "2024-09-25 20:00",
+      "comment_count": 6
+    },
+    {
+        "id": 21,
+        "nickname": "carFan",
+        "title": "차 유지비 어떻게 줄일 수 있을까요?",
+        "content": "자동차 유지비가 부담돼서 고민입니다. 보험료와 주유비를 어떻게 줄이시는지 궁금합니다.",
+        "created_at": "2024-09-25 20:30",
+        "comment_count": 3
+      },
+      {
+        "id": 22,
+        "nickname": "shopSmart",
+        "title": "온라인 쇼핑 비용 관리",
+        "content": "요즘 온라인 쇼핑이 잦아지다 보니 지출이 많이 늘었어요. 쇼핑비 절약 팁 있나요?",
+        "created_at": "2024-09-25 21:00",
+        "comment_count": 5
+      },
+      {
+        "id": 23,
+        "nickname": "healthSaver",
+        "title": "헬스장 비용 아끼는 법",
+        "content": "헬스장 비용이 부담돼서 집에서 운동하려고 합니다. 홈트용 장비는 어떻게 예산을 잡아야 할까요?",
+        "created_at": "2024-09-25 21:30",
+        "comment_count": 2
+      },
+      {
+        "id": 24,
+        "nickname": "studentBudget",
+        "title": "대학생 가계부 관리 팁",
+        "content": "대학생이라 예산이 빠듯한데, 어떻게 가계부를 쓰면 절약할 수 있을까요?",
+        "created_at": "2024-09-25 22:00",
+        "comment_count": 4
+      },
+      {
+        "id": 25,
+        "nickname": "newlywedSaver",
+        "title": "신혼부부 생활비 관리 팁",
+        "content": "신혼부부로서 생활비가 많이 드는데, 어떤 항목에서 절약을 할 수 있을까요?",
+        "created_at": "2024-09-25 22:30",
+        "comment_count": 3
+      },
+      {
+        "id": 26,
+        "nickname": "hobbyist",
+        "title": "취미 생활비 관리 방법",
+        "content": "취미 생활이 많아서 지출이 많이 나가네요. 취미 활동비는 어떻게 관리하시나요?",
+        "created_at": "2024-09-25 23:00",
+        "comment_count": 6
+      },
+      {
+        "id": 27,
+        "nickname": "homeChef",
+        "title": "집에서 요리하면 얼마나 절약할까요?",
+        "content": "외식 대신 집에서 요리하려고 하는데, 식비가 얼마나 줄어들지 궁금하네요. 여러분은 어떻게 요리비를 절약하시나요?",
+        "created_at": "2024-09-25 23:30",
+        "comment_count": 2
+      },
+      {
+        "id": 28,
+        "nickname": "loanPlanner",
+        "title": "대출 이자 관리 팁",
+        "content": "대출 이자가 매달 부담스러운데, 혹시 이자 절약할 수 있는 방법 있나요?",
+        "created_at": "2024-09-26 00:00",
+        "comment_count": 5
+      },
+      {
+        "id": 29,
+        "nickname": "travelLover",
+        "title": "여행 경비 절약하는 방법",
+        "content": "여행을 좋아하지만 경비가 많이 들어요. 여행할 때 경비 절약하는 팁 있으신가요?",
+        "created_at": "2024-09-26 00:30",
+        "comment_count": 4
+      },
+      {
+        "id": 30,
+        "nickname": "techSaver",
+        "title": "전자기기 구매 비용 관리",
+        "content": "전자기기 구입비가 많이 들어서 걱정입니다. 최신 기기를 저렴하게 구매하는 팁 있으신가요?",
+        "created_at": "2024-09-26 01:00",
+        "comment_count": 3
+      }
+  ]
+}
