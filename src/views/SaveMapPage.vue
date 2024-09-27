@@ -11,24 +11,28 @@
         <SaveMapMarkerCategoryList @changeMarker="changeMarker" />
 
         <!-- 가게 상세보기 Modal -->
-        <StoreDetailModal v-show="storeDetailId" :storeDetailId="storeDetailId" @closeModal="closeModal" />
+        <StoreDetailModal :storeDetailId="storeDetailId" @closeModal="closeModal" />
     </div>
 </template>
 
 <script setup>
 import { onMounted, ref } from "vue";
 
-import SearchAddress from "@/components/SearchAddress.vue";
-import SaveMapMarkerCategoryList from "@/components/SaveMapMarkerCategoryList.vue";
-import StoreDetailModal from "@/components/StoreDetailModal.vue";
+import SearchAddress from "@/components/savemap/SearchAddress.vue";
+import SaveMapMarkerCategoryList from "@/components/savemap/SaveMapMarkerCategoryList.vue";
+import StoreDetailModal from "@/components/savemap/StoreDetailModal.vue";
 
 const { VITE_KAKAO_JAVASCRIPT_KEY } = import.meta.env;
 
 let mapInstance = null;
 let goodStoreMarkers = [];        // 착한가격업소 마커 배열
 let goodStoreOverlays = [];       // 착한가격업소 오버레이 배열
+let visitedMarkers = [];          // 방문한 가게 마커 배열
+let visitedOverlays = [];         // 방문한 가게 오버레이 배열
+let costAvgMarkers = [];          // 1인소비금액 마커 배열
+let costAvgOverlays = [];         // 1인소비금액 오버레이 배열
 
-const storeDetailId = ref();      // 가게 상세보기 할 가게의 id
+const storeDetailId = ref("");      // 가게 상세보기 할 가게의 id
 
 onMounted(() => {
     if (window.kakao && window.kakao.maps) {
@@ -72,14 +76,22 @@ const addControls = () => {
 const changeMarker = (targetMarkerId) => {
     if (targetMarkerId === "goodStore") {
         displayGoodStoreMarker();
+        clearVisitedMarker();
+        clearCostAvgMarker();
     } else if (targetMarkerId === "visited") {
         clearGoodStoreMarker();
+        displayVisitedMarker();
+        clearCostAvgMarker();
     } else if (targetMarkerId === "costAvg") {
         clearGoodStoreMarker();
+        clearVisitedMarker();
+        displayCostAvgMarker();
     } else {
 
         // 하나도 선택되지 않은 상태 => 지도에 있는 마커를 모두 제거
         clearGoodStoreMarker();
+        clearVisitedMarker();
+        clearCostAvgMarker();
     }
 }
 
@@ -93,64 +105,118 @@ const createMarker = (position, image) => {
 
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
-        storeDetailId.value = 1;
+        storeDetailId.value = "1";
+
+        // 모달 열기
+        const modalEl = getModalElement();
+        modalEl.showModal();
     });
 
     return marker;
 }
 
-const createPriceOverlay = (position, price) => {
-    const content = `<div style="
-        padding: 5px; 
-        background-color: #9AE09F; 
-        position: relative; 
-        bottom: 58px;
-        font-size: 12px;
-        color: white;
-        border-radius: 5px;
-        box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, .25);
-        ">${price.toLocaleString()}</div>`
+const createOverlay = (markerType, position, overlayText) => {
+    let styles = `
+                    padding: 5px;
+                    position: relative;
+                    bottom: 58px;
+                    font-size: 12px;
+                    color: white;
+                    border-radius: 5px;
+                    `;
+
+    // 마커 타입 별로 배경 색상 설정
+    let backgroundColor = "";
+    if (markerType === "GOOD_STORE") backgroundColor = "#9AE09F";
+    else if (markerType === "VISITED") backgroundColor = "#1D566E";
+    else if (markerType === "COST_AVG") backgroundColor = "#101424"
+    styles += `background-color: ${backgroundColor};`
+
+    // 오버레이 content 설정
+    const content = `<div style="${styles}">${overlayText}</div>`
 
     return new kakao.maps.CustomOverlay({ position, content });
 }
 
 const createMarkerImage = (imageSrc) => new kakao.maps.MarkerImage(imageSrc, new kakao.maps.Size(42, 42));
 
-const displayGoodStoreMarker = async () => {
-
-    // 1. 착한가격업소 리스트를 fetch
-    const response = await fetch("http://localhost:8080/good-stores");
-    const data = await response.json();
-
-    // 2. 가져온 데이터로 지도용 데이터 생성
-    const mapData = data.map(item => ({
-        price: item.price,
-        position: new kakao.maps.LatLng(item.latitude, item.longitude)
-    }));
-
-    // 3. 포지션 리스트로 마커 생성
+const makeMarkerList = (markerType, mapData) => {
     mapData.forEach(mapItem => {
 
-        const { position, price } = mapItem;
+        const { position, overlayText } = mapItem;
 
         // 마커에 들어갈 이미지 생성
-        const imageSrc = "/src/assets/icons/marker-good-store.svg";
+        let imageSrc = "/src/assets/icons/";
+        if (markerType === "GOOD_STORE") imageSrc += "marker-good-store.svg";
+        else if (markerType === "VISITED") imageSrc += "marker-visited.svg";
+        else if (markerType === "COST_AVG") imageSrc += "marker-cost-avg.svg";
+        
         const markerImage = createMarkerImage(imageSrc);
 
         // 마커 1개 생성
         const marker = createMarker(position, markerImage);
 
-        // 커스텀 오버레이 추가 (착한가격 표시)
-        const priceCustomOverlay = createPriceOverlay(position, price);
+        // 커스텀 오버레이 추가
+        const overlay = createOverlay(markerType, position, overlayText);
 
         // 지도에 마커, 오버레이 추가
         marker.setMap(mapInstance);
-        priceCustomOverlay.setMap(mapInstance);
+        overlay.setMap(mapInstance);
 
         // 마커 배열에서도 관리되도록 추가
-        goodStoreMarkers.push(marker);
-        goodStoreOverlays.push(priceCustomOverlay);
+        if (markerType === "GOOD_STORE") {
+            goodStoreMarkers.push(marker);
+            goodStoreOverlays.push(overlay);
+        } else if (markerType === "VISITED") {
+            visitedMarkers.push(marker);
+            visitedOverlays.push(overlay);
+        } else if (markerType === "COST_AVG") {
+            costAvgMarkers.push(marker);
+            costAvgOverlays.push(overlay);
+        }
     })
+}
+
+const displayGoodStoreMarker = async () => {
+
+    // 1. 착한가격업소 리스트를 fetch
+    const response = await fetch("http://localhost:8080/map-stores?isGood=true");
+    const data = await response.json();
+
+    // 2. 가져온 데이터로 지도용 데이터 생성
+    const mapData = data.map(item => ({
+        overlayText: item.goodPrice.toLocaleString(),
+        position: new kakao.maps.LatLng(item.latitude, item.longitude)
+    }));
+
+    // 3. 마커 데이터 생성
+    makeMarkerList('GOOD_STORE', mapData);
+}
+
+const displayVisitedMarker = async () => {
+    const response = await fetch("http://localhost:8080/map-stores?visited=true");
+    const data = await response.json();
+
+    // 가져온 데이터로 지도용 데이터 생성
+    const mapData = data.map(item => ({
+        overlayText: `${item.visitCnt}회 방문`,
+        position: new kakao.maps.LatLng(item.latitude, item.longitude)
+    }));
+
+    makeMarkerList("VISITED", mapData);
+}
+
+const displayCostAvgMarker = async () => {
+    const response = await fetch("http://localhost:8080/map-stores?isExistAvg=true");
+    const data = await response.json();
+
+    // 가져온 데이터로 지도용 데이터 생성
+    const mapData = data.map(item => ({
+        overlayText: `1인당 ${item.onePersonCostAvg.toLocaleString()}원 소비`,
+        position: new kakao.maps.LatLng(item.latitude, item.longitude)
+    }));
+
+    makeMarkerList("COST_AVG", mapData);
 }
 
 const clearGoodStoreMarker = () => {
@@ -160,8 +226,28 @@ const clearGoodStoreMarker = () => {
     goodStoreOverlays = [];
 }
 
+const clearVisitedMarker = () => {
+    visitedMarkers.forEach(marker => marker.setMap(null));
+    visitedMarkers = [];
+    visitedOverlays.forEach(overlay => overlay.setMap(null));
+    visitedOverlays = [];
+}
+
+const clearCostAvgMarker = () => {
+    costAvgMarkers.forEach(marker => marker.setMap(null));
+    costAvgMarkers = [];
+    costAvgOverlays.forEach(overlay => overlay.setMap(null));
+    costAvgOverlays = [];
+}
+
+const getModalElement = () => document.querySelector("dialog.modal-store-detail");
+
 const closeModal = () => {
-    storeDetailId.value = null;
+    storeDetailId.value = "";
+
+    // 모달 닫기
+    const modalEl = getModalElement();
+    modalEl.close();
 }
 </script>
 
