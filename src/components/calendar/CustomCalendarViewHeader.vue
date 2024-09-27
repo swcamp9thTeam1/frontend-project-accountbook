@@ -26,7 +26,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { IHeaderProps } from "vue-simple-calendar/dist/src/IHeaderProps";
+import type { IHeaderProps } from "vue-simple-calendar/dist/src/IHeaderProps";
 
 defineProps({
 	headerProps: {
