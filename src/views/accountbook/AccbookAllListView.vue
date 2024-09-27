@@ -16,7 +16,8 @@
         <!-- 새로운 날짜가 아닌 경우 내역 리스트 랜더링 -->
         <AccountBookList
             v-if="!item.isNewDay"
-            :item="item.data"/>
+            :item="item.data"
+            @itemClicked="goDetailView"/>
       </div>
     </div>
   </div>
@@ -28,6 +29,7 @@ import AccountBookList from "@/components/accbook/AccountBookList.vue";
 import AccountBookListButtons from "@/components/accbook/AccountBookListButtons.vue";
 import AccountBookDays from "@/components/accbook/AccountBookDays.vue";
 import {ref, computed, defineProps, onMounted} from 'vue';
+import router from "@/router/router.js";
 
 const accbookListData = ref([]);
 
@@ -95,6 +97,9 @@ const groupedAccbookList = computed(() => {
 
   return grouped;
 });
+
+// 상세 조회 페이지로 이동
+const goDetailView = (id) => router.push(`/account-book/detail/${id}`);
 
 </script>
 

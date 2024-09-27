@@ -29,7 +29,7 @@ const router = createRouter({
                 component: () => import("@/views/accountbook/AccbookDailyListView.vue")
             },
             {
-                path: "detail",
+                path: "detail/:id",
                 component: () => import("@/views/accountbook/AccbookDetailView.vue")
             },
         ] },
