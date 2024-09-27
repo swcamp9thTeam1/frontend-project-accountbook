@@ -1,12 +1,12 @@
 <template>
   <div class="parent-container">
     <div class="page-title">가계부 조회(임시)</div>
-    <AccbookDetailView/>
+    <AccountBookDetail/>
   </div>
 </template>
 
 <script setup>
-import AccbookDetailView from "@/components/accbook/AccountBookDetail.vue";
+import AccountBookDetail from "@/components/accbook/AccountBookDetail.vue";
 
 </script>
 

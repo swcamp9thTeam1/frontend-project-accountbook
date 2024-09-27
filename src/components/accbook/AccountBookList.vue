@@ -2,7 +2,8 @@
   <div class="button-container">
     <button
         class="button-accbook"
-        v-if="item && item.title">
+        v-if="item && item.title"
+        @click="goDetailView(item.id)">
       <div class="flex-container">
         <div class="accbook-name">{{ item.title }}</div>
         <div class="accbook-price">{{ formattedAmount(item) }}</div>
@@ -14,6 +15,7 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import router from "@/router/router.js";
 
 const props = defineProps({
   item: {
@@ -33,6 +35,8 @@ const formatCategoryAssetDate = (item) => {
   // const date = new Date(item.createdAt);
   return `${item.accCategoryName} | ${item.assetName} | ${date}`;
 };
+
+const goDetailView = (id) => router.push(`/account-book/detail/${id}`);
 </script>
 
 <style scoped>

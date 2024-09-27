@@ -1,47 +1,71 @@
 <template>
   <div class="detail-accbook">
-    <div class="accbook-title">제목</div>
-    <div class="accbook-amount">금액</div>
+    <div class="accbook-title">{{ accbookDetail.title }}</div>
+    <div class="accbook-amount">{{ accbookDetail.amount }}원</div>
 
     <img src="../../assets/icons/가계부_작성란_line.svg" class="line">
 
     <div class="finance-type">
       <div class="classification">분류</div>
       <div class="finance-type-buttons">
-        <button class="in">수입</button>
-        <button class="out">지출</button>
-        <button class="transfer">이체</button>
+        <button
+            class="in"
+            :class="{ active: InOutTranferType === 'in' }">
+          수입
+        </button>
+        <button class="out"
+            :class="{ active: InOutTranferType === 'out' }">
+          지출
+        </button>
+        <button
+            class="transfer"
+            :class="{ active: InOutTranferType === 'transfer' }">
+          이체
+        </button>
       </div>
     </div>
 
     <div class="select-category">
       <div class="classification">카테고리</div>
-      <div class="acc-category" >취미>도서</div>
+      <div class="acc-category" >{{ accbookDetail.accCategoryName }}</div>
     </div>
 
     <div class="occur-date">
       <div class="classification">일시</div>
-      <div class="datetime-container">2024-09-27</div>
+      <div class="datetime-container">{{ formatDateString(accbookDetail.createdAt) }}</div>
     </div>
 
     <div class="select-asset">
       <div class="classification">사용자산</div>
       <div class="asset-container">
-        <div class="asset-category">카카오뱅크체크카드</div>
+        <div class="asset-category">{{ accbookDetail.assetName }}</div>
       </div>
     </div>
 
     <div class="regular-or-not">
       <div class="classification">고정지출 여부</div>
       <div class="regular-buttons">
-        <button class="regular">Y</button>
-        <button class="irregular">N</button>
+        <button
+            class="regular"
+            :class="{ active: regularType === 'regular' }">
+          Y
+        </button>
+        <button
+            class="irregular"
+            :class="{ active: regularType === 'irregular' }">
+          N
+        </button>
       </div>
     </div>
 
     <div class="store-info">
       <div class="classification">가게 정보</div>
-      <div class="find-store">교보문고 강남점</div>
+      <div v-if="(accbookDetail.storeCode) !== null">
+        <div class="find-store">{{ accbookDetail.storeCode }}</div>
+      </div>
+      <div v-else>
+        <div class="no-store">저장된 가게 정보가 없습니다</div>
+      </div>
     </div>
 
     <div class="edit-button-container">
@@ -52,6 +76,61 @@
 </template>
 
 <script setup>
+import {useRoute} from "vue-router";
+import {onMounted, watch, ref} from "vue";
+const route = useRoute()
+
+// 값의 변경을 component에서 모니터링
+watch(
+    () => route.params.id,
+    (newParam, oldParam) => {
+      // console.log('watch: ', oldParam, '=>', newParam)
+    },
+    {immediate: true}
+)
+
+const accbookDetail = ref([]);
+const InOutTranferType = ref(null); // 선택된 버튼 상태 관리
+const regularType = ref(null); // 고정지출 버튼 상태 관리
+
+onMounted(async () => {
+  const response = await fetch(`http://localhost:8080/monthly/${route.params.id}`);
+  const data = await response.json();
+  accbookDetail.value = data;
+
+  if (accbookDetail.value.financeType === 'I') {
+    InOutTranferType.value = 'in'
+  } else if (accbookDetail.value.financeType === "O") {
+    InOutTranferType.value = 'out'
+  } else {
+    InOutTranferType.value = 'transfer'
+  }
+
+  if (accbookDetail.value.isRegular === 'N') {
+    regularType.value = 'irregular'
+  } else {
+    regularType.value = 'regular'
+  }
+})
+
+const formatDateString = (dateString) => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1; // 월은 0부터 시작하므로 +1
+  const day = date.getDate();
+  let hour = date.getHours();
+  const minute = date.getMinutes().toString().padStart(2, '0');
+
+  // 오후/오전 처리
+  const ampm = hour >= 12 ? '오후' : '오전';
+
+  // 12시간 형식으로 변경
+  hour = hour % 12 || 12;
+
+  return `${year}년 ${month}월 ${day}일 | ${ampm} ${hour}:${minute}`;
+};
+
+
 
 </script>
 
@@ -166,6 +245,11 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
+.in.active {
+  background: #848BA4;
+  color: white;
+}
+
 .out {
   width: 61px;
   height: 32px;
@@ -185,6 +269,11 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
+.out.active {
+  background: #848BA4;
+  color: white;
+}
+
 .transfer {
   width: 61px;
   height: 32px;
@@ -201,6 +290,12 @@ input::-webkit-inner-spin-button {
   color: #000000;
 
   cursor: pointer;
+}
+
+
+.transfer.active {
+  background: #848BA4;
+  color: white;
 }
 
 /* 가계부 카테고리 선택 부분 */
@@ -341,6 +436,11 @@ select {
   cursor: pointer;
 }
 
+.regular.active {
+  background: #848BA4;
+  color: white;
+}
+
 .irregular {
   width: 61px;
   height: 32px;
@@ -357,6 +457,11 @@ select {
   color: #000000;
 
   cursor: pointer;
+}
+
+.irregular.active {
+  background: #848BA4;
+  color: white;
 }
 
 /* 가게 입력 부분 */
@@ -380,6 +485,21 @@ select {
   line-height: 25px;
   text-overflow: auto;
   //color: #969696;
+
+  margin-left: 93px;
+}
+
+.no-store {
+  width: 100%;
+  height: 30px;
+
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 25px;
+  text-overflow: auto;
+  color: #969696;
 
   margin-left: 93px;
 }
