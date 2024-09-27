@@ -2,29 +2,26 @@
     <div class="store-accbook-list-container">
         <h3>이 가게와 연동된 가계부 목록 ({{ props.accBooks.length }}개)</h3>
 
-        <AccountBookItem 
-            v-for="accbook in props.accBooks" 
+        <AccountBookItem
+            v-for="accbook in props.accBooks"
             :key="accbook.id" 
             :item="accbook"
-            @itemClicked="clickAccBook" />
+            @itemClicked="(itemId) => emit('showDetailAccBook', itemId)" />
     </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, ref, watch, defineEmits } from 'vue';
 import AccountBookItem from '@/components/accbook/AccountBookList.vue';
+import AccountBookDetail from '@/components/accbook/AccountBookDetail.vue';
 
 const props = defineProps({
     accBooks: {
         type: Array,
         required: true
-    },
-    currentAccBookId: Number
-})
-
-const clickAccBook = (accBookId) => {
-    console.log(accBookId);
-}
+    }
+});
+const emit = defineEmits(['showDetailAccBook']);
 </script>
 
 <style scoped>

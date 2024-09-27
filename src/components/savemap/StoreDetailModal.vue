@@ -71,7 +71,8 @@
                     <StoreAccBookListView 
                         v-else-if="rightView === 'ACCBOOKS'" 
                         :accBooks="allAccountBooks"
-                        :currentAccBookId="currentAccBookId" />
+                        @showDetailAccBook="clickAccBook" />
+                    <AccountBookDetail v-else-if="rightView === 'ACCBOOK_DETAIL'"/>
                 </div>
             </div>
         </template>
@@ -88,6 +89,7 @@ import WriteReviewView from '@/components/savemap/WriteReviewView.vue';
 import StoreReviewListView from '@/components/savemap/StoreReviewListView.vue';
 import CostAvgChip from '@/components/savemap/CostAvgChip.vue';
 import StoreAccBookListView from '@/components/savemap/StoreAccBookListView.vue';
+import AccountBookDetail from '@/components/accbook/AccountBookDetail.vue';
 
 const props = defineProps({
     storeDetailId: String,
@@ -105,7 +107,7 @@ const allReviews = ref([]);         // 가게 전체 리뷰 목록
 const limitReviews = ref([]);       // 리뷰 2개만 표시
 
 const openRight = ref(false);
-const rightView = ref("");          // 오른쪽에 표시될 화면("WRITE_REVIEW", "REVIEWS", "ACCBOOKS")
+const rightView = ref("");          // 오른쪽에 표시될 화면("WRITE_REVIEW", "REVIEWS", "ACCBOOKS", "ACCBOOK_DETAIL")
 
 const getStoreDetail = async (storeId) => {
     const response = await fetch(`http://localhost:8080/stores/${storeId}`);
@@ -161,7 +163,7 @@ const closeRightView = () => {
 const clickAccBook = (accBookId) => {
     
     // 오른쪽에 가계부 자세히보기
-    rightView.value = "ACCBOOKS"
+    rightView.value = "ACCBOOK_DETAIL"
     openRight.value = true;
     currentAccBookId.value = accBookId;
 }
