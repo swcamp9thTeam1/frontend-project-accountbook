@@ -27,8 +27,10 @@ const { VITE_KAKAO_JAVASCRIPT_KEY } = import.meta.env;
 let mapInstance = null;
 let goodStoreMarkers = [];        // 착한가격업소 마커 배열
 let goodStoreOverlays = [];       // 착한가격업소 오버레이 배열
-let visitedMarkers = [];          // 방문학 가게 마커 배열
-let visitedOverlays = [];         // 방문학 가게 오버레이 배열
+let visitedMarkers = [];          // 방문한 가게 마커 배열
+let visitedOverlays = [];         // 방문한 가게 오버레이 배열
+let costAvgMarkers = [];          // 1인소비금액 마커 배열
+let costAvgOverlays = [];         // 1인소비금액 오버레이 배열
 
 const storeDetailId = ref("");      // 가게 상세보기 할 가게의 id
 
@@ -75,17 +77,21 @@ const changeMarker = (targetMarkerId) => {
     if (targetMarkerId === "goodStore") {
         displayGoodStoreMarker();
         clearVisitedMarker();
+        clearCostAvgMarker();
     } else if (targetMarkerId === "visited") {
         clearGoodStoreMarker();
         displayVisitedMarker();
+        clearCostAvgMarker();
     } else if (targetMarkerId === "costAvg") {
         clearGoodStoreMarker();
         clearVisitedMarker();
+        displayCostAvgMarker();
     } else {
 
         // 하나도 선택되지 않은 상태 => 지도에 있는 마커를 모두 제거
         clearGoodStoreMarker();
         clearVisitedMarker();
+        clearCostAvgMarker();
     }
 }
 
@@ -119,6 +125,7 @@ const createOverlay = (markerType, position, overlayText) => {
     let backgroundColor = "";
     if (markerType === "GOOD_STORE") backgroundColor = "#9AE09F";
     else if (markerType === "VISITED") backgroundColor = "#1D566E";
+    else if (markerType === "COST_AVG") backgroundColor = "#101424"
     styles += `background-color: ${backgroundColor};`
 
     // 오버레이 content 설정
@@ -135,9 +142,10 @@ const makeMarkerList = (markerType, mapData) => {
         const { position, overlayText } = mapItem;
 
         // 마커에 들어갈 이미지 생성
-        let imageSrc = "";
-        if (markerType === "GOOD_STORE") imageSrc = "/src/assets/icons/marker-good-store.svg";
-        else if (markerType === "VISITED") imageSrc = "/src/assets/icons/marker-visited.svg";
+        let imageSrc = "/src/assets/icons/";
+        if (markerType === "GOOD_STORE") imageSrc += "marker-good-store.svg";
+        else if (markerType === "VISITED") imageSrc += "marker-visited.svg";
+        else if (markerType === "COST_AVG") imageSrc += "marker-cost-avg.svg";
         
         const markerImage = createMarkerImage(imageSrc);
 
@@ -158,6 +166,9 @@ const makeMarkerList = (markerType, mapData) => {
         } else if (markerType === "VISITED") {
             visitedMarkers.push(marker);
             visitedOverlays.push(overlay);
+        } else if (markerType === "COST_AVG") {
+            costAvgMarkers.push(marker);
+            costAvgOverlays.push(overlay);
         }
     })
 }
@@ -191,6 +202,19 @@ const displayVisitedMarker = async () => {
     makeMarkerList("VISITED", mapData);
 }
 
+const displayCostAvgMarker = async () => {
+    const response = await fetch("http://localhost:8080/map-stores?isExistAvg=true");
+    const data = await response.json();
+
+    // 가져온 데이터로 지도용 데이터 생성
+    const mapData = data.map(item => ({
+        overlayText: `1인당 ${item.onePersonCostAvg.toLocaleString()}원 소비`,
+        position: new kakao.maps.LatLng(item.latitude, item.longitude)
+    }));
+
+    makeMarkerList("COST_AVG", mapData);
+}
+
 const clearGoodStoreMarker = () => {
     goodStoreMarkers.forEach(marker => marker.setMap(null));
     goodStoreMarkers = [];
@@ -203,6 +227,13 @@ const clearVisitedMarker = () => {
     visitedMarkers = [];
     visitedOverlays.forEach(overlay => overlay.setMap(null));
     visitedOverlays = [];
+}
+
+const clearCostAvgMarker = () => {
+    costAvgMarkers.forEach(marker => marker.setMap(null));
+    costAvgMarkers = [];
+    costAvgOverlays.forEach(overlay => overlay.setMap(null));
+    costAvgOverlays = [];
 }
 
 const closeModal = () => {
