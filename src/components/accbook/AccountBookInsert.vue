@@ -10,9 +10,27 @@
         <div class="finance-type">
             <div class="classification">분류</div>
             <div class="finance-type-buttons">
-                <button class="in">수입</button>
-                <button class="out">지출</button>
-                <button class="transfer">이체</button>
+              <button
+                  class="in"
+                  :class="{ active: InOutTranferType === 'in' }"
+                  @click="selectType('in')"
+              >
+                수입
+              </button>
+              <button
+                  class="out"
+                  :class="{ active: InOutTranferType === 'out' }"
+                  @click="selectType('out')"
+              >
+                지출
+              </button>
+              <button
+                  class="transfer"
+                  :class="{ active: InOutTranferType === 'transfer' }"
+                  @click="selectType('transfer')"
+              >
+                이체
+              </button>
             </div>
         </div>
 
@@ -60,8 +78,20 @@
         <div class="regular-or-not">
             <div class="classification">고정지출 여부</div>
             <div class="regular-buttons">
-                <button class="regular">Y</button>
-                <button class="irregular">N</button>
+              <button
+                  class="regular"
+                  :class="{ active: regularType === 'regular' }"
+                  @click="selectRegularType('regular')"
+              >
+                Y
+              </button>
+              <button
+                  class="irregular"
+                  :class="{ active: regularType === 'irregular' }"
+                  @click="selectRegularType('irregular')"
+              >
+                N
+              </button>
             </div>
         </div>
 
@@ -80,6 +110,18 @@
 </template>
 
 <script setup>
+
+import {ref} from "vue";
+
+const InOutTranferType = ref('in'); // 선택된 버튼 상태 관리 (기본값: 수입)
+const regularType = ref(null); // 고정지출 버튼 상태 관리
+const selectType = (type) => {
+  InOutTranferType.value = type; // 클릭된 버튼의 타입으로 상태 변경
+};
+
+const selectRegularType = (type) => {
+  regularType.value = type;
+};
 
 </script>
 
@@ -181,60 +223,77 @@
         flex-direction: row;
     }
 
+
     .in {
-        width: 61px;
-        height: 32px;
-        margin-right: 12px;
+      width: 61px;
+      height: 32px;
+      margin-right: 12px;
 
-        background: #F9F9FF;
-        border-radius: 16px;
-        border: 0;
+      background: #F9F9FF;
+      border-radius: 16px;
+      border: 0;
 
-        font-family: 'Noto Sans KR';
-        font-style: normal;
-        font-weight: 350;
-        font-size: 17px;
-        line-height: 25px;
-        color: #000000;
+      font-family: 'Noto Sans KR';
+      font-style: normal;
+      font-weight: 350;
+      font-size: 17px;
+      line-height: 25px;
+      color: #000000;
 
-        cursor: pointer;
+      cursor: pointer;
+    }
+
+    .in.active {
+      background: #848BA4;
+      color: white;
     }
 
     .out {
-        width: 61px;
-        height: 32px;
-        margin-right: 12px;
-        
-        background: #F9F9FF;
-        border-radius: 16px;
-        border: 0;
-        
-        font-family: 'Noto Sans KR';
-        font-style: normal;
-        font-weight: 350;
-        font-size: 17px;
-        line-height: 25px;
-        color: #000000;
+      width: 61px;
+      height: 32px;
+      margin-right: 12px;
 
-        cursor: pointer;
+      background: #F9F9FF;
+      border-radius: 16px;
+      border: 0;
+
+      font-family: 'Noto Sans KR';
+      font-style: normal;
+      font-weight: 350;
+      font-size: 17px;
+      line-height: 25px;
+      color: #000000;
+
+      cursor: pointer;
+    }
+
+    .out.active {
+      background: #848BA4;
+      color: white;
     }
 
     .transfer {
-        width: 61px;
-        height: 32px;
-        
-        background: #F9F9FF;
-        border-radius: 16px;
-        border: 0;
-        
-        font-family: 'Noto Sans KR';
-        font-style: normal;
-        font-weight: 350;
-        font-size: 17px;
-        line-height: 25px;
-        color: #000000;
+      width: 61px;
+      height: 32px;
 
-        cursor: pointer;
+      background: #F9F9FF;
+      border-radius: 16px;
+      border: 0;
+
+      font-family: 'Noto Sans KR';
+      font-style: normal;
+      font-weight: 350;
+      font-size: 17px;
+      line-height: 25px;
+      color: #000000;
+
+      cursor: pointer;
+    }
+
+
+    .transfer.active {
+      background: #848BA4;
+      color: white;
     }
 
     /* 가계부 카테고리 선택 부분 */
@@ -454,22 +513,32 @@
         cursor: pointer;
     }
 
+    .regular.active {
+      background: #848BA4;
+      color: white;
+    }
+
     .irregular {
-        width: 61px;
-        height: 32px;
+      width: 61px;
+      height: 32px;
 
-        background: #F9F9FF;
-        border-radius: 16px;
-        border: none;
+      background: #F9F9FF;
+      border-radius: 16px;
+      border: none;
 
-        font-family: 'Noto Sans KR';
-        font-style: normal;
-        font-weight: 350;
-        font-size: 17px;
-        line-height: 25px;
-        color: #000000;
+      font-family: 'Noto Sans KR';
+      font-style: normal;
+      font-weight: 350;
+      font-size: 17px;
+      line-height: 25px;
+      color: #000000;
 
-        cursor: pointer;
+      cursor: pointer;
+    }
+
+    .irregular.active {
+      background: #848BA4;
+      color: white;
     }
 
     /* 가게 입력 부분 */
