@@ -7,7 +7,7 @@
             <SideMenu :selectedBanner="'community'" :activeMenu="activeMenu" />
         </div>
         <div style="display: flex; flex-direction: column; margin-left: -110px;
-; margin-top: 50px;">
+; margin-top: 7px;">
             <RouterView />
         </div>
     </div>
