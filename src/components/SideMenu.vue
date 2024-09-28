@@ -183,6 +183,7 @@ watchEffect(() => {
         else if (isActive('/community/scrap')) activeMenu.value = '내가 스크랩한 글';
     } else if (props.selectedBanner === 'my') {
         if (isActive('/my')) activeMenu.value = '회원 정보';
+        else if (isActive('/my/')) activeMenu.value = '회원 정보';
         else if (isActive('/my/asset')) activeMenu.value = '나의 자산';
         else if (isActive('/my/expend')) activeMenu.value = '나의 정기지출';
         else if (isActive('/my/review')) activeMenu.value = '내가 다녀간 가게와 리뷰';

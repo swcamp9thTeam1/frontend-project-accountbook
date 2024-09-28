@@ -22,6 +22,7 @@
 
     import { RouterView, RouterLink } from 'vue-router';
     import { ref } from 'vue';
+    const activeMenu = ref('');
 </script>
 
 <style scoped>

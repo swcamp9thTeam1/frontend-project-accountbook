@@ -1,7 +1,6 @@
 <template>
     <header>
         <nav class="top-banner">
-            <!-- <div class="mypage-banner" v-if="login"> -->
             <div class="mypage-banner" v-if="isLoggedIn">
                 <RouterLink to="my" @click=handleMyPageClick>
                     <button class="mypage-btn">마이페이지</button>
@@ -73,11 +72,9 @@ const selectBanner = (banner) => {
 
 const handleNavigation = (banner) => {
     if (!isLoggedIn.value) {
-        // 로그인 안되어 있으면 클릭 이벤트 막음
         alert("로그인이 필요합니다.");
         router.push('/');
     } else {
-        // 로그인 되어 있으면 선택된 배너를 업데이트
         selectBanner(banner);
     }
 };
@@ -95,12 +92,6 @@ const handleMyPageClick = () => {
     router.push('/my');
 };
 
-// const logout = () => {
-//     isLoggedIn.value = false;
-//     router.push('/');  
-// };
-
-
 </script>
 
 <style scoped>
@@ -115,8 +106,6 @@ const handleMyPageClick = () => {
         margin-right: 80px;
         margin-top: 10px;
         gap: 20px;
-        /* opacity: 0.6; */
-
     }
 
     .mypage-banner .mypage-btn {
@@ -127,8 +116,8 @@ const handleMyPageClick = () => {
         border-radius: 40%;
         width: 100px;
         height: 30px;
-        align-items: center;      /* 수직 가운데 정렬 */
-        justify-content: center;  /* 수평 가운데 정렬 */
+        align-items: center;      
+        justify-content: center;  
         cursor: pointer;
     }
 
@@ -140,8 +129,8 @@ const handleMyPageClick = () => {
         border-radius: 40%;
         width: 100px;
         height: 30px;
-        align-items: center;      /* 수직 가운데 정렬 */
-        justify-content: center;  /* 수평 가운데 정렬 */
+        align-items: center;     
+        justify-content: center;  
         cursor: pointer;
     }
 
@@ -185,7 +174,7 @@ const handleMyPageClick = () => {
         color:black;
     } 
     .app .banner .banner-link.active {
-        font-weight: bold; /*현재 로그인 안 해도 bold처리 가능*/
+        font-weight: bold;
     } 
 
     .app a {
