@@ -184,14 +184,32 @@
       "category": "신용카드",
       "name": "삼성카드",
       "balance": -300000,
-      "paymentDate": 14
+      "paymentDate": 14,
+      "connectedAsset": null
     },
     {
       "id": "2",
       "category": "은행계좌",
       "name": "신한은행",
       "balance": 5000000,
-      "paymentDate": null
+      "paymentDate": null,
+      "connectedAsset": null
+    },
+    {
+      "id": "3",
+      "category": "신용카드",
+      "name": "국민카드",
+      "balance": -250000,
+      "paymentDate": 12,
+      "connectedAsset": null
+    },
+    {
+      "id": "4",
+      "category": "체크카드",
+      "name": "신한카드",
+      "balance": 0,
+      "paymentDate": null,
+      "connectedAsset": "신한은행"
     }
   ],
   "community-post": [
