@@ -5,7 +5,7 @@
         <!-- 글 작성 버튼 -->
         <button class="regist-post-btn" style="width: 140px; height: 48px; background-color: #F3F3FF; border: none; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 23px; padding: 17px; margin-left: 843px;margin-bottom: 20px;">
             <img src="/src/assets/icons/Community/PlusIcon.svg" alt="">
-            <span>글 작성</span>
+            <span class="font-300">글 작성</span>
         </button>
 
 
@@ -15,9 +15,9 @@
                 <div v-for="(post) in currentPagePosts" :key="post.id" style="width: 90%; height: auto;">
                     <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
                         <div style="display: flex;">
-                            <span style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px; font-weight: bold;">{{ post.id }}</span>
+                            <span  class="font-500"style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px; ">{{ post.id }}</span>
                             <div style="display: flex; flex-direction: column;">
-                                <span style="color: #101424; font-size: 23px;">{{ post.title}}</span>
+                                <span style="color: #101424; font-size: 22px;">{{ post.title}}</span>
                                 <div style="color: #8C8C8C; margin-top: 4px;">
                                     <span style="font-size: 13px;">{{ post.nickname }} </span>
                                     <span style="font-weight: lighter; font-size: 16px;">&nbsp; | &nbsp;</span>
@@ -27,32 +27,33 @@
                                 </div>
                             </div>
                         </div>
-                        <button style="width: 120px; height: 40px; background-color: white; border-radius: 50px; color: #8181B0; border: 1px #8181B0 solid; font-size: 17px;">
-                            스크랩
+
+                        <button @click="scrapEvent(post.id)" :class="post.scrapStatus ? 'scrap-active' : 'scrap-inactive'" class="font-300">
+                            {{ post.scrapStatus ? '스크랩 취소' : '스크랩 '}}
                         </button>
                     </div>
                 </div>
             </div>
 
             <!-- 페이지네이션 -->
-            <div class="pagination" style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-                <span class="page-btn" @click="changePage(currentPage - 1)" v-show="currentPage > 1">
+            <div class="pagination" style="display: flex; justify-content: center; align-items: center; margin-top: 60px;">
+                <span class="page-btn font-300" @click="changePage(currentPage - 1)" v-show="currentPage > 1">
                     &lt;
                 </span>
 
-                <span class="page-btn" v-show="currentPage > 1" @click="changePage(currentPage - 1)">
+                <span class="page-btn font-300" v-show="currentPage > 1" @click="changePage(currentPage - 1)">
                     {{ currentPage - 1 }}
                 </span>
 
-                <span class="currentPageBtn" @click="currentPagePosts">
+                <span class="currentPageBtn font-300" @click="currentPagePosts">
                     {{ currentPage }}
                 </span>
 
-                <span class="page-btn" v-show="currentPage < totalPages" @click="changePage(currentPage + 1)">
+                <span class="page-btn font-300" v-show="currentPage < totalPages" @click="changePage(currentPage + 1)">
                     {{ currentPage + 1 }}
                 </span>
 
-                <span class="page-btn" @click="changePage(currentPage + 1)" v-show="currentPage < totalPages">
+                <span class="page-btn font-300" @click="changePage(currentPage + 1)" v-show="currentPage < totalPages">
                     &gt;
                 </span>
             </div>
@@ -78,11 +79,26 @@ onMounted(async () => {
     const postId = route.params.id;
     const response = await fetch('http://localhost:8080/community-post');
     const data = await response.json();
-    
-    posts.value = data;   
-    post.value = posts.value.find(p => p.id === Number(postId)); // postId를 숫자로 변환
+
+
+    /* 로컬스토리지에 스크랩 상태 저장하여 새로고침 시 스크랩 상태 유지되도록 */
+    // 로컬 스토리지 스크랩 상태 가져오기, 스크랩 객체 없으면 null 반환
+    const savedScrapStatus = JSON.parse(localStorage.getItem('scrapStatus')) || {};
+
+    // 각 게시글에 scrapStatus 필드를 추가하고 로컬 스토리지의 스크랩 상태를 반영 -> post에 저장
+    posts.value = data.map(post => ({
+        ...post,
+        scrapStatus: savedScrapStatus[post.id] || false, // 저장된 값이 있으면 사용, 없으면 false
+    }));
+
+    post.value = posts.value.find(p => p.id === Number(postId)); // post에  posts 중 하나의 데이터 담음
+
+
+
 });
 
+
+/* 페이지네이션 */
 const postsPerPage = 7; // 한 페이지당 게시글 개수
 const currentPage = ref(1); // currentPage 초기값 1로 설정 
 
@@ -107,9 +123,35 @@ const changePage = (newPage) => {
     }
 };
 
-// watch(currentPage, (newValue) => {
-//     isValid.value = newValue > 0 && newValue <= totalPages.value;
-// });
+
+
+/* 스크랩 */
+// const scrapStatus = ref(false); // 초기 스크랩 상태: 스크랩 안함
+
+// scrap 이벤트가 발생하면 scrapStatus 변화 
+const scrapEvent = (postId) => {
+
+    const post = posts.value.find(p => p.id === postId);
+
+    // 예외처리
+    if (!post) {
+    console.error('게시글을 찾을 수 없습니다.', postId); 
+    return; 
+    }
+
+    post.scrapStatus = !post.scrapStatus;
+
+    // 로컬 스토리지에 스크랩 상태 저장
+    const savedScrapStatus = JSON.parse(localStorage.getItem('scrapStatus')) || {};
+    savedScrapStatus[postId] = post.scrapStatus;
+    localStorage.setItem('scrapStatus', JSON.stringify(savedScrapStatus));
+
+    // console.log(post.scrapStatus)
+    // console.log(savedScrapStatus)
+
+
+}
+
 </script>
 
 <style scoped>
@@ -147,4 +189,40 @@ span {
     background-color: #B1B1D2;
     color: white;
 }
+
+
+.scrap-active{
+    width: 120px; 
+    height: 40px; 
+    background-color: #B1B1D2; 
+    border-radius: 50px; 
+    color: white; 
+    border:1px #B1B1D2 solid; font-size: 17px;
+}
+
+
+.scrap-inactive{
+    width: 120px; 
+    height: 40px; 
+    background-color: white; 
+    border-radius: 50px; 
+    color: #8181B0; 
+    border:1px #8181B0 solid; font-size: 17px;
+
+}
+
+.font-300{
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.font-500{
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
 </style>
