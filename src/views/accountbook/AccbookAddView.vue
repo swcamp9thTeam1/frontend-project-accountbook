@@ -1,14 +1,16 @@
 <template>
   <div class="parent-container">
+    <AccountBookListButtons/>
     <div class="page-title">가계부 작성</div>
-    <AccountBookInsert/>
+    <AccountBookCreate/>
   </div>
 
 </template>
 
 <script setup>
 
-import AccountBookInsert from "@/components/accbook/AccountBookInsert.vue";
+import AccountBookCreate from "@/components/accbook/AccountBookCreate.vue";
+import AccountBookListButtons from "@/components/accbook/AccountBookListButtons.vue";
 </script>
 
 <style scoped>

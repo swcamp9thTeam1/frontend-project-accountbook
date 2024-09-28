@@ -1,5 +1,6 @@
 <template>
   <div class="parent-container">
+    <AccountBookListButtons/>
     <div class="page-title">가계부 조회</div>
     <AccountBookDetail :item="{ id: route.params.id }"/>
   </div>
@@ -8,6 +9,7 @@
 <script setup>
 import AccountBookDetail from "@/components/accbook/AccountBookDetail.vue";
 import {useRoute} from "vue-router";
+import AccountBookListButtons from "@/components/accbook/AccountBookListButtons.vue";
 
 const route = useRoute()
 

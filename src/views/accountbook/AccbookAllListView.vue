@@ -50,7 +50,8 @@ onMounted(async () => {
     accbookListData.value = data;
 
     // 배열을 사용해 아이템 생성
-    props.items = groupedAccbookList(data);
+    props.item = groupedAccbookList.value;
+
   } catch (error) {
     console.error('데이터를 가져오는 중 오류 발생:', error);
   }
@@ -59,11 +60,12 @@ onMounted(async () => {
 // 날짜별로 아이템 그룹화
 const groupedAccbookList = computed(() => {
   const grouped = [];
-  const totals = {}; // 날짜별로 수입 및 지출 총계 저장
+  const totals = {};
   let lastDate = '';
 
-  accbookListData.value.forEach(item => {
-    const currentDate = new Date(item.createdAt).toISOString().split('T')[0]; // YYYY-MM-DD 형식
+  accbookListData.value.forEach (item => {
+
+    const currentDate = new Date(item.createdAt).toISOString().split('T')[0];
 
     // 날짜에 대한 총계 초기화
     if (!totals[currentDate]) {
@@ -82,18 +84,34 @@ const groupedAccbookList = computed(() => {
 
     // 새로운 날짜일 경우 그룹에 추가
     if (currentDate !== lastDate) {
-      grouped.push({
-        isNewDay: true,
-        date: currentDate,
-        totalIn: totals[currentDate].totalIn,
-        totalOut: totals[currentDate].totalOut
-      });
+      if (lastDate !== ''){
+        grouped.push({
+          isNewDay: true,
+          date: lastDate,
+          totalIn: totals[lastDate].totalIn,
+          totalOut: totals[lastDate].totalOut
+        });
+      }
+
       lastDate = currentDate; // 업데이트
     }
 
     // 기존 데이터 추가
     grouped.push({isNewDay: false, data: item});
   });
+
+  // 마지막 날짜의 총계를 grouped의 맨 마지막에 추가
+  if (lastDate !== '') {
+    grouped.push({
+      isNewDay: true,
+      date: lastDate,
+      totalIn: totals[lastDate].totalIn,
+      totalOut: totals[lastDate].totalOut
+    });
+  }
+
+  // 최신순으로 변경
+  grouped.reverse()
 
   return grouped;
 });
