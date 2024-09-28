@@ -50,7 +50,8 @@ onMounted(async () => {
     accbookListData.value = data;
 
     // 배열을 사용해 아이템 생성
-    props.items = groupedAccbookList.value;
+    props.item = groupedAccbookList.value;
+    console.log(groupedAccbookList.value)
   } catch (error) {
     console.error('데이터를 가져오는 중 오류 발생:', error);
   }
@@ -62,7 +63,10 @@ const groupedAccbookList = computed(() => {
   const totals = {}; // 날짜별로 수입 및 지출 총계 저장
   let lastDate = '';
 
-  accbookListData.value.forEach(item => {
+  // 최신순으로 보여주기 위해 날짜순으로 정렬된 데이터를 reverse
+  // (json server에서는 추가된 값이 맨 아래에 저장되기 때문에 받아온 값을 프론트에서 reverse해서 사용도록 구현함)
+  const reverseData = [...accbookListData.value].reverse();
+  reverseData.forEach(item => {
     const currentDate = new Date(item.createdAt).toISOString().split('T')[0]; // YYYY-MM-DD 형식
 
     // 날짜에 대한 총계 초기화

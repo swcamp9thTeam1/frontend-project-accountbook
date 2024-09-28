@@ -1,9 +1,11 @@
 <template>
   <div class="add-accbook">
       <input type="text" class="accbook-title" name="title" placeholder="제목을 입력해주세요."
-        minlength="4" maxlength="20" required>
+        minlength="4" maxlength="20" required
+        v-model="inputData.title">
         <input type="number" class="accbook-amount" name="amount" placeholder="금액을 입력해주세요."
-        minlength="1" maxlength="19" required>
+        minlength="1" maxlength="19" required
+        v-model="inputData.amount">
 
         <img src="../../assets/icons/가계부_작성란_line.svg" class="line">
 
@@ -12,22 +14,22 @@
             <div class="finance-type-buttons">
               <button
                   class="in"
-                  :class="{ active: InOutTranferType === 'in' }"
-                  @click="selectType('in')"
+                  :class="{ active: InOutTranferType === 'I' }"
+                  @click="selectType('I')"
               >
                 수입
               </button>
               <button
                   class="out"
-                  :class="{ active: InOutTranferType === 'out' }"
-                  @click="selectType('out')"
+                  :class="{ active: InOutTranferType === 'O' }"
+                  @click="selectType('O')"
               >
                 지출
               </button>
               <button
                   class="transfer"
-                  :class="{ active: InOutTranferType === 'transfer' }"
-                  @click="selectType('transfer')"
+                  :class="{ active: InOutTranferType === 'T' }"
+                  @click="selectType('T')"
               >
                 이체
               </button>
@@ -37,11 +39,11 @@
         <div class="select-category">
             <div class="classification">카테고리</div>
             <div class="category-container">
-                <select class="acc-category" id="acc-category" required>
+                <select class="acc-category" id="acc-category" required v-model="parentCategory">
                     <option value="">상위 카테고리</option>
                     <option value="근로수입">근로수입</option>
                 </select>
-                <select class="sub-category" id="sub-category" required>
+                <select class="sub-category" id="sub-category" required v-model="subCategory">
                     <option value="">하위 카테고리</option>
                     <option value="급여">급여</option>
                 </select>
@@ -51,24 +53,28 @@
         <div class="occur-date">
             <div class="classification">일시</div>
             <div class="datetime-container">
-                <input type="text" class="year" name="year" placeholder="2024" pattern="\d*" maxlength="4" required>
+                <input type="text" class="year" name="year" placeholder="2024" pattern="\d*" maxlength="4" required
+                       v-model="year">
                 <div class="datetime-class">년</div>
-                <input type="text" class="month" name="month" placeholder="01" pattern="\d*" maxlength="2" required>
+                <input type="text" class="month" name="month" placeholder="01" pattern="\d*" maxlength="2" required
+                       v-model="month">
                 <div class="datetime-class">월</div>
-                <input type="text" class="day" name="day" placeholder="01" pattern="\d*" maxlength="2" required>
+                <input type="text" class="day" name="day" placeholder="01" pattern="\d*" maxlength="2" required
+                       v-model="day">
                 <div class="datetime-class">일</div>
-                <input type="text" class="time" name="time" placeholder="00:00" minlength="5" maxlength="5" required>
+                <input type="text" class="time" name="time" placeholder="00:00" minlength="5" maxlength="5" required
+                       v-model="time">
             </div>
         </div>
 
         <div class="select-asset">
             <div class="classification">변동자산</div>
             <div class="asset-container">
-                <select class="asset-category" id="asset-category" required>
+                <select class="asset-category" id="asset-category" required v-model="parentAsset">
                     <option value="">카테고리</option>
                     <option value="신용카드">신용카드</option>
                 </select>
-                <select class="asset-name" id="asset-name" required>
+                <select class="asset-name" id="asset-name" required v-model="subAsset">
                     <option value="">자산을 선택해주세요.</option>
                     <option value="삼성카드">삼성카드 1234</option>
                 </select>
@@ -80,15 +86,15 @@
             <div class="regular-buttons">
               <button
                   class="regular"
-                  :class="{ active: regularType === 'regular' }"
-                  @click="selectRegularType('regular')"
+                  :class="{ active: regularType === 'Y' }"
+                  @click="selectRegularType('Y')"
               >
                 Y
               </button>
               <button
                   class="irregular"
-                  :class="{ active: regularType === 'irregular' }"
-                  @click="selectRegularType('irregular')"
+                  :class="{ active: regularType === 'N' }"
+                  @click="selectRegularType('N')"
               >
                 N
               </button>
@@ -105,16 +111,34 @@
           </div>
         </div>
 
-        <button class="add-button">등록하기</button>
+        <button class="add-button" @click="submitInputData">
+          등록하기
+        </button>
     </div>
 </template>
 
 <script setup>
 
 import {ref} from "vue";
+import router from "@/router/router.js";
 
-const InOutTranferType = ref('in'); // 선택된 버튼 상태 관리 (기본값: 수입)
-const regularType = ref(null); // 고정지출 버튼 상태 관리
+const InOutTranferType = ref('I'); // 선택된 버튼 상태 관리 (기본값: 수입)
+const regularType = ref('N'); // 고정지출 버튼 상태 관리 (기본값: N)
+
+/* input data */
+const parentCategory = ref('');
+const subCategory = ref('');
+
+const year = ref('');
+const month = ref('');
+const day = ref('');
+const time = ref('');
+
+const parentAsset = ref('');
+const subAsset = ref('');
+
+const storeCode = ref('')
+
 const selectType = (type) => {
   InOutTranferType.value = type; // 클릭된 버튼의 타입으로 상태 변경
 };
@@ -123,20 +147,87 @@ const selectRegularType = (type) => {
   regularType.value = type;
 };
 
+const inputData = ref({
+  accbookCode: '',
+  createdAt: '',
+  amount: '',
+  isRegular: '',
+  title: '',
+  memberCode: '',
+  accCategoryName: '',
+  storeCode: '',
+  assetName: '',
+  financeType: '',
+  inAssetCode: '',
+  accCommentDTOList: []
+})
+
+const formatDate = () => {
+  // 현재 날짜를 기준으로 초기값 설정
+  let basicYear = year.value || new Date().getFullYear();
+  let basicMonth = month.value || new Date().getMonth() + 1;
+  let basicDay = day.value || new Date().getDate();
+  let basicTime = time.value || '00:00';
+
+  return `${String(basicYear)}-${String(basicMonth).padStart(2, '0')}-${String(basicDay).padStart(2, '0')}T${basicTime}:00`;
+}
+
+const formatCategory = () => {
+  return `${String(parentCategory.value)}>${String(subCategory.value)}`
+}
+
+const saveInputData = () => {
+  inputData.value.createdAt = formatDate()
+  inputData.value.financeType = InOutTranferType.value
+  inputData.value.isRegular = regularType.value
+  inputData.value.accCategoryName = formatCategory()
+  inputData.value.assetName = subAsset.value
+
+  inputData.value.accbookCode = 1 // 임시로 1번 가계부로 지정
+  inputData.value.memberCode = 1 // 임시로 1번 회원으로 지정
+
+  console.log(inputData)
+}
+
+const submitInputData = async () => {
+  // 데이터를 inputData 객체에 저장
+  saveInputData()
+
+  // json server에 POST 요청
+  try {
+    const response = await fetch('http://localhost:8080/monthly', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(inputData.value)
+    });
+
+    if (response.ok) {
+      // 서버에서 반환된 데이터에서 id 추출
+      const responseData = await response.json()
+      const id = responseData.id;
+      console.log('가계부 등록 성공:', id);
+
+      // 해당 가계부의 상세보기 페이지로 리다이렉트
+      router.push(`/account-book/detail/${id}`);
+
+    } else {
+      console.error('가계부 등록 실패:', response.statusText);
+    }
+  } catch (error) {
+    console.log('가계부 등록 중 에러 발생:', error)
+  }
+}
+
 </script>
 
 <style scoped>
     /* 가계부 작성 부분 틀 */
     .add-accbook {
         position: relative;
-        //width: 606px;
-        //height: 463px;
-        //left: 776px;
-        //top: 251px;
-
         box-shadow: 0px 0px 7px 1px #DFDFF5;
         border-radius: 30px;
-
         display: flex;
         flex-direction: column;
         margin: 20px;
