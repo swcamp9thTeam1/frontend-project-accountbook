@@ -1,11 +1,12 @@
 <script setup>
     import MyAssetList from '@/components/myPage/MyAssetList.vue';
-    import { computed, onMounted, ref } from 'vue';
+    import { provide, onMounted, ref, watchEffect } from 'vue';
     import { RouterLink } from 'vue-router';
 
     const assets = ref([]);
     const member = ref({});
     const totalAsset = ref(0);
+    const categories = ref([]);
 
     onMounted(async () => {
         const response = await fetch('http://localhost:8080/member');
@@ -15,9 +16,21 @@
     onMounted(async () => {
         const response = await fetch('http://localhost:8080/asset');
         assets.value = await response.json();
+    });
 
+    watchEffect(() => {
+        // 총 합계
         totalAsset.value = assets.value.reduce((sum, asset) => sum + asset.balance, 0);
+
+        // 카테고리별로 새로운 배열 만들기
+        categories.value = [...new Set(assets.value.map(asset => asset.category))];
     })
+
+    provide('assets', assets);
+
+    function calcTotalBalance(category) {
+        return assets.value.filter(asset => asset.category === category).reduce((sum, asset) => sum + asset.balance, 0);
+    }
 </script>
 
 <template>
@@ -29,17 +42,61 @@
             </RouterLink>
         </div>
         <div class="list">
-            <ul>
-                <li style="list-style-type: none;">
-                    <MyAssetList v-for="asset in assets" :key="asset.id" :asset/>
-                </li>
-            </ul>
+            <div v-for="category in categories" :key="category" class="categories">
+                <div class="category-container">
+                    <div class="category-name">
+                        {{ category }}
+                    </div>
+                    <div class="category-total">
+                        총 {{ (calcTotalBalance(category)).toLocaleString() }}원
+                    </div>
+                </div>
+                <div v-for="asset in assets.filter(val => val.category === category)" :key="asset.id">
+                    <MyAssetList :asset/>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
     @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+    .categories {
+        margin-top: 30px;
+    }
+
+    .category-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .category-name {
+        width: 150px;
+        height: 32px;
+        background: #25272F;
+        border-radius: 16px;
+
+        font-family: 'Noto Sans KR';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 28px;
+        color: #FFFFFF;
+
+        text-align: center;
+    }
+
+    .category-total {
+        margin-left: 550px;
+
+        font-family: 'Noto Sans KR';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        color: #484848;
+    }
 
     .container {
         display: flex;
@@ -83,8 +140,6 @@
     }
 
     .list {
-        display: flex;
-        flex-direction: column;
         margin-top: 170px;
     }
 </style>
