@@ -30,13 +30,17 @@
         </div>
         <div class="list">
             <ul>
-                <MyAssetList v-for="asset in assets" :key="asset.id" :asset/>
+                <li style="list-style-type: none;">
+                    <MyAssetList v-for="asset in assets" :key="asset.id" :asset/>
+                </li>
             </ul>
         </div>
     </div>
 </template>
 
 <style scoped>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
     .container {
         display: flex;
         flex-direction: column;
@@ -74,6 +78,8 @@
         font-size: 18px;
         line-height: 25px;
         color: #25272F;
+
+        cursor: pointer;
     }
 
     .list {

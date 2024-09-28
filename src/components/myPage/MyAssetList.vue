@@ -1,6 +1,6 @@
 <script setup>
     import { RouterLink } from 'vue-router';
-    import { ref, defineProps } from 'vue';
+    import { ref, defineProps, computed } from 'vue';
 
     const props = defineProps({
         asset:Object
@@ -12,13 +12,26 @@
             this.deleteAsset(id);
         }
     }       // 아직 구현중
-            // categoryTotal 구현 필요
+    
+    const categoryTotal = computed({});
+    async () => {
+        const response = await fetch('http://localhost:8080/asset');
+        assets.value = await response.json();
+
+        categoryTotal.value = assets.reduce((totals, asset) => {
+            if(!totals[asset.category]) {
+                totals[asset.category] = 0;
+            }
+            totals[asset.category] += asset.balance;
+            return totals;
+        }, {});
+    }
 </script>
 
 <template>
     <div class="asset-classification">
         <div class="asset-category">{{ asset.category }}</div>
-        <div class="category-total">총 {{ categoryTotal }}원</div>
+        <div v-for="(total, category) in categoryTotals" :key="category" class="category-total">총 {{ total }}원</div>
     </div>
     
     <div class="asset">
