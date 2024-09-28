@@ -1,43 +1,41 @@
-<template>
-    <div class="member-info" id="app">
-        <div class="startline"></div>
-        <div class="user-id">
-            <div class="classification">아이디</div>
-            <input type="text" class="modify-info" v-model="member.memberId">
-        </div>
-        <div class="nickname">
-            <div class="classification">닉네임</div>
-            <input type="text" class="modify-info" v-model="member.nickname">
-        </div>
-        <div class="email">
-            <div class="classification">이메일</div>
-            <input type="text" class="modify-info" v-model="member.email">
-        </div>
-        <div class="monthly-budget">
-            <div class="classification">월 예산</div>
-            <input type="number" class="modify-budget" v-model="member.budget">
-        </div>
-        <div class="endline"></div>
-        <RouterLink to="/my" active-class="active">
-            <button type="submit" class="save" @click="changeInfo">저장</button>
-        </RouterLink>
-    </div>
-</template>
+<!-- 회원 정보 조회 화면 -->
 
 <script setup>
-    import { RouterLink } from 'vue-router';
-    import { ref } from 'vue';
+    import { RouterLink, useRoute, useRouter } from 'vue-router';
+    import { onMounted, ref } from 'vue';
 
     const member = ref({});
     onMounted(async () => {
         const response = await fetch('http://localhost:8080/member');
         member.value = await response.json();
     })
-
-    // function changeInfo() {
-
-    // }
 </script>
+
+<template>
+    <div class="member-info">
+        <div class="startline"></div>
+        <div class="user-id">
+            <div class="classification">아이디</div>
+            <div class="select-info">{{ member.memberId }}</div>
+        </div>
+        <div class="nickname">
+            <div class="classification">닉네임</div>
+            <div class="select-info">{{ member.nickname }}</div>
+        </div>
+        <div class="email">
+            <div class="classification">이메일</div>
+            <div class="select-info">{{ member.email }}</div>
+        </div>
+        <div class="monthly-budget">
+            <div class="classification">월 예산</div>
+            <div class="select-budget">{{ Number(member.budget).toLocaleString() }} 원</div>
+        </div>
+        <div class="endline"></div>
+        <RouterLink to="/my/edit-info" active-class="active">
+            <button type="button" class="modify">수정하기</button>
+        </RouterLink>
+    </div>
+</template>
 
 <style scoped>
     @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
@@ -85,7 +83,7 @@
         color: #000000;
     }
 
-    .modify-info {
+    .select-info {
         font-family: 'Noto Sans KR';
         font-style: normal;
         font-weight: 300;
@@ -96,7 +94,7 @@
         margin-left: 125px;
     }
 
-    .modify-budget {
+    .select-budget {
         font-family: 'Noto Sans KR';
         font-style: normal;
         font-weight: 300;
@@ -114,7 +112,7 @@
         margin-top: 30px;
     }
 
-    .save {
+    .modify {
         width: 115px;
         height: 32px;
         margin-left: 800px;
