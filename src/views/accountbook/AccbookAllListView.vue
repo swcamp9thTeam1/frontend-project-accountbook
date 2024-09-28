@@ -60,14 +60,12 @@ onMounted(async () => {
 // 날짜별로 아이템 그룹화
 const groupedAccbookList = computed(() => {
   const grouped = [];
-  const totals = {}; // 날짜별로 수입 및 지출 총계 저장
+  const totals = {};
   let lastDate = '';
 
-  // 최신순으로 보여주기 위해 날짜순으로 정렬된 데이터를 reverse
-  // (json server에서는 추가된 값이 맨 아래에 저장되기 때문에 받아온 값을 프론트에서 reverse해서 사용도록 구현함)
-  const reverseData = [...accbookListData.value].reverse();
-  reverseData.forEach(item => {
-    const currentDate = new Date(item.createdAt).toISOString().split('T')[0]; // YYYY-MM-DD 형식
+  accbookListData.value.forEach (item => {
+
+    const currentDate = new Date(item.createdAt).toISOString().split('T')[0];
 
     // 날짜에 대한 총계 초기화
     if (!totals[currentDate]) {
@@ -86,18 +84,34 @@ const groupedAccbookList = computed(() => {
 
     // 새로운 날짜일 경우 그룹에 추가
     if (currentDate !== lastDate) {
-      grouped.push({
-        isNewDay: true,
-        date: currentDate,
-        totalIn: totals[currentDate].totalIn,
-        totalOut: totals[currentDate].totalOut
-      });
+      if (lastDate !== ''){
+        grouped.push({
+          isNewDay: true,
+          date: lastDate,
+          totalIn: totals[lastDate].totalIn,
+          totalOut: totals[lastDate].totalOut
+        });
+      }
+
       lastDate = currentDate; // 업데이트
     }
 
     // 기존 데이터 추가
     grouped.push({isNewDay: false, data: item});
   });
+
+  // 마지막 날짜의 총계를 grouped의 맨 마지막에 추가
+  if (lastDate !== '') {
+    grouped.push({
+      isNewDay: true,
+      date: lastDate,
+      totalIn: totals[lastDate].totalIn,
+      totalOut: totals[lastDate].totalOut
+    });
+  }
+
+  // 최신순으로 변경
+  grouped.reverse()
 
   return grouped;
 });
