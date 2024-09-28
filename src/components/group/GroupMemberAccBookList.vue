@@ -2,25 +2,37 @@
     <div class="group-member-accbook-container">
         <div class="top-area">
             <div class="title"><b>{{ props.groupMember.nickname }}</b>님의 가계부</div>
+
+            <select v-if="currentView === 'LIST'" v-model="selectedMonth">
+                <option v-for="month in months" :key="month" :value="month">{{ month }}월</option>
+            </select>
         </div>
         
-        <div class="acc-book-list-area" v-if="selectedAccBookId === null">
-            <AccountBookItem v-for="accbook in props.groupMember.accountBooks" :key="accbook.id" :item="accbook" @item-clicked="clickAccBook" />
+        <!-- 상황에 따라 가계부 리스트 View or 가계부 자세히보기 View -->
+        <!-- 가계부 리스트 View -->
+        <div class="acc-book-list-area" v-if="currentView === 'LIST'">
+
+            <!-- 가계부 없을 때 -->
+            <div v-if="accBookListByMonth.length === 0">작성된 가계부가 없습니다!</div>
+
+            <!-- 가계부 있을 때 -->
+            <AccountBookItem v-for="accbook in accBookListByMonth" :key="accbook.id" :item="accbook" @item-clicked="clickAccBook" />
         </div>
-        <div v-else class="acc-book-detail-area">
+
+        <!-- 가계부 자세히보기 View -->
+        <div v-else-if="currentView === 'DETAIL'" class="acc-book-detail-area">
             <button type="button" @click="backToList" class="btn-back">
                 <img src="@/assets/icons/button-back.svg" alt="돌아가기">
                 <p>목록으로 돌아가기</p>
             </button>
 
-            <!-- 가계부 자세히보기 View -->
-             <AccountBookDetail :item="{ id: selectedAccBookId }" :readonly="true" />
+            <AccountBookDetail :item="{ id: selectedAccBookId }" :readonly="true" />
         </div>
     </div>
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue';
+import { defineProps, onMounted, ref, watch } from 'vue';
 import AccountBookItem from '@/components/accbook/AccountBookList.vue';
 import AccountBookDetail from '@/components/accbook/AccountBookDetail.vue';
 
@@ -31,14 +43,31 @@ const props = defineProps({
     }
 })
 
-const selectedAccBookId = ref(null);      // 자세히보기 할 가계부 id
+const selectedAccBookId = ref(null);                            // 자세히보기 할 가계부 id
+const currentView = ref("LIST");                                // ["LIST", "DETAIL"]
+
+const months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+const selectedMonth = ref("");                                  // 선택된 month
+const accBookListByMonth = ref([]);                             // 선택된 달에 해당하는 가계부 목록
+
+onMounted(() => {
+    selectedMonth.value = String(new Date().getMonth() + 1);    // 현재 달(month)을 기본값으로 설정
+})
+
+// 선택된 month에 해당하는 가계부 목록만 골라내기
+watch(selectedMonth, () => {
+    accBookListByMonth.value = props.groupMember.accountBooks
+                                                .filter(e => (new Date(e.createdAt).getMonth() + 1) == selectedMonth.value);
+})
 
 const clickAccBook = (accBookId) => {
     selectedAccBookId.value = accBookId;
+    currentView.value = "DETAIL";
 }
 
 const backToList = () => {
     selectedAccBookId.value = null;
+    currentView.value = "LIST";
 }
 </script>
 
@@ -48,12 +77,33 @@ const backToList = () => {
 
     .top-area {
         display: flex;
+        justify-content: space-between;
         align-items: center;
         margin-bottom: 20px;
 
         .title {
             font-size: 32px;
             font-weight: lighter;
+        }
+
+        select {
+
+            /* select box 화살표 모양 커스텀 */
+            -moz-appearance: none; /* Firefox */
+            -webkit-appearance: none; /* Safari and Chrome */
+            appearance: none;
+            background-image: url("@/assets/icons/ic-triangle-down-purple.svg");
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+
+            border: 1px solid #B1B1D2;
+            border-radius: 5px;
+            height: 33px;
+            width: 79px;
+
+            font-size: 16px;
+            text-align: right;
+            padding-right: 30px;
         }
     }
 
