@@ -11,8 +11,8 @@ import SideMenu from '@/components/SideMenu.vue';
 import { RouterView, RouterLink } from 'vue-router';
 import { ref } from 'vue';
 
-const selectedBanner = ref('group');
-
+// const selectedBanner = ref('group');
+const activeMenu = ref('');
 </script>
 
 <style scoped>
