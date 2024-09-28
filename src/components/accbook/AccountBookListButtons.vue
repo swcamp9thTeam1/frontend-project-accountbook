@@ -4,7 +4,7 @@
       <img src="../../assets/icons/가계부_검색_버튼.svg" alt="검색">
     </button>
     <button class="insert-button">
-      <img src="../../assets/icons/가계부_추가_버튼.svg" alt="추가">
+      <img src="../../assets/icons/가계부_추가_버튼.svg" alt="추가" @click="handleAddButtonClick">
     </button>
     <button class="category-button">
       <img src="../../assets/icons/가계부_카테고리관리_버튼.svg" alt="카테고리">
@@ -13,7 +13,13 @@
 </template>
 
 <script setup>
+import {useRouter} from "vue-router";
 
+const router = useRouter();
+
+const handleAddButtonClick = () => {
+  router.push('/account-book/add');
+}
 </script>
 
 <style scoped>
