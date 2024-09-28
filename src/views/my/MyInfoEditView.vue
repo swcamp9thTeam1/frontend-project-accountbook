@@ -28,7 +28,7 @@
 
 <script setup>
     import { RouterLink } from 'vue-router';
-    import { ref } from 'vue';
+    import { ref, onMounted } from 'vue';
 
     const member = ref({});
     onMounted(async () => {
