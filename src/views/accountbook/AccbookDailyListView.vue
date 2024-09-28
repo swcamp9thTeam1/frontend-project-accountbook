@@ -1,5 +1,6 @@
 <template>
   <div class="parent-container">
+    <AccountBookListButtons/>
     <div class="scrollable-content" v-if="accbookListData.length > 0">
       <AccountBookDays
           :date="date"
@@ -26,6 +27,7 @@ import AccountBookList from "@/components/accbook/AccountBookList.vue";
 import {ref, watch} from "vue";
 import router from "@/router/router.js";
 import AccountBookDays from "@/components/accbook/AccountBookDays.vue";
+import AccountBookListButtons from "@/components/accbook/AccountBookListButtons.vue";
 
 const route = useRoute();
 const date = ref(route.params.date);
