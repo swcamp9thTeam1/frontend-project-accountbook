@@ -25,7 +25,7 @@ const router = createRouter({
                 component: () => import("@/views/accountbook/AccbookAllListView.vue")
             },
             {
-                path: "daily",
+                path: "daily/:date",
                 component: () => import("@/views/accountbook/AccbookDailyListView.vue")
             },
             {

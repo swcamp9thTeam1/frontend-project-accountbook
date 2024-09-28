@@ -1,15 +1,7 @@
 <template>
-    <nav>
-        <RouterLink to="/account-book" active-class="active" replace>Home</RouterLink>
-        <RouterLink to="/account-book/add" active-class="active" replace>Add</RouterLink>
-        <RouterLink to="/account-book/all" active-class="active" replace>All</RouterLink>
-        <RouterLink to="/account-book/daily" active-class="active" replace>Daily</RouterLink>
-        <RouterLink to="/account-book/detail" active-class="active" replace>Detail</RouterLink>
-    </nav>
-
     <div  class="container">
-        <div class="calendar-container">
-            <CustomCalendarView />
+      <div class="calendar-container">
+            <CustomCalendarView @dateClicked="onDateClicked"/>
         </div>
         <div class="router-container">
             <RouterView />
@@ -20,6 +12,12 @@
 <script setup>
 import CustomCalendarView from '@/components/calendar/CustomCalendarView.vue';
 import { RouterView } from 'vue-router';
+import router from "@/router/router.js";
+
+// 캘린더에서 날짜 클릭 시 라우팅
+const onDateClicked = (date) => {
+  router.push(`/account-book/daily/${date}`);
+};
 
 </script>
 

@@ -4,7 +4,7 @@
             :show-date="showDate" 
             :starting-day-of-week="0"
             :items="state.items"
-            @click-item="onClickItem"
+            @clickDate="onClickDate"
             class="theme-default holiday-us-traditional holiday-us-official">
             <template #header="{ headerProps }">
                 <CustomCalendarViewHeader 
@@ -24,18 +24,19 @@
 
 <script setup>
 import { CalendarView } from 'vue-simple-calendar';
+import { ref, computed, reactive, onMounted, defineEmits } from 'vue';
 
 import 'vue-simple-calendar/dist/style.css';
 import 'vue-simple-calendar/dist/css/default.css';
 import 'vue-simple-calendar/dist/css/holidays-us.css';
-import { ref, computed, reactive, onMounted } from 'vue';
 import CustomCalendarViewHeader from '@/components/calendar/CustomCalendarViewHeader.vue';
+import router from "@/router/router.js";
 
 const showDate = ref(new Date());
+const emit = defineEmits(['dateClicked']);
 const setShowDate = (d) => {
     showDate.value = d;
 };
-
 
 const state = reactive({
     theme: "gcal",
@@ -118,8 +119,12 @@ onMounted(async () => {
     }
 });
 
-const onClickItem = (item) => {
-    state.message = `You clicked: ${item.title}`;
+const onClickDate = (day) => {
+  const todayString = `${day.getFullYear()}-${(day.getMonth() + 1).toString().padStart(2, '0')}-${day.getDate().toString().padStart(2, '0')}`;
+  // console.log("You clicked:", todayString);
+
+  // 날짜 클릭 시 부모 컴포넌트로 이벤트 전달 (부모 컴포넌트에서 라우팅 처리)
+  emit('dateClicked', todayString);
 }
 
 </script>

@@ -512,31 +512,31 @@
       "dailyDate": "2024-09-22",
       "totalOAmount": 0,
       "totalIAmount": 15000,
-      "evaluation": "Good"
+      "evaluation": null
     },
     {
       "dailyDate": "2024-09-23",
-      "totalOAmount": 1000,
+      "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Good"
+      "evaluation": null
     },
     {
       "dailyDate": "2024-09-24",
-      "totalOAmount": 10000,
+      "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Good"
+      "evaluation": null
     },
     {
       "dailyDate": "2024-09-25",
-      "totalOAmount": 10000,
+      "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Good"
+      "evaluation": null
     },
     {
       "dailyDate": "2024-09-26",
-      "totalOAmount": 25000,
+      "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Bad"
+      "evaluation": null
     },
     {
       "dailyDate": "2024-09-27",
