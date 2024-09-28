@@ -1,6 +1,6 @@
 <template>
     <div class="group-member-accbook-container">
-        <div class="top-area">
+        <div class="top-area flex-between-center">
             <div class="title"><b>{{ props.groupMember.nickname }}</b>님의 가계부</div>
 
             <select v-if="currentView === 'LIST'" v-model="selectedMonth">
@@ -16,7 +16,16 @@
             <div v-if="accBookListByMonth.length === 0">작성된 가계부가 없습니다!</div>
 
             <!-- 가계부 있을 때 -->
-            <AccountBookItem v-for="accbook in accBookListByMonth" :key="accbook.id" :item="accbook" @item-clicked="clickAccBook" />
+            <div v-for="accBookByDate in accBookListByDate" :key="accBookByDate.date" class="acc-book-by-date">
+                <div class="flex-between-center">
+                    <p class="date">{{ accBookByDate.date }}일</p>
+                    <div class="total-in-out">
+                        <div>+{{ accBookByDate.totalIn.toLocaleString() }}원</div>
+                        <div>-{{ accBookByDate.totalOut.toLocaleString() }}원</div>
+                    </div>
+                </div>
+                <AccountBookItem v-for="accbook in accBookByDate.accBooks" :key="accbook.id" :item="accbook" @item-clicked="clickAccBook" />
+            </div>
         </div>
 
         <!-- 가계부 자세히보기 View -->
@@ -49,6 +58,7 @@ const currentView = ref("LIST");                                // ["LIST", "DET
 const months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 const selectedMonth = ref("");                                  // 선택된 month
 const accBookListByMonth = ref([]);                             // 선택된 달에 해당하는 가계부 목록
+const accBookListByDate = ref([]);                              // 일자별 가계부 리스트
 
 onMounted(() => {
     selectedMonth.value = String(new Date().getMonth() + 1);    // 현재 달(month)을 기본값으로 설정
@@ -58,6 +68,39 @@ onMounted(() => {
 watch(selectedMonth, () => {
     accBookListByMonth.value = props.groupMember.accountBooks
                                                 .filter(e => (new Date(e.createdAt).getMonth() + 1) == selectedMonth.value);
+})
+
+// accBookListByDate 만들기
+watch(accBookListByMonth, () => {
+    const dates = new Set();
+
+    // 1. 존재하는 date 리스트 뽑기
+    accBookListByMonth.value.forEach(e => {
+        const accBookDate = new Date(e.createdAt).getDate();
+        dates.add(accBookDate);
+    });
+
+    // 2. Set -> Array (내림차순 정렬)
+    const dateList = Array.from(dates).sort((a, b) => b - a);
+
+    const result = [];
+
+    dateList.forEach(date => {
+        const resultItem = {};
+
+        const accBooks = accBookListByMonth.value.filter(e => (new Date(e.createdAt).getDate()) === date);
+        const inTypeAccBooks = accBooks.filter(e => e.financeType === "I");  // 수입만 뽑기
+        const outTypeAccBooks = accBooks.filter(e => e.financeType === "O"); // 지출만 뽑기
+        
+        resultItem.date = date;
+        resultItem.totalIn = inTypeAccBooks.map(e => e.amount).reduce((acc, val) => acc + val, 0);
+        resultItem.totalOut = outTypeAccBooks.map(e => e.amount).reduce((acc, val) => acc + val, 0);
+        resultItem.accBooks = accBooks;
+
+        result.push(resultItem);
+    });
+
+    accBookListByDate.value = result;
 })
 
 const clickAccBook = (accBookId) => {
@@ -76,9 +119,6 @@ const backToList = () => {
     padding-left: 100px;
 
     .top-area {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin-bottom: 20px;
 
         .title {
@@ -107,6 +147,16 @@ const backToList = () => {
         }
     }
 
+    .acc-book-by-date {
+        .date {
+            font-size: 16px;
+        }
+        .total-in-out {
+            font-size: 10px;
+            text-align: right;
+        }
+    }
+
     .acc-book-detail-area {
         .btn-back {
             display: flex;
@@ -127,6 +177,12 @@ const backToList = () => {
     button {
         background-color: transparent;
         border: none;
+    }
+
+    .flex-between-center {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 </style>
