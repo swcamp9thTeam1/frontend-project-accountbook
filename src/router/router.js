@@ -70,8 +70,8 @@ const router = createRouter({
                     component: () => import("@/views/group/GroupAccBook.vue")
                 },
                 {
-                    path: "community",
-                    component: () => import("@/views/group/GroupCommunity.vue")
+                    path: "community/:postId",
+                    component: () => import("@/views/group/GroupCommunityDetail.vue")
                 }
             ] },
 

@@ -1980,5 +1980,52 @@
                 }
             ]
         }
+    ],
+
+    "group-posts": [
+      {
+        "id": "1",
+        "nickname": "rentSaver",
+        "title": "전세와 월세 고민 중이에요",
+        "content": "지금 월세를 살고 있는데 전세로 갈아탈까 고민 중입니다. 여러분은 어떤 선택을 하셨나요?",
+        "createdAt": "2024-09-25 14:00",
+        "images": [],
+        "comments": [
+          {
+            "id": "1",
+            "nickname": "절약핑",
+            "content": "저는 전세 대출 이자가 월세보다 더 저렴해서 전세로 살고 있습니다!! 버팀목이나 중기청 등 나라에서 지원하는 청년대출 알아보세요~!",
+            "createdAt":"2024-09-25T14:01:00",
+            "subComments": [
+              {
+                "id": "1",
+                "nickname": "홍길동",
+                "content": "오 저도 버팀목 대출로 전세 살고 있습니다!",
+                "createdAt":"2024-09-25T14:11:00"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "nickname": "groceryQueen",
+        "title": "장보기에서 절약하는 방법",
+        "content": "주말마다 마트에서 장을 보는데, 쿠폰과 세일을 잘 활용하니까 10만원 절약했어요. 장볼 때 여러분은 어떻게 절약하세요?",
+        "createdAt": "2024-09-25 14:30",
+        "images": [
+          "https://img.freepik.com/free-vector/hand-drawn-people-supermarket-background_23-2148124958.jpg"
+        ],
+        "comments": []
+      },
+      {
+        "id": "3",
+        "nickname": "studentLife",
+        "title": "학생 예산 관리 꿀팁",
+        "content": "대학생인데, 생활비 예산 관리가 너무 어렵네요. 저만의 관리법이 있으면 공유해요!",
+        "createdAt": "2024-09-25 15:00",
+        "images": [],
+        "comments": []
+      }
     ]
 }
