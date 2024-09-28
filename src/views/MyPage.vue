@@ -11,7 +11,11 @@
 
 <script setup>
     import SideMenu from '@/components/SideMenu.vue';
+    import { ref } from 'vue';
     import { RouterView } from 'vue-router';
+
+    const activeMenu = ref('');
+    
 </script>
 
 <style scoped>

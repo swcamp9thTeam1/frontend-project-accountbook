@@ -7,7 +7,7 @@
             <SideMenu :selectedBanner="'community'" :activeMenu="activeMenu" />
         </div>
         <div style="display: flex; flex-direction: column; margin-left: -110px;
-; margin-top: 50px;">
+; margin-top: 7px;">
             <RouterView />
         </div>
     </div>
@@ -22,6 +22,7 @@
 
     import { RouterView, RouterLink } from 'vue-router';
     import { ref } from 'vue';
+    const activeMenu = ref('');
 </script>
 
 <style scoped>

@@ -67,10 +67,10 @@ const router = createRouter({
                 }
             ] },
 
-        { path: "/my", component: MyPage, children: [
+        { path: "/my", component: MyPage, redirect: "/my", children: [
             {
                 path: "",
-                component: () => import("@/views/my/MyInfoPage.vue")
+                component: () => import("@/views/my/MyInfoView.vue")
             },
 
             {
@@ -101,6 +101,11 @@ const router = createRouter({
             {
                 path: "edit-info",
                 component: () => import("@/views/my/MyInfoEditView.vue")
+            },
+
+            {
+                path: "asset/add",
+                component: () => import("@/views/my/AssetAddView.vue")
             }
 
 

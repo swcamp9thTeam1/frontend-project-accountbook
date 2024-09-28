@@ -1,41 +1,4 @@
 <template>
-<!-- <div class="b">
-    <div v-if="post" class="post-container"  >
-
-        <div class="post-header">
-            <h1>{{ post.title }}</h1>
-            <small>작성일: {{ post.created_at }} | 댓글 수: {{ post.comment_count }}</small>
-        </div>
-
-        <div class="post-content">
-            <p>{{ post.content }}</p>
- 
-            <img v-if="post.image" :src="post.image" alt="Post Image" class="post-image" />
-        </div>
-
-
-        <div class="comments-section">
-            <h2>댓글</h2>
-            <div v-for="comment in post.comments" :key="comment.id" class="comment">
-                <strong>{{ comment.nickname }}</strong>
-                <p>{{ comment.content }}</p>
-                <small>{{ comment.created_at }}</small>
-            </div>
-
-
-            <div class="comment-form">
-                <textarea v-model="newComment" placeholder="댓글을 입력하세요"></textarea>
-                <button @click="submitComment">등록</button>
-            </div>
-        </div>
-    </div>
-
-    <div v-else>
-        <p>Loading...</p>
-    </div>
-    </div> -->
-
-
     <div style="display:flex;">
     <div style="display: flex; flex-direction: column; gap: 10px; position: absolute; top: 187px; left: 340px; width: 100%;">
         <div v-if="post" style="width: 80%; height: auto; min-height: 150px; padding: 20px;"> <!-- 여기서 width와 height 조정 -->
@@ -58,8 +21,6 @@
         </div>
     </div>
 </div>
-
-
 </template>
 
 <script setup>
@@ -80,21 +41,6 @@ onMounted(async () => {
     }
 });
 
-const submitComment = async () => {
-    if (newComment.value.trim() === '') return;
-
-    const comment = {
-        id: Date.now(),  // 간단한 ID 생성
-        nickname: localStorage.getItem('nickname'),  // 저장된 닉네임
-        content: newComment.value,
-        created_at: new Date().toISOString()
-    };
-
-    post.value.comments.push(comment);
-    newComment.value = '';
-
-    // 여기에 서버로 댓글을 저장하는 API 호출 코드를 추가할 수 있습니다.
-};
 </script>
 
 <style scoped>

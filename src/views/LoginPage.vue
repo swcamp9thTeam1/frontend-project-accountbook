@@ -63,6 +63,18 @@
             username: username.value,
             password: password.value 
         };
+
+        if (!loginData.username) {
+            alert("아이디를 입력하세요.");
+            return;
+        }
+            // 비밀번호 검증
+        if (!loginData.password) {
+            alert("비밀번호를 입력하세요.");
+            return;
+        }
+
+        
         try {
     const response = await fetch(`http://localhost:8080/users?username=${loginData.username}&password=${loginData.password}`);
     const users = await response.json();
@@ -70,6 +82,7 @@
     if (users.length > 0) {
       login();  // 로그인 시 user 상태를 true로 변경
       localStorage.setItem('nickname', users[0].nickname);
+      localStorage.setItem('Id', users[0].username); // 아이디를 로컬 스토리지에 저장
       router.push('/account-book');  // 로그인 후 이동할 페이지
     } else {
       alert("아이디 또는 비밀번호가 일치하지 않습니다.");
