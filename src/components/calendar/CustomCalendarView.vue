@@ -96,7 +96,6 @@ const createCalendarItems = (accbookdata) => {
         }
     });
 
-    // console.log(items);
     return items;
 };
 

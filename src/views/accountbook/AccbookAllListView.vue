@@ -51,7 +51,7 @@ onMounted(async () => {
 
     // 배열을 사용해 아이템 생성
     props.item = groupedAccbookList.value;
-    console.log(groupedAccbookList.value)
+
   } catch (error) {
     console.error('데이터를 가져오는 중 오류 발생:', error);
   }

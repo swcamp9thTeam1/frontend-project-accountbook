@@ -185,8 +185,6 @@ const saveInputData = () => {
 
   inputData.value.accbookCode = 1 // 임시로 1번 가계부로 지정
   inputData.value.memberCode = 1 // 임시로 1번 회원으로 지정
-
-  console.log(inputData)
 }
 
 const submitInputData = async () => {
