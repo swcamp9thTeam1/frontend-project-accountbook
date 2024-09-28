@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { defineProps, onMounted, ref, watch } from 'vue';
+import { defineProps, onMounted, ref, watch, watchEffect } from 'vue';
 import AccountBookItem from '@/components/accbook/AccountBookList.vue';
 import AccountBookDetail from '@/components/accbook/AccountBookDetail.vue';
 
@@ -65,7 +65,7 @@ onMounted(() => {
 })
 
 // 선택된 month에 해당하는 가계부 목록만 골라내기
-watch(selectedMonth, () => {
+watchEffect(() => {
     accBookListByMonth.value = props.groupMember.accountBooks
                                                 .filter(e => (new Date(e.createdAt).getMonth() + 1) == selectedMonth.value);
 })
