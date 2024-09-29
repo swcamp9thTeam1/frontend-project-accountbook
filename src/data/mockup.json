@@ -1721,10 +1721,336 @@
         "financeType": "O",
         "inAssetCode": null,
         "accCommentDTOList": []
-      }
-    ]
+      }]
   },
+<<<<<<< HEAD
   "group": [
+=======
+
+  "group-members": [
+    {
+      "id": 1,
+      "nickname": "홍길동",
+      "accountBooks": [
+        {
+          "id": 1,
+          "accbookCode": 154,
+          "createdAt": "2024-09-22T15:00:00",
+          "amount": 15000,
+          "isRegular": "N",
+          "title": "기타소득",
+          "memberCode": 1,
+          "accCategoryName": "기타수입>용돈",
+          "storeCode": null,
+          "assetName": "비상금통장",
+          "financeType": "I",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 2,
+          "accbookCode": 153,
+          "createdAt": "2024-09-21T08:30:00",
+          "amount": 2000,
+          "isRegular": "Y",
+          "title": "영화관",
+          "memberCode": 1,
+          "accCategoryName": "취미/여가>영화",
+          "storeCode": null,
+          "assetName": "신한체크카드",
+          "financeType": "O",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 3,
+          "accbookCode": 152,
+          "createdAt": "2024-09-20T11:45:00",
+          "amount": 300000,
+          "isRegular": "N",
+          "title": "알바비",
+          "memberCode": 1,
+          "accCategoryName": "근로수입>급여",
+          "storeCode": null,
+          "assetName": "월급통장",
+          "financeType": "I",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nickname": "유관순",
+      "accountBooks": [
+        {
+          "id": 4,
+          "accbookCode": 151,
+          "createdAt": "2024-09-19T10:00:00",
+          "amount": 25000,
+          "isRegular": "Y",
+          "title": "교보문고",
+          "memberCode": 1,
+          "accCategoryName": "취미/여가>도서",
+          "storeCode": null,
+          "assetName": "신한체크카드",
+          "financeType": "O",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 5,
+          "accbookCode": 150,
+          "createdAt": "2024-09-18T14:15:00",
+          "amount": 9000,
+          "isRegular": "N",
+          "title": "기타소득",
+          "memberCode": 1,
+          "accCategoryName": "기타수입>용돈",
+          "storeCode": null,
+          "assetName": "비상금통장",
+          "financeType": "I",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 6,
+          "accbookCode": 149,
+          "createdAt": "2024-09-17T12:30:00",
+          "amount": 15000,
+          "isRegular": "Y",
+          "title": "카페",
+          "memberCode": 1,
+          "accCategoryName": "카페>커피/음료",
+          "storeCode": null,
+          "assetName": "신한체크카드",
+          "financeType": "O",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 7,
+          "accbookCode": 148,
+          "createdAt": "2024-09-16T09:00:00",
+          "amount": 12000,
+          "isRegular": "N",
+          "title": "카페",
+          "memberCode": 1,
+          "accCategoryName": "카페>커피/음료",
+          "storeCode": null,
+          "assetName": "신한체크카드",
+          "financeType": "O",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 8,
+          "accbookCode": 147,
+          "createdAt": "2024-09-16T09:00:00",
+          "amount": 12000,
+          "isRegular": "N",
+          "title": "기타소득",
+          "memberCode": 1,
+          "accCategoryName": "기타수입>용돈",
+          "storeCode": null,
+          "assetName": "비상금통장",
+          "financeType": "I",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nickname": "절약핑",
+      "accountBooks": [
+        {
+          "id": 10,
+          "accbookCode": 145,
+          "createdAt": "2024-09-14T13:45:00",
+          "amount": 10000,
+          "isRegular": "N",
+          "title": "카카오뱅크",
+          "memberCode": 1,
+          "accCategoryName": "기타수입>용돈",
+          "storeCode": null,
+          "assetName": "비상금통장",
+          "financeType": "I",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 11,
+          "accbookCode": 144,
+          "createdAt": "2024-09-13T15:30:00",
+          "amount": 30000,
+          "isRegular": "Y",
+          "title": "스타벅스",
+          "memberCode": 1,
+          "accCategoryName": "카페>커피/음료",
+          "storeCode": null,
+          "assetName": "신한체크카드",
+          "financeType": "O",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 12,
+          "accbookCode": 143,
+          "createdAt": "2024-09-12T11:00:00",
+          "amount": 100000,
+          "isRegular": "N",
+          "title": "배당수익",
+          "memberCode": 1,
+          "accCategoryName": "금융수입>배당금",
+          "storeCode": null,
+          "assetName": "비상금통장",
+          "financeType": "I",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 13,
+          "accbookCode": 142,
+          "createdAt": "2024-09-11T14:00:00",
+          "amount": 25000,
+          "isRegular": "Y",
+          "title": "교보문고",
+          "memberCode": 1,
+          "accCategoryName": "취미/여가>도서",
+          "storeCode": null,
+          "assetName": "신한체크카드",
+          "financeType": "O",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 14,
+          "accbookCode": 141,
+          "createdAt": "2024-09-10T10:30:00",
+          "amount": 15000,
+          "isRegular": "N",
+          "title": "기타소득",
+          "memberCode": 1,
+          "accCategoryName": "기타수입>용돈",
+          "storeCode": null,
+          "assetName": "비상금통장",
+          "financeType": "I",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 15,
+          "accbookCode": 140,
+          "createdAt": "2024-09-09T08:00:00",
+          "amount": 70000,
+          "isRegular": "Y",
+          "title": "쇼핑",
+          "memberCode": 1,
+          "accCategoryName": "쇼핑>의류",
+          "storeCode": null,
+          "assetName": "신한체크카드",
+          "financeType": "O",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 16,
+          "accbookCode": 139,
+          "createdAt": "2024-09-09T08:00:00",
+          "amount": 7000,
+          "isRegular": "Y",
+          "title": "카페",
+          "memberCode": 1,
+          "accCategoryName": "카페>커피/음료",
+          "storeCode": null,
+          "assetName": "신한체크카드",
+          "financeType": "O",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 17,
+          "accbookCode": 138,
+          "createdAt": "2024-09-08T12:15:00",
+          "amount": 52000,
+          "isRegular": "N",
+          "title": "기타소득",
+          "memberCode": 1,
+          "accCategoryName": "기타수입>용돈",
+          "storeCode": null,
+          "assetName": "비상금통장",
+          "financeType": "I",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        },
+        {
+          "id": 18,
+          "accbookCode": 137,
+          "createdAt": "2024-09-08T12:15:00",
+          "amount": 12000,
+          "isRegular": "N",
+          "title": "기타소득",
+          "memberCode": 1,
+          "accCategoryName": "기타수입>용돈",
+          "storeCode": null,
+          "assetName": "비상금통장",
+          "financeType": "I",
+          "inAssetCode": null,
+          "accCommentDTOList": []
+        }
+      ]
+    }
+  ],
+
+  "group-posts": [
+    {
+      "id": "1",
+      "nickname": "rentSaver",
+      "title": "전세와 월세 고민 중이에요",
+      "content": "지금 월세를 살고 있는데 전세로 갈아탈까 고민 중입니다. 여러분은 어떤 선택을 하셨나요?",
+      "createdAt": "2024-09-25 14:00",
+      "images": [],
+      "comments": [
+        {
+          "id": "1",
+          "nickname": "절약핑",
+          "content": "저는 전세 대출 이자가 월세보다 더 저렴해서 전세로 살고 있습니다!! 버팀목이나 중기청 등 나라에서 지원하는 청년대출 알아보세요~!",
+          "createdAt":"2024-09-25T14:01:00",
+          "subComments": [
+            {
+              "id": "1",
+              "nickname": "홍길동",
+              "content": "오 저도 버팀목 대출로 전세 살고 있습니다!",
+              "createdAt":"2024-09-25T14:11:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nickname": "groceryQueen",
+      "title": "장보기에서 절약하는 방법",
+      "content": "주말마다 마트에서 장을 보는데, 쿠폰과 세일을 잘 활용하니까 10만원 절약했어요. 장볼 때 여러분은 어떻게 절약하세요?",
+      "createdAt": "2024-09-25 14:30",
+      "images": [
+        "https://img.freepik.com/free-vector/hand-drawn-people-supermarket-background_23-2148124958.jpg"
+      ],
+      "comments": []
+    },
+    {
+      "id": "3",
+      "nickname": "studentLife",
+      "title": "학생 예산 관리 꿀팁",
+      "content": "대학생인데, 생활비 예산 관리가 너무 어렵네요. 저만의 관리법이 있으면 공유해요!",
+      "createdAt": "2024-09-25 15:00",
+      "images": [],
+      "comments": []
+    }
+  ],
+  "acc_group": [
+>>>>>>> cef61cdf24471f880497d8de9d5224c04765dfe7
     { "code": 1, "name": "그룹1", "intro": "그룹1 소개" },
     { "code": 2, "name": "그룹2", "intro": "그룹2 소개" },
     { "code": 3, "name": "그룹3", "intro": "그룹3 소개" },

@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <div class="edit-button-container">
+    <div class="edit-button-container" v-if="!props.readonly">
       <button class="modify-button">수정하기</button>
       <button class="delete-button">삭제하기</button>
     </div>
@@ -86,7 +86,8 @@ const props = defineProps({
   item: {
     type: Object,
     required: true
-  }
+  },
+  readonly: Boolean
 });
 
 onMounted(async () => {
