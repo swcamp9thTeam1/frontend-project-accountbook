@@ -2153,5 +2153,63 @@
     { "code": 6, "created_at": "2023-09-28 15:30:00", "detail": "여섯 번째 댓글", "parent_code": 5, "acc_group_post_code": 3, "member_code": 6, "acc_group_code": 3 },
     { "code": 7, "created_at": "2023-09-28 16:30:00", "detail": "일곱 번째 댓글", "parent_code": null, "acc_group_post_code": 4, "member_code": 7, "acc_group_code": 4 },
     { "code": 8, "created_at": "2023-09-28 17:30:00", "detail": "여덟 번째 댓글", "parent_code": null, "acc_group_post_code": 5, "member_code": 8, "acc_group_code": 5 }
+  ],
+  "my-post":[
+    {
+      "id": "1",
+      "nickname": "iamhong01",
+      "title": "보험료 아끼는 방법 공유합니다!",
+      "content": "이번에 자동차 보험을 재가입하면서 비교 견적을 통해 10만원 절약했어요. 다른 보험도 비슷한 방법으로 절약할 수 있을까요?",
+      "created_at": "2024-09-25 09:30",
+      "comment_count": 3
+    },
+    {
+      "id": "2",
+      "nickname": "iamhong01",
+      "title": "정기 구독 서비스, 필요할까요?",
+      "content": "정기 구독 서비스를 이용하다 보니 지출이 늘어나는 것 같아요. 정말 필요한 서비스인지 고민 중이에요. 여러분은 어떤가요?",
+      "created_at": "2024-09-25 09:40",
+      "comment_count": 2
+    },
+    {
+      "id": "3",
+      "nickname": "iamhong01",
+      "title": "커피값 줄이는 방법입니다",
+      "content": "평소 커피에 돈을 많이 쓰는데, 최근엔 집에서 커피를 내려 마셔서 지출을 절반으로 줄였어요. 다른 음료 절약 팁 있나요?",
+      "created_at": "2024-09-25 10:50",
+      "comment_count": 11
+    },
+    {
+      "id": "4",
+      "nickname": "iamhong01",
+      "title": "저렴한 장보기 팁 공유해요!",
+      "content": "마트에서 장을 볼 때 할인쿠폰과 세일 상품을 잘 활용하면 많은 절약이 가능해요. 여러분의 장보기 노하우는 무엇인가요?",
+      "created_at": "2024-09-25 11:30",
+      "comment_count": 9
+    },
+    {
+      "id": "5",
+      "nickname": "iamhong01",
+      "title": "부자 되기 위한 습관을 공유해봐요",
+      "content": "작은 습관이 큰 변화를 가져온다는 이야기를 듣고 매일 저축하기 시작했어요. 여러분의 돈 관리 습관은 어떤가요?",
+      "created_at": "2024-09-25 12:30",
+      "comment_count": 5
+    },
+    {
+      "id": "6",
+      "nickname": "iamhong01",
+      "title": "여행 경비 어떻게 계획하세요?",
+      "content": "여행을 가기 전에 경비를 잘 계획하는 것이 중요한 것 같아요. 여러분은 어떻게 여행 경비를 예산하시나요?",
+      "created_at": "2024-09-25 12:55",
+      "comment_count": 12
+    },
+    {
+      "id": "7",
+      "nickname": "iamhong01",
+      "title": "마일리지 적립 팁이 궁금해요!",
+      "content": "마일리지를 적립하는 방법을 알려주세요! 자주 사용하는 카드로 최대한 적립하고 싶어요.",
+      "created_at": "2024-09-25 13:40",
+      "comment_count": 4
+    }
   ]
 }
