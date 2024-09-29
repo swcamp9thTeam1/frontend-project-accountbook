@@ -17,7 +17,6 @@
     min-width: 400px;
     border-radius: 21px;
     
-    display: flex;
     flex-direction: column;
     align-items: center;
 
@@ -30,6 +29,17 @@
     p {
         font-size: 20px;
         margin: 0;
+    }
+
+    &[open] {
+        animation: show 0.5s ease normal;
+        -webkit-animation: show 0.5s ease normal;
+        display: flex;
+    }
+
+    &[open]::backdrop {
+        animation: show-backdrop 0.5s ease normal;
+        -webkit-animation: show-backdrop 0.5s ease normal;
     }
 }
 </style>

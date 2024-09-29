@@ -72,6 +72,14 @@ const router = createRouter({
                 {
                     path: "dopost",
                     component: () => import("@/views/group/PostCreate.vue")
+                },
+                {
+                    path: "accbook",
+                    component: () => import("@/views/group/GroupAccBook.vue")
+                },
+                {
+                    path: "community/:postId",
+                    component: () => import("@/views/group/GroupCommunityDetail.vue")
                 }
             ] },
 
