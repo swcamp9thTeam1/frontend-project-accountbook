@@ -14,7 +14,9 @@
         <CustomCalendarView @dateClicked="onDateClicked"/>
       </div>
     </div>
-
+    <div class="image-container">
+      <img src="@/assets/icons/accbook-middle-line.svg"/>
+    </div>
     <div class="router-container">
       <RouterView />
     </div>
@@ -142,5 +144,12 @@ nav {
   color: #FFFFFF;
 
   cursor: pointer;
+}
+
+.image-container {
+  position: relative;
+  align-items: center;
+  height: 100px;
+  margin-top: 100px;
 }
 </style>
