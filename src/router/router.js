@@ -107,6 +107,11 @@ const router = createRouter({
             },
 
             {
+                path: "write/:id",
+                component: () => import("@/views/my/MyWriteDetailView.vue")
+            },
+
+            {
                 path: "edit-info",
                 component: () => import("@/views/my/MyInfoEditView.vue")
             },
