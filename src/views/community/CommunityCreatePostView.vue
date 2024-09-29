@@ -82,7 +82,7 @@ export default {
             const getNickname = localStorage.getItem('nickname');
 
             const newPost = {
-                id: null,
+                // id: null,
                 title: title.value,
                 content: content.value,
                 fileName: fileName.value,
