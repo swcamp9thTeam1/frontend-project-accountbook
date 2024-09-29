@@ -7,20 +7,25 @@
                     <p>{{ visitedStore.name }}</p>
                 </div>
                 <div class="right">
-                    <button type="button" class="btn-view-store">가게 보기</button>
+                    <button type="button" class="btn-view-store" @click="clickViewStore">가게 보기</button>
                     <button type="button" v-if="visitedStore.review === null" class="btn-add-review">리뷰 추가</button>
                     <button type="button" v-else class="btn-view-review">리뷰 보기</button>
                 </div>
             </li>
         </ul>
+
+        <StoreDetailModal :store-detail-id="storeDetailId" @on-closed-modal="onClosedModal" />
     </div>
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue';
 import StoreCategoryIcon from '@/components/myPage/StoreCategoryIcon.vue';
+import StoreDetailModal from '@/components/savemap/StoreDetailModal.vue';
+import { openStoreDetailDialog } from '@/utils/dialogManager';
 
 const visitedStores = ref([]);
+const storeDetailId = ref("");
 
 onMounted(() => {
     fetch(`http://localhost:8080/my-visited-stores`)
@@ -30,6 +35,15 @@ onMounted(() => {
     })
     .catch(err => alert("방문한 가게 정보를 가져오는동안 에러가 발생했습니다."));
 })
+
+const clickViewStore = (storeId) => {
+    storeDetailId.value = "1";      // 일단 1번 가게보기로 고정
+    openStoreDetailDialog();
+}
+
+const onClosedModal = () => {
+    storeDetailId.value = "";
+}
 </script>
 
 <style scoped>
