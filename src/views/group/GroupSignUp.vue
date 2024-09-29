@@ -6,20 +6,26 @@
               <div class="search">
                   <div class="item3">
                       <img class="search-icon" src="@/assets/icons/search_white.png">
-                      <input class="search-area" type="search" v-model="searchText" @keyup.enter="submitSearch" placeholder="가입하고 싶은 그룹명 검색">
+                      <input class="search-area" type="search" v-model.lazy="searchText" @keyup.enter="submitSearch" placeholder="가입하고 싶은 그룹명 검색"/>
                   </div>
               </div>
 
               <div class="container">
 
                   <!-- Group List -->
-                  <div class="group-card" v-for="group in state.pageGroups" :key="group.id">
+                  <div class="group-card" v-for="group in pageGroups" :key="group.code">
                       <div class="item">
                           <div class="group-text">
                               <p class="name">{{ group.name }}</p>
-                              <p class="member">{{ group.member }}명 참여중</p>
+                              <p class="member">{{ group.cnt }}명 참여중</p>
                           </div>
-                          <img src="@/assets/icons/group_signup.png" alt="그룹 가입 신청" class="signup-icon">
+                          <button type="button" @click="showModal(group)" class="rBtn">
+                            <img src="@/assets/icons/group_signup.png" alt="그룹 가입 신청" class="signup-icon">
+                          </button>
+                          <RegistModal :visible="isModalVisible" title="그룹에 가입할까요?" @confirm="doRegist()" @cancel="doCancel">
+                              <p>그룹장의 승인 후 최종 가입 처리됩니다.</p>
+                              <p align="left" style="font-weight: bold;">그룹명: {{ groupInfo.name }}</p>
+                          </RegistModal>
                       </div>
                   </div>
               </div>
@@ -44,7 +50,9 @@
               <div class="item2">
                   <p class="signup-text1">그룹장이 되어 그룹원을 모아보세요</p>
                   <p class="signup-text2">그룹 생성하기</p>
-                  <img src="@/assets/icons/go.png" alt="그룹 생성" class="group-create">
+                  <button type="button" @click="goCreate" class="cBtn">
+                    <img src="@/assets/icons/go.png" alt="그룹 생성" class="group-create">
+                  </button>
               </div>
           </div>
         </div>
@@ -52,78 +60,145 @@
 </template>
 
 <script setup>
-  import { ref, reactive, onMounted } from 'vue';
+  import { ref, onMounted } from 'vue';
 
-  const state = reactive({
-    groups: [
-    { name: '그룹 A', id: 1, member: 10 },
-            { name: '그룹 B', id: 2, member: 10},
-            { name: '그룹 C', id: 3, member: 10 },
-            { name: '그룹 D', id: 4, member: 10 },
-            { name: '그룹 E', id: 5, member: 10 },
-            { name: '그룹 F', id: 6, member: 10 },
-            { name: '그룹 G', id: 7, member: 10 },
-            { name: '그룹 H', id: 8, member: 10 },
-            { name: '그룹 I', id: 9, member: 10 },
-            { name: '그룹 J', id: 10, member: 10 },
-            { name: '그룹 K', id: 11, member: 10 },
-            { name: '그룹 L', id: 12, member: 10 },
-            { name: '그룹 M', id: 13, member: 10 },
-            { name: '그룹 N', id: 14, member: 10 },
-            { name: '그룹 O', id: 15, member: 10 }
-    ],
-    pageGroups: [],
-    index: 0,
-    next: 5
-  });
+  import RegistModal from "@/components/group/RegistGroupModal.vue";
+
+  const memberCode = localStorage.getItem("member_code");
+
+  const groups = ref([]);
+  const members = ref([]);
+  const pageGroups = ref([]);
+  const index = ref(0);
+  const next = ref(5);
 
   const searchText = ref('');
 
-    const submitSearch = function (){
-        /* 입력받은 검색어로 그룹명 조회 */
+  const groupInfo = ref({});
+
+  onMounted( async () => {
+    const request = await fetch("http://localhost:8080/group");
+    const data = await request.json();
+
+    const req = await fetch("http://localhost:8080/group-member");
+    const data2 = await req.json();
+
+    members.value = data2;
+    groups.value = data;
+
+    getMember();
+    pageGroups.value = groups.value.slice(index.value, next.value);
+  });
+
+  const getMember = () => {
+    for (let i = 0; i<groups.value.length; i++) {
+      var cnt = 0;
+      for (let j=0; j<members.value.length; j++) {
+        if (members.value[j].acc_group_code === groups.value[i].code) {
+          cnt += 1;
+        }
+      }
+      groups.value[i].cnt = cnt;
+    }
+  }
+
+  const submitSearch = () => {
+    const result = ref([]);
+    for (let i=0; i< groups.value.length; i++) {
+      if (groups.value[i].name.toLowerCase().includes(searchText.value.toLowerCase())) {
+        result.value.push(groups.value[i]);
+      }
+    }
+    groups.value = result.value;
+    updatePageGroups();
+  }
+
+  const isModalVisible = ref(false);
+
+    const showModal = (info) => {
+        isModalVisible.value = true;
+        groupInfo.value = info;
+    };
+
+    const doCancel = () => {
+        isModalVisible.value = false;
     }
 
-  // const fetchData = async() => {
-  //     const response = await fetch('');
-  //     const data = await response.json();
-  //     state.groups = data;
-  //     state.pageGroups = data.slice(state.index, state.next);
-  // };
+    const tmp = ref({});
+    const doRegist = () => {
+      tmp.value = {
+        member_code: memberCode.value,
+        acc_group_code: groupInfo.value.code,
+        role: "ROLE_UNALLOWED"
+      };
+        isModalVisible.value = false;
+        upload();
+    }
+
+    const upload =  async() => {
+      
+      try {
+            const update = await fetch("http://localhost:8080/group-member", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(tmp.value),
+            });
+            window.location.reload();
+        } catch (error) {
+            console.error("Error updating post:", error);
+        }
+    }
 
   const updatePageGroups = () => {
-    state.pageGroups = state.groups.slice(state.index, state.next);
+    pageGroups.value = groups.value.slice(index.value, next.value);
   };
 
   const goBack = () => {
-    if (state.index > 0) {
-      state.index -= 5;
-      state.next -= 5;
+    if (index.value > 0) {
+      if(next.value-index.value < 5) {
+        next.value -= (groups.value.length%5)
+      } else {
+        next.value -= 5;
+      }
+      index.value -= 5;
       updatePageGroups();
     }
   };
 
   const goFirst = () => {
-    state.index = 0;
-    state.next = 5;
+    index.value = 0;
+    next.value = 5;
     updatePageGroups();
   };
 
   const goNext = () => {
-    if (state.next < state.groups.length) {
-      state.index += 5;
-      state.next += 5;
+    if (next.value < groups.value.length) {
+      if (next.value+5 > groups.value.length) {
+        next.value = groups.value.length;
+      } else {
+        next.value += 5;
+      }
+      index.value += 5;
       updatePageGroups();
     }
   };
 
   const goLast = () => {
-    const lastIndex = state.groups.length - (state.groups.length % 5);
-    state.index = lastIndex;
-    state.next = state.groups.length;
+    if (groups.value.length % 5 === 0){
+      next.value = groups.value.length;
+      index.value = next.value-5;
+    } else {
+      next.value = groups.value.length;
+      index.value = next.value - (groups.value.length%5);
+    }
     updatePageGroups();
   };
 
-  onMounted(updatePageGroups);
+  const goCreate = () => {
+    router.push('create');
+  }
 </script>
 
 <style scoped>
@@ -227,8 +302,16 @@
     width: 90px;
     height: 35px;
   }
+  .rBtn, .cBtn {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
   .p {
     display: grid;
+    margin: 20px 0 20px 0;
     grid-template-columns: 300px 300px  300px;
   }
   .pagination {

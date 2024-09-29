@@ -6,12 +6,18 @@
           <div class="container">  
   
               <!-- Group List -->
-              <div class="group-card" v-for="group in state.pageGroups" :key="group.id">
+              <div class="group-card" v-for="group in pageGroups" :key="group.id">
                   <div class="item">
                       <div class="group-name">
                           {{ group.name }}
                       </div>
-                      <img src="@/assets/icons/group_cancel.png" alt="그룹 가입 취소" class="cancel-icon" @onclick="pops">
+                      <button type="button" @click="showModal" class="oBtn">
+                        <img src="@/assets/icons/group_cancel.png" alt="그룹 가입 취소" class="cancel-icon" @onclick="pops">
+                      </button>
+                      <CancelRegistModal :visible="isModalVisible" title="그룹 가입을 취소하시겠습니까?" @confirm="doCancel(group.code)" @cancel="rst">
+                        <p align="left" style="font-weight: bold;">그룹명: {{ group.name }}</p>
+                        <p align="left">취소하면 되돌릴 수  없어용~</p>
+                      </CancelRegistModal>
                   </div>
               </div>
           </div>
@@ -20,87 +26,143 @@
       <div class="f">
         <!-- Pagination -->
         <div class="pagination">
-          <button @click="goFirst" class="btn"> << </button>
-          <button @click="goBack" class="btn"> < </button>
-          <button @click="goNext" class="btn"> > </button>
-          <button @click="goLast" class="btn"> >> </button>
+          <button type="button" @click="goFirst" class="btn"> << </button>
+          <button type="button" @click="goBack" class="btn"> < </button>
+          <button type="button" @click="goNext" class="btn"> > </button>
+          <button type="button" @click="goLast" class="btn"> >> </button>
         </div>
       </div>
     </div>
   </template>
     
   <script setup>
-    import { ref, reactive, onMounted } from 'vue';
+    import { ref, onMounted } from 'vue';
+
+    import CancelRegistModal from "@/components/group/CancelRegistModal.vue";
+
+    const groups = ref([]);
+    const pageGroups = ref([]);
+    const index = ref(0);
+    const next = ref(10);
+
+    const memberCode = localStorage.getItem("member_code");
+
+    const mId = ref([]);
+
+    const memberGroup = (d1, d2) => {
+      const gCode = ref([]);
+      const gGroup = ref([]);
+        for (let i = 0; i < d2.length; i++){
+          if (d2[i].member_code === memberCode.value && d2[i].role === "ROLE_UNALLOWED") {
+            mId.value.push(d2[i]);
+            gCode.value.push(d2[i].acc_group_code);
+          }
+        }
+        for (let j = 0; j<gCode.value.length; j++){
+          for (let i = 0;i < d1.length; i++){
+            if (gCode.value[j] === d1[i].code) {
+              gGroup.value.push(d1[i]);
+              break;
+            }
+          }
+        }
+        return gGroup.value;
+    }
+
+    const isModalVisible = ref(false);
+
+    const showModal = () => {
+        isModalVisible.value = true;
+    };
+
+    const doCancel = (code) => {
+        isModalVisible.value = false;
+
+        for (let i=0;i<mId.value.length; i++) {
+          if (mId.value[i].acc_group_code === code) {
+            upload(mId.value[i].id);
+            break;
+          }
+        }
+    }
+
+    const rst = () => {
+        isModalVisible.value = false;
+    }
+
   
-    const state = reactive({
-      groups: [
-      { name: '그룹 A', id: 1 },
-              { name: '그룹 B', id: 2 },
-              { name: '그룹 C', id: 3 },
-              { name: '그룹 D', id: 4 },
-              { name: '그룹 E', id: 5 },
-              { name: '그룹 F', id: 6 },
-              { name: '그룹 G', id: 7 },
-              { name: '그룹 H', id: 8 },
-              { name: '그룹 I', id: 9 },
-              { name: '그룹 J', id: 10 },
-              { name: '그룹 K', id: 11 },
-              { name: '그룹 L', id: 12 },
-              { name: '그룹 M', id: 13 },
-              { name: '그룹 N', id: 14 },
-              { name: '그룹 O', id: 15 }
-      ],
-      pageGroups: [],
-      index: 0,
-      next: 10
+    onMounted( async() => {
+        const response = await fetch("http://localhost:8080/group");
+        const data = await response.json();
+        const response2 = await fetch("http://localhost:8080/group-member"); 
+        const data2 = await response2.json();
+
+        groups.value = memberGroup(data, data2);  //memberCode로 내그룹 찾기
+        pageGroups.value = groups.value.slice(index.value, next.value);
     });
-  
-    // const fetchData = async() => {
-    //     const response = await fetch('');
-    //     const data = await response.json();
-    //     state.groups = data;
-    //     state.pageGroups = data.slice(state.index, state.next);
-    // };
+
+
+    const upload = async(id) => {
+      try {
+            const result = await fetch(`http://localhost:8080/group-member/${id}`, {
+                method: "DELETE",
+            });
+            window.location.reload();
+            if (result.ok) {
+                console.log("Post updated successfully");
+            } else {
+                console.error("Failed to update the post");
+            }
+        } catch (error) {
+            console.error("Error updating delete:", error);
+        }
+    }
   
     const updatePageGroups = () => {
-      state.pageGroups = state.groups.slice(state.index, state.next);
+      pageGroups.value = groups.value.slice(index.value, next.value);
     };
   
     const goBack = () => {
-      if (state.index > 0) {
-        state.index -= 10;
-        state.next -= 10;
+      if (index.value > 0) {
+        if(next.value - index.value < 10) {
+          next.value -= next.value % 10;
+        } else {
+          next.value -= 10;
+        }
+        index.value -= 10;
         updatePageGroups();
       }
     };
   
     const goFirst = () => {
-      state.index = 0;
-      state.next = 10;
+      index.value = 0;
+      next.value = 10;
       updatePageGroups();
     };
   
     const goNext = () => {
-      if (state.next < state.groups.length) {
-        state.index += 10;
-        state.next += 10;
+      if (next.value < groups.value.length) {
+        if(next.value+10 > groups.value.length) {
+          next.value = groups.value.length;
+        } else {
+          next.value += 10;
+        }
+        index.value += 10;
         updatePageGroups();
       }
     };
   
     const goLast = () => {
-      const lastIndex = state.groups.length - (state.groups.length % 10);
-      state.index = lastIndex;
-      state.next = state.groups.length;
-      updatePageGroups();
-    };
+      next.value = groups.value.length;
 
-    const open = ref(false);
-    const pops = function() {
-        open.value = !open.value;
+      if (groups.value.length % 10 == 0){
+        index.value = next.value - 10;
+      } else {
+        index.value = groups.value.length - (groups.value.length % 10);
+      }
+      updatePageGroups();
+
     };
-  
-    onMounted(updatePageGroups);
   </script>
   
   <style scoped>
@@ -109,23 +171,6 @@
     }
     main {
       display: inline-block;
-    }
-    .title {
-      width: 199px;
-      height: 43px;
-      background-color: #25272F;
-      padding: 10px;
-      border-radius: 0 21.5px 21.5px 0;
-    }
-    h4 {
-      text-align: center;
-      padding: 0;
-      margin: 0;
-      color: white;
-      font-size: 28px;
-      font-style: normal;
-      font-weight: 350;
-      line-height: normal;
     }
     .container {
       display: grid;
@@ -170,10 +215,12 @@
     .f {
       display: grid;
       grid-template-columns: 300px 300px  300px;
+      align-self: end;
     }
     .pagination {
       grid-column: 2/3;
-      margin: 20px;
+      margin: 40px 0 0 0;
+      padding-top: 20px;
       text-align: center;
     }
   
@@ -189,6 +236,16 @@
   
     .pagination .btn:hover {
       background-color: #444;
+    }
+    .oBtn {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+    button {
+      cursor: pointer;
     }
   </style>
     
