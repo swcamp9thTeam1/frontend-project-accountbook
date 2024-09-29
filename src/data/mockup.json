@@ -2836,5 +2836,19 @@
       "name": "행복분식",
       "review": null
     }
+  ],
+
+  "my-reviews": [
+    {
+      "id": "9",
+      "peopleNum": 1,
+      "totalPrice": 8000,
+      "content": "정말 맛있네요",
+      "images": [
+        "https://cdn.imweb.me/thumbnail/20231018/3047515d4d8cd.png"
+      ],
+      "storeName": "건강 마라탕",
+      "storeCostAvg": 11000
+    }
   ]
 }

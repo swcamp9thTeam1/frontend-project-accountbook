@@ -9,12 +9,13 @@
                 <div class="right">
                     <button type="button" class="btn-view-store" @click="clickViewStore">가게 보기</button>
                     <button type="button" v-if="visitedStore.review === null" class="btn-add-review">리뷰 추가</button>
-                    <button type="button" v-else class="btn-view-review">리뷰 보기</button>
+                    <button type="button" v-else class="btn-view-review" @click="clickViewReview(visitedStore.review.id)">리뷰 보기</button>
                 </div>
             </li>
         </ul>
 
-        <StoreDetailModal :store-detail-id="storeDetailId" @on-closed-modal="onClosedModal" />
+        <StoreDetailModal :store-detail-id="storeDetailId" @on-closed-modal="onClosedStoreDetailModal" />
+        <ReviewDetailModal :review-id="reviewDetailId" @on-closed-modal="onClosedReviewDetailModal" />
     </div>
 </template>
 
@@ -22,10 +23,12 @@
 import { onMounted, ref } from 'vue';
 import StoreCategoryIcon from '@/components/myPage/StoreCategoryIcon.vue';
 import StoreDetailModal from '@/components/savemap/StoreDetailModal.vue';
-import { openStoreDetailDialog } from '@/utils/dialogManager';
+import { openReviewDetailDialog, openStoreDetailDialog } from '@/utils/dialogManager';
+import ReviewDetailModal from '@/components/myPage/ReviewDetailModal.vue';
 
 const visitedStores = ref([]);
 const storeDetailId = ref("");
+const reviewDetailId = ref("");
 
 onMounted(() => {
     fetch(`http://localhost:8080/my-visited-stores`)
@@ -41,8 +44,17 @@ const clickViewStore = (storeId) => {
     openStoreDetailDialog();
 }
 
-const onClosedModal = () => {
+const clickViewReview = (reviewId) => {
+    reviewDetailId.value = reviewId;
+    openReviewDetailDialog();
+}
+
+const onClosedStoreDetailModal = () => {
     storeDetailId.value = "";
+}
+
+const onClosedReviewDetailModal = () => {
+    reviewDetailId.value = "";
 }
 </script>
 
