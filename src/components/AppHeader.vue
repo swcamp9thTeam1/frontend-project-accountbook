@@ -113,7 +113,7 @@ const handleMyPageClick = () => {
         background-color: #F3F3FF;
         color: #4D4D4D;
         border: none;
-        border-radius: 40%;
+        border-radius: 15.5px;
         width: 100px;
         height: 30px;
         align-items: center;      
@@ -126,7 +126,7 @@ const handleMyPageClick = () => {
         background-color: #F3F3FF;
         color: #4D4D4D;
         border: none;
-        border-radius: 40%;
+        border-radius: 15.5px;
         width: 100px;
         height: 30px;
         align-items: center;     

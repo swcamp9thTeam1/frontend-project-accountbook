@@ -1,5 +1,5 @@
 <template>
-    <footer>여기는 푸터</footer>
+    <footer></footer>
 </template>
 
 <script setup>
