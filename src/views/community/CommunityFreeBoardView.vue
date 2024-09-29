@@ -15,7 +15,7 @@
                 <!-- 게시글 목록 박스 -->
 
             <div v-for="(post) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id)"
-            style="display: flex; flex-direction: column; gap: 10px;width: 100%;" >
+            style="display: flex; flex-direction: column; gap: 10px;width: 100%; margin-bottom: 10px;" >
                 <div style="width: 90%; height: auto;">
 
                     <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
@@ -162,6 +162,7 @@
 span {
     text-wrap: nowrap;
 }
+
 .page-btn {
     display: flex;
     align-items: center;

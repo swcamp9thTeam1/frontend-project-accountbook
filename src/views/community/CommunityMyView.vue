@@ -2,13 +2,9 @@
 <!-- 자식 테이블 2 - 나의 글 -->
 
 <template>
-    <!-- 글 작성 버튼 -->
-    <button class="regist-post-btn" style="width: 140px; height: 48px; background-color: #F3F3FF; border: none; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 23px; padding: 17px; margin-left: 843px;margin-bottom: 20px;">
-        <img src="/src/assets/icons/Community/PlusIcon.svg" alt="">
-        <span>글 작성</span>
-    </button>
 
-    <div style="width: 1000px;">
+
+    <div style="width: 1000px; position: absolute; top: 170px;">
 
     <!-- 게시글 목록 박스 -->
         <div style="display: flex; flex-direction: column; gap: 10px;width: 100%;">

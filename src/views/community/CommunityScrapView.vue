@@ -6,8 +6,8 @@
 
         <div style="width: 1000px; position: absolute; top: 170px;">
         <!-- 스크랩한 게시글 목록 박스 -->
-        <div v-for="(post) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id)"
-            style="display: flex; flex-direction: column; gap: 10px;width: 100%;">
+        <div v-for="(post) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id) "
+            style="display: flex; flex-direction: column; gap: 10px;width: 100%; margin-bottom: 10pxr;">
             <div style="width: 90%; height: auto;">
             <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
                 <div style="display: flex;">
@@ -148,6 +148,38 @@
         border:1px #8181B0 solid; font-size: 17px;
 
     }
+
+
+.page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    border: none;
+    border-radius: 3px;
+    background-color: white;
+    color: #B1B1D2;
+    margin-right: 15px; 
+    font-weight: bold;
+    font-size: 15px;
+}
+.currentPageBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    border: none;
+    border-radius: 3px;
+    margin-right: 15px; 
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #B1B1D2;
+    color: white;
+}
+
+
 
 
     </style>
