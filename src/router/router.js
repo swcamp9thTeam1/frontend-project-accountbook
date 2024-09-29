@@ -114,6 +114,11 @@ const router = createRouter({
             {
                 path: "asset/add",
                 component: () => import("@/views/my/AssetAddView.vue")
+            },
+
+            {
+                path: "asset/:id-modify",
+                component: () => import("@/views/my/AssetEditView.vue")
             }
 
 

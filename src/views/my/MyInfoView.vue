@@ -1,7 +1,7 @@
 <!-- 회원 정보 조회 화면 -->
 
 <script setup>
-    import { RouterLink, useRoute, useRouter } from 'vue-router';
+    import { RouterLink } from 'vue-router';
     import { onMounted, ref } from 'vue';
 
     const member = ref({});
