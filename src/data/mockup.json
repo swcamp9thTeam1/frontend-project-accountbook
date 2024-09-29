@@ -630,6 +630,17 @@
       "idConfirm": true,
       "autoLogin": false,
       "auth": "asdf"
+    },
+    {
+      "id": "e38d",
+      "username": "iamhong01",
+      "password": "1234",
+      "passwordConfirm": "1234",
+      "nickname": "동에번쩍서에번쩍",
+      "email": "honggildong@gmail.com",
+      "idConfirm": true,
+      "autoLogin": true,
+      "auth": "1341"
     }
   ],
   "monthly": [
