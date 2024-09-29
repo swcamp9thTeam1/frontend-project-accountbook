@@ -3,6 +3,9 @@
 
 <template>
 
+
+
+
     <div style="width: 1000px;">
                     <!-- 게시글 목록 박스 -->
                 <div style="display: flex; flex-direction: column; gap: 10px;width: 100%;" @click="">
@@ -21,46 +24,48 @@
                                     </div>
                                 </div>
                             </div>
-
+    
                             <button @click="scrapEvent(post.id)" :class="post.scrapStatus ? 'scrap-active' : 'scrap-inactive'" class="font-300">
                                 {{ post.scrapStatus ? '스크랩 취소' : '스크랩 '}}
                             </button>
                         </div>
                     </div>
                 </div>
-
+    
                 <!-- 페이지네이션 -->
                 <div class="pagination" style="display: flex; justify-content: center; align-items: center; margin-top: 60px;">
                     <span class="page-btn font-300" @click="changePage(currentPage - 1)" v-show="currentPage > 1">
                         &lt;
                     </span>
-
+    
                     <span class="page-btn font-300" v-show="currentPage > 1" @click="changePage(currentPage - 1)">
                         {{ currentPage - 1 }}
                     </span>
-
+    
                     <span class="currentPageBtn font-300" @click="currentPagePosts">
                         {{ currentPage }}
                     </span>
-
+    
                     <span class="page-btn font-300" v-show="currentPage < totalPages" @click="changePage(currentPage + 1)">
                         {{ currentPage + 1 }}
                     </span>
-
+    
                     <span class="page-btn font-300" @click="changePage(currentPage + 1)" v-show="currentPage < totalPages">
                         &gt;
                     </span>
                 </div>
-
+    
             </div>
-
-</template>
-
-<script setup>
-    import { ref } from 'vue';
-    import SideMenu from '@/components/SideMenu.vue';
-</script>
-
-<style scoped>
-
-</style>
+    
+    
+    
+    </template>
+    
+    <script setup>
+        import { ref } from 'vue';
+        import SideMenu from '@/components/SideMenu.vue';
+    </script>
+    
+    <style scoped>
+    
+    </style>

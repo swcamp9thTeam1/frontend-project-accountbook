@@ -97,7 +97,7 @@
 
     const open = ref(false);
     const pops = function() {
-        open = !open;
+        open.value = !open.value;
     };
   
     onMounted(updatePageGroups);

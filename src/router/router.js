@@ -25,7 +25,7 @@ const router = createRouter({
                 component: () => import("@/views/accountbook/AccbookAllListView.vue")
             },
             {
-                path: "daily",
+                path: "daily/:date",
                 component: () => import("@/views/accountbook/AccbookDailyListView.vue")
             },
             {
@@ -64,10 +64,23 @@ const router = createRouter({
                 {
                     path: "intro",
                     component: () => import("@/views/group/GroupIntro.vue")
+                },
+                {
+                    path: "accbook",
+                    component: () => import("@/views/group/GroupAccBook.vue")
+                },
+                {
+                    path: "community/:postId",
+                    component: () => import("@/views/group/GroupCommunityDetail.vue")
                 }
             ] },
 
-        { path: "/my", component: MyPage, children: [
+        { path: "/my", component: MyPage, redirect: "/my", children: [
+            {
+                path: "",
+                component: () => import("@/views/my/MyInfoView.vue")
+            },
+
             {
                 path: "asset",
                 component: () => import("@/views/my/MyAssetView.vue")
@@ -92,6 +105,21 @@ const router = createRouter({
                 path: "write",
                 component: () => import("@/views/my/MyWriteView.vue")
             },
+
+            {
+                path: "edit-info",
+                component: () => import("@/views/my/MyInfoEditView.vue")
+            },
+
+            {
+                path: "asset/add",
+                component: () => import("@/views/my/AssetAddView.vue")
+            },
+
+            {
+                path: "asset/:id-modify",
+                component: () => import("@/views/my/AssetEditView.vue")
+            }
 
 
 

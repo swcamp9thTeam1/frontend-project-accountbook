@@ -1,11 +1,12 @@
 <template>
     <div>
-        사이드메뉴
+
     </div>
 </template>
 
 <script setup>
-
+    import { ref } from 'vue';
+    import SideMenu from '@/components/SideMenu.vue';
 </script>
 
 <style scoped>

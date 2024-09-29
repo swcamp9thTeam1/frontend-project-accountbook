@@ -59,51 +59,51 @@
 </template>
 
 <script setup>
-    import { ref, onMounted, computed } from 'vue';
-    import {RouterLink } from 'vue-router';
+import { ref, onMounted, computed } from 'vue';
+import {RouterLink } from 'vue-router';
 
-    const posts = ref([]);
-
-
+const posts = ref([]);
 
 
-    onMounted(async () => {
-    const userNickname = localStorage.getItem('nickname');
-        
-    if (userNickname) {
-        const response = await fetch('http://localhost:8080/community-post');
-        const data = await response.json();
 
-        posts.value = data.filter(post => post.nickname === userNickname);
 
-    } else {
-        alert('로그인이 필요합니다.');
-    }
-    });
+onMounted(async () => {
+const userNickname = localStorage.getItem('nickname');
+    
+if (userNickname) {
+    const response = await fetch('http://localhost:8080/community-post');
+    const data = await response.json();
 
-    const postsPerPage = 7; // 한 페이지당 게시글 개수
-    const currentPage = ref(1); // currentPage 초기값 1로 설정 
+    posts.value = data.filter(post => post.nickname === userNickname);
 
-    const totalPostNum = computed(() => posts.value.length); // 게시글 전체 개수 
+} else {
+    alert('로그인이 필요합니다.');
+}
+});
 
-    // 총 게시글의 페이지 수를 계산하는 메소드 
-    const totalPages = computed(() => {
-    return Math.ceil(totalPostNum.value / postsPerPage);
-    });
+const postsPerPage = 7; // 한 페이지당 게시글 개수
+const currentPage = ref(1); // currentPage 초기값 1로 설정 
 
-    // 현재 페이지의 게시글 목록을 보여주는 메소드 
-    const currentPagePosts = computed(() => {
-    const start = (currentPage.value - 1) * postsPerPage;
-    const end = start + postsPerPage;
-    return posts.value.slice(start, end);
-    });
+const totalPostNum = computed(() => posts.value.length); // 게시글 전체 개수 
 
-    // 페이지를 바꿔주는 메소드 
-    const changePage = (newPage) => {
-    if (newPage >= 1 && newPage <= totalPages.value) {
-    currentPage.value = newPage;
-    }
-    };
+// 총 게시글의 페이지 수를 계산하는 메소드 
+const totalPages = computed(() => {
+return Math.ceil(totalPostNum.value / postsPerPage);
+});
+
+// 현재 페이지의 게시글 목록을 보여주는 메소드 
+const currentPagePosts = computed(() => {
+const start = (currentPage.value - 1) * postsPerPage;
+const end = start + postsPerPage;
+return posts.value.slice(start, end);
+});
+
+// 페이지를 바꿔주는 메소드 
+const changePage = (newPage) => {
+if (newPage >= 1 && newPage <= totalPages.value) {
+currentPage.value = newPage;
+}
+};
 
 </script>
 
