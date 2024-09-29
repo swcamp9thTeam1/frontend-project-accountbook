@@ -17,16 +17,17 @@
 
         <!-- 파일 등록 버튼 및 게시글 등록 버튼 -->
         <div style="display: flex; justify-content: space-around; align-items: center; height: 60px;">
-        <label class="custom-file-upload">
-            파일 선택
-            <input type="file" id="fileInput" accept="image/*" @change="updateFileName" />
-        </label>
+            <label class="custom-file-upload font-300" >
+                파일 선택
+                <input type="file" id="fileInput" accept="image/*" @change="updateFileName" />
+            </label>
 
         <div id="fileName">{{ fileName }}</div> <!-- 파일 이름을 표시할 요소 -->
 
         <button
             @click="submitPost"
-            style="width: 90px; height: 50px; background-color: #101424; border-radius: 12px; font-size: 28px; color: white;"
+            style="width: 90px; height: 42px; background-color: #101424; border-radius: 6px; font-size: 23px; color: white; "
+            class="font-300"
         >
             등록
         </button>
@@ -141,6 +142,11 @@ export default {
     .input-title::placeholder {
         color: #B1B1D2;
         font-weight: bold;
+        font-family: "Noto Sans KR", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+            
     }
 
     .input-title:focus,  textarea:focus {
@@ -167,7 +173,7 @@ export default {
 
     .custom-file-upload {
             display: inline-block;
-            padding: 13px 13px;
+            padding: 5px 13px;
             cursor: pointer;
             background-color: #b2b2cb;
             color: white;
@@ -224,6 +230,20 @@ export default {
 
     .notification.hide {
         display: none; 
+    }
+
+    .font-300{
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+    .font-500{
+        font-family: "Noto Sans KR", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
     }
 
 </style>

@@ -2,13 +2,9 @@
 <!-- 자식 테이블 2 - 나의 글 -->
 
 <template>
-    <!-- 글 작성 버튼 -->
-    <button class="regist-post-btn" style="width: 140px; height: 48px; background-color: #F3F3FF; border: none; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 23px; padding: 17px; margin-left: 843px;margin-bottom: 20px;">
-        <img src="/src/assets/icons/Community/PlusIcon.svg" alt="">
-        <span>글 작성</span>
-    </button>
 
-    <div style="width: 1000px;">
+
+    <div style="width: 1000px; position: absolute; top: 170px;">
 
     <!-- 게시글 목록 박스 -->
         <div style="display: flex; flex-direction: column; gap: 10px;width: 100%;">
@@ -23,11 +19,11 @@
                                 <span style="color: #101424;font-size: 23px;">{{ post.title }}</span>
                             </RouterLink>
                             <div style="color: #8C8C8C; margin-top: 4px;">
-                                <span style="font-size: 13px;">{{ post.nickname }} </span>
-                                <span style="font-weight: lighter; font-size: 16px;">&nbsp; | &nbsp;</span>
-                                <span style="font-size: 13px;"> 댓글 {{ post.comment_count }} </span>
-                                <span style="font-weight: lighter;font-size: 16px;">&nbsp; | &nbsp;</span>
-                                <span style="font-size: 13px;"> {{ post.created_at}}</span>
+                                <span  class="font-300" style="font-size: 12px;">{{ post.nickname }} </span>
+                                <span  class="font-300" style="font-weight: lighter; font-size: 14px;">&nbsp; | &nbsp;</span>
+                                <span  class="font-300" style="font-size: 12px;"> 댓글 {{ post.comment_count }} </span>
+                                <span  class="font-300" style="font-weight: lighter;font-size: 14px;">&nbsp; | &nbsp;</span>
+                                <span  class="font-300" style="font-size: 12px;"> {{ post.created_at}}</span>
                             </div>
                         </div>
                     </div>
@@ -113,9 +109,11 @@ currentPage.value = newPage;
 .regist-post-btn {
 margin-left: 20px;
 }
+
 span {
 text-wrap: nowrap;
 }
+
 .page-btn {
 display: flex;
 align-items: center;
@@ -130,6 +128,7 @@ margin-right: 15px;
 font-weight: bold;
 font-size: 15px;
 }
+
 .currentPageBtn {
 display: flex;
 align-items: center;
@@ -144,4 +143,19 @@ font-size: 15px;
 background-color: #B1B1D2;
 color: white;
 }
+
+.font-300{
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .font-500{
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
+
 </style>
