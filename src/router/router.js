@@ -145,15 +145,19 @@ const router = createRouter({
                 },
 
                 {
-                    path: "my/:id", // 하위 페이지 설정, :id는 글의 ID를 의미
-                    component: () => import("@/views/community/CommunityPostDetailView.vue") // 세부 내용을 표시할 컴포넌트
+                    path: "my/:id", 
+                    component: () => import("@/views/community/CommunityPostDetailView.vue") 
                 },
 
                 {
                     path: "scrap",
                     component: () => import("@/views/community/CommunityScrapView.vue")
 
-                }
+                },
+                {
+                    path: "scrap/:id",
+                    component: () => import("@/views/community/CommunityPostDetailView.vue")
+                },
             ]
 },
 

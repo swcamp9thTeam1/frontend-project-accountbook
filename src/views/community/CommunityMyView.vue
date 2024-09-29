@@ -19,11 +19,11 @@
                                 <span style="color: #101424;font-size: 23px;">{{ post.title }}</span>
                             </RouterLink>
                             <div style="color: #8C8C8C; margin-top: 4px;">
-                                <span style="font-size: 13px;">{{ post.nickname }} </span>
-                                <span style="font-weight: lighter; font-size: 16px;">&nbsp; | &nbsp;</span>
-                                <span style="font-size: 13px;"> 댓글 {{ post.comment_count }} </span>
-                                <span style="font-weight: lighter;font-size: 16px;">&nbsp; | &nbsp;</span>
-                                <span style="font-size: 13px;"> {{ post.created_at}}</span>
+                                <span  class="font-300" style="font-size: 12px;">{{ post.nickname }} </span>
+                                <span  class="font-300" style="font-weight: lighter; font-size: 14px;">&nbsp; | &nbsp;</span>
+                                <span  class="font-300" style="font-size: 12px;"> 댓글 {{ post.comment_count }} </span>
+                                <span  class="font-300" style="font-weight: lighter;font-size: 14px;">&nbsp; | &nbsp;</span>
+                                <span  class="font-300" style="font-size: 12px;"> {{ post.created_at}}</span>
                             </div>
                         </div>
                     </div>
@@ -109,9 +109,11 @@ currentPage.value = newPage;
 .regist-post-btn {
 margin-left: 20px;
 }
+
 span {
 text-wrap: nowrap;
 }
+
 .page-btn {
 display: flex;
 align-items: center;
@@ -126,6 +128,7 @@ margin-right: 15px;
 font-weight: bold;
 font-size: 15px;
 }
+
 .currentPageBtn {
 display: flex;
 align-items: center;
@@ -140,4 +143,19 @@ font-size: 15px;
 background-color: #B1B1D2;
 color: white;
 }
+
+.font-300{
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .font-500{
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
+
 </style>
