@@ -78,6 +78,8 @@
         ...post,
         scrapStatus: savedScrapStatus[post.id] || false, // 스크랩 상태 추가
         }));
+
+        posts.value.sort((a, b) => Number(b.id) - Number(a.id));
     });
     
     // 현재 페이지의 게시글 목록을 보여주는 메소드
