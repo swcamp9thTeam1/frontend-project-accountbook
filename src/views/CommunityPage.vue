@@ -15,12 +15,12 @@
 
 <script setup>
     import SideMenu from '@/components/SideMenu.vue';
-    import CommunityScrapView from '@/views/community/CommunityScrapView.vue';
-    import CommunityMyView from '@/views/community/CommunityMyView.vue';
-    import CommunityFreeBoardView from './community/CommunityFreeBoardView.vue';
+    // import CommunityScrapView from '@/views/community/CommunityScrapView.vue';
+    // import CommunityMyView from '@/views/community/CommunityMyView.vue';
+    // import CommunityFreeBoardView from './community/CommunityFreeBoardView.vue';
 
 
-    import { RouterView, RouterLink } from 'vue-router';
+    import { RouterView} from 'vue-router';
     import { ref } from 'vue';
     const activeMenu = ref('');
 </script>
