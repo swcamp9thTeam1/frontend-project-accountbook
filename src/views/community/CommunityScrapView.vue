@@ -5,31 +5,31 @@
 
 
         <div style="width: 1000px; position: absolute; top: 170px;">
-        <!-- 스크랩한 게시글 목록 박스 -->
-        <div v-for="(post) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id)"
-            style="display: flex; flex-direction: column; gap: 10px;width: 100%;">
-            <div style="width: 90%; height: auto;">
-            <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
-                <div style="display: flex;">
-                <span class="font-500" style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px;">{{ post.id }}</span>
-                <div style="display: flex; flex-direction: column;">
-                    <span style="color: #101424; font-size: 22px;">{{ post.title }}</span>
-                    <div style="color: #8C8C8C; margin-top: 4px;">
-                    <span style="font-size: 13px;">{{ post.nickname }} </span>
-                    <span style="font-weight: lighter; font-size: 16px;">&nbsp; | &nbsp;</span>
-                    <span style="font-size: 13px;"> 댓글 {{ post.comment_count }} </span>
-                    <span style="font-weight: lighter; font-size: 16px;">&nbsp; | &nbsp;</span>
-                    <span style="font-size: 13px;">{{ post.created_at }}</span>
+            <!-- 스크랩한 게시글 목록 박스 -->
+            <div v-for="(post) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id)  "
+                style="display: flex; flex-direction: column; gap: 10px;width: 100%; margin-bottom: 10px;">
+                <div style="width: 90%; height: auto;">
+                <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
+                    <div style="display: flex;">
+                    <span class="font-500" style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px;">{{ post.id }}</span>
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="color: #101424; font-size: 22px;">{{ post.title }}</span>
+                        <div style="color: #8C8C8C; margin-top: 4px;">
+                        <span class="font-300" style="font-size: 12px;">{{ post.nickname }} </span>
+                        <span class="font-300" style="font-weight: lighter; font-size: 14px;">&nbsp; | &nbsp;</span>
+                        <span class="font-300" style="font-size: 12px;"> 댓글 {{ post.comment_count }} </span>
+                        <span class="font-300" style="font-weight: lighter; font-size: 14px;">&nbsp; | &nbsp;</span>
+                        <span class="font-300" style="font-size: 12px;">{{ post.created_at }}</span>
+                        </div>
                     </div>
+                    </div>
+        
+                    <button @click.stop="scrapEvent(post.id)" :class="post.scrapStatus ? 'scrap-active' : 'scrap-inactive'" class="font-300">
+                    {{ post.scrapStatus ? '스크랩 취소' : '스크랩 ' }}
+                    </button>
                 </div>
                 </div>
-    
-                <button @click.stop="scrapEvent(post.id)" :class="post.scrapStatus ? 'scrap-active' : 'scrap-inactive'" class="font-300">
-                {{ post.scrapStatus ? '스크랩 취소' : '스크랩 ' }}
-                </button>
             </div>
-            </div>
-        </div>
     
         <!-- 페이지네이션 -->
         <div class="pagination" style="display: flex; justify-content: center; align-items: center; margin-top: 60px;">
@@ -58,6 +58,9 @@
     
     <script setup>
     import { ref, computed, onMounted } from 'vue';
+    import { useRoute, useRouter } from 'vue-router';
+
+    const router = useRouter();
     
     const posts = ref([]); // 모든 게시글 데이터
     const currentPage = ref(1); // 현재 페이지
@@ -96,7 +99,7 @@
     
     // 게시글 상세 페이지로 이동하는 메소드
     const goToPostDetail = (postId) => {
-        // 페이지 이동 로직 추가
+        router.push(`/community/scrap/${postId}`); // 상세 페이지로 이동
         console.log('게시글 상세 페이지 이동:', postId);
     };
     
@@ -148,6 +151,38 @@
         border:1px #8181B0 solid; font-size: 17px;
 
     }
+
+
+.page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    border: none;
+    border-radius: 3px;
+    background-color: white;
+    color: #B1B1D2;
+    margin-right: 15px; 
+    font-weight: bold;
+    font-size: 15px;
+}
+.currentPageBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    border: none;
+    border-radius: 3px;
+    margin-right: 15px; 
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #B1B1D2;
+    color: white;
+}
+
+
 
 
     </style>
