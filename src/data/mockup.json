@@ -2799,5 +2799,42 @@
       "acc_group_code": 5,
       "id": "265e"
     }
+  ],
+  
+  "my-visited-stores": [
+    {
+      "id": "1",
+      "categoryCode": "FD6",
+      "name": "건강 마라탕",
+      "review": {
+        "id": "9",
+        "peopleNum": 1,
+        "totalPrice": 8000,
+        "content": "짬뽕 정말 맛있네요",
+        "images": [
+          "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp",
+          "https://cdn.pixabay.com/photo/2021/02/11/01/58/jambong-6004032_1280.jpg",
+          "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp"
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "categoryCode": "FD6",
+      "name": "맛나 치킨",
+      "review": null
+    },
+    {
+      "id": "3",
+      "categoryCode": "FD6",
+      "name": "으뜸기사식당",
+      "review": null
+    },
+    {
+      "id": "4",
+      "categoryCode": "FD6",
+      "name": "행복분식",
+      "review": null
+    }
   ]
 }
