@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="group-page-container">
         <SideMenu :selectedBanner="'group'" :activeMenu="activeMenu" />
         <RouterView />
     </div>
@@ -16,5 +16,7 @@ const activeMenu = ref('');
 </script>
 
 <style scoped>
-
+.group-page-container {
+    display: flex;
+}
 </style>

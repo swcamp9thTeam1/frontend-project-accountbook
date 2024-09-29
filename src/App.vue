@@ -6,7 +6,7 @@
   <AppFooter />
 
   <!-- Success Message 모달 (전역에서 사용 가능) -->
-  <!-- <SuccessMessageModal /> -->
+  <SuccessMessageModal />
 </template>
 
 <script setup>
