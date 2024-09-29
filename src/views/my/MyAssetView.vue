@@ -36,7 +36,7 @@
 <template>
     <div class="container">
         <div class="total">
-            <div class="total-balance">{{ member.memberId }} 님의 보유 자산 총액은 {{ totalAsset.toLocaleString() }}원 입니다.</div>
+            <div class="total-balance">{{ member.nickname }} 님의 보유 자산 총액은 {{ totalAsset.toLocaleString() }}원 입니다.</div>
             <RouterLink to="/my/asset/add">
                 <button type="button" class="insert">자산 추가</button>
             </RouterLink>
