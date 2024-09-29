@@ -1,65 +1,63 @@
 <template>
-
-    
     <div style="padding: 20px; width: 1000px; margin-top: 83px;">
-
-
         <input class="input-title" type="text" placeholder="제목" style="font-size: 32px; background-color: none; border: none;"
-                        v-model="title"/>
-
+            v-model="title" />
         <hr style="border: none; background-color: #B1B1D2; height: 1px; box-shadow: none;">
-
         <textarea name="" id="" placeholder="내용을 입력해주세요" v-model="content"></textarea>
-
         <hr style="border: none; background-color: #B1B1D2; height: 1px; box-shadow: none;margin-bottom: 30px;">
-
-
-
-        <!-- 파일 등록 버튼 및 게시글 등록 버튼 -->
+        
         <div style="display: flex; justify-content: space-around; align-items: center; height: 60px;">
-            <label class="custom-file-upload font-300" >
+            <label class="custom-file-upload font-300">
                 파일 선택
                 <input type="file" id="fileInput" accept="image/*" @change="updateFileName" />
             </label>
-
-        <div id="fileName">{{ fileName }}</div> <!-- 파일 이름을 표시할 요소 -->
-
-        <button
-            @click="submitPost"
-            style="width: 90px; height: 42px; background-color: #101424; border-radius: 6px; font-size: 23px; color: white; "
-            class="font-300"
-        >
-            등록
-        </button>
+            <div id="fileName">{{ fileName }}</div>
+            <button
+                @click="submitPost"
+                style="width: 90px; height: 42px; background-color: #101424; border-radius: 6px; font-size: 23px; color: white;"
+                class="font-300"
+            >
+                등록
+            </button>
         </div>
-
         
     </div>
-
-            <!-- 알림창 띄우는 부분 -->
-            <div :class="['notification', showNotification ? 'show' : 'hide']">
-                <span style="font-size: 20px;">제목과 내용을 입력해주세요.</span>
-                <button @click="closeNotification" 
-                        style="background: none; border: none; color: white; margin-left: 10px; margin-top: 20px; background-color: #B1B1D2; font-size: 20px;
-                        border-radius: 3px;">
-                        확인</button>
-            </div>
-
-    
-
-
+    <div :class="['notification', showNotification ? 'show' : 'hide']">
+        <span style="font-size: 20px;">제목과 내용을 입력해주세요.</span>
+        <button @click="closeNotification" 
+                style="background: none; border: none; color: white; margin-left: 10px; margin-top: 20px; background-color: #B1B1D2; font-size: 20px; border-radius: 3px;">
+            확인
+        </button>
+    </div>
 </template>
 
-
 <script>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
 export default {
     setup() {
+        const route = useRoute();
+        
         const title = ref('');
         const content = ref('');
         const fileName = ref('');
         const showNotification = ref(false);
+        const post = ref(null); // post 정의 추가
+
+        onMounted(async () => {
+            const postId = route.params.id;
+            const response = await fetch(`http://localhost:8080/community-post/${postId}`);
+            
+            if (response.ok) {
+                post.value = await response.json();
+                // Populate the title and content with the existing post data
+                title.value = post.value.title;
+                content.value = post.value.content;
+            } else {
+                console.error('Failed to fetch the post data');
+            }
+        });
 
         const updateFileName = (event) => {
             const input = event.target;
@@ -71,33 +69,28 @@ export default {
         };
 
         const submitPost = async () => {
-            console.log('제목:', title.value);
-            console.log('내용:', content.value);
-            console.log('첨부 파일:', fileName.value);
-
             if (!title.value || !content.value) {
                 showNotification.value = true;
                 return;
             }
 
             const getNickname = localStorage.getItem('nickname');
-
             const newPost = {
-                // id: null,
                 title: title.value,
                 content: content.value,
-                fileName: fileName.value,
                 nickname: getNickname
             };
 
+            const formData = new FormData();
+            formData.append('post', JSON.stringify(newPost));
+            if (fileName.value) {
+                formData.append('file', document.getElementById('fileInput').files[0]);
+            }
+
             try {
-                // fetch를 사용하여 POST 요청 보내기
                 const response = await fetch('http://localhost:8080/community-post', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(newPost)
+                    body: formData
                 });
 
                 if (!response.ok) {
@@ -106,7 +99,6 @@ export default {
 
                 const responseData = await response.json();
                 console.log('게시글 등록 성공:', responseData);
-
             } catch (error) {
                 console.error('게시글 등록 실패:', error);
             }
@@ -133,9 +125,6 @@ export default {
     },
 };
 </script>
-
-
-
 
 
 <style>
@@ -187,12 +176,12 @@ export default {
         }
 
         .custom-file-upload:hover {
-            background-color: #9b95b3; /* 호버 시 색상 변경 */
+            background-color: #9b95b3; 
         }
 
-        /* 실제 파일 input 요소 숨기기 */
+
         input[type="file"] {
-            display: none; /* 숨기기 */
+            display: none; 
         }
 
         #fileName {
