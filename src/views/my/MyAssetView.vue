@@ -140,6 +140,6 @@
     }
 
     .list {
-        margin-top: 170px;
+        margin-top: 200px;
     }
 </style>

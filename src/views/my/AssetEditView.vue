@@ -1,8 +1,8 @@
 <template>
-    <form @submit.prevent="submitNewAsset" class="container">
+    <form @submit.prevent="submitEdit" class="container">
         <div class="set">
             <div class="classification">카테고리</div>
-            <select v-model="newAsset.category" name="category" class="category" @change="onCategoryChange">
+            <select v-model="editingAsset.category" name="category" class="category" @change="onCategoryChange">
                 <option value="현금">현금</option>
                 <option value="은행계좌">은행계좌</option>
                 <option value="체크카드">체크카드</option>
@@ -13,86 +13,82 @@
         </div>
         <div class="set">
             <div class="classification">자산명</div>
-            <input v-model="newAsset.name" class="name" type="text" placeholder="자산명을 입력해주세요.">
+            <input v-model="editingAsset.name" class="name" type="text">
         </div>
         <div class="line"></div>
         <div class="set">
             <div class="classification">결제일</div>
-                <input v-model="newAsset.paymentDate" class="day" type="number" min="1" max="31" placeholder="카드 결제일을 숫자만 입력해주세요.">일
+                <input v-model="editingAsset.paymentDate" class="day" type="number" min="1" max="31">일
         </div>
         <div class="line"></div>
         <div class="set">
             <div class="classification">잔액</div>
-            <input v-model="newAsset.balance" class="balance" type="number" min="0" placeholder="금액을 숫자만 입력해주세요.">원
+            <input v-model="editingAsset.balance" class="balance" type="number" min="0">원
         </div>
         <div class="line"></div>
         <div class="set">
             <div class="classification">연동 계좌</div>
-            <select v-model="newAsset.connectedAsset" name="account" class="connected">
+            <select v-model="editingAsset.connectedAsset" name="account" class="connected">
                 <option v-for="account in filteredAccounts()" :key="account.id" :value="account.name">
                     {{ account.name }}
                 </option>
             </select>
         </div>
     </form>
-    <button type="submit" @click="addAsset" class="save">등록</button>
+    <button type="submit" @click="editAsset" class="save">등록</button>
 </template>
 
 <script setup>
     import { onMounted, ref } from 'vue';
-    import { useRouter } from 'vue-router';
+    import { useRoute, useRouter } from 'vue-router';
 
     const router = useRouter();
+    const route = useRoute();
     const assets = ref([]);
+    const editingAsset = ref({});
+
     onMounted(async () => {
         const response = await fetch('http://localhost:8080/asset');
         assets.value = await response.json();
-    })
 
-    const newAsset = ref({
-        id: '',
-        category: '',
-        name: '',
-        balance: 0,
-        paymentDate: '',
-        connectedAsset: ''
-    });
+        const assetId = route.params.id;    // URL 파라미터에서 ID 가져오기
+        editingAsset.value = assets.value.find(asset => asset.id === assetId);  // 해당 자산 데이터 찾기
+    })
 
     // 카테고리가 '은행계좌'인 자산만 필터링
     function filteredAccounts() {
         return assets.value.filter(asset => 
-            asset.category === '은행계좌' && newAsset.value.category === '체크카드'
+            asset.category === '은행계좌' && editingAsset.value.category === '체크카드'
         )
     }
 
     // 카테고리 변경 시 호출되는 함수
     const onCategoryChange = () => {
-        if (newAsset.value.category !== '체크카드') {
-            newAsset.value.connectedAsset = ''; // 카테고리가 체크카드가 아닐 경우 초기화
+        if (editingAsset.value.category !== '체크카드') {
+            editingAsset.value.connectedAsset = ''; // 카테고리가 체크카드가 아닐 경우 초기화
         }
     };
 
-    async function addAsset() {
-        newAsset.value.id = String(Math.max(...assets.value.map(asset => parseInt(asset.id, 10))) + 1);
+    async function editAsset() {
+        const index = assets.value.findIndex(asset => asset.id === editingAsset.value.id);
+        if (index !== -1) {
+            assets.value[index] = { ...editingAsset.value };    // 수정된 데이터로 업데이트
+        }
 
-        const response = await fetch('http://localhost:8080/asset', {
-            method: 'POST',
+        const response = await fetch(`http://localhost:8080/asset/${editingAsset.value.id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(newAsset.value),
-            });
+            body: JSON.stringify(editingAsset.value)
+        });
 
-            if (response.ok) {
-                // 서버에서 새로운 자산을 추가한 후, assets 업데이트
-                const addedAsset = await response.json();
-                assets.value.push(addedAsset);  // 새로운 자산을 assets 배열에 추가
-                console.log(assets.value);      // 추가 후의 배열 확인
-
-                router.push('/my/asset');
-            } else {
-                console.error('자산 추가에 실패했습니다.');
-            }
+        if (response.ok) {
+            alert('자산 정보가 수정되었습니다.');
+            router.push('/my/asset')
+        } else {
+            alert('자산 정보 수정에 실패했습니다.');
+        }
     }
 </script>
 

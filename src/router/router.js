@@ -114,6 +114,11 @@ const router = createRouter({
             {
                 path: "asset/add",
                 component: () => import("@/views/my/AssetAddView.vue")
+            },
+
+            {
+                path: "asset/:id-modify",
+                component: () => import("@/views/my/AssetEditView.vue")
             }
 
 
@@ -125,7 +130,15 @@ const router = createRouter({
                     path: "free-board",
                     component: () => import("@/views/community/CommunityFreeBoardView.vue")
                 },
-
+                {
+                    path: "free-board/:id",
+                    component: () => import("@/views/community/CommunityPostDetailView.vue")
+                },
+                {
+                    path: "free-board/createPost",
+                    component: () => import("@/views/community/CommunityCreatePostView.vue")
+                }
+                ,
                 {
                     path: "my",
                     component: () => import("@/views/community/CommunityMyView.vue"),
