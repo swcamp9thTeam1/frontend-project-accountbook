@@ -13,6 +13,8 @@ import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 </script>
 
-<style scoped>
-
+<style>
+* {
+  font-family: 'Noto Sans KR';
+}
 </style>

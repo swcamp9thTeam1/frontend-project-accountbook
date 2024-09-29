@@ -64,6 +64,14 @@ const router = createRouter({
                 {
                     path: "intro",
                     component: () => import("@/views/group/GroupIntro.vue")
+                },
+                {
+                    path: "accbook",
+                    component: () => import("@/views/group/GroupAccBook.vue")
+                },
+                {
+                    path: "community/:postId",
+                    component: () => import("@/views/group/GroupCommunityDetail.vue")
                 }
             ] },
 
