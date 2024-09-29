@@ -2,137 +2,140 @@
 
 <template>
       <div class="wrapper">
-        <!-- Title -->
-        <!-- <div class="h">
-          <div class="title">
-              <h4>내 그룹</h4>
-          </div>
-        </div> -->
         <main>
             <div class="container">  
   
                 <!-- Group List -->
-                <div class="group-card" v-for="group in state.pageGroups" :key="group.id">
+                <div class="group-card" v-for="group in pageGroups" :key="group.code">
                     <div class="item">
                         <div class="group-name">
                             {{ group.name }}
                         </div>
-                        <img src="@/assets/icons/go.png" alt="그룹 이동" class="go-icon">
+                        <button type="button" @click="goGroup(group.code)">
+                          <img src="@/assets/icons/go.png" alt="그룹 이동" class="go-icon">
+                        </button>
                     </div>
                 </div>
             </div>
         </main>
   
         <div class="f">
+
           <!-- Pagination -->
           <div class="pagination">
-            <button @click="goFirst" class="btn"> << </button>
-            <button @click="goBack" class="btn"> < </button>
-            <button @click="goNext" class="btn"> > </button>
-            <button @click="goLast" class="btn"> >> </button>
+            <button type="button" @click="goFirst" class="btn"> << </button>
+            <button type="button" @click="goBack" class="btn"> < </button>
+            <button type="button" @click="goNext" class="btn"> > </button>
+            <button type="button" @click="goLast" class="btn"> >> </button>
           </div>
         </div>
       </div>
   </template>
     
   <script setup>  
-  const selectedBanner = ref('group');
-    import { ref, reactive, onMounted } from 'vue';
+    import { ref, onMounted } from 'vue';
+    import {useRouter} from 'vue-router';
+
+    const router = useRouter();
+
+    const goGroup = (code) => {
+      router.push(`intro?code=${code}`);
+    };
+
+    const groups = ref([]);
+    const pageGroups = ref([]);
+    const index = ref(0);
+    const next = ref(10);
+
+    localStorage.setItem("member_code", 66);
+    localStorage.setItem("member_id", "HELLONG");
+    const memberCode = localStorage.getItem("member_code");
+
+
+    const memberGroup = (d1, d2) => {
+      const gCode = ref([]);
+      const gGroup = ref([]);
+        for (let i = 0; i < d2.length; i++){
+          if (d2[i].member_code === memberCode.value) {
+            gCode.value.push(d2[i].acc_group_code);
+          }
+        }
+        for (let j = 0; j<gCode.value.length; j++){
+          for (let i = 0;i < d1.length; i++){
+            if (gCode.value[j] === d1[i].code) {
+              gGroup.value.push(d1[i]);
+              break;
+            }
+          }
+        }
+        return gGroup.value;
+    }
   
-    const state = reactive({
-      groups: [
-      { name: '그룹 A', id: 1 },
-              { name: '그룹 B', id: 2 },
-              { name: '그룹 C', id: 3 },
-              { name: '그룹 D', id: 4 },
-              { name: '그룹 E', id: 5 },
-              { name: '그룹 F', id: 6 },
-              { name: '그룹 G', id: 7 },
-              { name: '그룹 H', id: 8 },
-              { name: '그룹 I', id: 9 },
-              { name: '그룹 J', id: 10 },
-              { name: '그룹 K', id: 11 },
-              { name: '그룹 L', id: 12 },
-              { name: '그룹 M', id: 13 },
-              { name: '그룹 N', id: 14 },
-              { name: '그룹 O', id: 15 }
-      ],
-      pageGroups: [],
-      index: 0,
-      next: 10
+    onMounted( async() => {
+        const response = await fetch("http://localhost:8080/group");
+        const data = await response.json();
+        const response2 = await fetch("http://localhost:8080/group-member"); 
+        const data2 = await response2.json();
+
+        groups.value = memberGroup(data, data2);  //memberCode로 내그룹 찾기
+        pageGroups.value = groups.value.slice(index.value, next.value);
     });
   
-    // const fetchData = async() => {
-    //     const response = await fetch(`http://localhost:8080/group/${memberCode}`);
-    //     const data = await response.json();
-    //     state.groups = data;
-    //     state.pageGroups = data.slice(state.index, state.next);
-    // };
-  
     const updatePageGroups = () => {
-      state.pageGroups = state.groups.slice(state.index, state.next);
+      pageGroups.value = groups.value.slice(index.value, next.value);
     };
   
     const goBack = () => {
-      if (state.index > 0) {
-        state.index -= 10;
-        state.next -= 10;
+      if (index.value > 0) {
+        if(next.value - index.value < 10) {
+          next.value -= next.value % 10;
+        } else {
+          next.value -= 10;
+        }
+        index.value -= 10;
         updatePageGroups();
       }
     };
   
     const goFirst = () => {
-      state.index = 0;
-      state.next = 10;
+      index.value = 0;
+      next.value = 10;
       updatePageGroups();
     };
   
     const goNext = () => {
-      if (state.next < state.groups.length) {
-        state.index += 10;
-        state.next += 10;
+      if (next.value < groups.value.length) {
+        if(next.value+10 > groups.value.length) {
+          next.value = groups.value.length;
+        } else {
+          next.value += 10;
+        }
+        index.value += 10;
         updatePageGroups();
       }
     };
   
     const goLast = () => {
-      const lastIndex = state.groups.length - (state.groups.length % 10);
-      state.index = lastIndex;
-      state.next = state.groups.length;
+      next.value = groups.value.length;
+
+      if (groups.value.length % 10 == 0){
+        index.value = next.value - 10;
+      } else {
+        index.value = groups.value.length - (groups.value.length % 10);
+      }
+      
+      console.log(index.value, next.value, groups.value.length);
       updatePageGroups();
+
     };
-  
-    onMounted(updatePageGroups);
   </script>
   
   <style scoped>
     .wrapper {
       margin-top: 100px;
     }
-    .h {
-      margin-top: 50px;
-      margin-bottom: 50px;
-      
-    }
     main {
       display: inline-block;
-    }
-    .title {
-      width: 199px;
-      height: 43px;
-      background-color: #25272F;
-      padding: 10px;
-      border-radius: 0 21.5px 21.5px 0;
-    }
-    h4 {
-      text-align: center;
-      padding: 0;
-      margin: 0;
-      color: white;
-      font-size: 28px;
-      font-style: normal;
-      font-weight: 350;
-      line-height: normal;
     }
     .container {
       display: grid;
@@ -168,12 +171,6 @@
     .group-name {
       text-align: center;
     }
-    .go-icon {
-      align-self: center;
-      justify-self: center;
-      width: 20px;
-      height: 20px;
-    }
     .f {
       display: grid;
       grid-template-columns: 300px 300px  300px;
@@ -197,6 +194,13 @@
   
     .pagination .btn:hover {
       background-color: #444;
+    }
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
     }
   </style>
     

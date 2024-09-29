@@ -1724,7 +1724,7 @@
       }
     ]
   },
-  "acc_group": [
+  "group": [
     { "code": 1, "name": "그룹1", "intro": "그룹1 소개" },
     { "code": 2, "name": "그룹2", "intro": "그룹2 소개" },
     { "code": 3, "name": "그룹3", "intro": "그룹3 소개" },
@@ -1756,7 +1756,7 @@
     { "code": 29, "name": "그룹29", "intro": "그룹29 소개" },
     { "code": 30, "name": "그룹30", "intro": "그룹30 소개" }
   ],
-  "group_member":[
+  "group-member":[
     { "member_code": 1, "acc_group_code": 1, "role": "ROLE_LEADER" },
     { "member_code": 2, "acc_group_code": 1, "role": "ROLE_FOLLOWER" },
     { "member_code": 3, "acc_group_code": 2, "role": "ROLE_FOLLOWER" },
@@ -1788,7 +1788,7 @@
     { "member_code": 29, "acc_group_code": 15, "role": "ROLE_LEADER" },
     { "member_code": 30, "acc_group_code": 15, "role": "ROLE_FOLLOWER" }
   ],
-  "group_post": [
+  "group-post": [
     { "code": 1, "created_at": "2023-09-28 10:00:00", "title": "첫 번째 게시글", "detail": "첫 번째 게시글 내용", "member_code": 1, "acc_group_code": 1 },
     { "code": 2, "created_at": "2023-09-28 11:00:00", "title": "두 번째 게시글", "detail": "두 번째 게시글 내용", "member_code": 2, "acc_group_code": 2 },
     { "code": 3, "created_at": "2023-09-28 12:00:00", "title": "세 번째 게시글", "detail": "세 번째 게시글 내용", "member_code": 3, "acc_group_code": 3 },
@@ -1810,7 +1810,7 @@
     { "code": 19, "created_at": "2023-09-29 02:00:00", "title": "열아홉 번째 게시글", "detail": "열아홉 번째 게시글 내용", "member_code": 19, "acc_group_code": 19 },
     { "code": 20, "created_at": "2023-09-29 03:00:00", "title": "스무 번째 게시글", "detail": "스무 번째 게시글 내용", "member_code": 20, "acc_group_code": 20 }
   ],
-  "group_post_file": [
+  "group-post-file": [
     { "code": 1, "name": "file1.png", "path": "/uploads/file1.png", "acc_group_post_code": 1 },
     { "code": 2, "name": "file2.png", "path": "/uploads/file2.png", "acc_group_post_code": 2 },
     { "code": 3, "name": "file3.png", "path": "/uploads/file3.png", "acc_group_post_code": 3 },
@@ -1822,7 +1822,7 @@
     { "code": 9, "name": "file9.png", "path": "/uploads/file9.png", "acc_group_post_code": 9 },
     { "code": 10, "name": "file10.png", "path": "/uploads/file10.png", "acc_group_post_code": 10 }
   ],
-  "group_post_comment": [
+  "group-post-comment": [
     { "code": 1, "created_at": "2023-09-28 10:30:00", "detail": "첫 번째 댓글", "parent_code": null, "acc_group_post_code": 1, "member_code": 1, "acc_group_code": 1 },
     { "code": 2, "created_at": "2023-09-28 11:30:00", "detail": "두 번째 댓글", "parent_code": null, "acc_group_post_code": 2, "member_code": 2, "acc_group_code": 2 },
     { "code": 3, "created_at": "2023-09-28 12:30:00", "detail": "세 번째 댓글", "parent_code": 1, "acc_group_post_code": 1, "member_code": 3, "acc_group_code": 1 },
