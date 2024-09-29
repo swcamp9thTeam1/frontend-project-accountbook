@@ -66,21 +66,12 @@ const router = createRouter({
                     component: () => import("@/views/group/GroupIntro.vue")
                 },
                 {
-<<<<<<< HEAD
                     path: "posts",
                     component: () => import("@/views/group/GroupPosts.vue")
                 },
                 {
                     path: "dopost",
                     component: () => import("@/views/group/PostCreate.vue")
-=======
-                    path: "accbook",
-                    component: () => import("@/views/group/GroupAccBook.vue")
-                },
-                {
-                    path: "community/:postId",
-                    component: () => import("@/views/group/GroupCommunityDetail.vue")
->>>>>>> cef61cdf24471f880497d8de9d5224c04765dfe7
                 }
             ] },
 
