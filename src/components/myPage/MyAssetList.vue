@@ -28,11 +28,11 @@
 </script>
 
 <template>
-    <div class="asset" style="list-style-type: none;">
+    <div class="asset">
         <div class="asset-name">{{ asset.name }}</div>
         <div class="asset-container">
-            <div class="asset-balance">{{ asset.balance.toLocaleString() }}원</div>
-            <RouterLink :to="`/my/asset/${ asset.id }/modify`">
+            <div class="asset-balance">{{ Number(asset.balance).toLocaleString() }}원</div>
+            <RouterLink :to="`/my/asset/${ asset.id }-modify`">
                 <button type="button" class="modify">수정</button>
             </RouterLink>
             <button type="button" class="delete" @click="confirmDelete(asset.id)">삭제</button>
@@ -46,7 +46,7 @@
     .asset {
         display: flex;
         padding: 0 30px;
-        width: 100%;
+        width: 95%;
         height: 90px;
         align-items: center;
         margin-top: 10px;
@@ -87,6 +87,10 @@
         color: #484848;
 
         text-wrap: nowrap;
+    }
+
+    button {
+        cursor: pointer;
     }
 
     .modify {

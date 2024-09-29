@@ -106,6 +106,11 @@ const router = createRouter({
             },
 
             {
+                path: "review/add",
+                component: () => import("@/views/my/MyReviewAddView.vue")
+            },
+
+            {
                 path: "scrap",
                 component: () => import("@/views/my/MyScrapView.vue")
             },
@@ -116,6 +121,11 @@ const router = createRouter({
             },
 
             {
+                path: "write/:id",
+                component: () => import("@/views/my/MyWriteDetailView.vue")
+            },
+
+            {
                 path: "edit-info",
                 component: () => import("@/views/my/MyInfoEditView.vue")
             },
@@ -123,6 +133,11 @@ const router = createRouter({
             {
                 path: "asset/add",
                 component: () => import("@/views/my/AssetAddView.vue")
+            },
+
+            {
+                path: "asset/:id-modify",
+                component: () => import("@/views/my/AssetEditView.vue")
             }
 
 
@@ -134,22 +149,39 @@ const router = createRouter({
                     path: "free-board",
                     component: () => import("@/views/community/CommunityFreeBoardView.vue")
                 },
-
+                {
+                    path: "free-board/:id",
+                    component: () => import("@/views/community/CommunityPostDetailView.vue")
+                },
+                {
+                    path: "free-board/createPost",
+                    component: () => import("@/views/community/CommunityCreatePostView.vue")
+                }, 
+                {
+                    path: "free-board/editPost/:id",
+                    component: () => import("@/views/community/CommunityCreatePostView.vue")
+                }
+                
+                ,
                 {
                     path: "my",
                     component: () => import("@/views/community/CommunityMyView.vue"),
                 },
 
                 {
-                    path: "my/:id", // 하위 페이지 설정, :id는 글의 ID를 의미
-                    component: () => import("@/views/community/CommunityPostDetailView.vue") // 세부 내용을 표시할 컴포넌트
+                    path: "my/:id", 
+                    component: () => import("@/views/community/CommunityPostDetailView.vue") 
                 },
 
                 {
                     path: "scrap",
                     component: () => import("@/views/community/CommunityScrapView.vue")
 
-                }
+                },
+                {
+                    path: "scrap/:id",
+                    component: () => import("@/views/community/CommunityPostDetailView.vue")
+                },
             ]
 },
 

@@ -1,44 +1,59 @@
 <!-- 회원 정보 수정 화면 -->
 
 <template>
-    <div class="member-info" id="app">
+    <form @submit.prevent="submitEdit" class="member-info" id="app">
         <div class="startline"></div>
         <div class="user-id">
             <div class="classification">아이디</div>
-            <input type="text" class="modify-info" v-model="member.memberId">
+            <input type="text" class="modify-info" v-model="memberData.memberId">
         </div>
         <div class="nickname">
             <div class="classification">닉네임</div>
-            <input type="text" class="modify-info" v-model="member.nickname">
+            <input type="text" class="modify-info" v-model="memberData.nickname">
         </div>
         <div class="email">
             <div class="classification">이메일</div>
-            <input type="text" class="modify-info" v-model="member.email">
+            <input type="text" class="modify-info" v-model="memberData.email">
         </div>
         <div class="monthly-budget">
             <div class="classification">월 예산</div>
-            <input type="number" class="modify-budget" v-model="member.budget">
+            <input type="number" class="modify-budget" v-model="memberData.budget">
         </div>
         <div class="endline"></div>
-        <RouterLink to="/my" active-class="active">
-            <button type="submit" class="save" @click="changeInfo">저장</button>
-        </RouterLink>
-    </div>
+    </form>
+        <button @click="editInfo" type="submit" class="save">저장</button>
 </template>
 
 <script setup>
-    import { RouterLink } from 'vue-router';
-    import { ref, onMounted } from 'vue';
+    import { RouterLink, useRouter } from 'vue-router';
+    import { ref, onMounted, } from 'vue';
 
-    const member = ref({});
+    const memberData = ref({});
+    const router = useRouter();
+
+    // JSON 데이터에서 member 정보 가져오기
     onMounted(async () => {
         const response = await fetch('http://localhost:8080/member');
-        member.value = await response.json();
+        memberData.value = await response.json();
     })
 
-    // function changeInfo() {
+    async function editInfo() {
+        // 수정된 데이터를 JSON 파일에 반영하는 로직
+        const response = await fetch('http://localhost:8080/member', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify( memberData.value )      // 수정된 데이터
+        });
 
-    // }
+        if (response.ok) {
+            alert('회원 정보가 수정되었습니다.');
+            router.push('/my')
+        } else {
+            alert('회원 정보 수정에 실패했습니다.');
+        }
+    }
 </script>
 
 <style scoped>
@@ -119,8 +134,8 @@
     .save {
         width: 115px;
         height: 32px;
-        margin-left: 800px;
-        margin-top: 60px;
+        margin-left: 770px;
+        margin-top: 600px;
 
         background: #9A9AC8;
         border-radius: 16px;
@@ -134,5 +149,11 @@
         color: #FFFFFF;
 
         cursor: pointer;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 </style>
