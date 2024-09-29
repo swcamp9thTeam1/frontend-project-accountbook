@@ -15,7 +15,9 @@
             <div v-for="(post, index) in currentPagePosts" :key="post.id" style="width: 90%; height: auto;">
                 <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex;align-items: center;  padding: 15px 41px; justify-content: space-between;">
                     <div style="display: flex;">
-                        <span style="color:#101424; font-size: 25px; margin-top:13px;margin-right: 41px; font-weight: bold;">{{ (currentPage - 1) * postsPerPage + index + 1 }}</span>
+                        <span style="color:#101424; font-size: 25px; margin-top:13px;margin-right: 41px; font-weight: bold;">
+                            {{ (currentPage - 1) * postsPerPage + index + 1 }}
+                        </span>
                         <div style="display: flex; flex-direction: column;">
                             <RouterLink :to="'/community/my/' + post.id" style="text-decoration: none;">
                                 <span style="color: #101424;font-size: 23px;">{{ post.title }}</span>
