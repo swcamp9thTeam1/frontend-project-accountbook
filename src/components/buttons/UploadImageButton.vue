@@ -31,7 +31,7 @@ const changeFile = (event) => {
 
     if (props.maxCnt) {
         if (props.currentCnt + length > props.maxCnt) {
-            alert("최대 8장까지 업로드 가능합니다.");
+            alert(`최대 ${props.maxCnt}장까지 업로드 가능합니다.`);
             return;
         }
     }
