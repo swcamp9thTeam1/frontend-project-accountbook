@@ -137,7 +137,12 @@ const router = createRouter({
                 {
                     path: "free-board/createPost",
                     component: () => import("@/views/community/CommunityCreatePostView.vue")
+                }, 
+                {
+                    path: "free-board/editPost/:id",
+                    component: () => import("@/views/community/CommunityCreatePostView.vue")
                 }
+                
                 ,
                 {
                     path: "my",
