@@ -91,6 +91,8 @@
         }));
 
         post.value = posts.value.find(p => p.id === Number(postId));
+
+        posts.value.sort((a, b) => Number(b.id) - Number(a.id));
     });
 
     const goToPostDetail = (postId) => {

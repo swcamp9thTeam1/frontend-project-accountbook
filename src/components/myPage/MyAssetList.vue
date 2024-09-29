@@ -89,6 +89,10 @@
         text-wrap: nowrap;
     }
 
+    button {
+        cursor: pointer;
+    }
+
     .modify {
         width: 64px;
         height: 32px;
