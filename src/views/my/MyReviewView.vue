@@ -8,7 +8,7 @@
                 </div>
                 <div class="right">
                     <button type="button" class="btn-view-store" @click="clickViewStore">가게 보기</button>
-                    <button type="button" v-if="visitedStore.review === null" class="btn-add-review">리뷰 추가</button>
+                    <button type="button" v-if="visitedStore.review === null" class="btn-add-review" @click="clickAddReview(visitedStore)">리뷰 추가</button>
                     <button type="button" v-else class="btn-view-review" @click="clickViewReview(visitedStore.review.id)">리뷰 보기</button>
                 </div>
             </li>
@@ -21,10 +21,13 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import StoreCategoryIcon from '@/components/myPage/StoreCategoryIcon.vue';
 import StoreDetailModal from '@/components/savemap/StoreDetailModal.vue';
 import { openReviewDetailDialog, openStoreDetailDialog } from '@/utils/dialogManager';
 import ReviewDetailModal from '@/components/myPage/ReviewDetailModal.vue';
+
+const router = useRouter();
 
 const visitedStores = ref([]);
 const storeDetailId = ref("");
@@ -55,6 +58,10 @@ const onClosedStoreDetailModal = () => {
 
 const onClosedReviewDetailModal = () => {
     reviewDetailId.value = "";
+}
+
+const clickAddReview = (targetStore) => {
+    router.push(`/my/review/add?storeName=${targetStore.name}`);
 }
 </script>
 

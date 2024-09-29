@@ -97,6 +97,11 @@ const router = createRouter({
             },
 
             {
+                path: "review/add",
+                component: () => import("@/views/my/MyReviewAddView.vue")
+            },
+
+            {
                 path: "scrap",
                 component: () => import("@/views/my/MyScrapView.vue")
             },

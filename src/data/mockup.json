@@ -2800,7 +2800,6 @@
       "id": "265e"
     }
   ],
-  
   "my-visited-stores": [
     {
       "id": "1",
@@ -2837,7 +2836,6 @@
       "review": null
     }
   ],
-
   "my-reviews": [
     {
       "id": "9",
@@ -2849,6 +2847,24 @@
       ],
       "storeName": "건강 마라탕",
       "storeCostAvg": 11000
+    },
+    {
+      "id": "f6e0",
+      "peopleNum": "2",
+      "totalPrice": "30000",
+      "content": "후라이드 치킨 맛있어요!!",
+      "images": [],
+      "storeName": "맛나 치킨",
+      "storeCostAvg": 10500
+    },
+    {
+      "id": "0f82",
+      "peopleNum": 2,
+      "totalPrice": 300000,
+      "content": "맛있어요",
+      "images": [],
+      "storeName": "맛나 치킨",
+      "storeCostAvg": 10500
     }
   ]
 }
