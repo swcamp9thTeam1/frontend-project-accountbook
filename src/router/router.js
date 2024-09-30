@@ -137,10 +137,15 @@ const router = createRouter({
             {
                 path: "asset/:id-modify",
                 component: () => import("@/views/my/AssetEditView.vue")
+            },
+            {
+                path: "expend/add",
+                component: () => import("@/views/my/AddExpendView.vue")
+            },
+            {
+                path: "expend/:id",
+                component: () => import("@/views/my/ModifyExpendView.vue")
             }
-
-
-
         ]},
         { path: "/community", component: CommunityPage, redirect: "/community/free-board",
             children: [
