@@ -81,16 +81,20 @@ export default {
                 nickname: getNickname
             };
 
-            const formData = new FormData();
-            formData.append('post', JSON.stringify(newPost));
-            if (fileName.value) {
-                formData.append('file', document.getElementById('fileInput').files[0]);
-            }
+            // const formData = new FormData();
+            // formData.append('post', JSON.stringify(newPost));
+            // if (fileName.value) {
+            //     formData.append('file', document.getElementById('fileInput').files[0]);
+            // }
 
             try {
                 const response = await fetch('http://localhost:8080/community-post', {
                     method: 'POST',
-                    body: formData
+                    // body: formData
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newPost)  // 파일 없이 텍스트 데이터만 전송
                 });
 
                 if (!response.ok) {
