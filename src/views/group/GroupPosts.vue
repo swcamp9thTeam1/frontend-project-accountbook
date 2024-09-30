@@ -23,11 +23,11 @@
         </div>
         <div class="L4">
             <div class="l4ch">
-                <img src="@/assets/icons/goBack.png" v-on:click="goBack"/>
+                <!-- <img src="@/assets/icons/goBack.png" v-on:click="goBack"/> -->
                 <div class="nums" v-for="num in list.length" :key="num.code">
                     <button v-on:click="goPage">{{ num }}</button>
                 </div>
-                <img src="@/assets/icons/goNext.png" v-on:click="goNext"/>
+                <!-- <img src="@/assets/icons/goNext.png" v-on:click="goNext"/> -->
             </div>
         </div>
         <div class="L5">
