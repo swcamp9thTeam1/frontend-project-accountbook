@@ -5,19 +5,19 @@
         <div class="startline"></div>
         <div class="user-id">
             <div class="classification">아이디</div>
-            <input type="text" class="modify-info" v-model="memberData.memberId">
+            <input type="text" class="modify-info" v-model="loginUser.username">
         </div>
         <div class="nickname">
             <div class="classification">닉네임</div>
-            <input type="text" class="modify-info" v-model="memberData.nickname">
+            <input type="text" class="modify-info" v-model="loginUser.nickname">
         </div>
         <div class="email">
             <div class="classification">이메일</div>
-            <input type="text" class="modify-info" v-model="memberData.email">
+            <input type="text" class="modify-info" v-model="loginUser.email">
         </div>
         <div class="monthly-budget">
             <div class="classification">월 예산</div>
-            <input type="number" class="modify-budget" v-model="memberData.budget">
+            <input type="number" class="modify-budget" v-model="loginUser.monthlyBudget">
         </div>
         <div class="endline"></div>
     </form>
@@ -28,23 +28,32 @@
     import { RouterLink, useRouter } from 'vue-router';
     import { ref, onMounted, } from 'vue';
 
-    const memberData = ref({});
+    const userNickname = localStorage.getItem('nickname');
+    const users = ref([]);
+    const loginUser = ref({});
     const router = useRouter();
 
-    // JSON 데이터에서 member 정보 가져오기
+    // 로그인한 user의 정보 가져오기
     onMounted(async () => {
-        const response = await fetch('http://localhost:8080/member');
-        memberData.value = await response.json();
+        const response = await fetch('http://localhost:8080/users');
+        users.value = await response.json();
+
+        loginUser.value = users.value.find(user => user.nickname === userNickname);
     })
 
     async function editInfo() {
+        const index = users.value.findIndex(user => user.id === loginUser.value.id);
+        if (index !== -1) {
+            users.value[index] = { ...loginUser.value };    // 수정된 데이터로 업데이트
+        }
+
         // 수정된 데이터를 JSON 파일에 반영하는 로직
-        const response = await fetch('http://localhost:8080/member', {
+        const response = await fetch(`http://localhost:8080/users/${loginUser.value.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify( memberData.value )      // 수정된 데이터
+            body: JSON.stringify(loginUser.value)      // 수정된 데이터
         });
 
         if (response.ok) {
