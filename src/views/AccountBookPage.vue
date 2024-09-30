@@ -44,12 +44,12 @@ const onDateClicked = (date) => {
 // 유저 닉네임, 월 예산 가져오기
 const fetchUserInfo = async () => {
   try {
-    const response = await fetch(`http://localhost:8080/member`);
+    const response = await fetch(`http://localhost:8080/users/d889`); // (임시) user01의 닉네임 가져오기
     const userData = await response.json();
 
     if (userData) {
       nickname.value = userData.nickname;
-      totalBudget.value = userData.budget;
+      totalBudget.value = userData.monthlyBudget;
     }
   } catch (error) {
     console.error('유저 정보를 가져오는 중 오류 발생:', error);
