@@ -53,7 +53,7 @@
                     <RouterLink 
                         to="/community/free-board" 
                         class="menu-item" 
-                        :class="{ 'active-menu': isActive('/community/free-board') || route.path.startsWith('/community/free-board/') }"
+                        :class="{ 'active-menu': isActive('/community/free-board') || route.path.startsWith('/community/free-board/')}"
                         @click="selectMenu('자유 게시판')">
                         자유 게시판
                     </RouterLink>
@@ -62,7 +62,7 @@
                     <RouterLink 
                         to="/community/my/" 
                         class="menu-item" 
-                        :class="{ 'active-menu': isActive('/community/my') || route.path.startsWith('/community/my/') }"
+                        :class="{ 'active-menu': isActive('/community/my') || route.path.startsWith('/community/my/')}"
                         @click="selectMenu('나의 글')">
                         나의 글
                     </RouterLink>
