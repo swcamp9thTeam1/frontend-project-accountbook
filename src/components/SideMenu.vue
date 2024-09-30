@@ -187,6 +187,7 @@ watchEffect(() => {
         else if (isActive('/my/asset')) activeMenu.value = '나의 자산';
         else if (isActive('/my/asset/add')) activeMenu.value = '나의 자산';
         else if (isActive('/my/expend')) activeMenu.value = '나의 정기지출';
+        else if (isActive('/my/expend/add')) activeMenu.value = '나의 정기지출';
         else if (isActive('/my/review')) activeMenu.value = '내가 다녀간 가게와 리뷰';
         else if (isActive('/my/scrap')) activeMenu.value = '나의 스크랩';
         else if (isActive('/my/write')) activeMenu.value = '나의 글';

@@ -21,11 +21,7 @@
         <div class="set">
             <div class="classification">연결된 자산</div>
             <select name="account" class="connected" v-model="selectedAsset">
-                <option value="---">---</option>
-                <option value="삼성카드">삼성카드</option>
-                <option value="현대 M 체크카드">현대 M 체크카드</option>
-                <option value="우리카드">우리카드</option>
-                <option value="하나카드">하나카드</option>
+                <option v-for="asset in assets" :key="asset.id" :value="asset.name">{{ asset.name }}</option>
             </select>
         </div>
 
@@ -62,7 +58,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { RouterLink, useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -75,6 +71,12 @@ const selectedAsset = ref('');
 const selectedCategory = ref('');
 const selectedSubCategory = ref('');
 const subCategories = ref([]);  // 서브 카테고리 배열
+
+const assets = ref([]);
+    onMounted(async () => {
+        const response = await fetch('http://localhost:8080/asset');
+        assets.value = await response.json();
+    })
 
 // 메인 카테고리와 서브 카테고리의 맵핑
 const categoryMap = {
