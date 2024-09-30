@@ -172,12 +172,6 @@
       ]
     }
   ],
-  "member": {
-    "memberId": "iamhong01",
-    "nickname": "동에번쩍서에번쩍",
-    "email": "honggildong@gmail.com",
-    "budget": 500000
-  },
   "asset": [
     {
       "id": "1",
@@ -206,13 +200,13 @@
     {
       "id": "4",
       "category": "체크카드",
-      "name": "신한카드",
+      "name": "신한체크카드",
       "balance": 0,
       "paymentDate": null,
       "connectedAsset": "신한은행"
     }
   ],
-  "community-post": [
+"community-post": [
     {
       "id": "1",
       "nickname": "budgetMaster",
@@ -1109,6 +1103,30 @@
       "title": "ㅁㅁㅁ",
       "content": "ㅁㅁㅁ",
       "nickname": "budgetMaster"
+    },
+    {
+      "id": "44f9",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?ㅁㅁ",
+      "nickname": "budgetMaster"
+    },
+    {
+      "id": "26cf",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?헉",
+      "nickname": "budgetMaster"
+    },
+    {
+      "id": "9970",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?ㅁㅁㅁㅁㅁㅁ",
+      "nickname": "budgetMaster"
+    },
+    {
+      "id": "43b0",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?ㅁㅁㅁ",
+      "nickname": "budgetMaster"
     }
   ],
   "users": [
@@ -1121,7 +1139,8 @@
       "email": "1234@naver.com",
       "idConfirm": true,
       "autoLogin": true,
-      "auth": "1234"
+      "auth": "1234",
+      "monthlyBudget": 0
     },
     {
       "id": "d889",
@@ -1132,7 +1151,8 @@
       "email": "user01@naver.com",
       "idConfirm": true,
       "autoLogin": true,
-      "auth": "1234"
+      "auth": "1234",
+      "monthlyBudget": 0
     },
     {
       "id": "9193",
@@ -1143,7 +1163,32 @@
       "email": "asdf@asdf.asdf",
       "idConfirm": true,
       "autoLogin": false,
-      "auth": "asdf"
+      "auth": "asdf",
+      "monthlyBudget": 0
+    },
+    {
+      "id": "e38d",
+      "username": "iamhong01",
+      "password": "1234",
+      "passwordConfirm": "1234",
+      "nickname": "동에번쩍서에번쩍",
+      "email": "honggildong@gmail.com",
+      "idConfirm": true,
+      "autoLogin": true,
+      "auth": "1341",
+      "monthlyBudget": 0
+    },
+    {
+      "id": "9d24",
+      "username": "user02",
+      "password": "1234",
+      "passwordConfirm": "1234",
+      "nickname": "user02",
+      "email": "user02@naver.com",
+      "idConfirm": true,
+      "autoLogin": true,
+      "auth": "1465",
+      "monthlyBudget": 0
     }
   ],
   "monthly": [
@@ -1727,42 +1772,42 @@
       "dailyDate": "2024-09-23",
       "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Good",
+      "evaluation": null,
       "id": "9e1b"
     },
     {
       "dailyDate": "2024-09-24",
       "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Good",
+      "evaluation": null,
       "id": "bfa5"
     },
     {
       "dailyDate": "2024-09-25",
       "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Good",
+      "evaluation": null,
       "id": "6ec8"
     },
     {
       "dailyDate": "2024-09-26",
       "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Good",
+      "evaluation": null,
       "id": "5625"
     },
     {
       "dailyDate": "2024-09-27",
       "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Good",
+      "evaluation": null,
       "id": "8e11"
     },
     {
       "dailyDate": "2024-09-28",
       "totalOAmount": 0,
       "totalIAmount": 0,
-      "evaluation": "Good",
+      "evaluation": null,
       "id": "0121"
     },
     {
@@ -1787,7 +1832,7 @@
       "title": "멜론뮤직",
       "categoryName": "여가",
       "day": 15,
-      "assetName": "현대 M 체크카드",
+      "assetName": "신한체크카드",
       "fee": 8500
     },
     {
@@ -1805,7 +1850,7 @@
       "title": "넷플릭스",
       "categoryName": "여가",
       "day": 7,
-      "assetName": "현대 M 체크카드",
+      "assetName": "국민카드",
       "fee": 10900
     },
     {
@@ -1823,7 +1868,7 @@
       "title": "티빙",
       "categoryName": "여가",
       "day": 20,
-      "assetName": "우리카드",
+      "assetName": "신한체크카드",
       "fee": 14000
     }
   ],
@@ -2293,6 +2338,608 @@
       }
     ]
   },
+  "group": [
+    {
+      "code": 1,
+      "name": "그룹1",
+      "intro": "그룹1 소개"
+    },
+    {
+      "code": 2,
+      "name": "그룹2",
+      "intro": "그룹2 소개"
+    },
+    {
+      "code": 3,
+      "name": "그룹3",
+      "intro": "그룹3 소개"
+    },
+    {
+      "code": 4,
+      "name": "그룹4",
+      "intro": "그룹4 소개"
+    },
+    {
+      "code": 5,
+      "name": "그룹5",
+      "intro": "그룹5 소개"
+    },
+    {
+      "code": 6,
+      "name": "그룹6",
+      "intro": "그룹6 소개"
+    },
+    {
+      "code": 7,
+      "name": "그룹7",
+      "intro": "그룹7 소개"
+    },
+    {
+      "code": 8,
+      "name": "그룹8",
+      "intro": "그룹8 소개"
+    },
+    {
+      "code": 9,
+      "name": "그룹9",
+      "intro": "그룹9 소개"
+    },
+    {
+      "code": 10,
+      "name": "그룹10",
+      "intro": "그룹10 소개"
+    },
+    {
+      "code": 11,
+      "name": "그룹11",
+      "intro": "그룹11 소개"
+    },
+    {
+      "code": 12,
+      "name": "그룹12",
+      "intro": "그룹12 소개"
+    },
+    {
+      "code": 13,
+      "name": "그룹13",
+      "intro": "그룹13 소개"
+    },
+    {
+      "code": 14,
+      "name": "그룹14",
+      "intro": "그룹14 소개"
+    },
+    {
+      "code": 15,
+      "name": "그룹15",
+      "intro": "그룹15 소개"
+    },
+    {
+      "code": 16,
+      "name": "그룹16",
+      "intro": "그룹16 소개"
+    },
+    {
+      "code": 17,
+      "name": "그룹17",
+      "intro": "그룹17 소개"
+    },
+    {
+      "code": 18,
+      "name": "그룹18",
+      "intro": "그룹18 소개"
+    },
+    {
+      "code": 19,
+      "name": "그룹19",
+      "intro": "그룹19 소개"
+    },
+    {
+      "code": 20,
+      "name": "그룹20",
+      "intro": "그룹20 소개"
+    },
+    {
+      "code": 21,
+      "name": "그룹21",
+      "intro": "그룹21 소개"
+    },
+    {
+      "code": 22,
+      "name": "그룹22",
+      "intro": "그룹22 소개"
+    },
+    {
+      "code": 23,
+      "name": "그룹23",
+      "intro": "그룹23 소개"
+    },
+    {
+      "code": 24,
+      "name": "그룹24",
+      "intro": "그룹24 소개"
+    },
+    {
+      "code": 25,
+      "name": "그룹25",
+      "intro": "그룹25 소개"
+    },
+    {
+      "code": 26,
+      "name": "그룹26",
+      "intro": "그룹26 소개"
+    },
+    {
+      "code": 27,
+      "name": "그룹27",
+      "intro": "그룹27 소개"
+    },
+    {
+      "code": 28,
+      "name": "그룹28",
+      "intro": "그룹28 소개"
+    },
+    {
+      "code": 29,
+      "name": "그룹29",
+      "intro": "그룹29 소개"
+    },
+    {
+      "code": 30,
+      "name": "그룹30",
+      "intro": "그룹30 소개"
+    }
+  ],
+  "group-member": [
+    {
+      "member_code": 1,
+      "acc_group_code": 1,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 2,
+      "acc_group_code": 1,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 3,
+      "acc_group_code": 2,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 4,
+      "acc_group_code": 2,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 5,
+      "acc_group_code": 3,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 6,
+      "acc_group_code": 3,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 7,
+      "acc_group_code": 4,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 8,
+      "acc_group_code": 4,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 9,
+      "acc_group_code": 5,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 10,
+      "acc_group_code": 5,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 11,
+      "acc_group_code": 6,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 12,
+      "acc_group_code": 6,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 13,
+      "acc_group_code": 7,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 14,
+      "acc_group_code": 7,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 15,
+      "acc_group_code": 8,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 16,
+      "acc_group_code": 8,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 17,
+      "acc_group_code": 9,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 18,
+      "acc_group_code": 9,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 19,
+      "acc_group_code": 10,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 20,
+      "acc_group_code": 10,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 21,
+      "acc_group_code": 11,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 22,
+      "acc_group_code": 11,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 23,
+      "acc_group_code": 12,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 24,
+      "acc_group_code": 12,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 25,
+      "acc_group_code": 13,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 26,
+      "acc_group_code": 13,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 27,
+      "acc_group_code": 14,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 28,
+      "acc_group_code": 14,
+      "role": "ROLE_FOLLOWER"
+    },
+    {
+      "member_code": 29,
+      "acc_group_code": 15,
+      "role": "ROLE_LEADER"
+    },
+    {
+      "member_code": 30,
+      "acc_group_code": 15,
+      "role": "ROLE_FOLLOWER"
+    }
+  ],
+  "group-post": [
+    {
+      "code": 1,
+      "created_at": "2023-09-28 10:00:00",
+      "title": "첫 번째 게시글",
+      "detail": "첫 번째 게시글 내용",
+      "member_code": 1,
+      "acc_group_code": 1
+    },
+    {
+      "code": 2,
+      "created_at": "2023-09-28 11:00:00",
+      "title": "두 번째 게시글",
+      "detail": "두 번째 게시글 내용",
+      "member_code": 2,
+      "acc_group_code": 2
+    },
+    {
+      "code": 3,
+      "created_at": "2023-09-28 12:00:00",
+      "title": "세 번째 게시글",
+      "detail": "세 번째 게시글 내용",
+      "member_code": 3,
+      "acc_group_code": 3
+    },
+    {
+      "code": 4,
+      "created_at": "2023-09-28 13:00:00",
+      "title": "네 번째 게시글",
+      "detail": "네 번째 게시글 내용",
+      "member_code": 4,
+      "acc_group_code": 4
+    },
+    {
+      "code": 5,
+      "created_at": "2023-09-28 14:00:00",
+      "title": "다섯 번째 게시글",
+      "detail": "다섯 번째 게시글 내용",
+      "member_code": 5,
+      "acc_group_code": 5
+    },
+    {
+      "code": 6,
+      "created_at": "2023-09-28 15:00:00",
+      "title": "여섯 번째 게시글",
+      "detail": "여섯 번째 게시글 내용",
+      "member_code": 6,
+      "acc_group_code": 6
+    },
+    {
+      "code": 7,
+      "created_at": "2023-09-28 16:00:00",
+      "title": "일곱 번째 게시글",
+      "detail": "일곱 번째 게시글 내용",
+      "member_code": 7,
+      "acc_group_code": 7
+    },
+    {
+      "code": 8,
+      "created_at": "2023-09-28 17:00:00",
+      "title": "여덟 번째 게시글",
+      "detail": "여덟 번째 게시글 내용",
+      "member_code": 8,
+      "acc_group_code": 8
+    },
+    {
+      "code": 9,
+      "created_at": "2023-09-28 18:00:00",
+      "title": "아홉 번째 게시글",
+      "detail": "아홉 번째 게시글 내용",
+      "member_code": 9,
+      "acc_group_code": 9
+    },
+    {
+      "code": 10,
+      "created_at": "2023-09-28 19:00:00",
+      "title": "열 번째 게시글",
+      "detail": "열 번째 게시글 내용",
+      "member_code": 10,
+      "acc_group_code": 10
+    },
+    {
+      "code": 11,
+      "created_at": "2023-09-28 20:00:00",
+      "title": "열한 번째 게시글",
+      "detail": "열한 번째 게시글 내용",
+      "member_code": 11,
+      "acc_group_code": 11
+    },
+    {
+      "code": 12,
+      "created_at": "2023-09-28 21:00:00",
+      "title": "열두 번째 게시글",
+      "detail": "열두 번째 게시글 내용",
+      "member_code": 12,
+      "acc_group_code": 12
+    },
+    {
+      "code": 13,
+      "created_at": "2023-09-28 22:00:00",
+      "title": "열세 번째 게시글",
+      "detail": "열세 번째 게시글 내용",
+      "member_code": 13,
+      "acc_group_code": 13
+    },
+    {
+      "code": 14,
+      "created_at": "2023-09-28 23:00:00",
+      "title": "열네 번째 게시글",
+      "detail": "열네 번째 게시글 내용",
+      "member_code": 14,
+      "acc_group_code": 14
+    },
+    {
+      "code": 15,
+      "created_at": "2023-09-28 23:30:00",
+      "title": "열다섯 번째 게시글",
+      "detail": "열다섯 번째 게시글 내용",
+      "member_code": 15,
+      "acc_group_code": 15
+    },
+    {
+      "code": 16,
+      "created_at": "2023-09-28 23:45:00",
+      "title": "열여섯 번째 게시글",
+      "detail": "열여섯 번째 게시글 내용",
+      "member_code": 16,
+      "acc_group_code": 16
+    },
+    {
+      "code": 17,
+      "created_at": "2023-09-29 00:00:00",
+      "title": "열일곱 번째 게시글",
+      "detail": "열일곱 번째 게시글 내용",
+      "member_code": 17,
+      "acc_group_code": 17
+    },
+    {
+      "code": 18,
+      "created_at": "2023-09-29 01:00:00",
+      "title": "열여덟 번째 게시글",
+      "detail": "열여덟 번째 게시글 내용",
+      "member_code": 18,
+      "acc_group_code": 18
+    },
+    {
+      "code": 19,
+      "created_at": "2023-09-29 02:00:00",
+      "title": "열아홉 번째 게시글",
+      "detail": "열아홉 번째 게시글 내용",
+      "member_code": 19,
+      "acc_group_code": 19
+    },
+    {
+      "code": 20,
+      "created_at": "2023-09-29 03:00:00",
+      "title": "스무 번째 게시글",
+      "detail": "스무 번째 게시글 내용",
+      "member_code": 20,
+      "acc_group_code": 20
+    }
+  ],
+  "group-post-file": [
+    {
+      "code": 1,
+      "name": "file1.png",
+      "path": "/uploads/file1.png",
+      "acc_group_post_code": 1
+    },
+    {
+      "code": 2,
+      "name": "file2.png",
+      "path": "/uploads/file2.png",
+      "acc_group_post_code": 2
+    },
+    {
+      "code": 3,
+      "name": "file3.png",
+      "path": "/uploads/file3.png",
+      "acc_group_post_code": 3
+    },
+    {
+      "code": 4,
+      "name": "file4.png",
+      "path": "/uploads/file4.png",
+      "acc_group_post_code": 4
+    },
+    {
+      "code": 5,
+      "name": "file5.png",
+      "path": "/uploads/file5.png",
+      "acc_group_post_code": 5
+    },
+    {
+      "code": 6,
+      "name": "file6.png",
+      "path": "/uploads/file6.png",
+      "acc_group_post_code": 6
+    },
+    {
+      "code": 7,
+      "name": "file7.png",
+      "path": "/uploads/file7.png",
+      "acc_group_post_code": 7
+    },
+    {
+      "code": 8,
+      "name": "file8.png",
+      "path": "/uploads/file8.png",
+      "acc_group_post_code": 8
+    },
+    {
+      "code": 9,
+      "name": "file9.png",
+      "path": "/uploads/file9.png",
+      "acc_group_post_code": 9
+    },
+    {
+      "code": 10,
+      "name": "file10.png",
+      "path": "/uploads/file10.png",
+      "acc_group_post_code": 10
+    }
+  ],
+  "group-post-comment": [
+    {
+      "code": 1,
+      "created_at": "2023-09-28 10:30:00",
+      "detail": "첫 번째 댓글",
+      "parent_code": null,
+      "acc_group_post_code": 1,
+      "member_code": 1,
+      "acc_group_code": 1
+    },
+    {
+      "code": 2,
+      "created_at": "2023-09-28 11:30:00",
+      "detail": "두 번째 댓글",
+      "parent_code": null,
+      "acc_group_post_code": 2,
+      "member_code": 2,
+      "acc_group_code": 2
+    },
+    {
+      "code": 3,
+      "created_at": "2023-09-28 12:30:00",
+      "detail": "세 번째 댓글",
+      "parent_code": 1,
+      "acc_group_post_code": 1,
+      "member_code": 3,
+      "acc_group_code": 1
+    },
+    {
+      "code": 4,
+      "created_at": "2023-09-28 13:30:00",
+      "detail": "네 번째 댓글",
+      "parent_code": 2,
+      "acc_group_post_code": 2,
+      "member_code": 4,
+      "acc_group_code": 2
+    },
+    {
+      "code": 5,
+      "created_at": "2023-09-28 14:30:00",
+      "detail": "다섯 번째 댓글",
+      "parent_code": null,
+      "acc_group_post_code": 3,
+      "member_code": 5,
+      "acc_group_code": 3
+    },
+    {
+      "code": 6,
+      "created_at": "2023-09-28 15:30:00",
+      "detail": "여섯 번째 댓글",
+      "parent_code": 5,
+      "acc_group_post_code": 3,
+      "member_code": 6,
+      "acc_group_code": 3
+    },
+    {
+      "code": 7,
+      "created_at": "2023-09-28 16:30:00",
+      "detail": "일곱 번째 댓글",
+      "parent_code": null,
+      "acc_group_post_code": 4,
+      "member_code": 7,
+      "acc_group_code": 4
+    },
+    {
+      "code": 8,
+      "created_at": "2023-09-28 17:30:00",
+      "detail": "여덟 번째 댓글",
+      "parent_code": null,
+      "acc_group_post_code": 5,
+      "member_code": 8,
+      "acc_group_code": 5
+    }
+  ],
   "group-members": [
     {
       "id": "1",
@@ -3312,6 +3959,73 @@
       "member_code": 8,
       "acc_group_code": 5,
       "id": "265e"
+    }
+  ],
+  "my-visited-stores": [
+    {
+      "id": "1",
+      "categoryCode": "FD6",
+      "name": "건강 마라탕",
+      "review": {
+        "id": "9",
+        "peopleNum": 1,
+        "totalPrice": 8000,
+        "content": "짬뽕 정말 맛있네요",
+        "images": [
+          "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp",
+          "https://cdn.pixabay.com/photo/2021/02/11/01/58/jambong-6004032_1280.jpg",
+          "https://i.namu.wiki/i/upNZ7cYsFsAfU0KcguO6OHMK68xC-Bj8EXxdCti61Jhjx10UCBgdK5bZCEx41-aAWcjWZ5JMKFUSaUGLC1tqWg.webp"
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "categoryCode": "FD6",
+      "name": "맛나 치킨",
+      "review": null
+    },
+    {
+      "id": "3",
+      "categoryCode": "FD6",
+      "name": "으뜸기사식당",
+      "review": null
+    },
+    {
+      "id": "4",
+      "categoryCode": "FD6",
+      "name": "행복분식",
+      "review": null
+    }
+  ],
+  "my-reviews": [
+    {
+      "id": "9",
+      "peopleNum": 1,
+      "totalPrice": 8000,
+      "content": "정말 맛있네요",
+      "images": [
+        "https://cdn.imweb.me/thumbnail/20231018/3047515d4d8cd.png"
+      ],
+      "storeName": "건강 마라탕",
+      "storeCostAvg": 11000
+    },
+    {
+      "id": "f6e0",
+      "peopleNum": "2",
+      "totalPrice": "30000",
+      "content": "후라이드 치킨 맛있어요!!",
+      "images": [],
+      "storeName": "맛나 치킨",
+      "storeCostAvg": 10500
+    },
+    {
+      "id": "0f82",
+      "peopleNum": 2,
+      "totalPrice": 300000,
+      "content": "맛있어요",
+      "images": [],
+      "storeName": "맛나 치킨",
+      "storeCostAvg": 10500
     }
   ]
 }
