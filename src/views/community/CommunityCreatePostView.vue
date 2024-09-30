@@ -33,31 +33,31 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
+// import router from "@/router/router.js";
 
 export default {
     setup() {
-        const route = useRoute();
-        
+        const router = useRouter();
         const title = ref('');
         const content = ref('');
         const fileName = ref('');
         const showNotification = ref(false);
         const post = ref(null); // post 정의 추가
 
-        onMounted(async () => {
-            const postId = route.params.id;
-            const response = await fetch(`http://localhost:8080/community-post/${postId}`);
-            
-            if (response.ok) {
-                post.value = await response.json();
-                // Populate the title and content with the existing post data
-                title.value = post.value.title;
-                content.value = post.value.content;
-            } else {
-                console.error('Failed to fetch the post data');
-            }
-        });
+      // onMounted(async () => {
+        //     const postId = route.params.id;
+        //     const response = await fetch(`http://localhost:8080/community-post/${postId}`);
+        //
+        //     if (response.ok) {
+        //         post.value = await response.json();
+        //         // Populate the title and content with the existing post data
+        //         title.value = post.value.title;
+        //         content.value = post.value.content;
+        //     } else {
+        //         console.error('Failed to fetch the post data');
+        //     }
+        // });
 
         const updateFileName = (event) => {
             const input = event.target;
@@ -75,12 +75,20 @@ export default {
             }
 
             const getNickname = localStorage.getItem('nickname');
-            const newPost = {
-                title: title.value,
-                content: content.value,
-                nickname: getNickname
-            };
 
+            const now = new Date();
+            const formattedDate = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+          const newPost = {
+            nickname: getNickname,
+            title: title.value,
+            content: content.value,
+            created_at: formattedDate, // 현재 날짜, 시간 저장
+            comment_count: 0,
+            file: fileName.value
+          };
+
+            // console.log("newPost:", newPost)
             // const formData = new FormData();
             // formData.append('post', JSON.stringify(newPost));
             // if (fileName.value) {
@@ -90,19 +98,24 @@ export default {
             try {
                 const response = await fetch('http://localhost:8080/community-post', {
                     method: 'POST',
-                    // body: formData
                     headers: {
-                        'Content-Type': 'application/json'
+                      'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(newPost)  // 파일 없이 텍스트 데이터만 전송
+                    body: JSON.stringify(newPost)
                 });
 
                 if (!response.ok) {
                     throw new Error('게시글 등록 실패');
                 }
 
-                const responseData = await response.json();
-                console.log('게시글 등록 성공:', responseData);
+              // post 후 id 추출
+              const responseData = await response.json();
+              const id = responseData.id;
+              console.log('게시글 등록 성공:', responseData);
+
+              // 새로운 id 페이지로 이동
+              router.push(`/community/my/${id}`);
+
             } catch (error) {
                 console.error('게시글 등록 실패:', error);
             }
