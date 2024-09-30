@@ -1134,7 +1134,7 @@
       "idConfirm": true,
       "autoLogin": true,
       "auth": "1234",
-      "monthlyBudget": 0
+      "monthlyBudget": 1000000
     },
     {
       "id": "d889",
@@ -1146,7 +1146,7 @@
       "idConfirm": true,
       "autoLogin": true,
       "auth": "1234",
-      "monthlyBudget": 0
+      "monthlyBudget": 1000000
     },
     {
       "id": "9193",
@@ -1158,7 +1158,7 @@
       "idConfirm": true,
       "autoLogin": false,
       "auth": "asdf",
-      "monthlyBudget": 0
+      "monthlyBudget": 1000000
     },
     {
       "id": "e38d",
@@ -1170,7 +1170,7 @@
       "idConfirm": true,
       "autoLogin": true,
       "auth": "1341",
-      "monthlyBudget": 0
+      "monthlyBudget": 1000000
     },
     {
       "id": "9d24",
@@ -1182,7 +1182,7 @@
       "idConfirm": true,
       "autoLogin": true,
       "auth": "1465",
-      "monthlyBudget": 0
+      "monthlyBudget": 1000000
     }
   ],
   "monthly": [
