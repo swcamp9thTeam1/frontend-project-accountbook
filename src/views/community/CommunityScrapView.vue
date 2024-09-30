@@ -6,12 +6,15 @@
 
         <div style="width: 1000px; position: absolute; top: 170px;">
             <!-- 스크랩한 게시글 목록 박스 -->
-            <div v-for="(post) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id)  "
+            <div v-for="(post, index) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id)  "
                 style="display: flex; flex-direction: column; gap: 10px;width: 100%; margin-bottom: 10px;">
                 <div style="width: 90%; height: auto;">
                 <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
                     <div style="display: flex;">
-                    <span class="font-500" style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px;">{{ post.id }}</span>
+                    <span class="font-500" style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px;">
+                        <!-- {{ post.id }} -->
+                        {{ calculatePostNumber(index) }}
+                    </span>
                     <div style="display: flex; flex-direction: column;">
                         <span style="color: #101424; font-size: 22px;">{{ post.title }}</span>
                         <div style="color: #8C8C8C; margin-top: 4px;">
@@ -92,12 +95,22 @@
         return Math.ceil(posts.value.filter(post => post.scrapStatus).length / postsPerPage);
     });
     
+
+    // 게시글 번호 계산 메소드
+    const calculatePostNumber = (index) => {
+        return totalPostNum.value - ((currentPage.value - 1) * postsPerPage + index);
+    };
+
+    // 게시글의 전체 개수
+    const totalPostNum = computed(() => posts.value.filter(post => post.scrapStatus).length);
+
     // 페이지를 바꿔주는 메소드
     const changePage = (newPage) => {
         if (newPage >= 1 && newPage <= totalPages.value) {
         currentPage.value = newPage;
         }
     };
+
     
     // 게시글 상세 페이지로 이동하는 메소드
     const goToPostDetail = (postId) => {
