@@ -41,8 +41,8 @@
 <br>
 
 ### Flow 4. 가계부 작성/가계부 상세보기
-<img width="500" alt="스크린샷 2024-09-30 오전 11 05 46" src="https://github.com/user-attachments/assets/b28ef6d5-09af-4dde-a067-65b15fdabe7d">
-<img width="500" alt="스크린샷 2024-09-30 오전 11 06 00" src="https://github.com/user-attachments/assets/5efb67be-0ad7-4ab4-9e82-81e898ec4142">
+<img width="500" alt="가계부 작성" src="https://github.com/user-attachments/assets/de0a5f1d-4d96-4379-bb49-c7f92bb541a8">
+<img width="500" alt="가계부 월별조회, 일자별조회, 상세조회 2024-09-30 오전 11 06 00" src="https://github.com/user-attachments/assets/5a2a16d0-9ffe-42f8-a17d-33d24efbf2f0">
 
 <br>
 <br>
