@@ -113,7 +113,7 @@ import { useRouter } from 'vue-router';
     .page {
         width: 900px;
         position: absolute;
-        top: 170px;
+        top: 220px;
     }
 
     .container {
