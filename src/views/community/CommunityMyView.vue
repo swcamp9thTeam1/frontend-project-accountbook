@@ -12,7 +12,8 @@
                 <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex;align-items: center;  padding: 15px 41px; justify-content: space-between;">
                     <div style="display: flex;">
                         <span style="color:#101424; font-size: 25px; margin-top:13px;margin-right: 41px; font-weight: bold;">
-                            {{ (currentPage - 1) * postsPerPage + index + 1 }}
+                            <!-- {{ (currentPage - 1) * postsPerPage + index + 1 }} -->
+                            {{ totalPostNum - ((currentPage - 1) * postsPerPage + index) }}
                         </span>
                         <div style="display: flex; flex-direction: column;">
                             <RouterLink :to="'/community/my/' + post.id" style="text-decoration: none;">
@@ -63,8 +64,6 @@ import {RouterLink } from 'vue-router';
 const posts = ref([]);
 
 
-
-
 onMounted(async () => {
 const userNickname = localStorage.getItem('nickname');
     
@@ -72,7 +71,9 @@ if (userNickname) {
     const response = await fetch('http://localhost:8080/community-post');
     const data = await response.json();
 
-    posts.value = data.filter(post => post.nickname === userNickname);
+    posts.value = data
+        .filter(post => post.nickname === userNickname)
+        .sort((a, b) => new Date(b.created_at) -new Date(a.created_at));
 
 } else {
     alert('로그인이 필요합니다.');

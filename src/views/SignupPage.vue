@@ -127,7 +127,8 @@ const signup = async () => {
         email: email.value,
         idConfirm: idConfirm.value,
         autoLogin: autoLogin.value,
-        auth: auth.value
+        auth: auth.value,
+        monthlyBudget: 0
     };
 
     try {
