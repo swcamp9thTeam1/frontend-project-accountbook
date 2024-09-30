@@ -80,6 +80,10 @@ const router = createRouter({
                 {
                     path: "community/:postId",
                     component: () => import("@/views/group/GroupCommunityDetail.vue")
+                },
+                {
+                    path: "manage",
+                    component: () => import("@/views/group/SignUpManage.vue")
                 }
             ] },
 
