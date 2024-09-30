@@ -14,13 +14,16 @@
         <div style="width: 1000px; top: 170px; position: absolute;">
                 <!-- 게시글 목록 박스 -->
 
-            <div v-for="(post) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id)"
-                style="display: flex; flex-direction: column; gap: 10px;width: 100%; margin-bottom: 10px;" >
+            <div v-for="(post, index) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id)"
+            style="display: flex; flex-direction: column; gap: 10px;width: 100%;" >
                 <div style="width: 90%; height: auto;">
 
                     <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
                         <div style="display: flex;">
-                            <span  class="font-500"style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px; ">{{ post.id }}</span>
+                            <span  class="font-500"style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px; ">
+                                <!-- {{ post.id }} -->
+                                {{ totalPostNum - ((currentPage - 1) * postsPerPage + index) }}
+                            </span>
                             <div style="display: flex; flex-direction: column;">
                                 <span style="color: #101424; font-size: 22px;">{{ post.title}}</span>
                                 <div style="color: #8C8C8C; margin-top: 4px;">

@@ -607,7 +607,8 @@
       "email": "1234@naver.com",
       "idConfirm": true,
       "autoLogin": true,
-      "auth": "1234"
+      "auth": "1234",
+      "monthlyBudget": 0
     },
     {
       "id": "d889",
@@ -618,7 +619,8 @@
       "email": "user01@naver.com",
       "idConfirm": true,
       "autoLogin": true,
-      "auth": "1234"
+      "auth": "1234",
+      "monthlyBudget": 0
     },
     {
       "id": "9193",
@@ -629,7 +631,8 @@
       "email": "asdf@asdf.asdf",
       "idConfirm": true,
       "autoLogin": false,
-      "auth": "asdf"
+      "auth": "asdf",
+      "monthlyBudget": 0
     },
     {
       "id": "e38d",
@@ -640,7 +643,8 @@
       "email": "honggildong@gmail.com",
       "idConfirm": true,
       "autoLogin": true,
-      "auth": "1341"
+      "auth": "1341",
+      "monthlyBudget": 0
     }
   ],
   "monthly": [
