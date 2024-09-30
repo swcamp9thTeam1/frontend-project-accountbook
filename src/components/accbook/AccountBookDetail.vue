@@ -70,17 +70,19 @@
 
     <div class="edit-button-container" v-if="!props.readonly">
       <button class="modify-button">수정하기</button>
-      <button class="delete-button">삭제하기</button>
+      <button class="delete-button" @click="handleClickDeleteButton">삭제하기</button>
     </div>
   </div>
 </template>
 
 <script setup>
 import {onMounted, ref, defineProps} from "vue";
+import {useRouter} from "vue-router";
 
 const accbookDetail = ref([]);
 const InOutTranferType = ref(null); // 선택된 버튼 상태 관리
 const regularType = ref(null); // 고정지출 버튼 상태 관리
+const router = useRouter();
 
 const props = defineProps({
   item: {
@@ -126,6 +128,24 @@ const formatDateString = (dateString) => {
 
   return `${year}년 ${month}월 ${day}일 | ${ampm} ${hour}:${minute}`;
 };
+
+async function handleClickDeleteButton() {
+  const isConfirmed = confirm('정말 삭제하시겠습니까?');
+  if (isConfirmed) {
+    // 서버에 DELETE 요청 보내기
+    const response = await fetch(`http://localhost:8080/monthly/${props.item.id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      alert("가계부가 삭제되었습니다.");
+      console.log("가계부가 삭제되었습니다.");
+      router.push('/account-book'); // 삭제 후 가계부 월별 조회 페이지로 이동
+    } else {
+      console.error('삭제에 실패했습니다.');
+    }
+  }
+}
 
 </script>
 

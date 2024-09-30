@@ -66,6 +66,14 @@ const router = createRouter({
                     component: () => import("@/views/group/GroupIntro.vue")
                 },
                 {
+                    path: "posts",
+                    component: () => import("@/views/group/GroupPosts.vue")
+                },
+                {
+                    path: "dopost",
+                    component: () => import("@/views/group/PostCreate.vue")
+                },
+                {
                     path: "accbook",
                     component: () => import("@/views/group/GroupAccBook.vue")
                 },
@@ -97,6 +105,11 @@ const router = createRouter({
             },
 
             {
+                path: "review/add",
+                component: () => import("@/views/my/MyReviewAddView.vue")
+            },
+
+            {
                 path: "scrap",
                 component: () => import("@/views/my/MyScrapView.vue")
             },
@@ -104,6 +117,11 @@ const router = createRouter({
             {
                 path: "write",
                 component: () => import("@/views/my/MyWriteView.vue")
+            },
+
+            {
+                path: "write/:id",
+                component: () => import("@/views/my/MyWriteDetailView.vue")
             },
 
             {
@@ -119,10 +137,15 @@ const router = createRouter({
             {
                 path: "asset/:id-modify",
                 component: () => import("@/views/my/AssetEditView.vue")
+            },
+            {
+                path: "expend/add",
+                component: () => import("@/views/my/AddExpendView.vue")
+            },
+            {
+                path: "expend/:id",
+                component: () => import("@/views/my/ModifyExpendView.vue")
             }
-
-
-
         ]},
         { path: "/community", component: CommunityPage, redirect: "/community/free-board",
             children: [

@@ -9,7 +9,8 @@
       "email": "1234@naver.com",
       "idConfirm": true,
       "autoLogin": true,
-      "auth": "1234"
+      "auth": "1234",
+      "member_code": 66
     }
   ]
 }

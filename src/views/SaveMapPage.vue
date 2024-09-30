@@ -11,7 +11,7 @@
         <SaveMapMarkerCategoryList @changeMarker="changeMarker" />
 
         <!-- 가게 상세보기 Modal -->
-        <StoreDetailModal :storeDetailId="storeDetailId" @closeModal="closeModal" />
+        <StoreDetailModal :storeDetailId="storeDetailId" @on-closed-modal="onClosedModal" />
     </div>
 </template>
 
@@ -21,6 +21,7 @@ import { onMounted, ref } from "vue";
 import SearchAddress from "@/components/savemap/SearchAddress.vue";
 import SaveMapMarkerCategoryList from "@/components/savemap/SaveMapMarkerCategoryList.vue";
 import StoreDetailModal from "@/components/savemap/StoreDetailModal.vue";
+import { openStoreDetailDialog } from "@/utils/dialogManager";
 
 const { VITE_KAKAO_JAVASCRIPT_KEY } = import.meta.env;
 
@@ -105,11 +106,8 @@ const createMarker = (position, image) => {
 
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
-        storeDetailId.value = "1";
-
-        // 모달 열기
-        const modalEl = getModalElement();
-        modalEl.showModal();
+        storeDetailId.value = "1";      // 일단 1번 가게보기로 고정
+        openStoreDetailDialog();
     });
 
     return marker;
@@ -240,14 +238,8 @@ const clearCostAvgMarker = () => {
     costAvgOverlays = [];
 }
 
-const getModalElement = () => document.querySelector("dialog.modal-store-detail");
-
-const closeModal = () => {
+const onClosedModal = () => {
     storeDetailId.value = "";
-
-    // 모달 닫기
-    const modalEl = getModalElement();
-    modalEl.close();
 }
 </script>
 

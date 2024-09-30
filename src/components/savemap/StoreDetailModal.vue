@@ -5,7 +5,7 @@
             <div class="modal-position-main">
                 <!-- 상단 가게명, 가게주소 -->
                 <div class="modal-top-area">
-                    <button type="button" class="btn-close" @click="emit('closeModal')">
+                    <button type="button" class="btn-close" @click="clickCloseModal">
                         <img src="@/assets/icons/button-close.svg" alt="Close Button">
                     </button>
                     <b class="store-name">{{ store.name }}</b>
@@ -90,11 +90,12 @@ import StoreReviewListView from '@/components/savemap/StoreReviewListView.vue';
 import CostAvgChip from '@/components/savemap/CostAvgChip.vue';
 import StoreAccBookListView from '@/components/savemap/StoreAccBookListView.vue';
 import AccountBookDetail from '@/components/accbook/AccountBookDetail.vue';
+import { closeStoreDetailDialog } from '@/utils/dialogManager';
 
 const props = defineProps({
     storeDetailId: String,
 });
-const emit = defineEmits(["closeModal"]);
+const emit = defineEmits(["onClosedModal"]);
 
 const store = ref({});
 
@@ -171,6 +172,11 @@ const clickAccBook = (accBookId) => {
     rightView.value = "ACCBOOK_DETAIL"
     openRight.value = true;
     currentAccBookId.value = { id: accBookId };
+}
+
+const clickCloseModal = () => {
+    closeStoreDetailDialog();
+    emit('onClosedModal');
 }
 </script>
 
