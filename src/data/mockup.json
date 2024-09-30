@@ -206,15 +206,57 @@
       "connectedAsset": "신한은행"
     }
   ],
-  "community-post": [
+"community-post": [
     {
       "id": "1",
       "nickname": "budgetMaster",
       "title": "9월 고정지출 공유합니다",
       "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?",
       "created_at": "2024-09-25 08:30",
-      "comment_count": 5,
-      "file": null
+      "comment_count": 6,
+      "file": null,
+      "comments": [
+        {
+          "id": "1",
+          "nickname": "hello",
+          "content": "월세요 ... 지출이 크네여",
+          "created_at": "2024-09-25 09:30",
+          "subComments": [
+            {
+              "id": "1",
+              "nickname": "nomoney",
+              "content": "헉 저두요 하하",
+              "created_at": "2024-09-25 10:23"
+            },
+            {
+              "id": "2",
+              "nickname": "wanttberich",
+              "content": "집을 언제 살 수 있을까요 ...",
+              "created_at": "2024-09-25 11:32"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "nickname": "bood",
+          "content": "보험금이요 은근 많이 나가는 ..",
+          "created_at": "2024-09-25 09:30",
+          "subComments": [
+            {
+              "id": "1",
+              "nickname": "nomoney",
+              "content": "보험금 부담이 은근 크죠 ㅜㅜ",
+              "created_at": "2024-09-25 10:23"
+            },
+            {
+              "id": "2",
+              "nickname": "wanttberich",
+              "content": "그러게요 해지 할 수도 없고 ,,",
+              "created_at": "2024-09-25 11:32"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2",
@@ -223,7 +265,30 @@
       "content": "매달 저축을 50% 하려고 하는데 생각보다 생활비가 많이 들어서 힘들어요. 팁 있으면 공유 부탁드립니다!",
       "created_at": "2024-09-25 09:10",
       "comment_count": 3,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "1",
+          "nickname": "moneySaver",
+          "content": "저도 같은 고민을 하고 있어요. 예산을 조금 더 세부적으로 나누면 도움이 될 것 같아요.",
+          "created_at": "2024-09-25 09:15",
+          "subComments": []
+        },
+        {
+          "id": "2",
+          "nickname": "budgetQueen",
+          "content": "생활비 절약을 위해 식비를 줄이는 것도 좋은 방법이에요.",
+          "created_at": "2024-09-25 09:20",
+          "subComments": [
+            {
+              "id": "1",
+              "nickname": "savingsPro",
+              "content": "좋은 팁 감사합니다! 더 나은 예산 관리를 위해 노력해볼게요.",
+              "created_at": "2024-09-25 09:25"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "3",
@@ -231,7 +296,7 @@
       "title": "가계부 앱 추천해요",
       "content": "최근에 사용해본 가계부 앱 중에 가장 좋은 건 'MoneyPro'였어요. 자동으로 수입, 지출을 정리해줘서 편하더라구요.",
       "created_at": "2024-09-25 10:45",
-      "comment_count": 4,
+      "comment_count": 0,
       "file": null
     },
     {
@@ -241,7 +306,37 @@
       "content": "아이 학원비가 매달 50만원인데, 다른 고정비와 합치면 부담되네요. 학원비 관리하는 방법이 있을까요?",
       "created_at": "2024-09-25 11:20",
       "comment_count": 6,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "3-1",
+          "nickname": "budgetGuru",
+          "content": "그 앱 정말 유용하죠! 저도 사용해보고 싶어요.",
+          "created_at": "2024-09-25 10:50",
+          "subComments": []
+        },
+        {
+          "id": "3-2",
+          "nickname": "moneyWizard",
+          "content": "돈 관리를 잘하고 싶으면 목표 설정이 중요해요. 가계부 앱과 함께 목표를 세워보세요!",
+          "created_at": "2024-09-25 10:55",
+          "subComments": []
+        },
+        {
+          "id": "3-3",
+          "nickname": "smartSaver",
+          "content": "정말 좋은 조언이에요! 목표를 설정하고 활용해보겠습니다.",
+          "created_at": "2024-09-25 11:00",
+          "subComments": []
+        },
+        {
+          "id": "3-4",
+          "nickname": "budgetGuru",
+          "content": "목표 설정할 때는 SMART 원칙을 기억하세요!",
+          "created_at": "2024-09-25 11:05",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "5",
@@ -250,7 +345,23 @@
       "content": "외식을 줄이고 집밥 위주로 하니 한 달 식비를 30% 줄였어요. 여러분은 식비 절약 어떻게 하시나요?",
       "created_at": "2024-09-25 12:00",
       "comment_count": 2,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "5-1",
+          "nickname": "thriftyChef",
+          "content": "장보기 리스트를 잘 짜면 더 절약할 수 있어요!",
+          "created_at": "2024-09-25 12:05",
+          "subComments": []
+        },
+        {
+          "id": "5-2",
+          "nickname": "familyBudgeter",
+          "content": "식사 계획을 세우면 유용해요. 한 주치 식단을 만들어보세요!",
+          "created_at": "2024-09-25 12:10",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "6",
@@ -259,7 +370,30 @@
       "content": "차 유지비가 너무 많이 들어요. 보험료, 주유비 등 절약할 수 있는 방법 공유해주세요!",
       "created_at": "2024-09-25 12:45",
       "comment_count": 3,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "6-1",
+          "nickname": "safetyFirst",
+          "content": "자동차 보험 비교 사이트를 활용하면 저렴한 보험을 찾을 수 있어요.",
+          "created_at": "2024-09-25 12:50",
+          "subComments": []
+        },
+        {
+          "id": "6-2",
+          "nickname": "fuelSaver",
+          "content": "주유소 가격 비교 앱을 써보세요! 많이 절약할 수 있어요.",
+          "created_at": "2024-09-25 12:55",
+          "subComments": []
+        },
+        {
+          "id": "6-3",
+          "nickname": "safetyFirst",
+          "content": "좋은 정보네요! 제가 시도해볼게요.",
+          "created_at": "2024-09-25 12:58",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "7",
@@ -268,7 +402,30 @@
       "content": "저는 주식과 ETF로 포트폴리오를 구성했어요. 고정지출 외 투자에 어느 정도 배분하고 계신가요?",
       "created_at": "2024-09-25 13:30",
       "comment_count": 7,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "7-1",
+          "nickname": "wealthBuilder",
+          "content": "저는 70% 주식, 30% ETF로 하고 있어요.",
+          "created_at": "2024-09-25 13:35",
+          "subComments": []
+        },
+        {
+          "id": "7-2",
+          "nickname": "longTermInvestor",
+          "content": "장기 투자에 집중하는 것이 중요해요.",
+          "created_at": "2024-09-25 13:40",
+          "subComments": []
+        },
+        {
+          "id": "7-3",
+          "nickname": "wealthBuilder",
+          "content": "주식의 변동성이 걱정되네요.",
+          "created_at": "2024-09-25 13:45",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "8",
@@ -277,7 +434,37 @@
       "content": "지금 월세를 살고 있는데 전세로 갈아탈까 고민 중입니다. 여러분은 어떤 선택을 하셨나요?",
       "created_at": "2024-09-25 14:00",
       "comment_count": 4,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "8-1",
+          "nickname": "homeBuyer",
+          "content": "전세가 안정적이지만 초기 비용이 크죠.",
+          "created_at": "2024-09-25 14:05",
+          "subComments": []
+        },
+        {
+          "id": "8-2",
+          "nickname": "monthlyRent",
+          "content": "월세는 유연하게 이사할 수 있는 장점이 있어요.",
+          "created_at": "2024-09-25 14:10",
+          "subComments": []
+        },
+        {
+          "id": "8-3",
+          "nickname": "homeBuyer",
+          "content": "저는 전세로 가는 것이 더 안전하다고 생각해요.",
+          "created_at": "2024-09-25 14:15",
+          "subComments": []
+        },
+        {
+          "id": "8-4",
+          "nickname": "financialAdvisor",
+          "content": "장기적인 계획에 따라 선택하세요!",
+          "created_at": "2024-09-25 14:20",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "9",
@@ -286,7 +473,37 @@
       "content": "주말마다 마트에서 장을 보는데, 쿠폰과 세일을 잘 활용하니까 10만원 절약했어요. 장볼 때 여러분은 어떻게 절약하세요?",
       "created_at": "2024-09-25 14:30",
       "comment_count": 5,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        },
+        {
+          "id": "9-2",
+          "nickname": "discountDiva",
+          "content": "각종 할인 카드를 활용하세요! 정말 유용해요.",
+          "created_at": "2024-09-25 14:40",
+          "subComments": []
+        },
+        {
+          "id": "9-3",
+          "nickname": "groceryQueen",
+          "content": "할인 카드도 좋지만, 너무 많은 카드는 관리가 힘들더라구요.",
+          "created_at": "2024-09-25 14:45",
+          "subComments": []
+        },
+        {
+          "id": "9-4",
+          "nickname": "smartShopper",
+          "content": "온라인 쇼핑도 잘 활용하면 절약할 수 있어요!",
+          "created_at": "2024-09-25 14:50",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "10",
@@ -295,7 +512,16 @@
       "content": "대학생인데, 생활비 예산 관리가 너무 어렵네요. 저만의 관리법이 있으면 공유해요!",
       "created_at": "2024-09-25 15:00",
       "comment_count": 1,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "10-1",
+          "nickname": "budgetBoss",
+          "content": "항상 수입과 지출을 기록하는 게 중요해요.",
+          "created_at": "2024-09-25 15:05",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "11",
@@ -304,7 +530,30 @@
       "content": "월급의 20%는 매달 주식이나 펀드에 투자하고 있어요. 수익률 관리가 잘 안될 때는 어떻게 대처하시나요?",
       "created_at": "2024-09-25 15:30",
       "comment_count": 3,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "11-1",
+          "nickname": "riskAware",
+          "content": "위험 분산이 중요해요. 다양한 자산에 투자하세요.",
+          "created_at": "2024-09-25 15:35",
+          "subComments": []
+        },
+        {
+          "id": "11-2",
+          "nickname": "investmentNinja",
+          "content": "시장 변동성이 클 땐 분할 매수하세요.",
+          "created_at": "2024-09-25 15:40",
+          "subComments": []
+        },
+        {
+          "id": "11-3",
+          "nickname": "smartInvestor",
+          "content": "좋은 방법이에요! 분할 매수도 고려해볼게요.",
+          "created_at": "2024-09-25 15:45",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "12",
@@ -313,7 +562,37 @@
       "content": "학생이라 알바비로 생활하는데, 정말 절약하지 않으면 힘드네요. 학생분들 어떻게 생활비 관리하세요?",
       "created_at": "2024-09-25 16:00",
       "comment_count": 4,
-      "file": null
+      "file": null,
+      "comments": [
+        {
+          "id": "12-1",
+          "nickname": "savingStudent",
+          "content": "식비를 줄이는 게 가장 중요해요.",
+          "created_at": "2024-09-25 16:05",
+          "subComments": []
+        },
+        {
+          "id": "12-2",
+          "nickname": "budgetFriendly",
+          "content": "알바 시간을 조절해보세요. 더 효율적으로 관리할 수 있어요.",
+          "created_at": "2024-09-25 16:10",
+          "subComments": []
+        },
+        {
+          "id": "12-3",
+          "nickname": "frugalStudent",
+          "content": "식비 줄이기는 정말 힘들어요.",
+          "created_at": "2024-09-25 16:15",
+          "subComments": []
+        },
+        {
+          "id": "12-4",
+          "nickname": "partTimePro",
+          "content": "알바비로 생활하는 게 어렵긴 하죠. 힘내세요!",
+          "created_at": "2024-09-25 16:20",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "13",
@@ -321,8 +600,17 @@
       "title": "아기 용품 비용 줄이기",
       "content": "아기 용품비가 많이 나가네요. 나름 중고로 사기도 하는데, 다른 절약 방법 있으면 알려주세요!",
       "created_at": "2024-09-25 16:30",
-      "comment_count": 2,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "14",
@@ -330,8 +618,17 @@
       "title": "조기 은퇴 준비 중입니다",
       "content": "조기 은퇴를 목표로 가계부를 철저하게 관리 중인데, 여러분은 은퇴 후 생활비는 어떻게 관리하실 계획이신가요?",
       "created_at": "2024-09-25 17:00",
-      "comment_count": 6,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "15",
@@ -339,8 +636,17 @@
       "title": "반려동물 비용 관리",
       "content": "반려동물 관련 지출이 생각보다 많이 들어서 가계부에 큰 영향을 주네요. 반려동물 비용 절약하는 팁 있나요?",
       "created_at": "2024-09-25 17:30",
-      "comment_count": 5,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "16",
@@ -348,8 +654,17 @@
       "title": "명품 소비와 가계부",
       "content": "명품을 좋아하지만, 가계부에 큰 영향을 주지 않게 소비를 조절하려고 해요. 다들 명품 소비 어떻게 하시나요?",
       "created_at": "2024-09-25 18:00",
-      "comment_count": 7,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "17",
@@ -357,8 +672,17 @@
       "title": "외식 비용 절감 방법",
       "content": "외식 비용이 꽤 많이 나가서 요즘은 배달이나 외식을 줄이고 있어요. 여러분은 어떻게 외식비를 절약하시나요?",
       "created_at": "2024-09-25 18:30",
-      "comment_count": 3,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "18",
@@ -366,8 +690,17 @@
       "title": "부업으로 수입 늘리기",
       "content": "부업으로 수입을 늘리고 가계부에 도움이 되게끔 하고 있어요. 부업 추천하실 만한 게 있나요?",
       "created_at": "2024-09-25 19:00",
-      "comment_count": 4,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "19",
@@ -375,8 +708,17 @@
       "title": "미니멀리즘 생활비 절약",
       "content": "미니멀리즘 생활을 통해 지출을 많이 줄였어요. 여러분은 어떻게 불필요한 소비를 줄이시나요?",
       "created_at": "2024-09-25 19:30",
-      "comment_count": 2,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "20",
@@ -384,8 +726,17 @@
       "title": "월급의 30% 투자 중입니다",
       "content": "매달 월급의 30%를 주식과 부동산에 투자 중입니다. 여러분은 월급의 몇 퍼센트를 투자하고 계신가요?",
       "created_at": "2024-09-25 20:00",
-      "comment_count": 6,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "21",
@@ -393,8 +744,17 @@
       "title": "차 유지비 어떻게 줄일 수 있을까요?",
       "content": "자동차 유지비가 부담돼서 고민입니다. 보험료와 주유비를 어떻게 줄이시는지 궁금합니다.",
       "created_at": "2024-09-25 20:30",
-      "comment_count": 3,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "22",
@@ -402,8 +762,17 @@
       "title": "온라인 쇼핑 비용 관리",
       "content": "요즘 온라인 쇼핑이 잦아지다 보니 지출이 많이 늘었어요. 쇼핑비 절약 팁 있나요?",
       "created_at": "2024-09-25 21:00",
-      "comment_count": 5,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "23",
@@ -411,8 +780,17 @@
       "title": "헬스장 비용 아끼는 법",
       "content": "헬스장 비용이 부담돼서 집에서 운동하려고 합니다. 홈트용 장비는 어떻게 예산을 잡아야 할까요?",
       "created_at": "2024-09-25 21:30",
-      "comment_count": 2,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "24",
@@ -420,8 +798,17 @@
       "title": "대학생 가계부 관리 팁",
       "content": "대학생이라 예산이 빠듯한데, 어떻게 가계부를 쓰면 절약할 수 있을까요?",
       "created_at": "2024-09-25 22:00",
-      "comment_count": 4,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "25",
@@ -429,8 +816,17 @@
       "title": "신혼부부 생활비 관리 팁",
       "content": "신혼부부로서 생활비가 많이 드는데, 어떤 항목에서 절약을 할 수 있을까요?",
       "created_at": "2024-09-25 22:30",
-      "comment_count": 3,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "26",
@@ -438,8 +834,17 @@
       "title": "취미 생활비 관리 방법",
       "content": "취미 생활이 많아서 지출이 많이 나가네요. 취미 활동비는 어떻게 관리하시나요?",
       "created_at": "2024-09-25 23:00",
-      "comment_count": 6,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "27",
@@ -447,8 +852,17 @@
       "title": "집에서 요리하면 얼마나 절약할까요?",
       "content": "외식 대신 집에서 요리하려고 하는데, 식비가 얼마나 줄어들지 궁금하네요. 여러분은 어떻게 요리비를 절약하시나요?",
       "created_at": "2024-09-25 23:30",
-      "comment_count": 2,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "28",
@@ -456,8 +870,17 @@
       "title": "대출 이자 관리 팁",
       "content": "대출 이자가 매달 부담스러운데, 혹시 이자 절약할 수 있는 방법 있나요?",
       "created_at": "2024-09-26 00:00",
-      "comment_count": 5,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "29",
@@ -465,8 +888,17 @@
       "title": "여행 경비 절약하는 방법",
       "content": "여행을 좋아하지만 경비가 많이 들어요. 여행할 때 경비 절약하는 팁 있으신가요?",
       "created_at": "2024-09-26 00:30",
-      "comment_count": 4,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "30",
@@ -474,8 +906,17 @@
       "title": "전자기기 구매 비용 관리",
       "content": "전자기기 구입비가 많이 들어서 걱정입니다. 최신 기기를 저렴하게 구매하는 팁 있으신가요?",
       "created_at": "2024-09-26 01:00",
-      "comment_count": 3,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "31",
@@ -483,8 +924,17 @@
       "title": "자취생 절약방법",
       "content": "자취생인데 생활비 절약방법 있을까요?",
       "created_at": "2024-09-27 08:30",
-      "comment_count": 2,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "32",
@@ -492,8 +942,17 @@
       "title": "고정지출과 변동지출 관리법",
       "content": "고정지출과 변동지출을 효과적으로 관리하기 위해 엑셀을 사용하고 있습니다. 다른 관리 방법이 있으면 알려주세요!",
       "created_at": "2024-09-27 09:00",
-      "comment_count": 4,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "33",
@@ -501,8 +960,17 @@
       "title": "아이들 교육비 절약 팁",
       "content": "아이들 교육비를 절약하려고 노력 중인데, 효과적인 방법을 찾기가 어렵네요. 팁이 있다면 알려주세요!",
       "created_at": "2024-09-27 09:30",
-      "comment_count": 3,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "34",
@@ -510,8 +978,17 @@
       "title": "장기적인 재무 목표 설정 방법",
       "content": "장기적인 재무 목표를 설정하고 달성하기 위한 팁이 있나요? 저는 매년 목표를 재설정하는데, 여러분은 어떻게 하시나요?",
       "created_at": "2024-09-27 10:00",
-      "comment_count": 5,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "35",
@@ -519,8 +996,17 @@
       "title": "은퇴 자금 모으기 꿀팁",
       "content": "은퇴 자금을 모으기 위해 매달 저축하고 있는데, 더 효과적인 방법이 있을까요? 여러분의 팁을 공유해주세요.",
       "created_at": "2024-09-27 10:30",
-      "comment_count": 6,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "36",
@@ -528,8 +1014,17 @@
       "title": "해외여행 경비 줄이기",
       "content": "해외여행 경비를 줄이기 위해 항공권과 숙박비를 어떻게 절약하시나요? 좋은 팁이 있으면 알려주세요.",
       "created_at": "2024-09-27 11:00",
-      "comment_count": 2,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "37",
@@ -537,8 +1032,17 @@
       "title": "가족여행 비용 절약법",
       "content": "가족여행 비용을 줄이기 위해 노력 중입니다. 저렴하면서도 가족 모두가 만족할 수 있는 여행지를 추천해주세요.",
       "created_at": "2024-09-27 11:30",
-      "comment_count": 4,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "38",
@@ -546,8 +1050,17 @@
       "title": "전자기기 할인 정보 공유",
       "content": "최근에 구매한 전자기기를 할인받아 구매했어요. 여러분도 좋은 할인 정보를 공유해주세요!",
       "created_at": "2024-09-27 12:00",
-      "comment_count": 3,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "39",
@@ -555,8 +1068,17 @@
       "title": "가정용품 절약 방법",
       "content": "가정용품 구매 시 비용을 절약하는 방법이 있나요? 특히 청소용품이나 생필품에 대한 절약 팁을 공유해주세요.",
       "created_at": "2024-09-27 12:30",
-      "comment_count": 5,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
       "id": "40",
@@ -564,30 +1086,46 @@
       "title": "식재료 비용 절약 팁",
       "content": "식재료 비용을 절약하기 위해 대량 구매나 할인을 적극 활용하고 있습니다. 다른 방법이 있다면 알려주세요!",
       "created_at": "2024-09-27 13:00",
-      "comment_count": 4,
-      "file": null
+      "comment_count": 0,
+      "file": null,
+      "comments": [
+        {
+          "id": "9-1",
+          "nickname": "bargainHunter",
+          "content": "미리 장보기 리스트를 작성하는 것이 좋아요.",
+          "created_at": "2024-09-25 14:35",
+          "subComments": []
+        }
+      ]
     },
     {
-      "id": "41",
-      "nickname": "budgetMaster",
-      "title": "부채 상환 전략",
-      "content": "부채 상환을 효과적으로 관리하기 위해 어떤 전략을 사용하시나요? 저는 이자율이 높은 것부터 갚고 있어요.",
-      "created_at": "2024-09-27 13:30",
-      "comment_count": 6,
-      "file": null
+      "id": "5ec6",
+      "title": "ㅁㅁㅁ",
+      "content": "ㅁㅁㅁ",
+      "nickname": "budgetMaster"
     },
     {
-      "id": null,
-      "title": "as",
-      "content": "asd",
-      "fileName": "",
-      "nickname": null
+      "id": "44f9",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?ㅁㅁ",
+      "nickname": "budgetMaster"
     },
     {
-      "id": null,
-      "title": "정말 힘드네요",
-      "content": "정말 힘들엉ㅅ",
-      "fileName": "",
+      "id": "26cf",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?헉",
+      "nickname": "budgetMaster"
+    },
+    {
+      "id": "9970",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?ㅁㅁㅁㅁㅁㅁ",
+      "nickname": "budgetMaster"
+    },
+    {
+      "id": "43b0",
+      "title": "9월 고정지출 공유합니다",
+      "content": "9월 고정지출은 월세, 공과금, 통신비 포함해서 120만원입니다. 다들 어떤 고정지출이 있나요?ㅁㅁㅁ",
       "nickname": "budgetMaster"
     }
   ],

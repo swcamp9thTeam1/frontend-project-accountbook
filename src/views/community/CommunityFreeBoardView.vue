@@ -11,7 +11,7 @@
         </button>
 
 
-        <div style="width: 1000px; top: 170px; position: absolute;">
+        <div style="width: 1000px; top: 231px; position: absolute;">
                 <!-- 게시글 목록 박스 -->
 
             <div v-for="(post, index) in currentPagePosts" :key="post.id" @click="goToPostDetail(post.id)"
