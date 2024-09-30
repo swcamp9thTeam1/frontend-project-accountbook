@@ -229,7 +229,8 @@
   각 카테고리별로 게시글 목록을 확인할 수 있으며 목록 중 하나를 클릭하면 게시글 상세 조회가 가능합니다.
   
   ```
-  ![게시글조회](https://github.com/user-attachments/assets/548740df-704b-4341-8272-6060e05ebcec)
+
+  ![게시글조회!](https://github.com/user-attachments/assets/4ff7cc1b-bd32-43c8-8558-6b4158534e4f)
 
 
   
@@ -239,7 +240,8 @@
   게시글 스크랩 버튼을 클릭하면 스크랩 상태가 되며, 버튼의 글자가 스크랩 취소로 바뀝니다.
   스크랩한 항목은 '내가 스크랩한 글' 게시글에서 확인할 수 있습니다. 
   ```
-  ![스크랩설정](https://github.com/user-attachments/assets/1267529a-dd15-4d4b-ad14-f6054d0acb9a)
+
+  ![스크랩설정!](https://github.com/user-attachments/assets/e127c3c9-1f94-4a6d-9de3-51645fb421d9)
 
  
 * 게시글 작성, 삭제
@@ -258,8 +260,8 @@
   게시글 댓글을 작성하면 댓글 개수 정보가 업데이트 됩니다.
   댓글에 대한 답글도 작성할 수 있습니다. 
   ```
- 
-  ![댓글작성](https://github.com/user-attachments/assets/8c5bd739-f02b-4312-a62b-6868136c65b5)
+  
+  ![댓글작성!](https://github.com/user-attachments/assets/8faae20b-02d9-48bf-a077-af19d82d8421)
 
 * 나의 게시물 조회
   ```
