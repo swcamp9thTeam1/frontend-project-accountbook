@@ -206,7 +206,7 @@
     {
       "id": "4",
       "category": "체크카드",
-      "name": "신한카드",
+      "name": "신한체크카드",
       "balance": 0,
       "paymentDate": null,
       "connectedAsset": "신한은행"
@@ -1284,7 +1284,7 @@
       "title": "멜론뮤직",
       "categoryName": "여가",
       "day": 15,
-      "assetName": "현대 M 체크카드",
+      "assetName": "신한체크카드",
       "fee": 8500
     },
     {
@@ -1302,7 +1302,7 @@
       "title": "넷플릭스",
       "categoryName": "여가",
       "day": 7,
-      "assetName": "현대 M 체크카드",
+      "assetName": "국민카드",
       "fee": 10900
     },
     {
@@ -1320,7 +1320,7 @@
       "title": "티빙",
       "categoryName": "여가",
       "day": 20,
-      "assetName": "우리카드",
+      "assetName": "신한체크카드",
       "fee": 14000
     }
   ],
