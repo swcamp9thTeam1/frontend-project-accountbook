@@ -335,6 +335,12 @@
   ![화면 기록 2024-09-30 오후 12 40 29](https://github.com/user-attachments/assets/9c6d5813-cba7-4680-90e9-77088194551e)
   ![화면 기록 2024-09-30 오후 12 41 33](https://github.com/user-attachments/assets/1d67446d-f8a3-45b7-b551-712ec5b3c860)
 
+* 나의 글 조회, 추가
+  ```
+  마이페이지에서 '나의 글' 버튼을 눌러 내가 커뮤니티에 작성한 글 목록을 조회할 수 있습니다.
+  '글 작성' 버튼을 눌러 작성하기 페이지로 이동할 수도 있습니다.
+  ```
+  ![마이페이지-나의글](https://github.com/user-attachments/assets/3e6f0f13-9726-4e02-a83a-86bb809d9d85)
 
 <br>
 
