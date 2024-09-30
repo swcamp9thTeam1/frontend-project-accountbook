@@ -3,14 +3,19 @@
     import { provide, onMounted, ref, watchEffect } from 'vue';
     import { RouterLink } from 'vue-router';
 
+    const userNickname = localStorage.getItem('nickname');
+    const users = ref([]);
+    const loginUser = ref({});
     const assets = ref([]);
-    const member = ref({});
     const totalAsset = ref(0);
     const categories = ref([]);
 
+    // 로그인한 user의 정보 가져오기
     onMounted(async () => {
-        const response = await fetch('http://localhost:8080/member');
-        member.value = await response.json();
+        const response = await fetch('http://localhost:8080/users');
+        users.value = await response.json();
+
+        loginUser.value = users.value.find(user => user.nickname === userNickname);
     })
 
     onMounted(async () => {
@@ -36,7 +41,7 @@
 <template>
     <div class="container">
         <div class="total">
-            <div class="total-balance">{{ member.nickname }} 님의 보유 자산 총액은 {{ totalAsset.toLocaleString() }}원 입니다.</div>
+            <div class="total-balance">{{ loginUser.nickname }} 님의 보유 자산 총액은 {{ totalAsset.toLocaleString() }}원 입니다.</div>
             <RouterLink to="/my/asset/add">
                 <button type="button" class="insert">자산 추가</button>
             </RouterLink>
