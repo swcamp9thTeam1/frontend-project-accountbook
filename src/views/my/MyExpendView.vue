@@ -8,10 +8,11 @@
   </button>
   </RouterLink>
 
-  <div style="width: 1000px;">
-    <div style="display: flex; flex-direction: column; gap: 10px;width: 100%;">
-      <div v-for="expense in currentPagePosts" :key="expense.id" style="width: 90%; height: auto;">
-        
+  <div style="display: flex; flex-direction: column; margin-left: -110px; margin-top: 7px; gap:10px;">
+    
+      <div v-for="expense in currentPagePosts" :key="expense.id">
+        <div style="display: flex; flex-direction: column; gap: 10px;width: 100%;">
+          <div style="width: 90%; height: auto;">
         <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
           <div class="expense-left">
             <div class="expense-title">
@@ -37,6 +38,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 

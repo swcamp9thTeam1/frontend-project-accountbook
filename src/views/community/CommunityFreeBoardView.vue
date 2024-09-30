@@ -5,7 +5,7 @@
         <!-- 글 작성 버튼 -->
         <button 
             @click="createPost"
-            class="regist-post-btn" style="width: 140px; height: 48px; background-color: #F3F3FF; border: none; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 23px; padding: 17px; margin-left: 843px;margin-bottom: 20px;">
+            class="regist-post-btn" style="width: 140px; height: 48px; background-color: #F3F3FF; border: none; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 23px; padding: 17px; margin-left: 843px;margin-bottom: 20px; cursor:pointer;">
             <img src="/src/assets/icons/Community/PlusIcon.svg" alt="">
             <span class="font-300">글 작성</span>
         </button>
@@ -19,7 +19,7 @@
                 <div style="width: 90%; height: auto;">
 
                     <div class="post-list" style="width: 100%; height: 68px; background-color: #F9F9FF; border-radius: 11px; box-shadow:0 0 5px rgba(198, 198, 235, 0.5); display: flex; align-items: center; padding: 15px 41px; justify-content: space-between;">
-                        <div style="display: flex;">
+                        <div style="display: flex; gap:10px;">
                             <span  class="font-500"style="color:#101424; font-size: 25px; margin-top:13px; margin-right: 41px; ">
                                 <!-- {{ post.id }} -->
                                 {{ totalPostNum - ((currentPage - 1) * postsPerPage + index) }}
