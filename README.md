@@ -320,8 +320,8 @@
     이 때 '확인'을 누르면 해당 자산이 삭제되고, 카테고리별 잔액 합계와 총 잔액 합계가 변동되는 것을 확인할 수 있습니다.
   ```
   ![02_마이페이지_자산등록및조회](https://github.com/user-attachments/assets/c0f840a8-254c-4d5e-b767-5a6864f32c91)
-  ![04_마이페이지_자산삭제및조회](https://github.com/user-attachments/assets/1ae5f204-b126-46c7-a661-6237a0dfd410)
   ![03_마이페이지_자산수정및조회](https://github.com/user-attachments/assets/8f8f1b56-c144-4f0c-826c-80e21c040b12)
+  ![04_마이페이지_자산삭제및조회](https://github.com/user-attachments/assets/1ae5f204-b126-46c7-a661-6237a0dfd410)
 
 * 내가 스크랩한 게시글 목록 조회
   ```
