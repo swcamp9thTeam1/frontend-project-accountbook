@@ -94,21 +94,19 @@
     const totalPages = computed(() => {
         return Math.ceil(posts.value.filter(post => post.scrapStatus).length / postsPerPage);
     });
-    
-
-    // 게시글 번호 계산 메소드
-    const calculatePostNumber = (index) => {
-        return totalPostNum.value - ((currentPage.value - 1) * postsPerPage + index);
-    };
-
-    // 게시글의 전체 개수
-    const totalPostNum = computed(() => posts.value.filter(post => post.scrapStatus).length);
-
     // 페이지를 바꿔주는 메소드
     const changePage = (newPage) => {
         if (newPage >= 1 && newPage <= totalPages.value) {
         currentPage.value = newPage;
         }
+    };
+
+    // 게시글의 전체 개수
+    const totalPostNum = computed(() => posts.value.filter(post => post.scrapStatus).length);
+
+    // 게시글 번호 계산 메소드
+    const calculatePostNumber = (index) => {
+    return totalPostNum.value - ((currentPage.value - 1) * postsPerPage + index);
     };
 
     

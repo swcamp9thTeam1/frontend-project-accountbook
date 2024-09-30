@@ -82,7 +82,7 @@
                     <RouterLink 
                         to="/my/asset" 
                         class="menu-item" 
-                        :class="{ 'active-menu': isActive('/my/asset') }"
+                        :class="{ 'active-menu': isActive('/my/asset') || route.path.startsWith('/my/asset/')}"
                         @click="selectMenu('나의 자산')">
                         나의 자산 
                     </RouterLink>
@@ -91,7 +91,7 @@
                     <RouterLink 
                         to="/my/expend" 
                         class="menu-item" 
-                        :class="{ 'active-menu': isActive('/my/expend') }"
+                        :class="{ 'active-menu': isActive('/my/expend') || route.path.startsWith('/my/expend/')}"
                         @click="selectMenu('나의 정기지출')">
                         나의 정기지출
                     </RouterLink>
