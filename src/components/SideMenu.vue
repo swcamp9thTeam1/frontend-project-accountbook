@@ -123,9 +123,29 @@
                         나의 글
                     </RouterLink>
                 </li>
+
+                <!-- 그룹게시판, 그룹 가계부 -->
+                <li v-if="selectedBanner === 'groupManagement'">
+                    <RouterLink 
+                        to="/group/posts" 
+                        class="menu-item" 
+                        :class="{ 'active-menu': isActive('/group/posts') }"
+                        @click="selectMenu('그룹 게시판')">
+                        그룹 게시판
+                    </RouterLink>
+                </li>
+                <li v-if="selectedBanner === 'groupManagement'">
+                    <RouterLink 
+                        to="/group/accbook" 
+                        class="menu-item" 
+                        :class="{ 'active-menu': isActive('/group/accbook') }"
+                        @click="selectMenu('그룹 가계부')">
+                        그룹 가계부
+                    </RouterLink>
+                </li>
             </ul>
         </div>
-        <div class="group-tab">
+        <div v-if="showBlackBar" class="group-tab">
             <p>{{ activeMenu }}</p>
         </div>
     </div>
@@ -136,7 +156,7 @@ import { defineProps, ref, watchEffect, onMounted } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 
 const route = useRoute();
-
+const showBlackBar = ref(true); // 기본적으로 검은색 바를 보여줌
 const props = defineProps({
     selectedBanner: String
 });
@@ -190,7 +210,22 @@ watchEffect(() => {
         else if (isActive('/my/review')) activeMenu.value = '내가 다녀간 가게와 리뷰';
         else if (isActive('/my/scrap')) activeMenu.value = '나의 스크랩';
         else if (isActive('/my/write')) activeMenu.value = '나의 글';   
-}});
+    } 
+    // else if (props.selectedBanner === 'groupManagement') {
+    //     if (isActive('/group/posts')) activeMenu.value = '그룹 게시판';
+    //     else if (isActive('group/accbook')) activeMenu.value='그룹 가계부';
+    // }
+});
+
+// 현재 경로에 따라 검은색 바를 표시하거나 숨김
+watchEffect(() => {
+  // group/posts와 group/accbook 페이지에서는 검은색 바를 숨김
+  if (route.path === '/group/posts' || route.path === '/group/accbook') {
+    showBlackBar.value = false;
+  } else {
+    showBlackBar.value = true; // 다른 경로에서는 검은색 바를 표시
+  }
+});
 
 </script>
 
